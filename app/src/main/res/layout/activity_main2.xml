@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity"
+    android:orientation="vertical"
+    android:background="#fff"
+    android:padding="20dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <ImageView
+            android:id="@+id/logoImage"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:src="@drawable/hb"
+            android:transitionName="logo_image"/>
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Basic information"
+            android:textSize="18sp"
+            android:transitionName="logo_desc"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="20dp"
+            tools:ignore="MissingClass"
+            android:theme="@style/Theme.MaterialComponents.DayNight.DarkActionBar">
+            >
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/typelayout"
+                android:layout_weight="1"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu"
+                    >
+                    <AutoCompleteTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Type"
+                    android:id="@+id/typetxt">
+
+                </AutoCompleteTextView>
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/distlayout"
+                android:layout_weight="1"
+                android:layout_marginTop="5dp"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu"
+                >
+                <AutoCompleteTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="District"
+                    android:id="@+id/districttxt">
+
+                </AutoCompleteTextView>
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/hclayout"
+                android:layout_weight="1"
+                android:layout_marginTop="5dp"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu"
+                >
+                <AutoCompleteTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Health center"
+                    android:id="@+id/hctxt">
+
+                </AutoCompleteTextView>
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Sector"
+                android:transitionName="username_trans"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                tools:ignore="InvalidId"
+                app:boxStrokeColor="@color/red">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/sector"/>
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Number of cells"
+                android:transitionName="username_trans"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                tools:ignore="InvalidId"
+                app:boxStrokeColor="@color/red">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/cells"/>
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Number of village"
+                android:transitionName="username_trans"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                tools:ignore="InvalidId"
+                app:boxStrokeColor="@color/red">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/village"/>
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Number of public health post"
+                android:transitionName="username_trans"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                tools:ignore="InvalidId"
+                app:boxStrokeColor="@color/red">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/pubhpost"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Number of private health post"
+                android:transitionName="username_trans"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                tools:ignore="InvalidId"
+                app:boxStrokeColor="@color/red">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/prihpost"/>
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Population"
+                android:transitionName="username_trans"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                tools:ignore="InvalidId"
+                app:boxStrokeColor="@color/red">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/population" />
+            </com.google.android.material.textfield.TextInputLayout>
+            <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Patients per day"
+            android:transitionName="username_trans"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            tools:ignore="InvalidId"
+            app:boxStrokeColor="@color/red">
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/patients"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Number of beds"
+                android:transitionName="username_trans"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                tools:ignore="InvalidId"
+                app:boxStrokeColor="@color/red">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/beds"/>
+            </com.google.android.material.textfield.TextInputLayout>
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Number of consultation rooms"
+                android:transitionName="username_trans"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                tools:ignore="InvalidId"
+                app:boxStrokeColor="@color/red">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/consrooms"/>
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Number of hospitalization rooms"
+                android:transitionName="username_trans"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                tools:ignore="InvalidId"
+                app:boxStrokeColor="@color/red">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/hosprooms"/>
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+            <Button
+                android:id="@+id/save1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="5dp"
+                android:text="Save and Continue"
+                android:textColor="#fff"
+                android:backgroundTint="@color/red"/>
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+
+</ScrollView>

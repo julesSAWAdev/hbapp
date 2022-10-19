@@ -1,0 +1,882 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity"
+    android:orientation="vertical"
+    android:background="#fff"
+    android:padding="20dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <ImageView
+            android:id="@+id/logoImage"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:src="@drawable/hb"
+            android:transitionName="logo_image"/>
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Organizational chart"
+            android:textSize="18sp"
+            android:textColor="@color/blue"
+            android:transitionName="logo_desc"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="20dp"
+            tools:ignore="MissingClass"
+            android:theme="@style/Theme.MaterialComponents.DayNight.DarkActionBar">
+            >
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/orgav"
+                android:layout_weight="1"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu"
+                >
+                <AutoCompleteTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Available"
+                    android:id="@+id/orgavtxt">
+
+                </AutoCompleteTextView>
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/uptodatelyt"
+                android:layout_weight="1"
+                android:layout_marginTop="5dp"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu"
+                >
+                <AutoCompleteTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Up to date"
+                    android:id="@+id/uptodatetxt">
+
+                </AutoCompleteTextView>
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/accessiblelyt"
+                android:layout_weight="1"
+                android:layout_marginTop="5dp"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu"
+                >
+                <AutoCompleteTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="accessible to staff"
+                    android:id="@+id/accessibletxt">
+
+                </AutoCompleteTextView>
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Files - Laboratory Technician"
+                android:textSize="18sp"
+                android:textColor="@color/blue"
+                android:transitionName="logo_desc"
+                android:layout_marginTop="20dp"/>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/labtecavllyt"
+                android:layout_weight="1"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu"
+                >
+                <AutoCompleteTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Available"
+                    android:id="@+id/labtecavltxt">
+
+                </AutoCompleteTextView>
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/labtecsignlyt"
+                android:layout_weight="1"
+                android:layout_marginTop="5dp"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu"
+                >
+                <AutoCompleteTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Signed by employee"
+                    android:id="@+id/labtecsigntxt">
+
+                </AutoCompleteTextView>
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/labtecempsignlyt"
+                android:layout_weight="1"
+                android:layout_marginTop="5dp"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu"
+                >
+                <AutoCompleteTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Signed by employer"
+                    android:id="@+id/labtecempsigntxt">
+
+                </AutoCompleteTextView>
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!--Nurse-->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Files - Nurse AR"
+                android:textSize="18sp"
+                android:textColor="@color/blue"
+                android:transitionName="logo_desc"
+                android:layout_marginTop="20dp"/>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/nurseAravllyt"
+                android:layout_weight="1"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu"
+                >
+                <AutoCompleteTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Available"
+                    android:id="@+id/nurseAravltxt">
+
+                </AutoCompleteTextView>
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/nurseArsignlyt"
+                android:layout_weight="1"
+                android:layout_marginTop="5dp"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu"
+                >
+                <AutoCompleteTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Signed by employee"
+                    android:id="@+id/nurseArsigntxt">
+
+                </AutoCompleteTextView>
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/nurseArempsignlyt"
+                android:layout_weight="1"
+                android:layout_marginTop="5dp"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu"
+                >
+                <AutoCompleteTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Signed by employer"
+                    android:id="@+id/nurseArempsigntxt">
+
+                </AutoCompleteTextView>
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+            <!-- Nurse vaccination -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Files - Nurse Vaccination"
+                android:textSize="18sp"
+                android:textColor="@color/blue"
+                android:transitionName="logo_desc"
+                android:layout_marginTop="20dp"/>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/nurseVacavllyt"
+                android:layout_weight="1"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu"
+                >
+                <AutoCompleteTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Available"
+                    android:id="@+id/nurseVacavltxt">
+
+                </AutoCompleteTextView>
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/nurseVacsignlyt"
+                android:layout_weight="1"
+                android:layout_marginTop="5dp"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu"
+                >
+                <AutoCompleteTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Signed by employee"
+                    android:id="@+id/nurseVacsigntxt">
+
+                </AutoCompleteTextView>
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/nurseVacempsignlyt"
+                android:layout_weight="1"
+                android:layout_marginTop="5dp"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu"
+                >
+                <AutoCompleteTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Signed by employer"
+                    android:id="@+id/nurseVacempsigntxt">
+
+                </AutoCompleteTextView>
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!--Customer care-->
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Files - Customer care"
+                android:textSize="18sp"
+                android:textColor="@color/blue"
+                android:transitionName="logo_desc"
+                android:layout_marginTop="20dp"/>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/CustCareavllyt"
+                android:layout_weight="1"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu"
+                >
+                <AutoCompleteTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Available"
+                    android:id="@+id/CustCareavltxt">
+
+                </AutoCompleteTextView>
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/CustCaresignlyt"
+                android:layout_weight="1"
+                android:layout_marginTop="5dp"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu"
+                >
+                <AutoCompleteTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Signed by employee"
+                    android:id="@+id/CustCaresigntxt">
+
+                </AutoCompleteTextView>
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/CustCareempsignlyt"
+                android:layout_weight="1"
+                android:layout_marginTop="5dp"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu"
+                >
+                <AutoCompleteTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Signed by employer"
+                    android:id="@+id/CustCareempsigntxt">
+
+                </AutoCompleteTextView>
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!-- Nurse TB-->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Files - Nurse TB"
+                android:textSize="18sp"
+                android:textColor="@color/blue"
+                android:transitionName="logo_desc"
+                android:layout_marginTop="20dp"/>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/nurseTbavllyt"
+                android:layout_weight="1"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu"
+                >
+                <AutoCompleteTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Available"
+                    android:id="@+id/nurseTbavltxt">
+
+                </AutoCompleteTextView>
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/nurseTbsignlyt"
+                android:layout_weight="1"
+                android:layout_marginTop="5dp"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu"
+                >
+                <AutoCompleteTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Signed by employee"
+                    android:id="@+id/nurseTbsigntxt">
+
+                </AutoCompleteTextView>
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/nurseTbempsignlyt"
+                android:layout_weight="1"
+                android:layout_marginTop="5dp"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu"
+                >
+                <AutoCompleteTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Signed by employer"
+                    android:id="@+id/nurseTbempsigntxt">
+
+                </AutoCompleteTextView>
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!--Nurse petite chirilgie-->
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Files - Nurse petite chirlugie"
+                android:textSize="18sp"
+                android:textColor="@color/blue"
+                android:transitionName="logo_desc"
+                android:layout_marginTop="20dp"/>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/nurseChiravllyt"
+                android:layout_weight="1"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu"
+                >
+                <AutoCompleteTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Available"
+                    android:id="@+id/nurseChiravltxt">
+
+                </AutoCompleteTextView>
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/nurseChirsignlyt"
+                android:layout_weight="1"
+                android:layout_marginTop="5dp"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu"
+                >
+                <AutoCompleteTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Signed by employee"
+                    android:id="@+id/nurseChirsigntxt">
+
+                </AutoCompleteTextView>
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/nurseChirempsignlyt"
+                android:layout_weight="1"
+                android:layout_marginTop="5dp"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu"
+                >
+                <AutoCompleteTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Signed by employer"
+                    android:id="@+id/nurseChirempsigntxt">
+
+                </AutoCompleteTextView>
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!--Social -->
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Files - Social"
+                android:textSize="18sp"
+                android:textColor="@color/blue"
+                android:transitionName="logo_desc"
+                android:layout_marginTop="20dp"/>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/socialavllyt"
+                android:layout_weight="1"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu"
+                >
+                <AutoCompleteTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Available"
+                    android:id="@+id/socialavltxt">
+
+                </AutoCompleteTextView>
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/socialsignlyt"
+                android:layout_weight="1"
+                android:layout_marginTop="5dp"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu"
+                >
+                <AutoCompleteTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Signed by employee"
+                    android:id="@+id/socialsigntxt">
+
+                </AutoCompleteTextView>
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/socialempsignlyt"
+                android:layout_weight="1"
+                android:layout_marginTop="5dp"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu"
+                >
+                <AutoCompleteTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Signed by employer"
+                    android:id="@+id/socialempsigntxt">
+
+                </AutoCompleteTextView>
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!--Nurse cpn -->
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Files - Nurse CPN"
+                android:textSize="18sp"
+                android:textColor="@color/blue"
+                android:transitionName="logo_desc"
+                android:layout_marginTop="20dp"/>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/nurseCPNavllyt"
+                android:layout_weight="1"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu"
+                >
+                <AutoCompleteTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Available"
+                    android:id="@+id/nurseCPNavltxt">
+
+                </AutoCompleteTextView>
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/nurseCPNsignlyt"
+                android:layout_weight="1"
+                android:layout_marginTop="5dp"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu"
+                >
+                <AutoCompleteTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Signed by employee"
+                    android:id="@+id/nurseCPNsigntxt">
+
+                </AutoCompleteTextView>
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/nurseCPNempsignlyt"
+                android:layout_weight="1"
+                android:layout_marginTop="5dp"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu"
+                >
+                <AutoCompleteTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Signed by employer"
+                    android:id="@+id/nurseCPNempsigntxt">
+
+                </AutoCompleteTextView>
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!-- midwife -->
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Files - Midwife"
+                android:textSize="18sp"
+                android:textColor="@color/blue"
+                android:transitionName="logo_desc"
+                android:layout_marginTop="20dp"/>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/Midwifeavllyt"
+                android:layout_weight="1"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu"
+                >
+                <AutoCompleteTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Available"
+                    android:id="@+id/Midwifeavltxt">
+
+                </AutoCompleteTextView>
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/Midwifesignlyt"
+                android:layout_weight="1"
+                android:layout_marginTop="5dp"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu"
+                >
+                <AutoCompleteTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Signed by employee"
+                    android:id="@+id/Midwifesigntxt">
+
+                </AutoCompleteTextView>
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/Midwifeempsignlyt"
+                android:layout_weight="1"
+                android:layout_marginTop="5dp"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu"
+                >
+                <AutoCompleteTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Signed by employer"
+                    android:id="@+id/Midwifeempsigntxt">
+
+                </AutoCompleteTextView>
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!-- staff information -->
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Staff Information"
+                android:textSize="18sp"
+                android:textColor="@color/red"
+                android:transitionName="logo_desc"
+                android:layout_marginTop="20dp"/>
+
+
+            <!-- Total Staff-->
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Total Number of Staff"
+                android:transitionName="username_trans"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                tools:ignore="InvalidId"
+                app:boxStrokeColor="@color/red">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/totStaff"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+            <!-- Total Nurse-->
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Total Number of Nurses"
+                android:transitionName="username_trans"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                tools:ignore="InvalidId"
+                app:boxStrokeColor="@color/red">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/totNurse"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!-- paid staff on Hc budget-->
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="# staff paid on HC budget"
+                android:transitionName="username_trans"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                tools:ignore="InvalidId"
+                app:boxStrokeColor="@color/red">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/PaidStaff"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!--total of other clinical staff-->
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="total # other clinical staff"
+                android:transitionName="username_trans"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                tools:ignore="InvalidId"
+                app:boxStrokeColor="@color/red">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/clinicalStaff"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!-- staff screened for tb 6-12 month -->
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="total # of staff screened for TB(6-12 months)"
+                android:transitionName="username_trans"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                tools:ignore="InvalidId"
+                app:boxStrokeColor="@color/red">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/TBstaff"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!-- Staff trained on Infection control-->
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="total # of staff Trained on infection control"
+                android:transitionName="username_trans"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                tools:ignore="InvalidId"
+                app:boxStrokeColor="@color/red">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/staffInfection"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!-- staff  tested for covid 19-->
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="total # of staff tested for Covid19(quater)"
+                android:transitionName="username_trans"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                tools:ignore="InvalidId"
+                app:boxStrokeColor="@color/red">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/staffCovid"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!--Staff evaluated for performance-->
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="total # of staff evaluated for performance"
+                android:transitionName="username_trans"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                tools:ignore="InvalidId"
+                app:boxStrokeColor="@color/red">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/StaffperfEvaluated"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    tools:ignore="DuplicateIds" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+            <!-- staff illnesses-->
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="total # of staff illnesses)"
+                android:transitionName="username_trans"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                tools:ignore="InvalidId"
+                app:boxStrokeColor="@color/red">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/staffIllness"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!--staff injuries -->
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="total # of staff injuries"
+                android:transitionName="username_trans"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                tools:ignore="InvalidId"
+                app:boxStrokeColor="@color/red">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/staffInjuries"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!-- staff vaccinated against hepatitis B -->
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="total # of staff vaccinated Hepatitis B"
+                android:transitionName="username_trans"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                tools:ignore="InvalidId"
+                app:boxStrokeColor="@color/red">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/staffHepatite"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!--pharmacict trained on SOP pharmacy-->
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/SOPpharmacy"
+                android:layout_weight="1"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu"
+                >
+                <AutoCompleteTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Pharmacy manager trained in SOP"
+                    android:id="@+id/SOPpharmacytxt">
+
+                </AutoCompleteTextView>
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!--evidence of pharmacy manager training-->
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/evidencelyt"
+                android:layout_weight="1"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu"
+                >
+                <AutoCompleteTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="evidence of manager training"
+                    android:id="@+id/evidencetxt">
+
+                </AutoCompleteTextView>
+            </com.google.android.material.textfield.TextInputLayout>
+            <Button
+                android:id="@+id/save1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="5dp"
+                android:text="Save and Continue"
+                android:textColor="#fff"
+                android:backgroundTint="@color/red"/>
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+
+</ScrollView>
