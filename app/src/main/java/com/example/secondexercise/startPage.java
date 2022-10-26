@@ -100,8 +100,15 @@ public class startPage extends AppCompatActivity {
     }
     private void save1() {
 
+        final String year = this.xsurveyyear.getText().toString().trim();
+        final String district = this.xdistricttxt.getText().toString().trim();
+        final String hc = this.xhealthcentertxt.getText().toString().trim();
+        Intent intent = new Intent(getBaseContext(), SurveySection.class);
+        intent.putExtra("year_id", year);
+        intent.putExtra("district", district);
+        intent.putExtra("hc", hc);
 
-        startActivity(new Intent(startPage.this, SurveySection.class));
+        startActivity(intent);
 
     }
 }

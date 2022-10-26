@@ -20,11 +20,17 @@ public class SurveySection extends AppCompatActivity {
     Button savecont;
     String Step;
     String[] Sections = new String[]{ "General Information","Services/Area Description","Documentation and Sanitation","Data Management","Finance Management","Pharmacy Management","Safety Management & Health Education","Treament Guideline"};
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_survey_section);
+
+        Intent intent = getIntent();
+        final String year = getIntent().getStringExtra("year_id");
+        final String district = getIntent().getStringExtra("district");
+        final String hc = getIntent().getStringExtra("hc");
 
         xsection=findViewById(R.id.secdrop);
         xsectiontxt=findViewById(R.id.MainSection);
@@ -44,9 +50,18 @@ public class SurveySection extends AppCompatActivity {
         savecont.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+            final String xdistrict = district.toString().trim();
+            final String xyear = year.toString().trim();
+            final String xhc = hc.toString().trim();
+               // Log.d("year", xyear);
+                //Log.d("district", xdistrict);
+                //Log.d("Hc", xhc);
                 if (Step.equals("General Information")){
-                    startActivity(new Intent(SurveySection.this, MainActivity.class));
+                    Intent intent = new Intent(getBaseContext(), MainActivity.class);
+                    intent.putExtra("year_id", xyear);
+                    intent.putExtra("district", xdistrict);
+                    intent.putExtra("hc", xhc);
+                    startActivity(intent);
                 }
             }
         });
