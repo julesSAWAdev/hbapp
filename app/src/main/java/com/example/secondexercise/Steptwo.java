@@ -5,9 +5,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.view.WindowManager;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
+import android.widget.Button;
 
 import com.google.android.material.textfield.TextInputLayout;
 
@@ -18,6 +21,9 @@ public class Steptwo extends AppCompatActivity {
             labtecemp,nuresearav,nursearsign,nursearempsign,nursevacav,nursevacsign,nursevacempsign,custcareav,custcaresign,
             custcareempsign,nursetbav,nursetbsign,nursetbempsign, nurchiav,nurchisign,nurchiempsign,socialav,socialsign,socialempsign,
             nursecpnav,nursecpnsign,nursecpnempsign,midwifeav,midwifesign,midwifeempsign;
+    Button saveSteptwo;
+
+    String organifinal,uptodatefinal,accessiblefinal;
 
 
     @Override
@@ -82,6 +88,9 @@ public class Steptwo extends AppCompatActivity {
         midwifesign=findViewById(R.id.Midwifesigntxt);
         midwifeempsign=findViewById(R.id.Midwifeempsigntxt);
 
+        //save button
+        saveSteptwo = findViewById(R.id.save2);
+
 
 
 
@@ -137,6 +146,76 @@ public class Steptwo extends AppCompatActivity {
         midwifeempsign.setAdapter(adapterDist);
 
 
+
+
+
+
+        saveSteptwo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                final String xorgani = organi.getText().toString().trim();
+                final String xuptodate = uptodate.getText().toString().trim();;
+                final String xaccessible = accessible.getText().toString().trim();
+
+                final String xlabtecav= labtecav.getText().toString().trim();
+                final String xlabtecsign=  labtecsign.getText().toString().trim();
+                final String xlabtecemp =  labtecemp.getText().toString().trim();
+                //nurse AR
+                final String xnuresearav=  nuresearav.getText().toString().trim();
+                final String xnursearsign=  nursearsign.getText().toString().trim();
+                final String xnursearempsign=  nursearempsign.getText().toString().trim();
+                //nurse vaccination
+                final String xnursevacav=  nursevacav.getText().toString().trim();
+                final String xnursevacsign=  nursevacsign.getText().toString().trim();
+                final String xnursevacempsign=  nursevacempsign.getText().toString().trim();
+                //customer care
+                final String xcustcareav= custcareav.getText().toString().trim();
+                final String xcustcaresign=  custcaresign.getText().toString().trim();
+                final String xcustcareempsign= custcareempsign.getText().toString().trim();
+
+                //nurse TB
+
+                final String xnursetbav=  nursetbav.getText().toString().trim();
+                final String xnursetbsign= nursetbsign.getText().toString().trim();
+                final String xnursetbempsign=  nursetbempsign.getText().toString().trim();
+
+                // files petite churlgie
+                final String xnurchiav= nurchiav.getText().toString().trim();
+                final String xnurchisign= nurchisign.getText().toString().trim();
+                final String xnurchiempsign= nurchiempsign.getText().toString().trim();
+
+
+                //social file adapter
+                final String xsocialav= socialav.getText().toString().trim();
+                final String xsocialsign= socialsign.getText().toString().trim();
+                final String xsocialempsign= socialempsign.getText().toString().trim();
+
+                //Nurse cpn adapter
+                final String xnursecpnav= nursecpnav.getText().toString().trim();
+                final String xnursecpnsign= nursecpnsign.getText().toString().trim();
+                final String xnursecpnempsign= nursecpnempsign.getText().toString().trim();
+
+                //midwife adapter
+                final String xmidwifeav= midwifeav.getText().toString().trim();
+                final String xmidwifesign= midwifesign.getText().toString().trim();
+                final String xmidwifeempsign= midwifeempsign.getText().toString().trim();
+
+                Log.d("organi", xorgani);
+
+                Log.d("uptodate", xuptodate);
+                Log.d("accessible", xaccessible);
+                Log.d("labtecav", xlabtecav);
+                Log.d("labsign", xlabtecsign);
+                Log.d("labemp", xlabtecemp);
+                Log.d("nursearv", xnuresearav);
+                Log.d("nursearsign", xnursearsign);
+                Log.d("nursearempsign", xnursearempsign);
+
+
+
+
+            }
+        });
 
 
     }

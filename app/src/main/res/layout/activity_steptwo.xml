@@ -912,7 +912,7 @@
                 </AutoCompleteTextView>
             </com.google.android.material.textfield.TextInputLayout>
             <Button
-                android:id="@+id/save1"
+                android:id="@+id/save2"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginTop="10dp"
