@@ -786,7 +786,7 @@
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="total # of staff illnesses)"
+                android:hint="total # of staff illnesses"
                 android:transitionName="username_trans"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 tools:ignore="InvalidId"
@@ -869,7 +869,7 @@
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="total # of staff illnesses)"
+                android:hint="Staff satisfaction rate"
                 android:transitionName="username_trans"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 tools:ignore="InvalidId"
@@ -884,7 +884,7 @@
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="total # of staff illnesses)"
+                android:hint="Patients satisfaction rate"
                 android:transitionName="username_trans"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 tools:ignore="InvalidId"
@@ -906,7 +906,7 @@
                 <AutoCompleteTextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Available"
+                    android:hint="QI commitee is functional?"
                     android:id="@+id/QIcommitee">
 
                 </AutoCompleteTextView>

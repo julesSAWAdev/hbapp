@@ -12,6 +12,7 @@ import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 
+import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 
 public class Steptwo extends AppCompatActivity {
@@ -20,7 +21,9 @@ public class Steptwo extends AppCompatActivity {
     AutoCompleteTextView organi,uptodate,accessible,labtecav,labtecsign,
             labtecemp,nuresearav,nursearsign,nursearempsign,nursevacav,nursevacsign,nursevacempsign,custcareav,custcaresign,
             custcareempsign,nursetbav,nursetbsign,nursetbempsign, nurchiav,nurchisign,nurchiempsign,socialav,socialsign,socialempsign,
-            nursecpnav,nursecpnsign,nursecpnempsign,midwifeav,midwifesign,midwifeempsign;
+            nursecpnav,nursecpnsign,nursecpnempsign,midwifeav,midwifesign,midwifeempsign,soppharmacy,evidence,qicomitee;
+    TextInputEditText totstaff,totnurse,paidstaf,clinicalstaff,tbstaff,stafinfection,staffcovid,staffevaluated,stafillness,stafinjuries,staffhepatite,
+                        staffrate,patientrate;
     Button saveSteptwo;
 
     String organifinal,uptodatefinal,accessiblefinal;
@@ -88,6 +91,31 @@ public class Steptwo extends AppCompatActivity {
         midwifesign=findViewById(R.id.Midwifesigntxt);
         midwifeempsign=findViewById(R.id.Midwifeempsigntxt);
 
+        //SOP pharmacy
+        soppharmacy=findViewById(R.id.SOPpharmacytxt);
+
+        //evidence
+        evidence=findViewById(R.id.evidencetxt);
+
+        //QIcommitee
+        qicomitee=findViewById(R.id.QIcommitee);
+
+        //hooks for inputEdittext
+        totstaff=findViewById(R.id.totStaff);
+        totnurse=findViewById(R.id.totNurse);
+        paidstaf=findViewById(R.id.PaidStaff);
+        clinicalstaff=findViewById(R.id.clinicalStaff);
+        tbstaff=findViewById(R.id.TBstaff);
+        stafinfection=findViewById(R.id.staffInfection);
+        staffcovid=findViewById(R.id.staffCovid);
+        staffevaluated=findViewById(R.id.StaffperfEvaluated);
+        stafillness=findViewById(R.id.staffIllness);
+        stafinjuries=findViewById(R.id.staffInjuries);
+        staffhepatite=findViewById(R.id.staffHepatite);
+        staffrate=findViewById(R.id.StaffRate);
+        patientrate=findViewById(R.id.patitentsRate);
+
+
         //save button
         saveSteptwo = findViewById(R.id.save2);
 
@@ -145,6 +173,15 @@ public class Steptwo extends AppCompatActivity {
         midwifesign.setAdapter(adapterDist);
         midwifeempsign.setAdapter(adapterDist);
 
+        //sop pharmacy adapter
+        soppharmacy.setAdapter(adapterDist);
+
+        //evidence adapter
+        evidence.setAdapter(adapterDist);
+
+        //qicomitte adapter
+        qicomitee.setAdapter(adapterDist);
+
 
 
 
@@ -200,6 +237,15 @@ public class Steptwo extends AppCompatActivity {
                 final String xmidwifesign= midwifesign.getText().toString().trim();
                 final String xmidwifeempsign= midwifeempsign.getText().toString().trim();
 
+                //xopa pahrmacy
+                final String xsoppharmacy= soppharmacy.getText().toString().trim();
+
+                //evidencepharmacy
+                final String xevidence= evidence.getText().toString().trim();
+
+                //qicomitee
+                final String xqicomitee= qicomitee.getText().toString().trim();
+
                 Log.d("organi", xorgani);
 
                 Log.d("uptodate", xuptodate);
@@ -210,6 +256,32 @@ public class Steptwo extends AppCompatActivity {
                 Log.d("nursearv", xnuresearav);
                 Log.d("nursearsign", xnursearsign);
                 Log.d("nursearempsign", xnursearempsign);
+                Log.d("nursevacav", xnursevacav);
+                Log.d("nursevacsign", xnursevacsign);
+                Log.d("nursevacempsign", xnursevacempsign);
+                Log.d("custocareav", xcustcareav);
+                Log.d("custcaresign", xcustcaresign);
+                Log.d("custcareemppsign", xcustcareempsign);
+                Log.d("nursetbav", xnursetbav);
+                Log.d("nursetbsign", xnursetbsign);
+                Log.d("nursetbempsign", xnursetbempsign);
+                Log.d("nursechi", xnurchiav);
+                Log.d("nursechisign", xnurchisign);
+                Log.d("nursechiempsign", xnurchiempsign);
+                Log.d("socialav", xsocialav);
+                Log.d("socialsign", xsocialsign);
+                Log.d("socialempsign", xsocialempsign);
+                Log.d("nursecpnav", xnursecpnav);
+                Log.d("nursecpnsign", xnursecpnsign);
+                Log.d("nursecpnempsign", xnursecpnempsign);
+                Log.d("midwifeav", xmidwifeav);
+                Log.d("midwifesign", xmidwifesign);
+                Log.d("midwifeempsign", xmidwifeempsign);
+                Log.d("SOPpharmacy", xsoppharmacy);
+                Log.d("evidence", xevidence);
+                Log.d("qicomitee", xqicomitee);
+
+
 
 
 
