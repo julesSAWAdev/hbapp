@@ -281,6 +281,35 @@ public class Steptwo extends AppCompatActivity {
                 Log.d("evidence", xevidence);
                 Log.d("qicomitee", xqicomitee);
 
+                // get input text values
+
+                final String xtotstaff = totstaff.getText().toString().trim();
+                final String xtotnurse = totnurse.getText().toString().trim();
+                final String xpaidstaff = paidstaf.getText().toString().trim();
+                final String xclinicalstaff = clinicalstaff.getText().toString().trim();
+                final String xtbstaff = tbstaff.getText().toString().trim();
+                final String xstaffinfection = stafinfection.getText().toString().trim();
+                final String xstaffcovid = staffcovid.getText().toString().trim();
+                final String xstaffevaluated = staffevaluated.getText().toString().trim();
+                final String xstaffillness = stafillness.getText().toString().trim();
+                final String xstaffinjuries = stafinjuries.getText().toString().trim();
+                final String xstaffhepatite = staffhepatite.getText().toString().trim();
+                final String xstaffrate = staffrate.getText().toString().trim();
+                final String xpatientrate = patientrate.getText().toString().trim();
+
+                Log.d("totstaff", xtotstaff);
+                Log.d("totnurse", xtotnurse);
+                Log.d("paidstaff", xpaidstaff);
+                Log.d("clinicalstaff", xclinicalstaff);
+                Log.d("tbstaff", xtbstaff);
+                Log.d("staffinfection", xstaffinfection);
+                Log.d("staffcovid", xstaffcovid);
+                Log.d("staffevaluated", xstaffevaluated);
+                Log.d("staffillness", xstaffillness);
+                Log.d("staffinjuries", xstaffinjuries);
+                Log.d("staffhepatite", xstaffhepatite);
+                Log.d("staffrate", xstaffrate);
+                Log.d("patientrate", xpatientrate);
 
 
 
