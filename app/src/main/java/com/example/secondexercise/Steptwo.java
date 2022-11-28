@@ -37,13 +37,13 @@ public class Steptwo extends AppCompatActivity {
 
         Intent intent = getIntent();
 
-        //final String year = getIntent().getStringExtra("year_id");
-        //final String district = getIntent().getStringExtra("district");
-        //final String hc = getIntent().getStringExtra("hc");
+        final String year = getIntent().getStringExtra("year_id");
+        final String district = getIntent().getStringExtra("district");
+        final String hc = getIntent().getStringExtra("hc");
 
-        //Log.d("year", year);
-        //Log.d("district", district);
-        //Log.d("Hc", hc);
+        Log.d("year", year);
+        Log.d("district", district);
+        Log.d("Hc", hc);
 
        //organization chart
         organi=findViewById(R.id.orgavtxt);
@@ -313,6 +313,13 @@ public class Steptwo extends AppCompatActivity {
 
 
 
+                //intent collection
+
+                final String xyear=year;
+                final String xhc=hc;
+                final String xdistrict=district;
+
+                
 
 
             }
