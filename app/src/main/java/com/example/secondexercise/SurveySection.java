@@ -64,7 +64,11 @@ public class SurveySection extends AppCompatActivity {
                     startActivity(intent);
                 }else if (Step.equals("Services/Area Description")){
 
-                    System.out.println("next step");
+                    Intent intent = new Intent(getBaseContext(), serviceDescription.class);
+                    intent.putExtra("year_id", xyear);
+                    intent.putExtra("district", xdistrict);
+                    intent.putExtra("hc", xhc);
+                    startActivity(intent);
 
                 }
             }
