@@ -104,7 +104,7 @@ public class MainActivity extends AppCompatActivity {
                    final String fyear= year;
                    final String fdistrict = district;
                    final String fhc = hc;
-
+                    /*
                    Log.d("year", fyear);
                    Log.d("district", fdistrict);
                    Log.d("hc", fhc );
@@ -123,7 +123,8 @@ public class MainActivity extends AppCompatActivity {
                    Log.d("A1", faone);
                    Log.d("A2", fatwo);
                    Log.d("Midwife", fmidwife);
-
+                */
+                    
                    boolean var = myDb.registerBasicInformation(fyear,fdistrict,fhc,fsector,fcell,fvillage,fpubhpost,fprihpost,fpopulation,fpatients,fbeds,fconsrooms,
                            fhosprooms,fchw,fazero,faone,fatwo,fmidwife);
                    if (var){

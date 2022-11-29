@@ -946,7 +946,7 @@
                 <AutoCompleteTextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Staff meeting happen once a quater?"
+                    android:hint="COSA meeting happen once a quater?"
                     android:id="@+id/cosatxt">
 
                 </AutoCompleteTextView>

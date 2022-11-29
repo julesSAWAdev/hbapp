@@ -2,6 +2,7 @@ package com.example.secondexercise;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -11,6 +12,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
@@ -21,12 +23,13 @@ public class Steptwo extends AppCompatActivity {
     AutoCompleteTextView organi,uptodate,accessible,labtecav,labtecsign,
             labtecemp,nuresearav,nursearsign,nursearempsign,nursevacav,nursevacsign,nursevacempsign,custcareav,custcaresign,
             custcareempsign,nursetbav,nursetbsign,nursetbempsign, nurchiav,nurchisign,nurchiempsign,socialav,socialsign,socialempsign,
-            nursecpnav,nursecpnsign,nursecpnempsign,midwifeav,midwifesign,midwifeempsign,soppharmacy,evidence,qicomitee;
+            nursecpnav,nursecpnsign,nursecpnempsign,midwifeav,midwifesign,midwifeempsign,soppharmacy,evidence,qicomitee,Staffmeeting,COSAmeeting;
     TextInputEditText totstaff,totnurse,paidstaf,clinicalstaff,tbstaff,stafinfection,staffcovid,staffevaluated,stafillness,stafinjuries,staffhepatite,
                         staffrate,patientrate;
     Button saveSteptwo;
 
-    String organifinal,uptodatefinal,accessiblefinal;
+    private ProgressDialog progressDialog;
+    private Databasehelper myDb;
 
 
     @Override
@@ -115,6 +118,9 @@ public class Steptwo extends AppCompatActivity {
         staffrate=findViewById(R.id.StaffRate);
         patientrate=findViewById(R.id.patitentsRate);
 
+        Staffmeeting=findViewById(R.id.Meetingstxt);
+        COSAmeeting=findViewById(R.id.cosatxt);
+
 
         //save button
         saveSteptwo = findViewById(R.id.save2);
@@ -182,6 +188,15 @@ public class Steptwo extends AppCompatActivity {
         //qicomitte adapter
         qicomitee.setAdapter(adapterDist);
 
+        //staff meeting  adapter
+        Staffmeeting.setAdapter(adapterDist);
+        //staff meeting  adapter
+        COSAmeeting.setAdapter(adapterDist);
+
+        //database initialization
+        myDb = new Databasehelper(this);
+
+
 
 
 
@@ -247,7 +262,6 @@ public class Steptwo extends AppCompatActivity {
                 final String xqicomitee= qicomitee.getText().toString().trim();
 
                 Log.d("organi", xorgani);
-
                 Log.d("uptodate", xuptodate);
                 Log.d("accessible", xaccessible);
                 Log.d("labtecav", xlabtecav);
@@ -296,6 +310,8 @@ public class Steptwo extends AppCompatActivity {
                 final String xstaffhepatite = staffhepatite.getText().toString().trim();
                 final String xstaffrate = staffrate.getText().toString().trim();
                 final String xpatientrate = patientrate.getText().toString().trim();
+                final String xstaffmeeting = Staffmeeting.getText().toString().trim();
+                final String xcosameeting = COSAmeeting.getText().toString().trim();
 
                 Log.d("totstaff", xtotstaff);
                 Log.d("totnurse", xtotnurse);
@@ -310,6 +326,8 @@ public class Steptwo extends AppCompatActivity {
                 Log.d("staffhepatite", xstaffhepatite);
                 Log.d("staffrate", xstaffrate);
                 Log.d("patientrate", xpatientrate);
+                Log.d("staffmetting", xstaffmeeting);
+                Log.d("cosametting", xcosameeting);
 
 
 
@@ -318,11 +336,24 @@ public class Steptwo extends AppCompatActivity {
                 final String xyear=year;
                 final String xhc=hc;
                 final String xdistrict=district;
+                Log.d("year", xyear);
+                Log.d("HC", xhc);
+                Log.d("district", xdistrict);
 
-                
-
-
+                boolean var = myDb.registerBasicInformation2(xyear,xdistrict,xhc,xorgani,xuptodate,xaccessible,xlabtecav,xlabtecsign,xlabtecemp,xnuresearav,xnursearsign,xnursearempsign
+                ,xnursevacav,xnursevacsign,xnursevacempsign,xcustcareav,xcustcaresign,xcustcareempsign,xnursetbav,xnursetbsign,xnursetbempsign,xnurchiav,xnurchisign,xnurchiempsign,xsocialav,
+                        xsocialsign,xsocialempsign,xnursecpnav,xnursecpnsign,xnursecpnempsign,xmidwifeav,xmidwifesign,xmidwifeempsign,xsoppharmacy,xevidence,xqicomitee,
+                        xtotstaff,xtotnurse,xpaidstaff,xclinicalstaff,xtbstaff,xstaffinfection,xstaffcovid,xstaffevaluated,xstaffillness,xstaffinjuries,xstaffhepatite,xstaffrate,xpatientrate,xstaffmeeting,xcosameeting);
+                if (var){
+                    Toast.makeText(Steptwo.this,"record added succesfuly",Toast.LENGTH_SHORT);
+                    startActivity(new Intent(Steptwo.this, startPage.class));
+                    finish();
+                }else{
+                    Toast.makeText(Steptwo.this, "An error occured", Toast.LENGTH_SHORT).show();
+                }
             }
+
+
         });
 
 
