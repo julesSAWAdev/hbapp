@@ -6,17 +6,19 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.view.WindowManager;
 import android.widget.AutoCompleteTextView;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.Button;
 
 public class serviceDescription extends AppCompatActivity {
     String[] response = new String[]{ "Yes","No","N/A"};
     private ProgressDialog progressDialog;
     private Databasehelper myDb;
-    AutoCompleteTextView ancdirection,ancservice,ancresponsiblename,anccurrentdata,ancresponsiblephoto,ancarea,ancrequestedlistofsupplies,anccurrentlistofsupplies,anchygiene,anchandhygience
-            ,vacdirection,vacservice,vacresponsiblename,vaccurrentdata,vacresponsiblephoto,vacarea,vacrequestedlistofsupplies,vaccurrentlistofsupplies,vachygiene,vachandhygience,
-            fpdirection,fpservice,fpresponsiblename,fpcurrentdata,fpresponsiblephoto,fparea,fprequestedlistofsupplies,fpcurrentlistofsupplies,fphygiene,fphandhygience;
-
+    AutoCompleteTextView ancdirection,ancservice,ancresponsiblename,anccurrentdata,ancresponsiblephoto,ancarea,ancrequestedlistofsupplies,anccurrentlistofsupplies,anchygiene,anchandhygience;
+    Button saveNext;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,6 +35,7 @@ public class serviceDescription extends AppCompatActivity {
         Log.d("district", district);
         Log.d("Hc", hc);
 
+        ArrayAdapter<String> adapterDist = new ArrayAdapter<>(this, R.layout.dropdown_item2, response);
 
         //anc service hook
         ancdirection = findViewById(R.id.ancdirectiontxt);
@@ -46,31 +49,37 @@ public class serviceDescription extends AppCompatActivity {
         anchygiene = findViewById(R.id.anchygienetxt);
         anchandhygience = findViewById(R.id.anchandtxt);
 
-        //vaccination service hook
-        vacdirection = findViewById(R.id.vacdirectiontxt);
-        vacservice = findViewById(R.id.vacservicelabeltxt);
-        vacresponsiblename = findViewById(R.id.vacresponsenametxt);
-        vaccurrentdata = findViewById(R.id.vaccurrentdatatxt);
-        vacresponsiblephoto = findViewById(R.id.vacresponsiblephototxt);
-        vacarea = findViewById(R.id.vacareamaintenedtxt);
-        vacrequestedlistofsupplies = findViewById(R.id.vacsuppliestxt);
-        vaccurrentlistofsupplies = findViewById(R.id.vacexisingsuppliestxt);
-        vachygiene = findViewById(R.id.vachygienetxt);
-        vachandhygience = findViewById(R.id.vachandtxt);
+        //set adapter
+        ancdirection.setAdapter(adapterDist);
+        ancservice.setAdapter(adapterDist);
+        ancresponsiblename.setAdapter(adapterDist);
+        anccurrentdata.setAdapter(adapterDist);
+        ancresponsiblephoto.setAdapter(adapterDist);
+        ancarea.setAdapter(adapterDist);
+        ancrequestedlistofsupplies.setAdapter(adapterDist);
+        anccurrentlistofsupplies.setAdapter(adapterDist);
+        anchygiene.setAdapter(adapterDist);
+        anchandhygience.setAdapter(adapterDist);
 
 
-        //family planning service hook
+        saveNext = findViewById(R.id.serviceDesc);
 
-        fpdirection = findViewById(R.id.fpdirectiontxt);
-        fpservice = findViewById(R.id.fpservicelabeltxt);
-        fpresponsiblename = findViewById(R.id.fpresponsenametxt);
-        fpcurrentdata = findViewById(R.id.fpcurrentdatatxt);
-        fpresponsiblephoto = findViewById(R.id.fpresponsiblephototxt);
-        fparea = findViewById(R.id.fpareamaintenedtxt);
-        fprequestedlistofsupplies = findViewById(R.id.fpsuppliestxt);
-        fpcurrentlistofsupplies = findViewById(R.id.fpexisingsuppliestxt);
-        fphygiene = findViewById(R.id.fphygienetxt);
-        fphandhygience = findViewById(R.id.fphandtxt);
+        saveNext.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = new Intent(getBaseContext(), ServiceDescriptionVaccination.class);
+                intent.putExtra("year_id", year);
+                intent.putExtra("district", district);
+                intent.putExtra("hc", hc);
+
+                startActivity(intent);
+            }
+        });
+
+
 
     }
+
+
 }
