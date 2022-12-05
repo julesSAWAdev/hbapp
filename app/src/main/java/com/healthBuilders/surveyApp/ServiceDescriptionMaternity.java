@@ -11,6 +11,7 @@ import android.view.WindowManager;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
+import android.widget.Toast;
 
 public class ServiceDescriptionMaternity extends AppCompatActivity {
     AutoCompleteTextView Maternitydirection,Maternityservice,Maternityresponsiblename,Maternitycurrentdata,Maternityresponsiblephoto,Maternityarea,Maternityrequestedlistofsupplies,Maternitycurrentlistofsupplies,Maternityhygiene,Maternityhandhygience;
@@ -60,18 +61,42 @@ public class ServiceDescriptionMaternity extends AppCompatActivity {
         Maternityhygiene.setAdapter(adapterDist);
         Maternityhandhygience.setAdapter(adapterDist);
 
+        myDb = new Databasehelper(this);
+
         saveNext = findViewById(R.id.serviceDescMaternity);
 
         saveNext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                Intent intent = new Intent(getBaseContext(), ServiceDescriptionHospitalization.class);
-                intent.putExtra("year_id", year);
-                intent.putExtra("district", district);
-                intent.putExtra("hc", hc);
+                final String xyear= year;
+                final String xdistrict = district;
+                final String xhc= hc;
+                final String xMaternitydirection = Maternitydirection.getText().toString().trim();
+                final String xMaternityservice = Maternityservice.getText().toString().trim();
+                final String xMaternityresponsiblename = Maternityresponsiblename.getText().toString().trim();
+                final String xMaternitycurrentdata = Maternitycurrentdata.getText().toString().trim();
+                final String xMaternityresponsiblephoto = Maternityresponsiblephoto.getText().toString().trim();
+                final String xMaternityarea = Maternityarea.getText().toString().trim();
+                final String xMaternityrequestedlistofsupplies = Maternityrequestedlistofsupplies.getText().toString().trim();
+                final String xMaternitycurrentlistofsupplies = Maternitycurrentlistofsupplies.getText().toString().trim();
+                final String xMaternityhygiene = Maternityhygiene.getText().toString().trim();
+                final String xMaternityhandhygience = Maternityhandhygience.getText().toString().trim();
 
-                startActivity(intent);
+                boolean var = myDb.registerMaternityServiceDescription(xyear,xdistrict,xhc,xMaternitydirection,xMaternityservice,xMaternityresponsiblename,xMaternitycurrentdata,xMaternityresponsiblephoto,xMaternityarea,xMaternityrequestedlistofsupplies,xMaternitycurrentlistofsupplies,xMaternityhygiene,xMaternityhandhygience);
+
+                if (var) {
+                    Intent intent = new Intent(getBaseContext(), ServiceDescriptionHospitalization.class);
+                    intent.putExtra("year_id", year);
+                    intent.putExtra("district", district);
+                    intent.putExtra("hc", hc);
+
+                    startActivity(intent);
+                    finish();
+                }else{
+                    Toast.makeText(ServiceDescriptionMaternity.this, "An error occured", Toast.LENGTH_SHORT).show();
+
+                }
             }
         });
     }

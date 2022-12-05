@@ -11,6 +11,7 @@ import android.view.WindowManager;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
+import android.widget.Toast;
 
 public class ServiceDescriptionToilets extends AppCompatActivity {
     AutoCompleteTextView Toiletsdirection,Toiletsservice,Toiletsresponsiblename,Toiletscurrentdata,Toiletsresponsiblephoto,Toiletsarea,Toiletsrequestedlistofsupplies,Toiletscurrentlistofsupplies,Toiletshygiene,Toiletshandhygience;
@@ -61,18 +62,43 @@ public class ServiceDescriptionToilets extends AppCompatActivity {
         Toiletshygiene.setAdapter(adapterDist);
         Toiletshandhygience.setAdapter(adapterDist);
 
+        myDb = new Databasehelper(this);
+
         saveNext = findViewById(R.id.serviceDescToilets);
 
         saveNext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                Intent intent = new Intent(getBaseContext(), ServiceDescriptionNoticeboard.class);
-                intent.putExtra("year_id", year);
-                intent.putExtra("district", district);
-                intent.putExtra("hc", hc);
+                final String xyear= year;
+                final String xdistrict = district;
+                final String xhc= hc;
+                final String xToiletsdirection = Toiletsdirection.getText().toString().trim();
+                final String xToiletsservice = Toiletsservice.getText().toString().trim();
+                final String xToiletsresponsiblename = Toiletsresponsiblename.getText().toString().trim();
+                final String xToiletscurrentdata = Toiletscurrentdata.getText().toString().trim();
+                final String xToiletsresponsiblephoto = Toiletsresponsiblephoto.getText().toString().trim();
+                final String xToiletsarea = Toiletsarea.getText().toString().trim();
+                final String xToiletsrequestedlistofsupplies = Toiletsrequestedlistofsupplies.getText().toString().trim();
+                final String xToiletscurrentlistofsupplies = Toiletscurrentlistofsupplies.getText().toString().trim();
+                final String xToiletshygiene = Toiletshygiene.getText().toString().trim();
+                final String xToiletshandhygience = Toiletshandhygience.getText().toString().trim();
 
-                startActivity(intent);
+                boolean var = myDb.registerToiletsServiceDescription(xyear,xdistrict,xhc,xToiletsdirection,xToiletsservice,xToiletsresponsiblename,xToiletscurrentdata,xToiletsresponsiblephoto,xToiletsarea,xToiletsrequestedlistofsupplies,xToiletscurrentlistofsupplies,xToiletshygiene,xToiletshandhygience);
+
+                if (var) {
+
+                    Intent intent = new Intent(getBaseContext(), ServiceDescriptionNoticeboard.class);
+                    intent.putExtra("year_id", year);
+                    intent.putExtra("district", district);
+                    intent.putExtra("hc", hc);
+
+                    startActivity(intent);
+                    finish();
+                }else {
+                    Toast.makeText(ServiceDescriptionToilets.this, "An error occured", Toast.LENGTH_SHORT).show();
+
+                }
             }
         });
     }

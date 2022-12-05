@@ -11,6 +11,7 @@ import android.view.WindowManager;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
+import android.widget.Toast;
 
 public class ServiceDescriptionNcd extends AppCompatActivity {
     AutoCompleteTextView ncddirection,ncdservice,ncdresponsiblename,ncdcurrentdata,ncdresponsiblephoto,ncdarea,ncdrequestedlistofsupplies,ncdcurrentlistofsupplies,ncdhygiene,ncdhandhygience;
@@ -58,6 +59,7 @@ public class ServiceDescriptionNcd extends AppCompatActivity {
         ncdcurrentlistofsupplies.setAdapter(adapterDist);
         ncdhygiene.setAdapter(adapterDist);
         ncdhandhygience.setAdapter(adapterDist);
+        myDb = new Databasehelper(this);
 
         saveNext = findViewById(R.id.serviceDescNCD);
 
@@ -65,13 +67,36 @@ public class ServiceDescriptionNcd extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                Intent intent = new Intent(getBaseContext(), ServiceDescriptionCeho.class);
-                intent.putExtra("year_id", year);
-                intent.putExtra("district", district);
-                intent.putExtra("hc", hc);
+                final String xyear= year;
+                final String xdistrict = district;
+                final String xhc= hc;
+                final String xncddirection = ncddirection.getText().toString().trim();
+                final String xncdservice = ncdservice.getText().toString().trim();
+                final String xncdresponsiblename = ncdresponsiblename.getText().toString().trim();
+                final String xncdcurrentdata = ncdcurrentdata.getText().toString().trim();
+                final String xncdresponsiblephoto = ncdresponsiblephoto.getText().toString().trim();
+                final String xncdarea = ncdarea.getText().toString().trim();
+                final String xncdrequestedlistofsupplies = ncdrequestedlistofsupplies.getText().toString().trim();
+                final String xncdcurrentlistofsupplies = ncdcurrentlistofsupplies.getText().toString().trim();
+                final String xncdhygiene = ncdhygiene.getText().toString().trim();
+                final String xncdhandhygience = ncdhandhygience.getText().toString().trim();
 
-                startActivity(intent);
+                boolean var = myDb.registerNcdServiceDescription(xyear,xdistrict,xhc,xncddirection,xncdservice,xncdresponsiblename,xncdcurrentdata,xncdresponsiblephoto,xncdarea,xncdrequestedlistofsupplies,xncdcurrentlistofsupplies,xncdhygiene,xncdhandhygience);
+                if (var) {
+
+                    Intent intent = new Intent(getBaseContext(), ServiceDescriptionCeho.class);
+                    intent.putExtra("year_id", year);
+                    intent.putExtra("district", district);
+                    intent.putExtra("hc", hc);
+
+                    startActivity(intent);
+                    finish();
+                }else{
+                    Toast.makeText(ServiceDescriptionNcd.this, "An error occured", Toast.LENGTH_SHORT).show();
+
+                }
             }
+
         });
     }
 }

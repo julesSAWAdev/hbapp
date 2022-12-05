@@ -11,6 +11,7 @@ import android.view.WindowManager;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
+import android.widget.Toast;
 
 public class ServiceDescriptionCeho extends AppCompatActivity {
     AutoCompleteTextView cehodirection,cehoservice,cehoresponsiblename,cehocurrentdata,cehoresponsiblephoto,cehoarea,cehorequestedlistofsupplies,cehocurrentlistofsupplies,cehohygiene,cehohandhygience;
@@ -63,18 +64,43 @@ public class ServiceDescriptionCeho extends AppCompatActivity {
         cehohygiene.setAdapter(adapterDist);
         cehohandhygience.setAdapter(adapterDist);
 
+        myDb = new Databasehelper(this);
+
+
         saveNext = findViewById(R.id.serviceDescceho);
 
         saveNext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                Intent intent = new Intent(getBaseContext(), ServiceDescriptionCashier.class);
-                intent.putExtra("year_id", year);
-                intent.putExtra("district", district);
-                intent.putExtra("hc", hc);
+                final String xyear= year;
+                final String xdistrict = district;
+                final String xhc= hc;
+                final String xcehodirection = cehodirection.getText().toString().trim();
+                final String xcehoservice = cehoservice.getText().toString().trim();
+                final String xcehoresponsiblename = cehoresponsiblename.getText().toString().trim();
+                final String xcehocurrentdata = cehocurrentdata.getText().toString().trim();
+                final String xcehoresponsiblephoto = cehoresponsiblephoto.getText().toString().trim();
+                final String xcehoarea = cehoarea.getText().toString().trim();
+                final String xcehorequestedlistofsupplies = cehorequestedlistofsupplies.getText().toString().trim();
+                final String xcehocurrentlistofsupplies = cehocurrentlistofsupplies.getText().toString().trim();
+                final String xcehohygiene = cehohygiene.getText().toString().trim();
+                final String xcehohandhygience = cehohandhygience.getText().toString().trim();
 
-                startActivity(intent);
+                boolean var = myDb.registerCehoServiceDescription(xyear,xdistrict,xhc,xcehodirection,xcehoservice,xcehoresponsiblename,xcehocurrentdata,xcehoresponsiblephoto,xcehoarea,xcehorequestedlistofsupplies,xcehocurrentlistofsupplies,xcehohygiene,xcehohandhygience);
+
+                if (var) {
+                    Intent intent = new Intent(getBaseContext(), ServiceDescriptionCashier.class);
+                    intent.putExtra("year_id", year);
+                    intent.putExtra("district", district);
+                    intent.putExtra("hc", hc);
+
+                    startActivity(intent);
+                    finish();
+                }else{
+                    Toast.makeText(ServiceDescriptionCeho.this, "An error occured", Toast.LENGTH_SHORT).show();
+
+                }
             }
         });
 

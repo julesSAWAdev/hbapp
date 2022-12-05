@@ -11,6 +11,7 @@ import android.view.WindowManager;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
+import android.widget.Toast;
 
 public class ServiceDescriptionArv extends AppCompatActivity {
     AutoCompleteTextView Arvdirection,Arvservice,Arvresponsiblename,Arvcurrentdata,Arvresponsiblephoto,Arvarea,Arvrequestedlistofsupplies,Arvcurrentlistofsupplies,Arvhygiene,Arvhandhygience;
@@ -59,18 +60,42 @@ public class ServiceDescriptionArv extends AppCompatActivity {
         Arvhygiene.setAdapter(adapterDist);
         Arvhandhygience.setAdapter(adapterDist);
 
+        myDb = new Databasehelper(this);
+
         saveNext = findViewById(R.id.serviceDescArv);
 
         saveNext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                Intent intent = new Intent(getBaseContext(), ServiceDescriptionCustomerCare.class);
-                intent.putExtra("year_id", year);
-                intent.putExtra("district", district);
-                intent.putExtra("hc", hc);
+                final String xyear= year;
+                final String xdistrict = district;
+                final String xhc= hc;
+                final String xArvdirection = Arvdirection.getText().toString().trim();
+                final String xArvservice = Arvservice.getText().toString().trim();
+                final String xArvresponsiblename = Arvresponsiblename.getText().toString().trim();
+                final String xArvcurrentdata = Arvcurrentdata.getText().toString().trim();
+                final String xArvresponsiblephoto = Arvresponsiblephoto.getText().toString().trim();
+                final String xArvarea = Arvarea.getText().toString().trim();
+                final String xArvrequestedlistofsupplies = Arvrequestedlistofsupplies.getText().toString().trim();
+                final String xArvcurrentlistofsupplies = Arvcurrentlistofsupplies.getText().toString().trim();
+                final String xArvhygiene = Arvhygiene.getText().toString().trim();
+                final String xArvhandhygience = Arvhandhygience.getText().toString().trim();
 
-                startActivity(intent);
+                boolean var = myDb.registerArvServiceDescription(xyear,xdistrict,xhc,xArvdirection,xArvservice,xArvresponsiblename,xArvcurrentdata,xArvresponsiblephoto,xArvarea,xArvrequestedlistofsupplies,xArvcurrentlistofsupplies,xArvhygiene,xArvhandhygience);
+
+                if (var) {
+                    Intent intent = new Intent(getBaseContext(), ServiceDescriptionCustomerCare.class);
+                    intent.putExtra("year_id", year);
+                    intent.putExtra("district", district);
+                    intent.putExtra("hc", hc);
+
+                    startActivity(intent);
+                    finish();
+                }else{
+                    Toast.makeText(ServiceDescriptionArv.this, "An error occured", Toast.LENGTH_SHORT).show();
+
+                }
             }
         });
     }

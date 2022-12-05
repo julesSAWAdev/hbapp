@@ -11,6 +11,7 @@ import android.view.WindowManager;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
+import android.widget.Toast;
 
 public class ServiceDescriptionCustomerCare extends AppCompatActivity {
     AutoCompleteTextView Customerdirection,Customerservice,Customerresponsiblename,Customercurrentdata,Customerresponsiblephoto,Customerarea,Customerrequestedlistofsupplies,Customercurrentlistofsupplies,Customerhygiene,Customerhandhygience;
@@ -59,17 +60,41 @@ public class ServiceDescriptionCustomerCare extends AppCompatActivity {
         Customerhygiene.setAdapter(adapterDist);
         Customerhandhygience.setAdapter(adapterDist);
 
+        myDb = new Databasehelper(this);
+
         saveNext = findViewById(R.id.serviceDescCustomer);
 
         saveNext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                Intent intent = new Intent(getBaseContext(), ServiceDescriptionConsultation.class);
-                intent.putExtra("year_id", year);
-                intent.putExtra("district", district);
-                intent.putExtra("hc", hc);
-                startActivity(intent);
+                final String xyear= year;
+                final String xdistrict = district;
+                final String xhc= hc;
+                final String xCustomerdirection = Customerdirection.getText().toString().trim();
+                final String xCustomerservice = Customerservice.getText().toString().trim();
+                final String xCustomerresponsiblename = Customerresponsiblename.getText().toString().trim();
+                final String xCustomercurrentdata = Customercurrentdata.getText().toString().trim();
+                final String xCustomerresponsiblephoto = Customerresponsiblephoto.getText().toString().trim();
+                final String xCustomerarea = Customerarea.getText().toString().trim();
+                final String xCustomerrequestedlistofsupplies = Customerrequestedlistofsupplies.getText().toString().trim();
+                final String xCustomercurrentlistofsupplies = Customercurrentlistofsupplies.getText().toString().trim();
+                final String xCustomerhygiene = Customerhygiene.getText().toString().trim();
+                final String xCustomerhandhygience = Customerhandhygience.getText().toString().trim();
+
+                boolean var = myDb.registerCustomerCareServiceDescription(xyear,xdistrict,xhc,xCustomerdirection,xCustomerservice,xCustomerresponsiblename,xCustomercurrentdata,xCustomerresponsiblephoto,xCustomerarea,xCustomerrequestedlistofsupplies,xCustomercurrentlistofsupplies,xCustomerhygiene,xCustomerhandhygience);
+
+                if(var) {
+                    Intent intent = new Intent(getBaseContext(), ServiceDescriptionConsultation.class);
+                    intent.putExtra("year_id", year);
+                    intent.putExtra("district", district);
+                    intent.putExtra("hc", hc);
+                    startActivity(intent);
+                    finish();
+                }else{
+                    Toast.makeText(ServiceDescriptionCustomerCare.this, "An error occured", Toast.LENGTH_SHORT).show();
+
+                }
             }
         });
     }

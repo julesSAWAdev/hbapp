@@ -11,6 +11,7 @@ import android.view.WindowManager;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
+import android.widget.Toast;
 
 public class ServiceDescriptionTitulaire extends AppCompatActivity {
     AutoCompleteTextView titulairedirection,titulaireservice,titulaireresponsiblename,titulairecurrentdata,titulaireresponsiblephoto,titulairearea,titulairerequestedlistofsupplies,titulairecurrentlistofsupplies,titulairehygiene,titulairehandhygience;
@@ -60,18 +61,42 @@ public class ServiceDescriptionTitulaire extends AppCompatActivity {
         titulairehygiene.setAdapter(adapterDist);
         titulairehandhygience.setAdapter(adapterDist);
 
+        myDb = new Databasehelper(this);
+
         saveNext = findViewById(R.id.serviceDesctitulaire);
 
         saveNext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                Intent intent = new Intent(getBaseContext(), ServiceDescriptionDataManager.class);
-                intent.putExtra("year_id", year);
-                intent.putExtra("district", district);
-                intent.putExtra("hc", hc);
+                final String xyear= year;
+                final String xdistrict = district;
+                final String xhc= hc;
+                final String xtitulairedirection = titulairedirection.getText().toString().trim();
+                final String xtitulaireservice = titulaireservice.getText().toString().trim();
+                final String xtitulaireresponsiblename = titulaireresponsiblename.getText().toString().trim();
+                final String xtitulairecurrentdata = titulairecurrentdata.getText().toString().trim();
+                final String xtitulaireresponsiblephoto = titulaireresponsiblephoto.getText().toString().trim();
+                final String xtitulairearea = titulairearea.getText().toString().trim();
+                final String xtitulairerequestedlistofsupplies = titulairerequestedlistofsupplies.getText().toString().trim();
+                final String xtitulairecurrentlistofsupplies = titulairecurrentlistofsupplies.getText().toString().trim();
+                final String xtitulairehygiene = titulairehygiene.getText().toString().trim();
+                final String xtitulairehandhygience = titulairehandhygience.getText().toString().trim();
 
-                startActivity(intent);
+                boolean var = myDb.registerTitulaireServiceDescription(xyear,xdistrict,xhc,xtitulairedirection,xtitulaireservice,xtitulaireresponsiblename,xtitulairecurrentdata,xtitulaireresponsiblephoto,xtitulairearea,xtitulairerequestedlistofsupplies,xtitulairecurrentlistofsupplies,xtitulairehygiene,xtitulairehandhygience);
+                if(var) {
+
+                    Intent intent = new Intent(getBaseContext(), ServiceDescriptionDataManager.class);
+                    intent.putExtra("year_id", year);
+                    intent.putExtra("district", district);
+                    intent.putExtra("hc", hc);
+
+                    startActivity(intent);
+                    finish();
+                }else{
+                    Toast.makeText(ServiceDescriptionTitulaire.this, "An error occured", Toast.LENGTH_SHORT).show();
+
+                }
             }
         });
     }

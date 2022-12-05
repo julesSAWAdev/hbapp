@@ -11,6 +11,7 @@ import android.view.WindowManager;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
+import android.widget.Toast;
 
 public class ServiceDescriptionCashier extends AppCompatActivity {
     AutoCompleteTextView cashierdirection,cashierservice,cashierresponsiblename,cashiercurrentdata,cashierresponsiblephoto,cashierarea,cashierrequestedlistofsupplies,cashiercurrentlistofsupplies,cashierhygiene,cashierhandhygience;
@@ -61,18 +62,42 @@ public class ServiceDescriptionCashier extends AppCompatActivity {
         cashierhygiene.setAdapter(adapterDist);
         cashierhandhygience.setAdapter(adapterDist);
 
+        myDb = new Databasehelper(this);
+
         saveNext = findViewById(R.id.serviceDesccashier);
 
         saveNext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                Intent intent = new Intent(getBaseContext(), ServiceDescriptionAccounting.class);
-                intent.putExtra("year_id", year);
-                intent.putExtra("district", district);
-                intent.putExtra("hc", hc);
+                final String xyear= year;
+                final String xdistrict = district;
+                final String xhc= hc;
+                final String xcashierdirection = cashierdirection.getText().toString().trim();
+                final String xcashierservice = cashierservice.getText().toString().trim();
+                final String xcashierresponsiblename = cashierresponsiblename.getText().toString().trim();
+                final String xcashiercurrentdata = cashiercurrentdata.getText().toString().trim();
+                final String xcashierresponsiblephoto = cashierresponsiblephoto.getText().toString().trim();
+                final String xcashierarea = cashierarea.getText().toString().trim();
+                final String xcashierrequestedlistofsupplies = cashierrequestedlistofsupplies.getText().toString().trim();
+                final String xcashiercurrentlistofsupplies = cashiercurrentlistofsupplies.getText().toString().trim();
+                final String xcashierhygiene = cashierhygiene.getText().toString().trim();
+                final String xcashierhandhygience = cashierhandhygience.getText().toString().trim();
 
-                startActivity(intent);
+                boolean var = myDb.registerCashierServiceDescription(xyear,xdistrict,xhc,xcashierdirection,xcashierservice,xcashierresponsiblename,xcashiercurrentdata,xcashierresponsiblephoto,xcashierarea,xcashierrequestedlistofsupplies,xcashiercurrentlistofsupplies,xcashierhygiene,xcashierhandhygience);
+
+                if(var) {
+                    Intent intent = new Intent(getBaseContext(), ServiceDescriptionAccounting.class);
+                    intent.putExtra("year_id", year);
+                    intent.putExtra("district", district);
+                    intent.putExtra("hc", hc);
+
+                    startActivity(intent);
+                    finish();
+                }else{
+                    Toast.makeText(ServiceDescriptionCashier.this, "An error occured", Toast.LENGTH_SHORT).show();
+
+                }
             }
         });
 

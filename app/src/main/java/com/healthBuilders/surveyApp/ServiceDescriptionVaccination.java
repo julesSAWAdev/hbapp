@@ -11,6 +11,7 @@ import android.view.WindowManager;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
+import android.widget.Toast;
 
 public class ServiceDescriptionVaccination extends AppCompatActivity {
 
@@ -63,6 +64,7 @@ public class ServiceDescriptionVaccination extends AppCompatActivity {
         vachandhygience.setAdapter(adapterDist);
 
 
+        myDb = new Databasehelper(this);
 
         saveNext = findViewById(R.id.serviceDescVac);
 
@@ -70,12 +72,36 @@ public class ServiceDescriptionVaccination extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                Intent intent = new Intent(getBaseContext(), ServiceDescriptionFamilyplanning.class);
-                intent.putExtra("year_id", year);
-                intent.putExtra("district", district);
-                intent.putExtra("hc", hc);
 
-                startActivity(intent);
+
+                final String xyear= year;
+                final String xdistrict = district;
+                final String xhc= hc;
+                final String xvacdirection = vacdirection.getText().toString().trim();
+                final String xvacservice = vacservice.getText().toString().trim();
+                final String xvacresponsiblename = vacresponsiblename.getText().toString().trim();
+                final String xvaccurrentdata = vaccurrentdata.getText().toString().trim();
+                final String xvacresponsiblephoto = vacresponsiblephoto.getText().toString().trim();
+                final String xvacarea = vacarea.getText().toString().trim();
+                final String xvacrequestedlistofsupplies = vacrequestedlistofsupplies.getText().toString().trim();
+                final String xvaccurrentlistofsupplies = vaccurrentlistofsupplies.getText().toString().trim();
+                final String xvachygiene = vachygiene.getText().toString().trim();
+                final String xvachandhygience = vachandhygience.getText().toString().trim();
+
+                boolean var = myDb.registerVacServiceDescription(xyear,xdistrict,xhc,xvacdirection,xvacservice,xvacresponsiblename,xvaccurrentdata,xvacresponsiblephoto,xvacarea,xvacrequestedlistofsupplies,xvaccurrentlistofsupplies,xvachygiene,xvachandhygience);
+                if (var) {
+
+                    Intent intent = new Intent(getBaseContext(), ServiceDescriptionFamilyplanning.class);
+                    intent.putExtra("year_id", year);
+                    intent.putExtra("district", district);
+                    intent.putExtra("hc", hc);
+
+                    startActivity(intent);
+                    finish();
+                }else{
+                    Toast.makeText(ServiceDescriptionVaccination.this, "An error occured", Toast.LENGTH_SHORT).show();
+
+                }
             }
         });
 

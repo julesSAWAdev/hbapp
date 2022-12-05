@@ -11,6 +11,7 @@ import android.view.WindowManager;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
+import android.widget.Toast;
 
 public class ServiceDescriptionAccounting extends AppCompatActivity {
     AutoCompleteTextView accountingdirection,accountingservice,accountingresponsiblename,accountingcurrentdata,accountingresponsiblephoto,accountingarea,accountingrequestedlistofsupplies,accountingcurrentlistofsupplies,accountinghygiene,accountinghandhygience;
@@ -60,17 +61,42 @@ public class ServiceDescriptionAccounting extends AppCompatActivity {
         accountinghygiene.setAdapter(adapterDist);
         accountinghandhygience.setAdapter(adapterDist);
 
+        myDb = new Databasehelper(this);
+
         saveNext = findViewById(R.id.serviceDescaccounting);
 
         saveNext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getBaseContext(), ServiceDescriptionLaboratory.class);
-                intent.putExtra("year_id", year);
-                intent.putExtra("district", district);
-                intent.putExtra("hc", hc);
 
-                startActivity(intent);
+
+                final String xyear= year;
+                final String xdistrict = district;
+                final String xhc= hc;
+                final String xaccountingdirection = accountingdirection.getText().toString().trim();
+                final String xaccountingservice = accountingservice.getText().toString().trim();
+                final String xaccountingresponsiblename = accountingresponsiblename.getText().toString().trim();
+                final String xaccountingcurrentdata = accountingcurrentdata.getText().toString().trim();
+                final String xaccountingresponsiblephoto = accountingresponsiblephoto.getText().toString().trim();
+                final String xaccountingarea = accountingarea.getText().toString().trim();
+                final String xaccountingrequestedlistofsupplies = accountingrequestedlistofsupplies.getText().toString().trim();
+                final String xaccountingcurrentlistofsupplies = accountingcurrentlistofsupplies.getText().toString().trim();
+                final String xaccountinghygiene = accountinghygiene.getText().toString().trim();
+                final String xaccountinghandhygience = accountinghandhygience.getText().toString().trim();
+
+                boolean var = myDb.registerAccountingServiceDescription(xyear,xdistrict,xhc,xaccountingdirection,xaccountingservice,xaccountingresponsiblename,xaccountingcurrentdata,xaccountingresponsiblephoto,xaccountingarea,xaccountingrequestedlistofsupplies,xaccountingcurrentlistofsupplies,xaccountinghygiene,xaccountinghandhygience);
+                if (var) {
+                    Intent intent = new Intent(getBaseContext(), ServiceDescriptionLaboratory.class);
+                    intent.putExtra("year_id", year);
+                    intent.putExtra("district", district);
+                    intent.putExtra("hc", hc);
+
+                    startActivity(intent);
+                    finish();
+                }else{
+                    Toast.makeText(ServiceDescriptionAccounting.this, "An error occured", Toast.LENGTH_SHORT).show();
+
+                }
             }
         });
     }

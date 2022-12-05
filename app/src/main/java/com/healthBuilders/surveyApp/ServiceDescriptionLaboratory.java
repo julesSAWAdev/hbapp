@@ -11,6 +11,7 @@ import android.view.WindowManager;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
+import android.widget.Toast;
 
 public class ServiceDescriptionLaboratory extends AppCompatActivity {
     AutoCompleteTextView laboratorydirection,laboratoryservice,laboratoryresponsiblename,laboratorycurrentdata,laboratoryresponsiblephoto,laboratoryarea,laboratoryrequestedlistofsupplies,laboratorycurrentlistofsupplies,laboratoryhygiene,laboratoryhandhygience;
@@ -61,18 +62,41 @@ public class ServiceDescriptionLaboratory extends AppCompatActivity {
         laboratoryhygiene.setAdapter(adapterDist);
         laboratoryhandhygience.setAdapter(adapterDist);
 
+        myDb = new Databasehelper(this);
+
         saveNext = findViewById(R.id.serviceDesclaboratory);
 
         saveNext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                final String xyear= year;
+                final String xdistrict = district;
+                final String xhc= hc;
+                final String xlaboratorydirection = laboratorydirection.getText().toString().trim();
+                final String xlaboratoryservice = laboratoryservice.getText().toString().trim();
+                final String xlaboratoryresponsiblename = laboratoryresponsiblename.getText().toString().trim();
+                final String xlaboratorycurrentdata = laboratorycurrentdata.getText().toString().trim();
+                final String xlaboratoryresponsiblephoto = laboratoryresponsiblephoto.getText().toString().trim();
+                final String xlaboratoryarea = laboratoryarea.getText().toString().trim();
+                final String xlaboratoryrequestedlistofsupplies = laboratoryrequestedlistofsupplies.getText().toString().trim();
+                final String xlaboratorycurrentlistofsupplies = laboratorycurrentlistofsupplies.getText().toString().trim();
+                final String xlaboratoryhygiene = laboratoryhygiene.getText().toString().trim();
+                final String xlaboratoryhandhygience = laboratoryhandhygience.getText().toString().trim();
 
-                Intent intent = new Intent(getBaseContext(), ServiceDescriptionTitulaire.class);
-                intent.putExtra("year_id", year);
-                intent.putExtra("district", district);
-                intent.putExtra("hc", hc);
+                boolean var = myDb.registerLaboratoryServiceDescription(xyear,xdistrict,xhc,xlaboratorydirection,xlaboratoryservice,xlaboratoryresponsiblename,xlaboratorycurrentdata,xlaboratoryresponsiblephoto,xlaboratoryarea,xlaboratoryrequestedlistofsupplies,xlaboratorycurrentlistofsupplies,xlaboratoryhygiene,xlaboratoryhandhygience);
 
-                startActivity(intent);
+                if (var) {
+                    Intent intent = new Intent(getBaseContext(), ServiceDescriptionTitulaire.class);
+                    intent.putExtra("year_id", year);
+                    intent.putExtra("district", district);
+                    intent.putExtra("hc", hc);
+
+                    startActivity(intent);
+                    finish();
+                }else{
+                    Toast.makeText(ServiceDescriptionLaboratory.this, "An error occured", Toast.LENGTH_SHORT).show();
+
+                }
             }
         });
     }

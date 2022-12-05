@@ -11,6 +11,7 @@ import android.view.WindowManager;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
+import android.widget.Toast;
 
 public class ServiceDescriptionNoticeboard extends AppCompatActivity {
     AutoCompleteTextView  Noticecurrentdata;
@@ -41,16 +42,28 @@ public class ServiceDescriptionNoticeboard extends AppCompatActivity {
         Noticecurrentdata = findViewById(R.id.Noticecurrentdatatxt);
 
         Noticecurrentdata.setAdapter(adapterDist);
+        myDb = new Databasehelper(this);
 
         saveNext = findViewById(R.id.serviceDescNotice);
         saveNext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                final String xyear= year;
+                final String xdistrict = district;
+                final String xhc= hc;
+                final String xcurrentdata = Noticecurrentdata.getText().toString().trim();
 
-                Intent intent = new Intent(getBaseContext(), startPage.class);
+                boolean var = myDb.registerTNoticeBoardCurrentDataServiceDescription(xyear,xdistrict,xhc,xcurrentdata);
+                if (var) {
+                    Intent intent = new Intent(getBaseContext(), startPage.class);
 
 
-                startActivity(intent);
+                    startActivity(intent);
+                    finish();
+                }else{
+                    Toast.makeText(ServiceDescriptionNoticeboard.this, "An error occured", Toast.LENGTH_SHORT).show();
+
+                }
             }
         });
 

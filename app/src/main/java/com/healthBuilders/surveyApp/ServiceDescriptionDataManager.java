@@ -11,6 +11,7 @@ import android.view.WindowManager;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
+import android.widget.Toast;
 
 public class ServiceDescriptionDataManager extends AppCompatActivity {
     AutoCompleteTextView DataManagerdirection,DataManagerservice,DataManagerresponsiblename,DataManagercurrentdata,DataManagerresponsiblephoto,DataManagerarea,DataManagerrequestedlistofsupplies,DataManagercurrentlistofsupplies,DataManagerhygiene,DataManagerhandhygience;
@@ -59,18 +60,42 @@ public class ServiceDescriptionDataManager extends AppCompatActivity {
         DataManagerhygiene.setAdapter(adapterDist);
         DataManagerhandhygience.setAdapter(adapterDist);
 
+        myDb = new Databasehelper(this);
+
         saveNext = findViewById(R.id.serviceDescDataManager);
 
         saveNext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                Intent intent = new Intent(getBaseContext(), ServiceDescriptionArv.class);
-                intent.putExtra("year_id", year);
-                intent.putExtra("district", district);
-                intent.putExtra("hc", hc);
 
-                startActivity(intent);
+                final String xyear= year;
+                final String xdistrict = district;
+                final String xhc= hc;
+                final String xDataManagerdirection = DataManagerdirection.getText().toString().trim();
+                final String xDataManagerservice = DataManagerservice.getText().toString().trim();
+                final String xDataManagerresponsiblename = DataManagerresponsiblename.getText().toString().trim();
+                final String xDataManagercurrentdata = DataManagercurrentdata.getText().toString().trim();
+                final String xDataManagerresponsiblephoto = DataManagerresponsiblephoto.getText().toString().trim();
+                final String xDataManagerarea = DataManagerarea.getText().toString().trim();
+                final String xDataManagerrequestedlistofsupplies = DataManagerrequestedlistofsupplies.getText().toString().trim();
+                final String xDataManagercurrentlistofsupplies = DataManagercurrentlistofsupplies.getText().toString().trim();
+                final String xDataManagerhygiene = DataManagerhygiene.getText().toString().trim();
+                final String xDataManagerhandhygience = DataManagerhandhygience.getText().toString().trim();
+
+                boolean var = myDb.registerDataManagerServiceDescription(xyear,xdistrict,xhc,xDataManagerdirection,xDataManagerservice,xDataManagerresponsiblename,xDataManagercurrentdata,xDataManagerresponsiblephoto,xDataManagerarea,xDataManagerrequestedlistofsupplies,xDataManagercurrentlistofsupplies,xDataManagerhygiene,xDataManagerhandhygience);
+                if (var) {
+                    Intent intent = new Intent(getBaseContext(), ServiceDescriptionArv.class);
+                    intent.putExtra("year_id", year);
+                    intent.putExtra("district", district);
+                    intent.putExtra("hc", hc);
+
+                    startActivity(intent);
+                    finish();
+                }else{
+                    Toast.makeText(ServiceDescriptionDataManager.this, "An error occured", Toast.LENGTH_SHORT).show();
+
+                }
             }
         });
     }

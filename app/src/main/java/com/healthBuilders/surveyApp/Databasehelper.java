@@ -94,6 +94,46 @@ public class Databasehelper extends SQLiteOpenHelper {
 
 
 
+    //Service description table
+    private static final String TABLE_NAME4="Anc_servicedescription";
+    private static final String anc_1= "year";
+    private static final String anc_2= "district";
+    private static final String anc_3= "hc";
+    private static final String anc_4= "direction";
+    private static final String anc_5= "service";
+    private static final String anc_6= "responsiblename";
+    private static final String anc_7= "currentdata";
+    private static final String anc_8= "responsiblephoto";
+    private static final String anc_9= "area";
+    private static final String anc_10= "requestedlistofsupplies";
+    private static final String anc_11= "currentlistofsupplies";
+    private static final String anc_12= "hygiene";
+    private static final String anc_13= "handhygiene";
+
+    private static final String TABLE_NAME5="vaccinaion_description";
+    private static final String TABLE_NAME6="familyplanning_description";
+    private static final String TABLE_NAME7="pharmacystock_description";
+    private static final String TABLE_NAME8="pharmacydispensing_description";
+    private static final String TABLE_NAME9="ncd_description";
+    private static final String TABLE_NAME10="ceho_description";
+    private static final String TABLE_NAME11="cashier_description";
+    private static final String TABLE_NAME12="accounting_description";
+    private static final String TABLE_NAME13="laboratory_description";
+    private static final String TABLE_NAME14="titulaire_description";
+    private static final String TABLE_NAME15="datamanager_description";
+    private static final String TABLE_NAME16="arv_description";
+    private static final String TABLE_NAME17="customercare_description";
+    private static final String TABLE_NAME18="consultationroom_description";
+    private static final String TABLE_NAME19="maternity_description";
+    private static final String TABLE_NAME20="hospitalization_description";
+    private static final String TABLE_NAME21="toilets_description";
+    private static final String TABLE_NAME22="noticeboard_description";
+
+
+
+
+
+
 
     public Databasehelper(@Nullable Context context ) {
         super(context, DATABASE_NAME, null,1);
@@ -105,6 +145,26 @@ public class Databasehelper extends SQLiteOpenHelper {
         db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME + "(ID INTEGER PRIMARY KEY AUTOINCREMENT, FNAME TEXT, LNAME TEXT, EMAIL TEXT,PASSWORD TEXT)");
         db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME2 + "(YEAR TEXT, DISTRICT TEXT, HC TEXT,SECTOR TEXT, CELL TEXT,VILLAGE TEXT, PUBPOST TEXT, PRIPOST TEXT,POPULATION TEXT,PATIENTS TEXT,BEDS TEXT, CONSROOMS TEXT,HOSPROOMS TEXT,CHW TEXT,A0 TEXT,A1 TEXT,A2 TEXT,MIDWIFE TEXT)");
         db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME3 + "(YEAR TEXT, DISTRICT TEXT, HC TEXT,ORGANI TEXT, UPTODATE TEXT,ACCESSIBLE TEXT, LABTECAV TEXT,LABSIGN TEXT,LABEMP TEXT,NURSEARV TEXT,NURSEARSIGN TEXT,NURSEAREMPSIGN TEXT,NURSEVACAV TEXT,NURSEVACSIGN TEXT,NURSEVACEMPSIGN TEXT,CUSTOCAREAV TEXT,CUSTCARESIGN TEXT,CUSTCAREEMPPSIGN TEXT,NURSETBAV TEXT,NURSETBSIGN TEXT,NURSETBEMPSIGN TEXT,NURSECHI TEXT,NURSECHISIGN TEXT,NURSECHIEMPSIGN TEXT,SOCIALAV TEXT,SOCIALSIGN TEXT,SOCIALEMPSIGN TEXT,NURSECPNAV TEXT,NURSECPNSIGN TEXT,NURSECPNEMPSIGN TEXT,MIDWIFEAV TEXT,MIDWIFESIGN TEXT,MIDWIFEEMPSIGN TEXT,SOPPHARMACY TEXT,EVIDENCE TEXT,QICOMITEE TEXT,TOTSTAFF TEXT,TOTNURSE TEXT,PAIDSTAFF TEXT,CLINICALSTAFF TEXT,TBSTAFF TEXT,STAFFINFECTION TEXT,STAFFCOVID TEXT,STAFFEVALUATED TEXT,STAFFILLNESS TEXT,STAFFINJURIES TEXT,STAFFHEPATITE TEXT,STAFFRATE TEXT,PATIENTRATE TEXT,STAFFMETTING TEXT,COSAMETTING TEXT)");
+        db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME4 + "(YEAR TEXT,DISTRICT TEXT,HC TEXT,DIRECTION TEXT,SERVICE TEXT,RESPONSIBLENAME TEXT,CURRENTDATA TEXT,RESPONSIBLEPHOTO TEXT,AREA TEXT,REQUESTEDLISTOFSUPPLIES TEXT,CURRENTLISTOFSUPPLIES,HYGIENE TEXT,HANDHYGIENE TEXT)");
+        db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME5 + "(YEAR TEXT,DISTRICT TEXT,HC TEXT,DIRECTION TEXT,SERVICE TEXT,RESPONSIBLENAME TEXT,CURRENTDATA TEXT,RESPONSIBLEPHOTO TEXT,AREA TEXT,REQUESTEDLISTOFSUPPLIES TEXT,CURRENTLISTOFSUPPLIES,HYGIENE TEXT,HANDHYGIENE TEXT)");
+        db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME6 + "(YEAR TEXT,DISTRICT TEXT,HC TEXT,DIRECTION TEXT,SERVICE TEXT,RESPONSIBLENAME TEXT,CURRENTDATA TEXT,RESPONSIBLEPHOTO TEXT,AREA TEXT,REQUESTEDLISTOFSUPPLIES TEXT,CURRENTLISTOFSUPPLIES,HYGIENE TEXT,HANDHYGIENE TEXT)");
+        db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME7 + "(YEAR TEXT,DISTRICT TEXT,HC TEXT,DIRECTION TEXT,SERVICE TEXT,RESPONSIBLENAME TEXT,CURRENTDATA TEXT,RESPONSIBLEPHOTO TEXT,AREA TEXT,REQUESTEDLISTOFSUPPLIES TEXT,CURRENTLISTOFSUPPLIES,HYGIENE TEXT,HANDHYGIENE TEXT)");
+        db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME8 + "(YEAR TEXT,DISTRICT TEXT,HC TEXT,DIRECTION TEXT,SERVICE TEXT,RESPONSIBLENAME TEXT,CURRENTDATA TEXT,RESPONSIBLEPHOTO TEXT,AREA TEXT,REQUESTEDLISTOFSUPPLIES TEXT,CURRENTLISTOFSUPPLIES,HYGIENE TEXT,HANDHYGIENE TEXT)");
+        db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME9 + "(YEAR TEXT,DISTRICT TEXT,HC TEXT,DIRECTION TEXT,SERVICE TEXT,RESPONSIBLENAME TEXT,CURRENTDATA TEXT,RESPONSIBLEPHOTO TEXT,AREA TEXT,REQUESTEDLISTOFSUPPLIES TEXT,CURRENTLISTOFSUPPLIES,HYGIENE TEXT,HANDHYGIENE TEXT)");
+        db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME10 + "(YEAR TEXT,DISTRICT TEXT,HC TEXT,DIRECTION TEXT,SERVICE TEXT,RESPONSIBLENAME TEXT,CURRENTDATA TEXT,RESPONSIBLEPHOTO TEXT,AREA TEXT,REQUESTEDLISTOFSUPPLIES TEXT,CURRENTLISTOFSUPPLIES,HYGIENE TEXT,HANDHYGIENE TEXT)");
+        db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME11 + "(YEAR TEXT,DISTRICT TEXT,HC TEXT,DIRECTION TEXT,SERVICE TEXT,RESPONSIBLENAME TEXT,CURRENTDATA TEXT,RESPONSIBLEPHOTO TEXT,AREA TEXT,REQUESTEDLISTOFSUPPLIES TEXT,CURRENTLISTOFSUPPLIES,HYGIENE TEXT,HANDHYGIENE TEXT)");
+        db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME12 + "(YEAR TEXT,DISTRICT TEXT,HC TEXT,DIRECTION TEXT,SERVICE TEXT,RESPONSIBLENAME TEXT,CURRENTDATA TEXT,RESPONSIBLEPHOTO TEXT,AREA TEXT,REQUESTEDLISTOFSUPPLIES TEXT,CURRENTLISTOFSUPPLIES,HYGIENE TEXT,HANDHYGIENE TEXT)");
+        db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME13 + "(YEAR TEXT,DISTRICT TEXT,HC TEXT,DIRECTION TEXT,SERVICE TEXT,RESPONSIBLENAME TEXT,CURRENTDATA TEXT,RESPONSIBLEPHOTO TEXT,AREA TEXT,REQUESTEDLISTOFSUPPLIES TEXT,CURRENTLISTOFSUPPLIES,HYGIENE TEXT,HANDHYGIENE TEXT)");
+        db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME14 + "(YEAR TEXT,DISTRICT TEXT,HC TEXT,DIRECTION TEXT,SERVICE TEXT,RESPONSIBLENAME TEXT,CURRENTDATA TEXT,RESPONSIBLEPHOTO TEXT,AREA TEXT,REQUESTEDLISTOFSUPPLIES TEXT,CURRENTLISTOFSUPPLIES,HYGIENE TEXT,HANDHYGIENE TEXT)");
+        db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME15 + "(YEAR TEXT,DISTRICT TEXT,HC TEXT,DIRECTION TEXT,SERVICE TEXT,RESPONSIBLENAME TEXT,CURRENTDATA TEXT,RESPONSIBLEPHOTO TEXT,AREA TEXT,REQUESTEDLISTOFSUPPLIES TEXT,CURRENTLISTOFSUPPLIES,HYGIENE TEXT,HANDHYGIENE TEXT)");
+        db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME16 + "(YEAR TEXT,DISTRICT TEXT,HC TEXT,DIRECTION TEXT,SERVICE TEXT,RESPONSIBLENAME TEXT,CURRENTDATA TEXT,RESPONSIBLEPHOTO TEXT,AREA TEXT,REQUESTEDLISTOFSUPPLIES TEXT,CURRENTLISTOFSUPPLIES,HYGIENE TEXT,HANDHYGIENE TEXT)");
+        db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME17 + "(YEAR TEXT,DISTRICT TEXT,HC TEXT,DIRECTION TEXT,SERVICE TEXT,RESPONSIBLENAME TEXT,CURRENTDATA TEXT,RESPONSIBLEPHOTO TEXT,AREA TEXT,REQUESTEDLISTOFSUPPLIES TEXT,CURRENTLISTOFSUPPLIES,HYGIENE TEXT,HANDHYGIENE TEXT)");
+        db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME18 + "(YEAR TEXT,DISTRICT TEXT,HC TEXT,DIRECTION TEXT,SERVICE TEXT,RESPONSIBLENAME TEXT,CURRENTDATA TEXT,RESPONSIBLEPHOTO TEXT,AREA TEXT,REQUESTEDLISTOFSUPPLIES TEXT,CURRENTLISTOFSUPPLIES,HYGIENE TEXT,HANDHYGIENE TEXT)");
+        db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME19 + "(YEAR TEXT,DISTRICT TEXT,HC TEXT,DIRECTION TEXT,SERVICE TEXT,RESPONSIBLENAME TEXT,CURRENTDATA TEXT,RESPONSIBLEPHOTO TEXT,AREA TEXT,REQUESTEDLISTOFSUPPLIES TEXT,CURRENTLISTOFSUPPLIES,HYGIENE TEXT,HANDHYGIENE TEXT)");
+        db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME20 + "(YEAR TEXT,DISTRICT TEXT,HC TEXT,DIRECTION TEXT,SERVICE TEXT,RESPONSIBLENAME TEXT,CURRENTDATA TEXT,RESPONSIBLEPHOTO TEXT,AREA TEXT,REQUESTEDLISTOFSUPPLIES TEXT,CURRENTLISTOFSUPPLIES,HYGIENE TEXT,HANDHYGIENE TEXT)");
+        db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME21 + "(YEAR TEXT,DISTRICT TEXT,HC TEXT,DIRECTION TEXT,SERVICE TEXT,RESPONSIBLENAME TEXT,CURRENTDATA TEXT,RESPONSIBLEPHOTO TEXT,AREA TEXT,REQUESTEDLISTOFSUPPLIES TEXT,CURRENTLISTOFSUPPLIES,HYGIENE TEXT,HANDHYGIENE TEXT)");
+        db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME22 + "(YEAR TEXT,DISTRICT TEXT,HC TEXT,CURRENTDATA TEXT)");
+
     }
 
     @Override
@@ -112,6 +172,25 @@ public class Databasehelper extends SQLiteOpenHelper {
         db.execSQL("DROP TABLE IF EXISTS "+ TABLE_NAME);
         db.execSQL("DROP TABLE IF EXISTS "+ TABLE_NAME2);
         db.execSQL("DROP TABLE IF EXISTS "+ TABLE_NAME3);
+        db.execSQL("DROP TABLE IF EXISTS "+ TABLE_NAME4);
+        db.execSQL("DROP TABLE IF EXISTS "+ TABLE_NAME5);
+        db.execSQL("DROP TABLE IF EXISTS "+ TABLE_NAME6);
+        db.execSQL("DROP TABLE IF EXISTS "+ TABLE_NAME7);
+        db.execSQL("DROP TABLE IF EXISTS "+ TABLE_NAME8);
+        db.execSQL("DROP TABLE IF EXISTS "+ TABLE_NAME9);
+        db.execSQL("DROP TABLE IF EXISTS "+ TABLE_NAME10);
+        db.execSQL("DROP TABLE IF EXISTS "+ TABLE_NAME11);
+        db.execSQL("DROP TABLE IF EXISTS "+ TABLE_NAME12);
+        db.execSQL("DROP TABLE IF EXISTS "+ TABLE_NAME13);
+        db.execSQL("DROP TABLE IF EXISTS "+ TABLE_NAME14);
+        db.execSQL("DROP TABLE IF EXISTS "+ TABLE_NAME15);
+        db.execSQL("DROP TABLE IF EXISTS "+ TABLE_NAME16);
+        db.execSQL("DROP TABLE IF EXISTS "+ TABLE_NAME17);
+        db.execSQL("DROP TABLE IF EXISTS "+ TABLE_NAME18);
+        db.execSQL("DROP TABLE IF EXISTS "+ TABLE_NAME19);
+        db.execSQL("DROP TABLE IF EXISTS "+ TABLE_NAME20);
+        db.execSQL("DROP TABLE IF EXISTS "+ TABLE_NAME21);
+        db.execSQL("DROP TABLE IF EXISTS "+ TABLE_NAME22);
         onCreate(db);
     }
 
@@ -165,7 +244,506 @@ public class Databasehelper extends SQLiteOpenHelper {
         }
     }
 
-    public boolean registerBasicInformation2(String year, String district, String hc, String organi,String uptodate,String accessible,String  labtecav,
+    public boolean registerAncServiceDescription(String year, String district, String hc,String direction,String service,String responsiblename,String currentdata,String responsiblephoto,String area,String requestedlistofsupplies,String currentlistofsupplies,String hygiene,String handgygiene){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+
+        values.put(anc_1,year);
+        values.put(anc_2,district);
+        values.put(anc_3,hc);
+        values.put(anc_4,direction);
+        values.put(anc_5,service);
+        values.put(anc_6,responsiblename);
+        values.put(anc_7,currentdata);
+        values.put(anc_8,responsiblephoto);
+        values.put(anc_9,area);
+        values.put(anc_10,requestedlistofsupplies);
+        values.put(anc_11,currentlistofsupplies);
+        values.put(anc_12,hygiene);
+        values.put(anc_13,handgygiene);
+
+        long result = db.insert(TABLE_NAME4, null, values);
+        if (result == -1){
+            return false;
+        }else{
+            return true;
+        }
+
+    }
+
+    public boolean registerVacServiceDescription(String year, String district, String hc,String direction,String service,String responsiblename,String currentdata,String responsiblephoto,String area,String requestedlistofsupplies,String currentlistofsupplies,String hygiene,String handgygiene){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+
+        values.put(anc_1,year);
+        values.put(anc_2,district);
+        values.put(anc_3,hc);
+        values.put(anc_4,direction);
+        values.put(anc_5,service);
+        values.put(anc_6,responsiblename);
+        values.put(anc_7,currentdata);
+        values.put(anc_8,responsiblephoto);
+        values.put(anc_9,area);
+        values.put(anc_10,requestedlistofsupplies);
+        values.put(anc_11,currentlistofsupplies);
+        values.put(anc_12,hygiene);
+        values.put(anc_13,handgygiene);
+
+        long result = db.insert(TABLE_NAME5, null, values);
+        if (result == -1){
+            return false;
+        }else{
+            return true;
+        }
+
+    }
+    public boolean registerFpServiceDescription(String year, String district, String hc,String direction,String service,String responsiblename,String currentdata,String responsiblephoto,String area,String requestedlistofsupplies,String currentlistofsupplies,String hygiene,String handgygiene){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+
+        values.put(anc_1,year);
+        values.put(anc_2,district);
+        values.put(anc_3,hc);
+        values.put(anc_4,direction);
+        values.put(anc_5,service);
+        values.put(anc_6,responsiblename);
+        values.put(anc_7,currentdata);
+        values.put(anc_8,responsiblephoto);
+        values.put(anc_9,area);
+        values.put(anc_10,requestedlistofsupplies);
+        values.put(anc_11,currentlistofsupplies);
+        values.put(anc_12,hygiene);
+        values.put(anc_13,handgygiene);
+
+        long result = db.insert(TABLE_NAME6, null, values);
+        if (result == -1){
+            return false;
+        }else{
+            return true;
+        }
+
+    }
+
+    public boolean registerPharmacyServiceDescription(String year, String district, String hc,String direction,String service,String responsiblename,String currentdata,String responsiblephoto,String area,String requestedlistofsupplies,String currentlistofsupplies,String hygiene,String handgygiene){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+
+        values.put(anc_1,year);
+        values.put(anc_2,district);
+        values.put(anc_3,hc);
+        values.put(anc_4,direction);
+        values.put(anc_5,service);
+        values.put(anc_6,responsiblename);
+        values.put(anc_7,currentdata);
+        values.put(anc_8,responsiblephoto);
+        values.put(anc_9,area);
+        values.put(anc_10,requestedlistofsupplies);
+        values.put(anc_11,currentlistofsupplies);
+        values.put(anc_12,hygiene);
+        values.put(anc_13,handgygiene);
+
+        long result = db.insert(TABLE_NAME7, null, values);
+        if (result == -1){
+            return false;
+        }else{
+            return true;
+        }
+
+    }
+    public boolean registerPharmacyDispenseServiceDescription(String year, String district, String hc,String direction,String service,String responsiblename,String currentdata,String responsiblephoto,String area,String requestedlistofsupplies,String currentlistofsupplies,String hygiene,String handgygiene){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+
+        values.put(anc_1,year);
+        values.put(anc_2,district);
+        values.put(anc_3,hc);
+        values.put(anc_4,direction);
+        values.put(anc_5,service);
+        values.put(anc_6,responsiblename);
+        values.put(anc_7,currentdata);
+        values.put(anc_8,responsiblephoto);
+        values.put(anc_9,area);
+        values.put(anc_10,requestedlistofsupplies);
+        values.put(anc_11,currentlistofsupplies);
+        values.put(anc_12,hygiene);
+        values.put(anc_13,handgygiene);
+
+        long result = db.insert(TABLE_NAME8, null, values);
+        if (result == -1){
+            return false;
+        }else{
+            return true;
+        }
+
+    }
+
+    public boolean registerNcdServiceDescription(String year, String district, String hc,String direction,String service,String responsiblename,String currentdata,String responsiblephoto,String area,String requestedlistofsupplies,String currentlistofsupplies,String hygiene,String handgygiene){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+
+        values.put(anc_1,year);
+        values.put(anc_2,district);
+        values.put(anc_3,hc);
+        values.put(anc_4,direction);
+        values.put(anc_5,service);
+        values.put(anc_6,responsiblename);
+        values.put(anc_7,currentdata);
+        values.put(anc_8,responsiblephoto);
+        values.put(anc_9,area);
+        values.put(anc_10,requestedlistofsupplies);
+        values.put(anc_11,currentlistofsupplies);
+        values.put(anc_12,hygiene);
+        values.put(anc_13,handgygiene);
+
+        long result = db.insert(TABLE_NAME9, null, values);
+        if (result == -1){
+            return false;
+        }else{
+            return true;
+        }
+
+    }
+    public boolean registerCehoServiceDescription(String year, String district, String hc,String direction,String service,String responsiblename,String currentdata,String responsiblephoto,String area,String requestedlistofsupplies,String currentlistofsupplies,String hygiene,String handgygiene){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+
+        values.put(anc_1,year);
+        values.put(anc_2,district);
+        values.put(anc_3,hc);
+        values.put(anc_4,direction);
+        values.put(anc_5,service);
+        values.put(anc_6,responsiblename);
+        values.put(anc_7,currentdata);
+        values.put(anc_8,responsiblephoto);
+        values.put(anc_9,area);
+        values.put(anc_10,requestedlistofsupplies);
+        values.put(anc_11,currentlistofsupplies);
+        values.put(anc_12,hygiene);
+        values.put(anc_13,handgygiene);
+
+        long result = db.insert(TABLE_NAME10, null, values);
+        if (result == -1){
+            return false;
+        }else{
+            return true;
+        }
+
+    }
+
+    public boolean registerCashierServiceDescription(String year, String district, String hc,String direction,String service,String responsiblename,String currentdata,String responsiblephoto,String area,String requestedlistofsupplies,String currentlistofsupplies,String hygiene,String handgygiene){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+
+        values.put(anc_1,year);
+        values.put(anc_2,district);
+        values.put(anc_3,hc);
+        values.put(anc_4,direction);
+        values.put(anc_5,service);
+        values.put(anc_6,responsiblename);
+        values.put(anc_7,currentdata);
+        values.put(anc_8,responsiblephoto);
+        values.put(anc_9,area);
+        values.put(anc_10,requestedlistofsupplies);
+        values.put(anc_11,currentlistofsupplies);
+        values.put(anc_12,hygiene);
+        values.put(anc_13,handgygiene);
+
+        long result = db.insert(TABLE_NAME11, null, values);
+        if (result == -1){
+            return false;
+        }else{
+            return true;
+        }
+
+    }
+
+    public boolean registerAccountingServiceDescription(String year, String district, String hc,String direction,String service,String responsiblename,String currentdata,String responsiblephoto,String area,String requestedlistofsupplies,String currentlistofsupplies,String hygiene,String handgygiene){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+
+        values.put(anc_1,year);
+        values.put(anc_2,district);
+        values.put(anc_3,hc);
+        values.put(anc_4,direction);
+        values.put(anc_5,service);
+        values.put(anc_6,responsiblename);
+        values.put(anc_7,currentdata);
+        values.put(anc_8,responsiblephoto);
+        values.put(anc_9,area);
+        values.put(anc_10,requestedlistofsupplies);
+        values.put(anc_11,currentlistofsupplies);
+        values.put(anc_12,hygiene);
+        values.put(anc_13,handgygiene);
+
+        long result = db.insert(TABLE_NAME12, null, values);
+        if (result == -1){
+            return false;
+        }else{
+            return true;
+        }
+
+    }
+    public boolean registerLaboratoryServiceDescription(String year, String district, String hc,String direction,String service,String responsiblename,String currentdata,String responsiblephoto,String area,String requestedlistofsupplies,String currentlistofsupplies,String hygiene,String handgygiene){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+
+        values.put(anc_1,year);
+        values.put(anc_2,district);
+        values.put(anc_3,hc);
+        values.put(anc_4,direction);
+        values.put(anc_5,service);
+        values.put(anc_6,responsiblename);
+        values.put(anc_7,currentdata);
+        values.put(anc_8,responsiblephoto);
+        values.put(anc_9,area);
+        values.put(anc_10,requestedlistofsupplies);
+        values.put(anc_11,currentlistofsupplies);
+        values.put(anc_12,hygiene);
+        values.put(anc_13,handgygiene);
+
+        long result = db.insert(TABLE_NAME13, null, values);
+        if (result == -1){
+            return false;
+        }else{
+            return true;
+        }
+
+    }
+
+    public boolean registerTitulaireServiceDescription(String year, String district, String hc,String direction,String service,String responsiblename,String currentdata,String responsiblephoto,String area,String requestedlistofsupplies,String currentlistofsupplies,String hygiene,String handgygiene){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+
+        values.put(anc_1,year);
+        values.put(anc_2,district);
+        values.put(anc_3,hc);
+        values.put(anc_4,direction);
+        values.put(anc_5,service);
+        values.put(anc_6,responsiblename);
+        values.put(anc_7,currentdata);
+        values.put(anc_8,responsiblephoto);
+        values.put(anc_9,area);
+        values.put(anc_10,requestedlistofsupplies);
+        values.put(anc_11,currentlistofsupplies);
+        values.put(anc_12,hygiene);
+        values.put(anc_13,handgygiene);
+
+        long result = db.insert(TABLE_NAME14, null, values);
+        if (result == -1){
+            return false;
+        }else{
+            return true;
+        }
+
+    }
+
+    public boolean registerDataManagerServiceDescription(String year, String district, String hc,String direction,String service,String responsiblename,String currentdata,String responsiblephoto,String area,String requestedlistofsupplies,String currentlistofsupplies,String hygiene,String handgygiene){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+
+        values.put(anc_1,year);
+        values.put(anc_2,district);
+        values.put(anc_3,hc);
+        values.put(anc_4,direction);
+        values.put(anc_5,service);
+        values.put(anc_6,responsiblename);
+        values.put(anc_7,currentdata);
+        values.put(anc_8,responsiblephoto);
+        values.put(anc_9,area);
+        values.put(anc_10,requestedlistofsupplies);
+        values.put(anc_11,currentlistofsupplies);
+        values.put(anc_12,hygiene);
+        values.put(anc_13,handgygiene);
+
+        long result = db.insert(TABLE_NAME15, null, values);
+        if (result == -1){
+            return false;
+        }else{
+            return true;
+        }
+
+    }
+
+    public boolean registerArvServiceDescription(String year, String district, String hc,String direction,String service,String responsiblename,String currentdata,String responsiblephoto,String area,String requestedlistofsupplies,String currentlistofsupplies,String hygiene,String handgygiene){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+
+        values.put(anc_1,year);
+        values.put(anc_2,district);
+        values.put(anc_3,hc);
+        values.put(anc_4,direction);
+        values.put(anc_5,service);
+        values.put(anc_6,responsiblename);
+        values.put(anc_7,currentdata);
+        values.put(anc_8,responsiblephoto);
+        values.put(anc_9,area);
+        values.put(anc_10,requestedlistofsupplies);
+        values.put(anc_11,currentlistofsupplies);
+        values.put(anc_12,hygiene);
+        values.put(anc_13,handgygiene);
+
+        long result = db.insert(TABLE_NAME16, null, values);
+        if (result == -1){
+            return false;
+        }else{
+            return true;
+        }
+
+    }
+
+    public boolean registerCustomerCareServiceDescription(String year, String district, String hc,String direction,String service,String responsiblename,String currentdata,String responsiblephoto,String area,String requestedlistofsupplies,String currentlistofsupplies,String hygiene,String handgygiene){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+
+        values.put(anc_1,year);
+        values.put(anc_2,district);
+        values.put(anc_3,hc);
+        values.put(anc_4,direction);
+        values.put(anc_5,service);
+        values.put(anc_6,responsiblename);
+        values.put(anc_7,currentdata);
+        values.put(anc_8,responsiblephoto);
+        values.put(anc_9,area);
+        values.put(anc_10,requestedlistofsupplies);
+        values.put(anc_11,currentlistofsupplies);
+        values.put(anc_12,hygiene);
+        values.put(anc_13,handgygiene);
+
+        long result = db.insert(TABLE_NAME17, null, values);
+        if (result == -1){
+            return false;
+        }else{
+            return true;
+        }
+
+    }
+    public boolean registerConsultationServiceDescription(String year, String district, String hc,String direction,String service,String responsiblename,String currentdata,String responsiblephoto,String area,String requestedlistofsupplies,String currentlistofsupplies,String hygiene,String handgygiene){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+
+        values.put(anc_1,year);
+        values.put(anc_2,district);
+        values.put(anc_3,hc);
+        values.put(anc_4,direction);
+        values.put(anc_5,service);
+        values.put(anc_6,responsiblename);
+        values.put(anc_7,currentdata);
+        values.put(anc_8,responsiblephoto);
+        values.put(anc_9,area);
+        values.put(anc_10,requestedlistofsupplies);
+        values.put(anc_11,currentlistofsupplies);
+        values.put(anc_12,hygiene);
+        values.put(anc_13,handgygiene);
+
+        long result = db.insert(TABLE_NAME18, null, values);
+        if (result == -1){
+            return false;
+        }else{
+            return true;
+        }
+
+    }
+
+    public boolean registerMaternityServiceDescription(String year, String district, String hc,String direction,String service,String responsiblename,String currentdata,String responsiblephoto,String area,String requestedlistofsupplies,String currentlistofsupplies,String hygiene,String handgygiene){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+
+        values.put(anc_1,year);
+        values.put(anc_2,district);
+        values.put(anc_3,hc);
+        values.put(anc_4,direction);
+        values.put(anc_5,service);
+        values.put(anc_6,responsiblename);
+        values.put(anc_7,currentdata);
+        values.put(anc_8,responsiblephoto);
+        values.put(anc_9,area);
+        values.put(anc_10,requestedlistofsupplies);
+        values.put(anc_11,currentlistofsupplies);
+        values.put(anc_12,hygiene);
+        values.put(anc_13,handgygiene);
+
+        long result = db.insert(TABLE_NAME19, null, values);
+        if (result == -1){
+            return false;
+        }else{
+            return true;
+        }
+
+    }
+
+    public boolean registerHospitalizationServiceDescription(String year, String district, String hc,String direction,String service,String responsiblename,String currentdata,String responsiblephoto,String area,String requestedlistofsupplies,String currentlistofsupplies,String hygiene,String handgygiene){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+
+        values.put(anc_1,year);
+        values.put(anc_2,district);
+        values.put(anc_3,hc);
+        values.put(anc_4,direction);
+        values.put(anc_5,service);
+        values.put(anc_6,responsiblename);
+        values.put(anc_7,currentdata);
+        values.put(anc_8,responsiblephoto);
+        values.put(anc_9,area);
+        values.put(anc_10,requestedlistofsupplies);
+        values.put(anc_11,currentlistofsupplies);
+        values.put(anc_12,hygiene);
+        values.put(anc_13,handgygiene);
+
+        long result = db.insert(TABLE_NAME20, null, values);
+        if (result == -1){
+            return false;
+        }else{
+            return true;
+        }
+
+    }
+    public boolean registerToiletsServiceDescription(String year, String district, String hc,String direction,String service,String responsiblename,String currentdata,String responsiblephoto,String area,String requestedlistofsupplies,String currentlistofsupplies,String hygiene,String handgygiene){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+
+        values.put(anc_1,year);
+        values.put(anc_2,district);
+        values.put(anc_3,hc);
+        values.put(anc_4,direction);
+        values.put(anc_5,service);
+        values.put(anc_6,responsiblename);
+        values.put(anc_7,currentdata);
+        values.put(anc_8,responsiblephoto);
+        values.put(anc_9,area);
+        values.put(anc_10,requestedlistofsupplies);
+        values.put(anc_11,currentlistofsupplies);
+        values.put(anc_12,hygiene);
+        values.put(anc_13,handgygiene);
+
+        long result = db.insert(TABLE_NAME21, null, values);
+        if (result == -1){
+            return false;
+        }else{
+            return true;
+        }
+
+    }
+
+    public boolean registerTNoticeBoardCurrentDataServiceDescription(String year, String district, String hc,String currentdata){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+
+        values.put(anc_1,year);
+        values.put(anc_2,district);
+        values.put(anc_3,hc);
+        values.put(anc_4,currentdata);
+
+        long result = db.insert(TABLE_NAME22, null, values);
+        if (result == -1){
+            return false;
+        }else{
+            return true;
+        }
+
+    }
+
+
+        public boolean registerBasicInformation2(String year, String district, String hc, String organi,String uptodate,String accessible,String  labtecav,
                                              String  labsign, String  labemp, String  nursearv, String  nursearsign, String  nursearempsign, String  nursevacav,
                                              String  nursevacsign ,String  nursevacempsign,
                                              String  custocareav, String  custcaresign, String  custcareemppsign, String  nursetbav ,String  nursetbsign ,

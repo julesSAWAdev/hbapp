@@ -11,6 +11,7 @@ import android.view.WindowManager;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
+import android.widget.Toast;
 
 public class ServiceDescriptionPharmacy extends AppCompatActivity {
     AutoCompleteTextView pharmacydirection,pharmacyservice,pharmacyresponsiblename,pharmacycurrentdata,pharmacyresponsiblephoto,pharmacyarea,pharmacyrequestedlistofsupplies,pharmacycurrentlistofsupplies,pharmacyhygiene,pharmacyhandhygience;
@@ -60,18 +61,41 @@ public class ServiceDescriptionPharmacy extends AppCompatActivity {
         pharmacyhygiene.setAdapter(adapterDist);
         pharmacyhandhygience.setAdapter(adapterDist);
 
+        myDb = new Databasehelper(this);
+
         saveNext = findViewById(R.id.serviceDescPharma);
 
         saveNext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                Intent intent = new Intent(getBaseContext(), ServiceDescriptionPharmacyDispense.class);
-                intent.putExtra("year_id", year);
-                intent.putExtra("district", district);
-                intent.putExtra("hc", hc);
+                final String xyear= year;
+                final String xdistrict = district;
+                final String xhc= hc;
+                final String xpharmacydirection = pharmacydirection.getText().toString().trim();
+                final String xpharmacyservice = pharmacyservice.getText().toString().trim();
+                final String xpharmacyresponsiblename = pharmacyresponsiblename.getText().toString().trim();
+                final String xpharmacycurrentdata = pharmacycurrentdata.getText().toString().trim();
+                final String xpharmacyresponsiblephoto = pharmacyresponsiblephoto.getText().toString().trim();
+                final String xpharmacyarea = pharmacyarea.getText().toString().trim();
+                final String xpharmacyrequestedlistofsupplies = pharmacyrequestedlistofsupplies.getText().toString().trim();
+                final String xpharmacycurrentlistofsupplies = pharmacycurrentlistofsupplies.getText().toString().trim();
+                final String xpharmacyhygiene = pharmacyhygiene.getText().toString().trim();
+                final String xpharmacyhandhygience = pharmacyhandhygience.getText().toString().trim();
 
-                startActivity(intent);
+                boolean var = myDb.registerPharmacyServiceDescription(xyear,xdistrict,xhc,xpharmacydirection,xpharmacyservice,xpharmacyresponsiblename,xpharmacycurrentdata,xpharmacyresponsiblephoto,xpharmacyarea,xpharmacyrequestedlistofsupplies,xpharmacycurrentlistofsupplies,xpharmacyhygiene,xpharmacyhandhygience);
+                if (var) {
+                    Intent intent = new Intent(getBaseContext(), ServiceDescriptionPharmacyDispense.class);
+                    intent.putExtra("year_id", year);
+                    intent.putExtra("district", district);
+                    intent.putExtra("hc", hc);
+
+                    startActivity(intent);
+                    finish();
+                } else{
+                    Toast.makeText(ServiceDescriptionPharmacy.this, "An error occured", Toast.LENGTH_SHORT).show();
+
+                }
             }
         });
 

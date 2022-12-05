@@ -11,6 +11,7 @@ import android.view.WindowManager;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
+import android.widget.Toast;
 
 public class ServiceDescriptionFamilyplanning extends AppCompatActivity {
     AutoCompleteTextView     fpdirection,fpservice,fpresponsiblename,fpcurrentdata,fpresponsiblephoto,fparea,fprequestedlistofsupplies,fpcurrentlistofsupplies,fphygiene,fphandhygience;
@@ -60,18 +61,43 @@ public class ServiceDescriptionFamilyplanning extends AppCompatActivity {
         fphygiene.setAdapter(adapterDist);
         fphandhygience.setAdapter(adapterDist);
 
+        myDb = new Databasehelper(this);
+
         saveNext = findViewById(R.id.serviceDescFp);
 
         saveNext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                Intent intent = new Intent(getBaseContext(), ServiceDescriptionPharmacy.class);
-                intent.putExtra("year_id", year);
-                intent.putExtra("district", district);
-                intent.putExtra("hc", hc);
 
-                startActivity(intent);
+                final String xyear= year;
+                final String xdistrict = district;
+                final String xhc= hc;
+                final String xfpdirection = fpdirection.getText().toString().trim();
+                final String xfpservice = fpservice.getText().toString().trim();
+                final String xfpresponsiblename = fpresponsiblename.getText().toString().trim();
+                final String xfpcurrentdata = fpcurrentdata.getText().toString().trim();
+                final String xfpresponsiblephoto = fpresponsiblephoto.getText().toString().trim();
+                final String xfparea = fparea.getText().toString().trim();
+                final String xfprequestedlistofsupplies = fprequestedlistofsupplies.getText().toString().trim();
+                final String xfpcurrentlistofsupplies = fpcurrentlistofsupplies.getText().toString().trim();
+                final String xfphygiene = fphygiene.getText().toString().trim();
+                final String xfphandhygience = fphandhygience.getText().toString().trim();
+
+                boolean var = myDb.registerFpServiceDescription(xyear,xdistrict,xhc,xfpdirection,xfpservice,xfpresponsiblename,xfpcurrentdata,xfpresponsiblephoto,xfparea,xfprequestedlistofsupplies,xfpcurrentlistofsupplies,xfphygiene,xfphandhygience);
+                if(var) {
+                    Intent intent = new Intent(getBaseContext(), ServiceDescriptionPharmacy.class);
+
+                    intent.putExtra("year_id", year);
+                    intent.putExtra("district", district);
+                    intent.putExtra("hc", hc);
+
+                    startActivity(intent);
+                    finish();
+                }else{
+                    Toast.makeText(ServiceDescriptionFamilyplanning.this, "An error occured", Toast.LENGTH_SHORT).show();
+
+                }
             }
         });
 

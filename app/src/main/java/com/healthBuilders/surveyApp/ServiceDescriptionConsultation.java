@@ -11,6 +11,7 @@ import android.view.WindowManager;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
+import android.widget.Toast;
 
 public class ServiceDescriptionConsultation extends AppCompatActivity {
     AutoCompleteTextView Consultationdirection,Consultationservice,Consultationresponsiblename,Consultationcurrentdata,Consultationresponsiblephoto,Consultationarea,Consultationrequestedlistofsupplies,Consultationcurrentlistofsupplies,Consultationhygiene,Consultationhandhygience;
@@ -59,6 +60,8 @@ public class ServiceDescriptionConsultation extends AppCompatActivity {
         Consultationhygiene.setAdapter(adapterDist);
         Consultationhandhygience.setAdapter(adapterDist);
 
+        myDb = new Databasehelper(this);
+
         saveNext = findViewById(R.id.serviceDescConsultation);
 
 
@@ -66,12 +69,34 @@ public class ServiceDescriptionConsultation extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                Intent intent = new Intent(getBaseContext(), ServiceDescriptionMaternity.class);
-                intent.putExtra("year_id", year);
-                intent.putExtra("district", district);
-                intent.putExtra("hc", hc);
+                final String xyear= year;
+                final String xdistrict = district;
+                final String xhc= hc;
+                final String xConsultationdirection = Consultationdirection.getText().toString().trim();
+                final String xConsultationservice = Consultationservice.getText().toString().trim();
+                final String xConsultationresponsiblename = Consultationresponsiblename.getText().toString().trim();
+                final String xConsultationcurrentdata = Consultationcurrentdata.getText().toString().trim();
+                final String xConsultationresponsiblephoto = Consultationresponsiblephoto.getText().toString().trim();
+                final String xConsultationarea = Consultationarea.getText().toString().trim();
+                final String xConsultationrequestedlistofsupplies = Consultationrequestedlistofsupplies.getText().toString().trim();
+                final String xConsultationcurrentlistofsupplies = Consultationcurrentlistofsupplies.getText().toString().trim();
+                final String xConsultationhygiene = Consultationhygiene.getText().toString().trim();
+                final String xConsultationhandhygience = Consultationhandhygience.getText().toString().trim();
 
-                startActivity(intent);
+                boolean var = myDb.registerConsultationServiceDescription(xyear,xdistrict,xhc,xConsultationdirection,xConsultationservice,xConsultationresponsiblename,xConsultationcurrentdata,xConsultationresponsiblephoto,xConsultationarea,xConsultationrequestedlistofsupplies,xConsultationcurrentlistofsupplies,xConsultationhygiene,xConsultationhandhygience);
+
+                if(var) {
+                    Intent intent = new Intent(getBaseContext(), ServiceDescriptionMaternity.class);
+                    intent.putExtra("year_id", year);
+                    intent.putExtra("district", district);
+                    intent.putExtra("hc", hc);
+
+                    startActivity(intent);
+                    finish();
+                }else{
+                    Toast.makeText(ServiceDescriptionConsultation.this, "An error occured", Toast.LENGTH_SHORT).show();
+
+                }
             }
         });
     }
