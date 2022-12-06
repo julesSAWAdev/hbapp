@@ -129,6 +129,24 @@ public class Databasehelper extends SQLiteOpenHelper {
     private static final String TABLE_NAME21="toilets_description";
     private static final String TABLE_NAME22="noticeboard_description";
 
+    //documentation and sanitation
+    private static final String TABLE_NAME23="documentation_actionplan";
+    private static final String TABLE_NAME24="documentation_businessplan";
+    private static final String TABLE_NAME25="documentation_budget";
+    private static final String TABLE_NAME26="documentation_inservice";
+    private static final String TABLE_NAME27="documentation_workschedule";
+    private static final String TABLE_NAME28="documentation_qiplan";
+
+    private static final String doc_1= "year";
+    private static final String doc_2= "district";
+    private static final String doc_3= "hc";
+    private static final String doc_4= "available";
+    private static final String doc_5= "tracked";
+    private static final String doc_6= "approvedti";
+    private static final String doc_7= "approvedcosa";
+    private static final String doc_8= "comstaff";
+
+
 
 
 
@@ -164,6 +182,12 @@ public class Databasehelper extends SQLiteOpenHelper {
         db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME20 + "(YEAR TEXT,DISTRICT TEXT,HC TEXT,DIRECTION TEXT,SERVICE TEXT,RESPONSIBLENAME TEXT,CURRENTDATA TEXT,RESPONSIBLEPHOTO TEXT,AREA TEXT,REQUESTEDLISTOFSUPPLIES TEXT,CURRENTLISTOFSUPPLIES,HYGIENE TEXT,HANDHYGIENE TEXT)");
         db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME21 + "(YEAR TEXT,DISTRICT TEXT,HC TEXT,DIRECTION TEXT,SERVICE TEXT,RESPONSIBLENAME TEXT,CURRENTDATA TEXT,RESPONSIBLEPHOTO TEXT,AREA TEXT,REQUESTEDLISTOFSUPPLIES TEXT,CURRENTLISTOFSUPPLIES,HYGIENE TEXT,HANDHYGIENE TEXT)");
         db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME22 + "(YEAR TEXT,DISTRICT TEXT,HC TEXT,CURRENTDATA TEXT)");
+        db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME23 + "(YEAR TEXT,DISTRICT TEXT,HC TEXT,AVAILABLE TEXT,TRACKED TEXT,APPROVEDTI TEXT,APPROVEDCOSA TEXT,COMSTAFF TEXT)");
+        db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME24 + "(YEAR TEXT,DISTRICT TEXT,HC TEXT,AVAILABLE TEXT,TRACKED TEXT,APPROVEDTI TEXT,APPROVEDCOSA TEXT,COMSTAFF TEXT)");
+        db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME25 + "(YEAR TEXT,DISTRICT TEXT,HC TEXT,AVAILABLE TEXT,TRACKED TEXT,APPROVEDTI TEXT,APPROVEDCOSA TEXT,COMSTAFF TEXT)");
+        db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME26 + "(YEAR TEXT,DISTRICT TEXT,HC TEXT,AVAILABLE TEXT,TRACKED TEXT,APPROVEDTI TEXT,APPROVEDCOSA TEXT,COMSTAFF TEXT)");
+        db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME27   + "(YEAR TEXT,DISTRICT TEXT,HC TEXT,AVAILABLE TEXT,TRACKED TEXT,APPROVEDTI TEXT,APPROVEDCOSA TEXT,COMSTAFF TEXT)");
+        db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME28   + "(YEAR TEXT,DISTRICT TEXT,HC TEXT,AVAILABLE TEXT,TRACKED TEXT,APPROVEDTI TEXT,APPROVEDCOSA TEXT,COMSTAFF TEXT)");
 
     }
 
@@ -191,6 +215,12 @@ public class Databasehelper extends SQLiteOpenHelper {
         db.execSQL("DROP TABLE IF EXISTS "+ TABLE_NAME20);
         db.execSQL("DROP TABLE IF EXISTS "+ TABLE_NAME21);
         db.execSQL("DROP TABLE IF EXISTS "+ TABLE_NAME22);
+        db.execSQL("DROP TABLE IF EXISTS "+ TABLE_NAME23);
+        db.execSQL("DROP TABLE IF EXISTS "+ TABLE_NAME24);
+        db.execSQL("DROP TABLE IF EXISTS "+ TABLE_NAME25);
+        db.execSQL("DROP TABLE IF EXISTS "+ TABLE_NAME26);
+        db.execSQL("DROP TABLE IF EXISTS "+ TABLE_NAME27);
+        db.execSQL("DROP TABLE IF EXISTS "+ TABLE_NAME28);
         onCreate(db);
     }
 
@@ -833,6 +863,136 @@ public class Databasehelper extends SQLiteOpenHelper {
         }else{
             return false;
         }
+    }
+
+
+
+    //documentation and sanitation save functions
+    public boolean registerDocumentationActionPlan(String year, String district, String hc,String available,String tracked,String approvedti,String approvedcosa,String comsatff){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+
+        values.put(doc_1,year);
+        values.put(doc_2,district);
+        values.put(doc_3,hc);
+        values.put(doc_4,available);
+        values.put(doc_5,tracked);
+        values.put(doc_6,approvedti);
+        values.put(doc_7,approvedcosa);
+        values.put(doc_8,comsatff);
+        long result = db.insert(TABLE_NAME23, null, values);
+        if (result == -1){
+            return false;
+        }else{
+            return true;
+        }
+
+    }
+
+    public boolean registerDocumentationBusinessPlan(String year, String district, String hc,String available,String tracked,String approvedti,String approvedcosa,String comsatff){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+
+        values.put(doc_1,year);
+        values.put(doc_2,district);
+        values.put(doc_3,hc);
+        values.put(doc_4,available);
+        values.put(doc_5,tracked);
+        values.put(doc_6,approvedti);
+        values.put(doc_7,approvedcosa);
+        values.put(doc_8,comsatff);
+        long result = db.insert(TABLE_NAME24, null, values);
+        if (result == -1){
+            return false;
+        }else{
+            return true;
+        }
+
+    }
+
+    public boolean registerDocumentationBudget(String year, String district, String hc,String available,String tracked,String approvedti,String approvedcosa,String comsatff){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+
+        values.put(doc_1,year);
+        values.put(doc_2,district);
+        values.put(doc_3,hc);
+        values.put(doc_4,available);
+        values.put(doc_5,tracked);
+        values.put(doc_6,approvedti);
+        values.put(doc_7,approvedcosa);
+        values.put(doc_8,comsatff);
+        long result = db.insert(TABLE_NAME25, null, values);
+        if (result == -1){
+            return false;
+        }else{
+            return true;
+        }
+
+    }
+
+    public boolean registerDocumentationInService(String year, String district, String hc,String available,String tracked,String approvedti,String approvedcosa,String comsatff){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+
+        values.put(doc_1,year);
+        values.put(doc_2,district);
+        values.put(doc_3,hc);
+        values.put(doc_4,available);
+        values.put(doc_5,tracked);
+        values.put(doc_6,approvedti);
+        values.put(doc_7,approvedcosa);
+        values.put(doc_8,comsatff);
+        long result = db.insert(TABLE_NAME26, null, values);
+        if (result == -1){
+            return false;
+        }else{
+            return true;
+        }
+
+    }
+
+
+    public boolean registerDocumentationWorkSchedule(String year, String district, String hc,String available,String tracked,String approvedti,String approvedcosa,String comsatff){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+
+        values.put(doc_1,year);
+        values.put(doc_2,district);
+        values.put(doc_3,hc);
+        values.put(doc_4,available);
+        values.put(doc_5,tracked);
+        values.put(doc_6,approvedti);
+        values.put(doc_7,approvedcosa);
+        values.put(doc_8,comsatff);
+        long result = db.insert(TABLE_NAME27, null, values);
+        if (result == -1){
+            return false;
+        }else{
+            return true;
+        }
+
+    }
+
+    public boolean registerDocumentationQiplan(String year, String district, String hc,String available,String tracked,String approvedti,String approvedcosa,String comsatff){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+
+        values.put(doc_1,year);
+        values.put(doc_2,district);
+        values.put(doc_3,hc);
+        values.put(doc_4,available);
+        values.put(doc_5,tracked);
+        values.put(doc_6,approvedti);
+        values.put(doc_7,approvedcosa);
+        values.put(doc_8,comsatff);
+        long result = db.insert(TABLE_NAME28, null, values);
+        if (result == -1){
+            return false;
+        }else{
+            return true;
+        }
+
     }
 
 

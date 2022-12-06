@@ -32,10 +32,6 @@ public class ServiceDescriptionVaccination extends AppCompatActivity {
         final String district = getIntent().getStringExtra("district");
         final String hc = getIntent().getStringExtra("hc");
 
-        Log.d("year", year);
-        Log.d("district", district);
-        Log.d("Hc", hc);
-
 
         ArrayAdapter<String> adapterDist = new ArrayAdapter<>(this, R.layout.dropdown_item2, response);
 

@@ -61,6 +61,7 @@ public class SurveySection extends AppCompatActivity {
                     intent.putExtra("district", xdistrict);
                     intent.putExtra("hc", xhc);
                     startActivity(intent);
+                    finish();
                 }else if (Step.equals("Services/Area Description")){
 
                     Intent intent = new Intent(getBaseContext(), serviceDescription.class);
@@ -68,7 +69,15 @@ public class SurveySection extends AppCompatActivity {
                     intent.putExtra("district", xdistrict);
                     intent.putExtra("hc", xhc);
                     startActivity(intent);
+                    finish();
 
+                }else if(Step.equals("Documentation and Sanitation")){
+                    Intent intent = new Intent(getBaseContext(), DocumentationActionPlan.class);
+                    intent.putExtra("year_id", xyear);
+                    intent.putExtra("district", xdistrict);
+                    intent.putExtra("hc", xhc);
+                    startActivity(intent);
+                    finish();
                 }
             }
         });
