@@ -12,8 +12,8 @@ import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.Toast;
 
-public class DocumentationQiplan extends AppCompatActivity {
-    AutoCompleteTextView available,tracked,approvedti,approvedcosa,comstaff;
+public class DocumentationCustomer extends AppCompatActivity {
+    AutoCompleteTextView available,tracked,approved;
     Button savenext;
     String[] response = new String[]{ "Yes","No","N/A"};
     private ProgressDialog progressDialog;
@@ -22,9 +22,8 @@ public class DocumentationQiplan extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        setContentView(R.layout.activity_documentation_qiplan);
-
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        setContentView(R.layout.activity_documentation_customer);
 
         Intent intent = getIntent();
 
@@ -32,22 +31,18 @@ public class DocumentationQiplan extends AppCompatActivity {
         final String district = getIntent().getStringExtra("district");
         final String hc = getIntent().getStringExtra("hc");
 
-        available=findViewById(R.id.qiavailable);
-        tracked=findViewById(R.id.qitrack);
-        approvedti=findViewById(R.id.qiapproved);
-        approvedcosa=findViewById(R.id.qicosa);
-        comstaff=findViewById(R.id.qicommunicated);
+        available=findViewById(R.id.customeravailable);
+        tracked=findViewById(R.id.customertrack);
+        approved=findViewById(R.id.customerapproved);
+
+        savenext=findViewById(R.id.customernext);
 
         myDb = new Databasehelper(this);
 
         ArrayAdapter<String> adapterDist = new ArrayAdapter<>(this, R.layout.dropdown_item2, response);
         available.setAdapter(adapterDist);
         tracked.setAdapter(adapterDist);
-        approvedti.setAdapter(adapterDist);
-        approvedcosa.setAdapter(adapterDist);
-        comstaff.setAdapter(adapterDist);
-
-        savenext = findViewById(R.id.qinext);
+        approved.setAdapter(adapterDist);
 
         savenext.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -58,22 +53,22 @@ public class DocumentationQiplan extends AppCompatActivity {
                 final String xhc= hc;
                 final String xavailable=available.getText().toString().trim();
                 final String xtracked=tracked.getText().toString().trim();
-                final String xapprovedti=approvedti.getText().toString().trim();
-                final String xapprovedcosa=approvedcosa.getText().toString().trim();
-                final String ccomstaff=comstaff.getText().toString().trim();
+                final String xapproved=approved.getText().toString().trim();
 
-                boolean var = myDb.registerDocumentationQiplan(xyear,xdistrict,xhc,xavailable,xtracked,xapprovedti,xapprovedcosa,ccomstaff);
+                boolean var = myDb.registerDocumentationCustomer(xyear,xdistrict,xhc,xavailable,xtracked,xapproved);
                 if (var) {
-                    Intent intent = new Intent(getBaseContext(), DocumentationRegister.class);
-                    intent.putExtra("year_id", year);
-                    intent.putExtra("district", district);
-                    intent.putExtra("hc", hc);
 
 
-                    startActivity(intent);
-                    finish();
+                Intent intent = new Intent(getBaseContext(), DocumentationReceivableRegisters.class);
+                intent.putExtra("year_id", year);
+                intent.putExtra("district", district);
+                intent.putExtra("hc", hc);
+
+
+                startActivity(intent);
+                finish();
                 }else{
-                    Toast.makeText(DocumentationQiplan.this, "An error occured", Toast.LENGTH_SHORT).show();
+                 Toast.makeText(DocumentationCustomer.this, "An error occured", Toast.LENGTH_SHORT).show();
 
                 }
             }

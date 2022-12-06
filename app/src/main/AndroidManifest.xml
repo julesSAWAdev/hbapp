@@ -10,7 +10,13 @@
         android:roundIcon="@mipmap/ic_launcher"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".DocumentationQiplan"></activity>
+        <activity android:name=".DocumentationCustomer"></activity>
+        <activity android:name=".DocumentationMalaria" />
+        <activity android:name=".DocumentationReceivableRegisters" />
+        <activity android:name=".DocumentationPayableRegisters" />
+        <activity android:name=".DocumentationAttendanceRegister" />
+        <activity android:name=".DocumentationRegister" />
+        <activity android:name=".DocumentationQiplan" />
         <activity android:name=".DocumentationWorkSchedule" />
         <activity android:name=".DocumentationInservice" />
         <activity android:name=".DocumentationBudget" />
