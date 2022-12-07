@@ -260,39 +260,8 @@ public class Steptwo extends AppCompatActivity {
                 //qicomitee
                 final String xqicomitee= qicomitee.getText().toString().trim();
 
-                Log.d("organi", xorgani);
-                Log.d("uptodate", xuptodate);
-                Log.d("accessible", xaccessible);
-                Log.d("labtecav", xlabtecav);
-                Log.d("labsign", xlabtecsign);
-                Log.d("labemp", xlabtecemp);
-                Log.d("nursearv", xnuresearav);
-                Log.d("nursearsign", xnursearsign);
-                Log.d("nursearempsign", xnursearempsign);
-                Log.d("nursevacav", xnursevacav);
-                Log.d("nursevacsign", xnursevacsign);
-                Log.d("nursevacempsign", xnursevacempsign);
-                Log.d("custocareav", xcustcareav);
-                Log.d("custcaresign", xcustcaresign);
-                Log.d("custcareemppsign", xcustcareempsign);
-                Log.d("nursetbav", xnursetbav);
-                Log.d("nursetbsign", xnursetbsign);
-                Log.d("nursetbempsign", xnursetbempsign);
-                Log.d("nursechi", xnurchiav);
-                Log.d("nursechisign", xnurchisign);
-                Log.d("nursechiempsign", xnurchiempsign);
-                Log.d("socialav", xsocialav);
-                Log.d("socialsign", xsocialsign);
-                Log.d("socialempsign", xsocialempsign);
-                Log.d("nursecpnav", xnursecpnav);
-                Log.d("nursecpnsign", xnursecpnsign);
-                Log.d("nursecpnempsign", xnursecpnempsign);
-                Log.d("midwifeav", xmidwifeav);
-                Log.d("midwifesign", xmidwifesign);
-                Log.d("midwifeempsign", xmidwifeempsign);
-                Log.d("SOPpharmacy", xsoppharmacy);
-                Log.d("evidence", xevidence);
-                Log.d("qicomitee", xqicomitee);
+
+
 
                 // get input text values
 
@@ -312,21 +281,6 @@ public class Steptwo extends AppCompatActivity {
                 final String xstaffmeeting = Staffmeeting.getText().toString().trim();
                 final String xcosameeting = COSAmeeting.getText().toString().trim();
 
-                Log.d("totstaff", xtotstaff);
-                Log.d("totnurse", xtotnurse);
-                Log.d("paidstaff", xpaidstaff);
-                Log.d("clinicalstaff", xclinicalstaff);
-                Log.d("tbstaff", xtbstaff);
-                Log.d("staffinfection", xstaffinfection);
-                Log.d("staffcovid", xstaffcovid);
-                Log.d("staffevaluated", xstaffevaluated);
-                Log.d("staffillness", xstaffillness);
-                Log.d("staffinjuries", xstaffinjuries);
-                Log.d("staffhepatite", xstaffhepatite);
-                Log.d("staffrate", xstaffrate);
-                Log.d("patientrate", xpatientrate);
-                Log.d("staffmetting", xstaffmeeting);
-                Log.d("cosametting", xcosameeting);
 
 
 

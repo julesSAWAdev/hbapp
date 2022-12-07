@@ -142,6 +142,7 @@ public class Databasehelper extends SQLiteOpenHelper {
     private static final String TABLE_NAME32="receivables_register";
     private static final String TABLE_NAME33="malaria_plan";
     private static final String TABLE_NAME34="customercare_program";
+    private static final String TABLE_NAME35="sanitation";
 
     private static final String doc_1= "year";
     private static final String doc_2= "district";
@@ -202,6 +203,7 @@ public class Databasehelper extends SQLiteOpenHelper {
         db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME32   + "(YEAR TEXT,DISTRICT TEXT,HC TEXT,AVAILABLE TEXT,TRACKED TEXT)");
         db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME33   + "(YEAR TEXT,DISTRICT TEXT,HC TEXT,AVAILABLE TEXT,TRACKED TEXT,APPROVED TEXT)");
         db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME34   + "(YEAR TEXT,DISTRICT TEXT,HC TEXT,AVAILABLE TEXT,TRACKED TEXT,APPROVED TEXT)");
+        db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME35 + "(YEAR TEXT,DISTRICT TEXT,HC TEXT,STAFFLATRINES TEXT,PATIRNETLATRINES TEXT,TOTALLATRINES TEXT,BROKENLATRINES TEXT,CLEANLATRINES TEXT,ODORLESSLATRINES TEXT,HANDWASHLATRINES TEXT,LATRINESCHEDULES,OPD TEXT,HOSPITALIZATIONROOMS TEXT)");
 
     }
 
@@ -241,6 +243,7 @@ public class Databasehelper extends SQLiteOpenHelper {
         db.execSQL("DROP TABLE IF EXISTS "+ TABLE_NAME32);
         db.execSQL("DROP TABLE IF EXISTS "+ TABLE_NAME33);
         db.execSQL("DROP TABLE IF EXISTS "+ TABLE_NAME34);
+        db.execSQL("DROP TABLE IF EXISTS "+ TABLE_NAME35);
         onCreate(db);
     }
 
@@ -1116,6 +1119,33 @@ public class Databasehelper extends SQLiteOpenHelper {
         values.put(doc_5,tracked);
         values.put(doc_6,approved);
         long result = db.insert(TABLE_NAME34, null, values);
+        if (result == -1){
+            return false;
+        }else{
+            return true;
+        }
+
+    }
+
+    public boolean registerDocumentationSanitation(String year, String district, String hc,String stafflatrines,String patientlatrines,String totlatrines,String brokelatrines,String cleanlatrines,String nodorlatrines,String handwashlatrine,String schedulelatrine,String opd,String hospirooms){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+
+        values.put(anc_1,year);
+        values.put(anc_2,district);
+        values.put(anc_3,hc);
+        values.put(anc_4,stafflatrines);
+        values.put(anc_5,patientlatrines);
+        values.put(anc_6,totlatrines);
+        values.put(anc_7,brokelatrines);
+        values.put(anc_8,cleanlatrines);
+        values.put(anc_9,nodorlatrines);
+        values.put(anc_10,handwashlatrine);
+        values.put(anc_11,schedulelatrine);
+        values.put(anc_12,opd);
+        values.put(anc_13,hospirooms);
+
+        long result = db.insert(TABLE_NAME35, null, values);
         if (result == -1){
             return false;
         }else{

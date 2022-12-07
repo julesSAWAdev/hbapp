@@ -10,7 +10,8 @@
         android:roundIcon="@mipmap/ic_launcher"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".DocumentationCustomer"></activity>
+        <activity android:name=".DocumentationSanitation"></activity>
+        <activity android:name=".DocumentationCustomer" />
         <activity android:name=".DocumentationMalaria" />
         <activity android:name=".DocumentationReceivableRegisters" />
         <activity android:name=".DocumentationPayableRegisters" />

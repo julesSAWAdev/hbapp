@@ -59,7 +59,7 @@ public class DocumentationCustomer extends AppCompatActivity {
                 if (var) {
 
 
-                Intent intent = new Intent(getBaseContext(), DocumentationReceivableRegisters.class);
+                Intent intent = new Intent(getBaseContext(), DocumentationSanitation.class);
                 intent.putExtra("year_id", year);
                 intent.putExtra("district", district);
                 intent.putExtra("hc", hc);
