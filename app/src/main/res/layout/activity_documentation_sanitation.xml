@@ -52,15 +52,15 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/directions"
                 android:layout_weight="1"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 >
-                <AutoCompleteTextView
+                <EditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Number of functional staff latrines"
                     android:id="@+id/stafflatrines">
 
-                </AutoCompleteTextView>
+                </EditText>
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
@@ -69,15 +69,15 @@
                 android:id="@+id/labelling"
                 android:layout_weight="1"
                 android:layout_marginTop="5dp"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 >
-                <AutoCompleteTextView
+                <EditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="number of functional patiens latrines"
                     android:id="@+id/patientlatrines">
 
-                </AutoCompleteTextView>
+                </EditText>
             </com.google.android.material.textfield.TextInputLayout>
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
@@ -85,15 +85,15 @@
                 android:id="@+id/labellingM"
                 android:layout_weight="1"
                 android:layout_marginTop="5dp"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 >
-                <AutoCompleteTextView
+                <EditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Total number of functional latrines"
                     android:id="@+id/totlatrines">
 
-                </AutoCompleteTextView>
+                </EditText>
             </com.google.android.material.textfield.TextInputLayout>
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
@@ -101,15 +101,15 @@
                 android:id="@+id/labelligM"
                 android:layout_weight="1"
                 android:layout_marginTop="5dp"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 >
-                <AutoCompleteTextView
+                <EditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Total number of broken latrines"
                     android:id="@+id/brokelatrines">
 
-                </AutoCompleteTextView>
+                </EditText>
             </com.google.android.material.textfield.TextInputLayout>
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
@@ -117,15 +117,15 @@
                 android:id="@+id/laelligM"
                 android:layout_weight="1"
                 android:layout_marginTop="5dp"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 >
-                <AutoCompleteTextView
+                <EditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Total number of clean latrines"
                     android:id="@+id/cleanlatrines">
 
-                </AutoCompleteTextView>
+                </EditText>
             </com.google.android.material.textfield.TextInputLayout>
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
@@ -133,15 +133,15 @@
                 android:id="@+id/lelligM"
                 android:layout_weight="1"
                 android:layout_marginTop="5dp"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 >
-                <AutoCompleteTextView
+                <EditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Total number of latrines with no odor"
                     android:id="@+id/noodorlatrines">
 
-                </AutoCompleteTextView>
+                </EditText>
             </com.google.android.material.textfield.TextInputLayout>
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
@@ -149,15 +149,15 @@
                 android:id="@+id/labeilligM"
                 android:layout_weight="1"
                 android:layout_marginTop="5dp"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 >
-                <AutoCompleteTextView
+                <EditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Total number of Latrines with handwash"
                     android:id="@+id/handwashslatrine">
 
-                </AutoCompleteTextView>
+                </EditText>
             </com.google.android.material.textfield.TextInputLayout>
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
@@ -165,15 +165,15 @@
                 android:id="@+id/label"
                 android:layout_weight="1"
                 android:layout_marginTop="5dp"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 >
-                <AutoCompleteTextView
+                <EditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Latrines with cleaning schedule posted"
                     android:id="@+id/scheduleslatrines">
 
-                </AutoCompleteTextView>
+                </EditText>
             </com.google.android.material.textfield.TextInputLayout>
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
@@ -181,15 +181,15 @@
                 android:id="@+id/lab"
                 android:layout_weight="1"
                 android:layout_marginTop="5dp"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 >
-                <AutoCompleteTextView
+                <EditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Total number of OPD"
                     android:id="@+id/opd">
 
-                </AutoCompleteTextView>
+                </EditText>
             </com.google.android.material.textfield.TextInputLayout>
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
@@ -197,15 +197,15 @@
                 android:id="@+id/hosp"
                 android:layout_weight="1"
                 android:layout_marginTop="5dp"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 >
-                <AutoCompleteTextView
+                <EditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Total number of hospitalization rooms"
                     android:id="@+id/hospirooms">
 
-                </AutoCompleteTextView>
+                </EditText>
             </com.google.android.material.textfield.TextInputLayout>
 
             <Button

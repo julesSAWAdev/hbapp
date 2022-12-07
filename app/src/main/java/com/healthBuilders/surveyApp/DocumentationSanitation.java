@@ -10,10 +10,11 @@ import android.view.WindowManager;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Toast;
 
 public class DocumentationSanitation extends AppCompatActivity {
-    AutoCompleteTextView stafflatrines,patientlatrines,totallatrines,brokenlatrines,cleanlatrines,odorlesslatrines,handwashlatrines,
+    EditText stafflatrines,patientlatrines,totallatrines,brokenlatrines,cleanlatrines,odorlesslatrines,handwashlatrines,
     scheduledlatrines,opd,hosprooms;
     Button savenext;
     private ProgressDialog progressDialog;
@@ -31,16 +32,16 @@ public class DocumentationSanitation extends AppCompatActivity {
         final String district = getIntent().getStringExtra("district");
         final String hc = getIntent().getStringExtra("hc");
 
-        stafflatrines=findViewById(R.id.customeravailable);
-        patientlatrines=findViewById(R.id.customertrack);
-        totallatrines=findViewById(R.id.customerapproved);
-        brokenlatrines=findViewById(R.id.customerapproved);
-        cleanlatrines=findViewById(R.id.customerapproved);
-        odorlesslatrines=findViewById(R.id.customerapproved);
-        handwashlatrines=findViewById(R.id.customerapproved);
-        scheduledlatrines=findViewById(R.id.customerapproved);
-        opd=findViewById(R.id.customerapproved);
-        hosprooms=findViewById(R.id.customerapproved);
+        stafflatrines=findViewById(R.id.stafflatrines);
+        patientlatrines=findViewById(R.id.patientlatrines);
+        totallatrines=findViewById(R.id.totlatrines);
+        brokenlatrines=findViewById(R.id.brokelatrines);
+        cleanlatrines=findViewById(R.id.cleanlatrines);
+        odorlesslatrines=findViewById(R.id.noodorlatrines);
+        handwashlatrines=findViewById(R.id.handwashslatrine);
+        scheduledlatrines=findViewById(R.id.scheduleslatrines);
+        opd=findViewById(R.id.opd);
+        hosprooms=findViewById(R.id.hospirooms);
 
         savenext=findViewById(R.id.saniNext);
 

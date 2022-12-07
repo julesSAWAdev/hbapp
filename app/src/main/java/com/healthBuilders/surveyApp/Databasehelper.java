@@ -152,6 +152,26 @@ public class Databasehelper extends SQLiteOpenHelper {
     private static final String doc_6= "approvedti";
     private static final String doc_7= "approvedcosa";
     private static final String doc_8= "comstaff";
+    private static final String doc_9= "approved";
+
+
+    //sanitation
+    private static final String s1= "year";
+    private static final String s2= "district";
+    private static final String s3= "hc";
+    private static final String s4= "STAFFLATRINES";
+    private static final String s5= "PATIRNETLATRINES";
+    private static final String s6= "TOTALLATRINES";
+    private static final String s7= "BROKENLATRINES";
+    private static final String s8= "CLEANLATRINES";
+    private static final String s9= "ODORLESSLATRINES";
+    private static final String s10= "HANDWASHLATRINES";
+    private static final String s11= "LATRINESCHEDULES";
+    private static final String s12= "OPD";
+    private static final String s13= "HOSPITALIZATIONROOMS";
+
+
+
 
 
 
@@ -1098,7 +1118,7 @@ public class Databasehelper extends SQLiteOpenHelper {
         values.put(doc_3,hc);
         values.put(doc_4,available);
         values.put(doc_5,tracked);
-        values.put(doc_6,approved);
+        values.put(doc_9,approved);
         long result = db.insert(TABLE_NAME33, null, values);
         if (result == -1){
             return false;
@@ -1117,7 +1137,7 @@ public class Databasehelper extends SQLiteOpenHelper {
         values.put(doc_3,hc);
         values.put(doc_4,available);
         values.put(doc_5,tracked);
-        values.put(doc_6,approved);
+        values.put(doc_9,approved);
         long result = db.insert(TABLE_NAME34, null, values);
         if (result == -1){
             return false;
@@ -1131,19 +1151,19 @@ public class Databasehelper extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
 
-        values.put(anc_1,year);
-        values.put(anc_2,district);
-        values.put(anc_3,hc);
-        values.put(anc_4,stafflatrines);
-        values.put(anc_5,patientlatrines);
-        values.put(anc_6,totlatrines);
-        values.put(anc_7,brokelatrines);
-        values.put(anc_8,cleanlatrines);
-        values.put(anc_9,nodorlatrines);
-        values.put(anc_10,handwashlatrine);
-        values.put(anc_11,schedulelatrine);
-        values.put(anc_12,opd);
-        values.put(anc_13,hospirooms);
+        values.put(s1,year);
+        values.put(s2,district);
+        values.put(s3,hc);
+        values.put(s4,stafflatrines);
+        values.put(s5,patientlatrines);
+        values.put(s6,totlatrines);
+        values.put(s7,brokelatrines);
+        values.put(s8,cleanlatrines);
+        values.put(s9,nodorlatrines);
+        values.put(s10,handwashlatrine);
+        values.put(s11,schedulelatrine);
+        values.put(s12,opd);
+        values.put(s13,hospirooms);
 
         long result = db.insert(TABLE_NAME35, null, values);
         if (result == -1){
