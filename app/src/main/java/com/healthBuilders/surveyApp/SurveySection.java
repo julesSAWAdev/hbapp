@@ -78,6 +78,13 @@ public class SurveySection extends AppCompatActivity {
                     intent.putExtra("hc", xhc);
                     startActivity(intent);
                     finish();
+                }else if(Step.equals("Data Management")){
+                    Intent intent = new Intent(getBaseContext(), Datamanagement_Sop.class);
+                    intent.putExtra("year_id", xyear);
+                    intent.putExtra("district", xdistrict);
+                    intent.putExtra("hc", xhc);
+                    startActivity(intent);
+                    finish();
                 }
             }
         });

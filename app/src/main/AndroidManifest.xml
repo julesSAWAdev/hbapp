@@ -10,7 +10,14 @@
         android:roundIcon="@mipmap/ic_launcher"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".DocumentationSanitation"></activity>
+        <activity android:name=".DataManagementMaternal"></activity>
+        <activity android:name=".DataCompletenessOpd" />
+        <activity android:name=".DataAccuracyMalaria" />
+        <activity android:name=".DataAccuracyBcg" />
+        <activity android:name=".DataAccuracyNcd" />
+        <activity android:name=".DataAccuracyDeliveries" />
+        <activity android:name=".Datamanagement_Sop" />
+        <activity android:name=".DocumentationSanitation" />
         <activity android:name=".DocumentationCustomer" />
         <activity android:name=".DocumentationMalaria" />
         <activity android:name=".DocumentationReceivableRegisters" />

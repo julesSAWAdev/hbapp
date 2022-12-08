@@ -143,6 +143,13 @@ public class Databasehelper extends SQLiteOpenHelper {
     private static final String TABLE_NAME33="malaria_plan";
     private static final String TABLE_NAME34="customercare_program";
     private static final String TABLE_NAME35="sanitation";
+    private static final String TABLE_NAME36="datamanagement_sop";
+    private static final String TABLE_NAME37="datamanagement_deliveries";
+    private static final String TABLE_NAME38="datamanagement_NCD";
+    private static final String TABLE_NAME39="datamanagement_BCG";
+    private static final String TABLE_NAME40="datamanagement_Malaria";
+    private static final String TABLE_NAME41="datamanagement_opdregisters";
+    private static final String TABLE_NAME42="maternal_neonatal";
 
     private static final String doc_1= "year";
     private static final String doc_2= "district";
@@ -169,6 +176,57 @@ public class Databasehelper extends SQLiteOpenHelper {
     private static final String s11= "LATRINESCHEDULES";
     private static final String s12= "OPD";
     private static final String s13= "HOSPITALIZATIONROOMS";
+
+    //data management SOP
+    private static final String d1= "year";
+    private static final String d2= "district";
+    private static final String d3= "hc";
+    private static final String d4= "available";
+    private static final String d5= "signed";
+    private static final String d6= "submited";
+    private static final String d7= "dmavailable";
+
+    //data management data accuracy deliveries
+    private static final String de1= "year";
+    private static final String de2= "district";
+    private static final String de3= "hc";
+    private static final String de4= "patientfile";
+    private static final String de5= "register";
+    private static final String de6= "hmis_hardcopy";
+    private static final String de7= "hmis_softcopy";
+    private static final String de8= "accurate";
+    private static final String de10= "labregister";
+
+    //opd registers
+    private static final String opd1= "year";
+    private static final String opd2= "district";
+    private static final String opd3= "hc";
+    private static final String opd4= "lines";
+    private static final String opd5= "fields";
+    private static final String opd6= "blanks";
+
+    ///maternity and neonatal health
+    private static final String m1="year";
+    private static final String m2="district";
+    private static final String m3="hc";
+    private static final String m4="maternalyear";
+    private static final String m5="obsetricalANC";
+    private static final String m6="registrations";
+    private static final String m7="referalsANC";
+    private static final String m8="obsetricalMaternity";
+    private static final String m9="deliveries";
+    private static final String m10="livebirths";
+    private static final String m11="maternaldeaths";
+    private static final String m12="neonataldeaths";
+    private static final String m13="stillbirths";
+    private static final String m14="postpartun";
+    private static final String m15="anc4";
+    private static final String m16="anc1";
+    private static final String m17="underfivedeaths";
+    private static final String m18="childrenconsulted";
+    private static final String m19="contraceptiveusers";
+    private static final String m20="mr2vaccines";
+    private static final String m21="ultrasoundscans";
 
 
 
@@ -224,6 +282,13 @@ public class Databasehelper extends SQLiteOpenHelper {
         db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME33   + "(YEAR TEXT,DISTRICT TEXT,HC TEXT,AVAILABLE TEXT,TRACKED TEXT,APPROVED TEXT)");
         db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME34   + "(YEAR TEXT,DISTRICT TEXT,HC TEXT,AVAILABLE TEXT,TRACKED TEXT,APPROVED TEXT)");
         db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME35 + "(YEAR TEXT,DISTRICT TEXT,HC TEXT,STAFFLATRINES TEXT,PATIRNETLATRINES TEXT,TOTALLATRINES TEXT,BROKENLATRINES TEXT,CLEANLATRINES TEXT,ODORLESSLATRINES TEXT,HANDWASHLATRINES TEXT,LATRINESCHEDULES,OPD TEXT,HOSPITALIZATIONROOMS TEXT)");
+        db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME36   + "(YEAR TEXT,DISTRICT TEXT,HC TEXT,AVAILABLE TEXT,SIGNED TEXT,SUBMITED TEXT,DMAVAILABLE TEXT)");
+        db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME37   + "(YEAR TEXT,DISTRICT TEXT,HC TEXT,PATIENTFILE TEXT,REGISTER TEXT,HMIS_HARDCOPY TEXT,HMIS_SOFTCOPY TEXT,ACCURATE TEXT)");
+        db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME38   + "(YEAR TEXT,DISTRICT TEXT,HC TEXT,PATIENTFILE TEXT,REGISTER TEXT,HMIS_HARDCOPY TEXT,HMIS_SOFTCOPY TEXT,ACCURATE TEXT)");
+        db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME39   + "(YEAR TEXT,DISTRICT TEXT,HC TEXT,PATIENTFILE TEXT,REGISTER TEXT,HMIS_HARDCOPY TEXT,HMIS_SOFTCOPY TEXT,ACCURATE TEXT)");
+        db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME40   + "(YEAR TEXT,DISTRICT TEXT,HC TEXT,PATIENTFILE TEXT,REGISTER TEXT,HMIS_HARDCOPY TEXT,HMIS_SOFTCOPY TEXT,LABREGISTER TEXT,ACCURATE TEXT)");
+        db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME41   + "(YEAR TEXT,DISTRICT TEXT,HC TEXT,LINES TEXT,FIELDS TEXT,BLANKS TEXT)");
+        db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME42   + "(YEAR TEXT,DISTRICT TEXT,HC TEXT,maternalyear TEXT,obsetricalANC TEXT,registrations TEXT,referalsANC TEXT,obsetricalMaternity TEXT,deliveries TEXT,livebirths TEXT,maternaldeaths TEXT,neonataldeaths TEXT,stillbirths TEXT,postpartun TEXT,anc4 TEXT,anc1 TEXT,underfivedeaths TEXT,childrenconsulted TEXT,contraceptiveusers TEXT,mr2vaccines TEXT,ultrasoundscans TEXT)");
 
     }
 
@@ -264,6 +329,13 @@ public class Databasehelper extends SQLiteOpenHelper {
         db.execSQL("DROP TABLE IF EXISTS "+ TABLE_NAME33);
         db.execSQL("DROP TABLE IF EXISTS "+ TABLE_NAME34);
         db.execSQL("DROP TABLE IF EXISTS "+ TABLE_NAME35);
+        db.execSQL("DROP TABLE IF EXISTS "+ TABLE_NAME36);
+        db.execSQL("DROP TABLE IF EXISTS "+ TABLE_NAME37);
+        db.execSQL("DROP TABLE IF EXISTS "+ TABLE_NAME38);
+        db.execSQL("DROP TABLE IF EXISTS "+ TABLE_NAME39);
+        db.execSQL("DROP TABLE IF EXISTS "+ TABLE_NAME40);
+        db.execSQL("DROP TABLE IF EXISTS "+ TABLE_NAME41);
+        db.execSQL("DROP TABLE IF EXISTS "+ TABLE_NAME42);
         onCreate(db);
     }
 
@@ -1173,6 +1245,170 @@ public class Databasehelper extends SQLiteOpenHelper {
         }
 
     }
+
+    public boolean registerDatamanagementSOP(String year, String district, String hc,String available,String signed,String submited,String dmavailable){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+
+        values.put(d1,year);
+        values.put(d2,district);
+        values.put(d3,hc);
+        values.put(d4,available);
+        values.put(d5,signed);
+        values.put(d6,submited);
+        values.put(d7,dmavailable);
+        long result = db.insert(TABLE_NAME36, null, values);
+        if (result == -1){
+            return false;
+        }else{
+            return true;
+        }
+
+    }
+
+    public boolean registerDatamanagementDeliveries(String year, String district, String hc,String patientfile,String register,String hmis_hardcopy,String hmis_softcopy,String accurate){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+
+        values.put(de1,year);
+        values.put(de2,district);
+        values.put(de3,hc);
+        values.put(de4,patientfile);
+        values.put(de5,register);
+        values.put(de6,hmis_hardcopy);
+        values.put(de7,hmis_softcopy);
+        values.put(de8,accurate);
+        long result = db.insert(TABLE_NAME37, null, values);
+        if (result == -1){
+            return false;
+        }else{
+            return true;
+        }
+
+    }
+
+    public boolean registerDatamanagementNcd(String year, String district, String hc,String patientfile,String register,String hmis_hardcopy,String hmis_softcopy,String accurate){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+
+        values.put(de1,year);
+        values.put(de2,district);
+        values.put(de3,hc);
+        values.put(de4,patientfile);
+        values.put(de5,register);
+        values.put(de6,hmis_hardcopy);
+        values.put(de7,hmis_softcopy);
+        values.put(de8,accurate);
+        long result = db.insert(TABLE_NAME38, null, values);
+        if (result == -1){
+            return false;
+        }else{
+            return true;
+        }
+
+    }
+    public boolean registerDatamanagementBcg(String year, String district, String hc,String patientfile,String register,String hmis_hardcopy,String hmis_softcopy,String accurate){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+
+        values.put(de1,year);
+        values.put(de2,district);
+        values.put(de3,hc);
+        values.put(de4,patientfile);
+        values.put(de5,register);
+        values.put(de6,hmis_hardcopy);
+        values.put(de7,hmis_softcopy);
+        values.put(de8,accurate);
+        long result = db.insert(TABLE_NAME39, null, values);
+        if (result == -1){
+            return false;
+        }else{
+            return true;
+        }
+
+    }
+
+    public boolean registerDatamanagementMalaria(String year, String district, String hc,String patientfile,String register,String hmis_hardcopy,String hmis_softcopy,String labregister,String accurate){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+
+        values.put(de1,year);
+        values.put(de2,district);
+        values.put(de3,hc);
+        values.put(de4,patientfile);
+        values.put(de5,register);
+        values.put(de6,hmis_hardcopy);
+        values.put(de7,hmis_softcopy);
+        values.put(de10,labregister);
+        values.put(de8,accurate);
+        long result = db.insert(TABLE_NAME40, null, values);
+        if (result == -1){
+            return false;
+        }else{
+            return true;
+        }
+
+
+
+    }
+
+    public boolean registerDatamanagementOpdRegisters(String year, String district, String hc,String lines,String fields,String blanks){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+
+        values.put(opd1,year);
+        values.put(opd2,district);
+        values.put(opd3,hc);
+        values.put(opd4,lines);
+        values.put(opd5,fields);
+        values.put(opd6,blanks);
+        long result = db.insert(TABLE_NAME41, null, values);
+        if (result == -1){
+            return false;
+        }else{
+            return true;
+        }
+
+
+
+    }
+
+    public boolean registerMaternalNeonatal( String year,String district,String hc,String maternalyear, String obsetricalANC, String registrations, String referalsANC, String obsetricalMaternity, String deliveries, String livebirths, String maternaldeaths, String neonataldeaths, String stillbirths, String postpartun, String anc4, String anc1, String underfivedeaths, String childrenconsulted, String contraceptiveusers, String mr2vaccines, String ultrasoundscans){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+
+        values.put(m1,year);
+        values.put(m2,district);
+        values.put(m3,hc);
+        values.put(m4,maternalyear);
+        values.put(m5,obsetricalANC);
+        values.put(m6  ,registrations);
+        values.put(m6  ,referalsANC);
+        values.put(m6  ,obsetricalMaternity);
+        values.put(m6  ,deliveries);
+        values.put(m6  ,livebirths);
+        values.put(m6  ,maternaldeaths);
+        values.put(m6  ,neonataldeaths);
+        values.put(m6  ,stillbirths);
+        values.put(m6  ,postpartun);
+        values.put(m6  ,anc4);
+        values.put(m6  ,anc1);
+        values.put(m6  ,underfivedeaths);
+        values.put(m6  ,childrenconsulted);
+        values.put(m6  ,contraceptiveusers);
+        values.put(m6  ,mr2vaccines);
+        values.put(m6  ,ultrasoundscans);
+        long result = db.insert(TABLE_NAME42, null, values);
+        if (result == -1){
+            return false;
+        }else{
+            return true;
+        }
+
+
+
+    }
+
 
 
 }
