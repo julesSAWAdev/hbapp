@@ -85,6 +85,13 @@ public class SurveySection extends AppCompatActivity {
                     intent.putExtra("hc", xhc);
                     startActivity(intent);
                     finish();
+                }else if (Step.equals("Finance Management")){
+                    Intent intent = new Intent(getBaseContext(), FinanceManagementSop.class);
+                    intent.putExtra("year_id", xyear);
+                    intent.putExtra("district", xdistrict);
+                    intent.putExtra("hc", xhc);
+                    startActivity(intent);
+                    finish();
                 }
             }
         });

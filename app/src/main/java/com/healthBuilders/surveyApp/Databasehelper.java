@@ -150,6 +150,7 @@ public class Databasehelper extends SQLiteOpenHelper {
     private static final String TABLE_NAME40="datamanagement_Malaria";
     private static final String TABLE_NAME41="datamanagement_opdregisters";
     private static final String TABLE_NAME42="maternal_neonatal";
+    private static final String TABLE_NAME43="finance_review";
 
     private static final String doc_1= "year";
     private static final String doc_2= "district";
@@ -228,6 +229,28 @@ public class Databasehelper extends SQLiteOpenHelper {
     private static final String m20="mr2vaccines";
     private static final String m21="ultrasoundscans";
 
+    //finance review
+    private static final String fr1="year";
+    private static final String fr2="district";
+    private static final String fr3="hc";
+    private static final String fr4="fyear";
+    private static final String fr5="cbank";
+    private static final String fr6="cpetty";
+    private static final String fr7="creceivable";
+    private static final String fr8="cpayable";
+    private static final String fr9="cpharmacy";
+    private static final String fr10="crevenue";
+    private static final String fr11="chcincome";
+    private static final String fr12="cmedecines";
+    private static final String fr13="cexpenses";
+    private static final String fr14="chrexpenses";
+    private static final String fr15="cexpenditure";
+    private static final String fr16="cpmedecines";
+    private static final String fr17="cequipments";
+    private static final String fr18="ctravel";
+    private static final String fr19="cabudget";
+    private static final String fr20="cpbudget";
+
 
 
 
@@ -289,6 +312,7 @@ public class Databasehelper extends SQLiteOpenHelper {
         db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME40   + "(YEAR TEXT,DISTRICT TEXT,HC TEXT,PATIENTFILE TEXT,REGISTER TEXT,HMIS_HARDCOPY TEXT,HMIS_SOFTCOPY TEXT,LABREGISTER TEXT,ACCURATE TEXT)");
         db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME41   + "(YEAR TEXT,DISTRICT TEXT,HC TEXT,LINES TEXT,FIELDS TEXT,BLANKS TEXT)");
         db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME42   + "(YEAR TEXT,DISTRICT TEXT,HC TEXT,maternalyear TEXT,obsetricalANC TEXT,registrations TEXT,referalsANC TEXT,obsetricalMaternity TEXT,deliveries TEXT,livebirths TEXT,maternaldeaths TEXT,neonataldeaths TEXT,stillbirths TEXT,postpartun TEXT,anc4 TEXT,anc1 TEXT,underfivedeaths TEXT,childrenconsulted TEXT,contraceptiveusers TEXT,mr2vaccines TEXT,ultrasoundscans TEXT)");
+        db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME43   + "(fyear TEXT,cbank TEXT,cpetty TEXT,creceivable TEXT,cpayable TEXT,cpharmacy TEXT,crevenue TEXT,chcincome TEXT,cmedecines TEXT,cexpenses TEXT,chrexpenses TEXT,cexpenditure TEXT,cpmedecines TEXT,cequipments TEXT,ctravel TEXT,cabudget TEXT,cpbudget TEXT)");
 
     }
 
@@ -336,6 +360,7 @@ public class Databasehelper extends SQLiteOpenHelper {
         db.execSQL("DROP TABLE IF EXISTS "+ TABLE_NAME40);
         db.execSQL("DROP TABLE IF EXISTS "+ TABLE_NAME41);
         db.execSQL("DROP TABLE IF EXISTS "+ TABLE_NAME42);
+        db.execSQL("DROP TABLE IF EXISTS "+ TABLE_NAME43);
         onCreate(db);
     }
 
@@ -1383,22 +1408,59 @@ public class Databasehelper extends SQLiteOpenHelper {
         values.put(m4,maternalyear);
         values.put(m5,obsetricalANC);
         values.put(m6  ,registrations);
-        values.put(m6  ,referalsANC);
-        values.put(m6  ,obsetricalMaternity);
-        values.put(m6  ,deliveries);
-        values.put(m6  ,livebirths);
-        values.put(m6  ,maternaldeaths);
-        values.put(m6  ,neonataldeaths);
-        values.put(m6  ,stillbirths);
-        values.put(m6  ,postpartun);
-        values.put(m6  ,anc4);
-        values.put(m6  ,anc1);
-        values.put(m6  ,underfivedeaths);
-        values.put(m6  ,childrenconsulted);
-        values.put(m6  ,contraceptiveusers);
-        values.put(m6  ,mr2vaccines);
-        values.put(m6  ,ultrasoundscans);
+        values.put(m7  ,referalsANC);
+        values.put(m8  ,obsetricalMaternity);
+        values.put(m9  ,deliveries);
+        values.put(m10  ,livebirths);
+        values.put(m11  ,maternaldeaths);
+        values.put(m12  ,neonataldeaths);
+        values.put(m13  ,stillbirths);
+        values.put(m14  ,postpartun);
+        values.put(m15  ,anc4);
+        values.put(m16  ,anc1);
+        values.put(m17  ,underfivedeaths);
+        values.put(m18  ,childrenconsulted);
+        values.put(m19  ,contraceptiveusers);
+        values.put(m20  ,mr2vaccines);
+        values.put(m21  ,ultrasoundscans);
         long result = db.insert(TABLE_NAME42, null, values);
+        if (result == -1){
+            return false;
+        }else{
+            return true;
+        }
+
+
+
+    }
+
+
+
+    public boolean RegisterFinanceReview(String year,String district,String hc,String fyear, String cbank, String cpetty, String creceivable, String cpayable, String cpharmacy, String crevenue, String chcincome, String cmedecines, String cexpenses, String chrexpenses, String cexpenditure, String cpmedecines, String cequipments, String ctravel, String cabudget, String cpbudget){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+
+        values.put(fr1,year);
+        values.put(fr2,district);
+        values.put(fr3,hc);
+        values.put(fr4,fyear);
+        values.put(fr5,cbank);
+        values.put(fr6  ,cpetty);
+        values.put(fr7  ,creceivable);
+        values.put(fr8  ,cpayable);
+        values.put(fr9  ,cpharmacy);
+        values.put(fr10  ,crevenue);
+        values.put(fr11  ,chcincome);
+        values.put(fr12  ,cmedecines);
+        values.put(fr13  ,cexpenses);
+        values.put(fr14  ,chrexpenses);
+        values.put(fr15  ,cexpenditure);
+        values.put(fr16  ,cpmedecines);
+        values.put(fr17  ,cequipments);
+        values.put(fr18  ,ctravel);
+        values.put(fr19 ,cabudget);
+        values.put(fr20  ,cpbudget);
+        long result = db.insert(TABLE_NAME43, null, values);
         if (result == -1){
             return false;
         }else{

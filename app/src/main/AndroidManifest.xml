@@ -10,7 +10,9 @@
         android:roundIcon="@mipmap/ic_launcher"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".DataManagementMaternal"></activity>
+        <activity android:name=".InsuranceReview"></activity>
+        <activity android:name=".FinanceManagementSop" />
+        <activity android:name=".DataManagementMaternal" />
         <activity android:name=".DataCompletenessOpd" />
         <activity android:name=".DataAccuracyMalaria" />
         <activity android:name=".DataAccuracyBcg" />
