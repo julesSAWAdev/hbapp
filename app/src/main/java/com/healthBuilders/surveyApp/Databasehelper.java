@@ -151,6 +151,7 @@ public class Databasehelper extends SQLiteOpenHelper {
     private static final String TABLE_NAME41="datamanagement_opdregisters";
     private static final String TABLE_NAME42="maternal_neonatal";
     private static final String TABLE_NAME43="finance_review";
+    private static final String TABLE_NAME44="insurance_review";
 
     private static final String doc_1= "year";
     private static final String doc_2= "district";
@@ -251,6 +252,28 @@ public class Databasehelper extends SQLiteOpenHelper {
     private static final String fr19="cabudget";
     private static final String fr20="cpbudget";
 
+    //insurancereview
+    private static final String iv1="year";
+    private static final String iv2="district";
+    private static final String iv3="hc";
+    private static final String iv4="fyear";
+    private static final String iv5="ivperiod";
+    private static final String iv6="subcbhi";
+    private static final String iv7="subrssb";
+    private static final String iv8="submmi";
+    private static final String iv9="returncbhi";
+    private static final String iv10="returnrssb";
+    private static final String iv11="returnmmi";
+    private static final String iv12="verifyrssb";
+    private static final String iv13="verifymmi";
+    private static final String iv14="amountcbhi";
+    private static final String iv15="amountrssb";
+    private static final String iv16="amountmmi";
+    private static final String iv17="aftercbhi";
+    private static final String iv18="afterrssb";
+    private static final String iv19="aftermmi";
+
+
 
 
 
@@ -312,7 +335,8 @@ public class Databasehelper extends SQLiteOpenHelper {
         db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME40   + "(YEAR TEXT,DISTRICT TEXT,HC TEXT,PATIENTFILE TEXT,REGISTER TEXT,HMIS_HARDCOPY TEXT,HMIS_SOFTCOPY TEXT,LABREGISTER TEXT,ACCURATE TEXT)");
         db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME41   + "(YEAR TEXT,DISTRICT TEXT,HC TEXT,LINES TEXT,FIELDS TEXT,BLANKS TEXT)");
         db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME42   + "(YEAR TEXT,DISTRICT TEXT,HC TEXT,maternalyear TEXT,obsetricalANC TEXT,registrations TEXT,referalsANC TEXT,obsetricalMaternity TEXT,deliveries TEXT,livebirths TEXT,maternaldeaths TEXT,neonataldeaths TEXT,stillbirths TEXT,postpartun TEXT,anc4 TEXT,anc1 TEXT,underfivedeaths TEXT,childrenconsulted TEXT,contraceptiveusers TEXT,mr2vaccines TEXT,ultrasoundscans TEXT)");
-        db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME43   + "(YEAR TEXT,HC TEXT,DISTRICT TEXT,fyear TEXT,cbank TEXT,cpetty TEXT,creceivable TEXT,cpayable TEXT,cpharmacy TEXT,crevenue TEXT,chcincome TEXT,cmedecines TEXT,cexpenses TEXT,chrexpenses TEXT,cexpenditure TEXT,cpmedecines TEXT,cequipments TEXT,ctravel TEXT,cabudget TEXT,cpbudget TEXT)");
+        db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME42   + "(YEAR TEXT,DISTRICT TEXT,HC TEXT,maternalyear TEXT,obsetricalANC TEXT,registrations TEXT,referalsANC TEXT,obsetricalMaternity TEXT,deliveries TEXT,livebirths TEXT,maternaldeaths TEXT,neonataldeaths TEXT,stillbirths TEXT,postpartun TEXT,anc4 TEXT,anc1 TEXT,underfivedeaths TEXT,childrenconsulted TEXT,contraceptiveusers TEXT,mr2vaccines TEXT,ultrasoundscans TEXT)");
+        db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME44   + "(YEAR TEXT,HC TEXT,DISTRICT TEXT,fyear TEXT,ivperiod TEXT,subcbhi TEXT,subrssb TEXT,submmi TEXT,returncbhi TEXT,returnrssb TEXT,returnmmi TEXT,verifyrssb TEXT,verifymmi TEXT,amountcbhi TEXT,amountrssb TEXT,amountmmi TEXT,aftercbhi TEXT,afterrssb TEXT,aftermmi TEXT)");
 
     }
 
@@ -361,6 +385,7 @@ public class Databasehelper extends SQLiteOpenHelper {
         db.execSQL("DROP TABLE IF EXISTS "+ TABLE_NAME41);
         db.execSQL("DROP TABLE IF EXISTS "+ TABLE_NAME42);
         db.execSQL("DROP TABLE IF EXISTS "+ TABLE_NAME43);
+        db.execSQL("DROP TABLE IF EXISTS "+ TABLE_NAME44);
         onCreate(db);
     }
 
@@ -1461,6 +1486,41 @@ public class Databasehelper extends SQLiteOpenHelper {
         values.put(fr19 ,cabudget);
         values.put(fr20  ,cpbudget);
         long result = db.insert(TABLE_NAME43, null, values);
+        if (result == -1){
+            return false;
+        }else{
+            return true;
+        }
+
+
+
+    }
+
+
+    public boolean RegisterAssuranceReview(String year  ,String hc  ,String district  ,String fyear  ,String ivperiod  ,String subcbhi  ,String subrssb  ,String submmi  ,String returncbhi  ,String returnrssb  ,String returnmmi  ,String verifyrssb  ,String verifymmi  ,String amountcbhi  ,String amountrssb  ,String amountmmi  ,String aftercbhi  ,String afterrssb  ,String aftermmi){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+
+        values.put(iv1,year);
+        values.put(iv2,district);
+        values.put(iv3,hc);
+        values.put(iv4,fyear);
+        values.put(iv5,ivperiod);
+        values.put(iv6  ,subcbhi);
+        values.put(iv7  ,subrssb);
+        values.put(iv8  ,submmi);
+        values.put(iv9  ,returncbhi);
+        values.put(iv10  ,returnrssb);
+        values.put(iv11  ,returnmmi);
+        values.put(iv12  ,verifyrssb);
+        values.put(iv13  ,verifymmi);
+        values.put(iv14  ,amountcbhi);
+        values.put(iv15  ,amountrssb);
+        values.put(iv16  ,amountmmi);
+        values.put(iv17  ,aftercbhi);
+        values.put(iv18  ,afterrssb);
+        values.put(iv19 ,aftermmi);
+        long result = db.insert(TABLE_NAME44, null, values);
         if (result == -1){
             return false;
         }else{

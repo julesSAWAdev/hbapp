@@ -23,7 +23,8 @@ import java.util.Calendar;
 import java.util.Locale;
 
 public class InsuranceReview extends AppCompatActivity {
-    TextInputEditText invoiceCBHI,invoiceRSSB,invoiceMMI,returnCBHI,returnRSSB,returnMMI;
+    TextInputEditText invoiceCBHI,invoiceRSSB,invoiceMMI,returnCBHI,returnRSSB,returnMMI,verifyRSSB,verifyMMI,
+                        amountCBHI,amountRSSB,amountMMI,afterCBHI,afterRSSB,afterMMI,fyear,ivperiod;
     Calendar myCalendar;
     Button savecont;
     private ProgressDialog progressDialog;
@@ -41,6 +42,9 @@ public class InsuranceReview extends AppCompatActivity {
         final String district = getIntent().getStringExtra("district");
         final String hc = getIntent().getStringExtra("hc");
 
+        fyear=findViewById(R.id.financeYear);
+        ivperiod=findViewById(R.id.period);
+
         invoiceCBHI=findViewById(R.id.invoicecbhi);
         invoiceMMI=findViewById(R.id.invoicemmi);
         invoiceRSSB=findViewById(R.id.invoicerssb);
@@ -49,7 +53,23 @@ public class InsuranceReview extends AppCompatActivity {
         returnRSSB=findViewById(R.id.returnrssb);
         returnMMI=findViewById(R.id.returnmmi);
 
+        verifyRSSB=findViewById(R.id.verifyrssb);
+        verifyMMI=findViewById(R.id.verifymmi);
+
+        amountCBHI=findViewById(R.id.amountcbhi);
+        amountRSSB=findViewById(R.id.amountrssb);
+        amountMMI=findViewById(R.id.amountmmi);
+
+
+        afterCBHI=findViewById(R.id.aftercbhi);
+        afterRSSB=findViewById(R.id.afterrssb);
+        afterMMI=findViewById(R.id.aftermmi);
+
+
+        savecont=findViewById(R.id.saviNext);
         myCalendar=Calendar.getInstance();
+        myDb = new Databasehelper(this);
+
 
         final DatePickerDialog.OnDateSetListener dateSetListener=new DatePickerDialog.OnDateSetListener() {
             @RequiresApi(api = Build.VERSION_CODES.N)
@@ -82,6 +102,66 @@ public class InsuranceReview extends AppCompatActivity {
                 myCalendar.set(Calendar.DAY_OF_MONTH,day);
 
                 updateLabe2();
+            }
+        };
+
+
+
+
+        final DatePickerDialog.OnDateSetListener dateSetListener3=new DatePickerDialog.OnDateSetListener() {
+            @RequiresApi(api = Build.VERSION_CODES.N)
+            @Override
+            public void onDateSet(DatePicker datePicker, int year, int month, int day) {
+                myCalendar.set(Calendar.YEAR,year);
+                myCalendar.set(Calendar.MONTH,month);
+                myCalendar.set(Calendar.DAY_OF_MONTH,day);
+
+                updateLabe3();
+            }
+        };
+        final DatePickerDialog.OnDateSetListener dateSetListener4=new DatePickerDialog.OnDateSetListener() {
+            @RequiresApi(api = Build.VERSION_CODES.N)
+            @Override
+            public void onDateSet(DatePicker datePicker, int year, int month, int day) {
+                myCalendar.set(Calendar.YEAR,year);
+                myCalendar.set(Calendar.MONTH,month);
+                myCalendar.set(Calendar.DAY_OF_MONTH,day);
+
+                updateLabe4();
+            }
+        };
+        final DatePickerDialog.OnDateSetListener dateSetListener5=new DatePickerDialog.OnDateSetListener() {
+            @RequiresApi(api = Build.VERSION_CODES.N)
+            @Override
+            public void onDateSet(DatePicker datePicker, int year, int month, int day) {
+                myCalendar.set(Calendar.YEAR,year);
+                myCalendar.set(Calendar.MONTH,month);
+                myCalendar.set(Calendar.DAY_OF_MONTH,day);
+
+                updateLabe5();
+            }
+        };
+
+        final DatePickerDialog.OnDateSetListener dateSetListener6=new DatePickerDialog.OnDateSetListener() {
+            @RequiresApi(api = Build.VERSION_CODES.N)
+            @Override
+            public void onDateSet(DatePicker datePicker, int year, int month, int day) {
+                myCalendar.set(Calendar.YEAR,year);
+                myCalendar.set(Calendar.MONTH,month);
+                myCalendar.set(Calendar.DAY_OF_MONTH,day);
+
+                updateLabe6();
+            }
+        };
+        final DatePickerDialog.OnDateSetListener dateSetListener7=new DatePickerDialog.OnDateSetListener() {
+            @RequiresApi(api = Build.VERSION_CODES.N)
+            @Override
+            public void onDateSet(DatePicker datePicker, int year, int month, int day) {
+                myCalendar.set(Calendar.YEAR,year);
+                myCalendar.set(Calendar.MONTH,month);
+                myCalendar.set(Calendar.DAY_OF_MONTH,day);
+
+                updateLabe7();
             }
         };
 
@@ -133,6 +213,134 @@ public class InsuranceReview extends AppCompatActivity {
         });
 
 
+
+        returnCBHI.setOnClickListener(new View.OnClickListener() {
+            @RequiresApi(api = Build.VERSION_CODES.N)
+            @Override
+            public void onClick(View v) {
+
+                new DatePickerDialog(InsuranceReview.this,dateSetListener3,
+                        myCalendar.get(Calendar.YEAR),
+                        myCalendar.get(Calendar.MONTH),
+                        myCalendar.get(Calendar.DAY_OF_MONTH)).show();
+
+
+            }
+
+
+        });
+
+        returnRSSB.setOnClickListener(new View.OnClickListener() {
+            @RequiresApi(api = Build.VERSION_CODES.N)
+            @Override
+            public void onClick(View v) {
+
+                new DatePickerDialog(InsuranceReview.this,dateSetListener4,
+                        myCalendar.get(Calendar.YEAR),
+                        myCalendar.get(Calendar.MONTH),
+                        myCalendar.get(Calendar.DAY_OF_MONTH)).show();
+
+
+            }
+
+
+        });
+        returnMMI.setOnClickListener(new View.OnClickListener() {
+            @RequiresApi(api = Build.VERSION_CODES.N)
+            @Override
+            public void onClick(View v) {
+
+                new DatePickerDialog(InsuranceReview.this,dateSetListener5,
+                        myCalendar.get(Calendar.YEAR),
+                        myCalendar.get(Calendar.MONTH),
+                        myCalendar.get(Calendar.DAY_OF_MONTH)).show();
+
+
+            }
+
+
+        });
+
+        verifyRSSB.setOnClickListener(new View.OnClickListener() {
+            @RequiresApi(api = Build.VERSION_CODES.N)
+            @Override
+            public void onClick(View v) {
+
+                new DatePickerDialog(InsuranceReview.this,dateSetListener6,
+                        myCalendar.get(Calendar.YEAR),
+                        myCalendar.get(Calendar.MONTH),
+                        myCalendar.get(Calendar.DAY_OF_MONTH)).show();
+
+
+            }
+
+
+        });
+
+        verifyMMI.setOnClickListener(new View.OnClickListener() {
+            @RequiresApi(api = Build.VERSION_CODES.N)
+            @Override
+            public void onClick(View v) {
+
+                new DatePickerDialog(InsuranceReview.this,dateSetListener7,
+                        myCalendar.get(Calendar.YEAR),
+                        myCalendar.get(Calendar.MONTH),
+                        myCalendar.get(Calendar.DAY_OF_MONTH)).show();
+
+
+            }
+
+
+        });
+
+        savecont.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                final String xyear= year;
+                final String xdistrict = district;
+                final String xhc= hc;
+                final String xfyear=fyear.getText().toString().trim();
+                final String xivperiod=ivperiod.getText().toString().trim();
+                final String xinvoiceCBHI=invoiceCBHI.getText().toString();
+                final String xinvoiceRSSB=invoiceRSSB.getText().toString();
+                final String xinvoiceMMI=invoiceMMI.getText().toString();
+                final String xreturnCBHI=returnCBHI.getText().toString();
+                final String xreturnRSSB=returnRSSB.getText().toString();
+                final String xreturnMMI=returnMMI.getText().toString();
+                final String xverifyRSSB=verifyRSSB.getText().toString();
+                final String xverifyMMI=verifyMMI.getText().toString();
+                final String xamountCBHI=amountCBHI.getText().toString();
+                final String xamountRSSB=amountRSSB.getText().toString();
+                final String xamountMMI=amountMMI.getText().toString();
+                final String xafterCBHI=afterCBHI.getText().toString();
+                final String xafterRSSB=afterRSSB.getText().toString();
+                final String xafterMMI=afterMMI.getText().toString();
+
+                boolean var = myDb.RegisterAssuranceReview(xyear,xdistrict,xhc,xfyear,xivperiod,xinvoiceCBHI,xinvoiceRSSB,xinvoiceMMI,xreturnCBHI,xreturnRSSB,xreturnMMI,
+                        xverifyRSSB,xverifyMMI,xamountCBHI,xamountRSSB,xamountMMI,xafterCBHI,xafterRSSB,xafterMMI);
+                if (var) {
+
+
+                    Intent intent = new Intent(getBaseContext(), IncomeReview.class);
+                    intent.putExtra("year_id", year);
+                    intent.putExtra("district", district);
+                    intent.putExtra("hc", hc);
+
+
+                    startActivity(intent);
+                    finish();
+                }else{
+
+                    Toast.makeText(InsuranceReview.this, "An error occured", Toast.LENGTH_SHORT).show();
+
+                }
+            }
+
+
+        });
+
+
     }
 
     @RequiresApi(api = Build.VERSION_CODES.N)
@@ -156,4 +364,47 @@ public class InsuranceReview extends AppCompatActivity {
         invoiceMMI.setText(dateFormat.format(myCalendar.getTime()));
 
     }
+
+
+    @RequiresApi(api = Build.VERSION_CODES.N)
+    private void updateLabe3() {
+        String myFormat ="MM/dd/yy";
+        SimpleDateFormat dateFormat=new SimpleDateFormat(myFormat, Locale.US);
+        returnCBHI.setText(dateFormat.format(myCalendar.getTime()));
+
+    }
+    @RequiresApi(api = Build.VERSION_CODES.N)
+    private void updateLabe4() {
+        String myFormat ="MM/dd/yy";
+        SimpleDateFormat dateFormat=new SimpleDateFormat(myFormat, Locale.US);
+        returnRSSB.setText(dateFormat.format(myCalendar.getTime()));
+
+    }
+    @RequiresApi(api = Build.VERSION_CODES.N)
+    private void updateLabe5() {
+        String myFormat ="MM/dd/yy";
+        SimpleDateFormat dateFormat=new SimpleDateFormat(myFormat, Locale.US);
+        returnMMI.setText(dateFormat.format(myCalendar.getTime()));
+
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.N)
+    private void updateLabe6() {
+        String myFormat ="MM/dd/yy";
+        SimpleDateFormat dateFormat=new SimpleDateFormat(myFormat, Locale.US);
+        verifyRSSB.setText(dateFormat.format(myCalendar.getTime()));
+
+    }
+    @RequiresApi(api = Build.VERSION_CODES.N)
+    private void updateLabe7() {
+        String myFormat ="MM/dd/yy";
+        SimpleDateFormat dateFormat=new SimpleDateFormat(myFormat, Locale.US);
+        verifyMMI.setText(dateFormat.format(myCalendar.getTime()));
+
+    }
+
+
+
+
+
 }
