@@ -312,7 +312,7 @@ public class Databasehelper extends SQLiteOpenHelper {
         db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME40   + "(YEAR TEXT,DISTRICT TEXT,HC TEXT,PATIENTFILE TEXT,REGISTER TEXT,HMIS_HARDCOPY TEXT,HMIS_SOFTCOPY TEXT,LABREGISTER TEXT,ACCURATE TEXT)");
         db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME41   + "(YEAR TEXT,DISTRICT TEXT,HC TEXT,LINES TEXT,FIELDS TEXT,BLANKS TEXT)");
         db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME42   + "(YEAR TEXT,DISTRICT TEXT,HC TEXT,maternalyear TEXT,obsetricalANC TEXT,registrations TEXT,referalsANC TEXT,obsetricalMaternity TEXT,deliveries TEXT,livebirths TEXT,maternaldeaths TEXT,neonataldeaths TEXT,stillbirths TEXT,postpartun TEXT,anc4 TEXT,anc1 TEXT,underfivedeaths TEXT,childrenconsulted TEXT,contraceptiveusers TEXT,mr2vaccines TEXT,ultrasoundscans TEXT)");
-        db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME43   + "(fyear TEXT,cbank TEXT,cpetty TEXT,creceivable TEXT,cpayable TEXT,cpharmacy TEXT,crevenue TEXT,chcincome TEXT,cmedecines TEXT,cexpenses TEXT,chrexpenses TEXT,cexpenditure TEXT,cpmedecines TEXT,cequipments TEXT,ctravel TEXT,cabudget TEXT,cpbudget TEXT)");
+        db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME43   + "(YEAR TEXT,HC TEXT,DISTRICT TEXT,fyear TEXT,cbank TEXT,cpetty TEXT,creceivable TEXT,cpayable TEXT,cpharmacy TEXT,crevenue TEXT,chcincome TEXT,cmedecines TEXT,cexpenses TEXT,chrexpenses TEXT,cexpenditure TEXT,cpmedecines TEXT,cequipments TEXT,ctravel TEXT,cabudget TEXT,cpbudget TEXT)");
 
     }
 

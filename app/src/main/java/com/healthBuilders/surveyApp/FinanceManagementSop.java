@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
@@ -81,6 +82,7 @@ public class FinanceManagementSop extends AppCompatActivity {
                 final String xcabudget=cabudget.getText().toString().trim();
                 final String xcpbudget=cpbudget.getText().toString().trim();
 
+
                 boolean var = myDb.RegisterFinanceReview(xyear,xdistrict,xhc,xfyear,xcbank,xcpetty,xcreceivable,xcpayable,xcpharmacy,xcrevenue,xchcincome,xcmedecines,
                         xcexpenses,xchrexpenses,xcexpenditure,xcpmedecines,xcequipments,xctravel,xcabudget,xcpbudget);
                 if (var) {
@@ -95,6 +97,7 @@ public class FinanceManagementSop extends AppCompatActivity {
                     startActivity(intent);
                     finish();
                 }else{
+
                     Toast.makeText(FinanceManagementSop.this, "An error occured", Toast.LENGTH_SHORT).show();
 
                 }
