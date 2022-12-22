@@ -109,7 +109,7 @@ public class startPage extends AppCompatActivity {
         intent.putExtra("hc", hc);
 
         startActivity(intent);
-        finish();
+
 
     }
 }

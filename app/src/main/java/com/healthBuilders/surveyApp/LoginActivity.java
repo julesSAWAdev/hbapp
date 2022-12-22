@@ -119,7 +119,7 @@ public class LoginActivity extends AppCompatActivity {
         if (var){
             Toast.makeText(LoginActivity.this, "Login Successfull", Toast.LENGTH_SHORT).show();
             startActivity(new Intent(LoginActivity.this, startPage.class));
-            finish();
+
         }else{
             Toast.makeText(LoginActivity.this, "User not found or incorrect credentials", Toast.LENGTH_SHORT).show();
             progressDialog.dismiss();

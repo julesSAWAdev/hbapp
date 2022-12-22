@@ -152,6 +152,9 @@ public class Databasehelper extends SQLiteOpenHelper {
     private static final String TABLE_NAME42="maternal_neonatal";
     private static final String TABLE_NAME43="finance_review";
     private static final String TABLE_NAME44="insurance_review";
+    private static final String TABLE_NAME45="income_review";
+    private static final String TABLE_NAME46="Accounts";
+    private static final String TABLE_NAME47="expense_review";
 
     private static final String doc_1= "year";
     private static final String doc_2= "district";
@@ -274,6 +277,35 @@ public class Databasehelper extends SQLiteOpenHelper {
     private static final String iv19="aftermmi";
 
 
+    //incomereview
+    private static final String ic1="year";
+    private static final String ic2="district";
+    private static final String ic3="hc";
+    private static final String ic4="incomedate";
+    private static final String ic5="journalincome";
+    private static final String ic6="receiptincome";
+    private static final String ic7="incomematch";
+
+
+    //incomereview
+    private static final String acc1="year";
+    private static final String acc2="district";
+    private static final String acc3="hc";
+    private static final String acc4="accreco";
+    private static final String acc5="accbook";
+
+    //expense review
+    private static final String ex1="year";
+    private static final String ex2="district";
+    private static final String ex3="hc";
+    private static final String ex4="expenseReference";
+    private static final String ex5="expenseSigned";
+    private static final String ex6="expenseinvoice";
+    private static final String ex7="expensenumbered";
+    private static final String ex8="expenseOrdered";
+    private static final String ex9="expenseRecorded";
+
+
 
 
 
@@ -335,8 +367,11 @@ public class Databasehelper extends SQLiteOpenHelper {
         db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME40   + "(YEAR TEXT,DISTRICT TEXT,HC TEXT,PATIENTFILE TEXT,REGISTER TEXT,HMIS_HARDCOPY TEXT,HMIS_SOFTCOPY TEXT,LABREGISTER TEXT,ACCURATE TEXT)");
         db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME41   + "(YEAR TEXT,DISTRICT TEXT,HC TEXT,LINES TEXT,FIELDS TEXT,BLANKS TEXT)");
         db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME42   + "(YEAR TEXT,DISTRICT TEXT,HC TEXT,maternalyear TEXT,obsetricalANC TEXT,registrations TEXT,referalsANC TEXT,obsetricalMaternity TEXT,deliveries TEXT,livebirths TEXT,maternaldeaths TEXT,neonataldeaths TEXT,stillbirths TEXT,postpartun TEXT,anc4 TEXT,anc1 TEXT,underfivedeaths TEXT,childrenconsulted TEXT,contraceptiveusers TEXT,mr2vaccines TEXT,ultrasoundscans TEXT)");
-        db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME42   + "(YEAR TEXT,DISTRICT TEXT,HC TEXT,maternalyear TEXT,obsetricalANC TEXT,registrations TEXT,referalsANC TEXT,obsetricalMaternity TEXT,deliveries TEXT,livebirths TEXT,maternaldeaths TEXT,neonataldeaths TEXT,stillbirths TEXT,postpartun TEXT,anc4 TEXT,anc1 TEXT,underfivedeaths TEXT,childrenconsulted TEXT,contraceptiveusers TEXT,mr2vaccines TEXT,ultrasoundscans TEXT)");
+        db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME43   + "(year TEXT,district TEXT,hc TEXT,fyear TEXT, cbank TEXT, cpetty TEXT, creceivable TEXT, cpayable TEXT, cpharmacy TEXT, crevenue TEXT, chcincome TEXT, cmedecines TEXT, cexpenses TEXT, chrexpenses TEXT, cexpenditure TEXT, cpmedecines TEXT, cequipments TEXT, ctravel TEXT, cabudget TEXT, cpbudget TEXT)");
         db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME44   + "(YEAR TEXT,HC TEXT,DISTRICT TEXT,fyear TEXT,ivperiod TEXT,subcbhi TEXT,subrssb TEXT,submmi TEXT,returncbhi TEXT,returnrssb TEXT,returnmmi TEXT,verifyrssb TEXT,verifymmi TEXT,amountcbhi TEXT,amountrssb TEXT,amountmmi TEXT,aftercbhi TEXT,afterrssb TEXT,aftermmi TEXT)");
+        db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME45   + "(YEAR TEXT,DISTRICT TEXT,HC TEXT,INCOMEDATE TEXT,JOURNALINCOME TEXT,RECEIPTINCOME TEXT,INCOMEMATCH TEXT)");
+        db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME46   + "(YEAR TEXT,DISTRICT TEXT,HC TEXT,ACCRECO TEXT,ACCBOOK TEXT)");
+        db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME47   + "(YEAR TEXT,DISTRICT TEXT,HC TEXT,EXPENSEREFERENCE TEXT,EXPENSESIGNED TEXT,EXPENSEINVOICE TEXT,EXPENSENUMBERED TEXT,EXPENSEORDERED TEXT,EXPENSERECORDED TEXT)");
 
     }
 
@@ -386,6 +421,9 @@ public class Databasehelper extends SQLiteOpenHelper {
         db.execSQL("DROP TABLE IF EXISTS "+ TABLE_NAME42);
         db.execSQL("DROP TABLE IF EXISTS "+ TABLE_NAME43);
         db.execSQL("DROP TABLE IF EXISTS "+ TABLE_NAME44);
+        db.execSQL("DROP TABLE IF EXISTS "+ TABLE_NAME45);
+        db.execSQL("DROP TABLE IF EXISTS "+ TABLE_NAME46);
+        db.execSQL("DROP TABLE IF EXISTS "+ TABLE_NAME47);
         onCreate(db);
     }
 
@@ -1528,6 +1566,67 @@ public class Databasehelper extends SQLiteOpenHelper {
         }
 
 
+
+    }
+
+
+    public boolean registerIncomeReview(String year, String district, String hc,String incomedate,String journalincome,String receiptincome,String incomematch){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+
+        values.put(ic1,year);
+        values.put(ic2,district);
+        values.put(ic3,hc);
+        values.put(ic4,incomedate);
+        values.put(ic5,journalincome);
+        values.put(ic6,receiptincome);
+        values.put(ic7,incomematch);
+        long result = db.insert(TABLE_NAME45, null, values);
+        if (result == -1){
+            return false;
+        }else{
+            return true;
+        }
+
+    }
+    public boolean registerAccounts(String year, String district, String hc,String accreco,String accbook){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+
+        values.put(acc1,year);
+        values.put(acc2,district);
+        values.put(acc3,hc);
+        values.put(acc4,accreco);
+        values.put(acc5,accbook);
+        long result = db.insert(TABLE_NAME46, null, values);
+        if (result == -1){
+            return false;
+        }else{
+            return true;
+        }
+
+    }
+
+    public boolean registerExpenseReview(String year, String district, String hc,String expensereference,String expensesigned,String expenseinvoice,String expensenumbered,String expenseordered,String expenserecorded){
+
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+
+        values.put(ex1,year);
+        values.put(ex2,district);
+        values.put(ex3,hc);
+        values.put(ex4,expensereference);
+        values.put(ex5,expensesigned);
+        values.put(ex6,expenseinvoice);
+        values.put(ex7,expensenumbered);
+        values.put(ex8,expenseordered);
+        values.put(ex9,expenserecorded);
+        long result = db.insert(TABLE_NAME47, null, values);
+        if (result == -1){
+            return false;
+        }else{
+            return true;
+        }
 
     }
 

@@ -52,7 +52,7 @@ public class FinanceManagementSop extends AppCompatActivity {
 
 
 
-        savecont=findViewById(R.id.saniNext);
+        savecont=findViewById(R.id.saviNext);
 
         myDb = new Databasehelper(this);
 
