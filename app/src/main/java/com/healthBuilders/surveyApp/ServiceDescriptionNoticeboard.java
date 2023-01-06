@@ -55,7 +55,7 @@ public class ServiceDescriptionNoticeboard extends AppCompatActivity {
 
                 boolean var = myDb.registerTNoticeBoardCurrentDataServiceDescription(xyear,xdistrict,xhc,xcurrentdata);
                 if (var) {
-                    Intent intent = new Intent(getBaseContext(), startPage.class);
+                    Intent intent = new Intent(getBaseContext(), Services.class);
 
 
                     startActivity(intent);

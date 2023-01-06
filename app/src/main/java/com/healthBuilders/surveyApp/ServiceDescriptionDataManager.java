@@ -85,7 +85,7 @@ public class ServiceDescriptionDataManager extends AppCompatActivity {
 
                 boolean var = myDb.registerDataManagerServiceDescription(xyear,xdistrict,xhc,xDataManagerdirection,xDataManagerservice,xDataManagerresponsiblename,xDataManagercurrentdata,xDataManagerresponsiblephoto,xDataManagerarea,xDataManagerrequestedlistofsupplies,xDataManagercurrentlistofsupplies,xDataManagerhygiene,xDataManagerhandhygience);
                 if (var) {
-                    Intent intent = new Intent(getBaseContext(), ServiceDescriptionArv.class);
+                    Intent intent = new Intent(getBaseContext(), Services.class);
                     intent.putExtra("year_id", year);
                     intent.putExtra("district", district);
                     intent.putExtra("hc", hc);

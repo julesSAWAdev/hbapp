@@ -85,7 +85,7 @@ public class ServiceDescriptionCustomerCare extends AppCompatActivity {
                 boolean var = myDb.registerCustomerCareServiceDescription(xyear,xdistrict,xhc,xCustomerdirection,xCustomerservice,xCustomerresponsiblename,xCustomercurrentdata,xCustomerresponsiblephoto,xCustomerarea,xCustomerrequestedlistofsupplies,xCustomercurrentlistofsupplies,xCustomerhygiene,xCustomerhandhygience);
 
                 if(var) {
-                    Intent intent = new Intent(getBaseContext(), ServiceDescriptionConsultation.class);
+                    Intent intent = new Intent(getBaseContext(), Services.class);
                     intent.putExtra("year_id", year);
                     intent.putExtra("district", district);
                     intent.putExtra("hc", hc);

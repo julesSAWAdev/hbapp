@@ -180,7 +180,7 @@
                 <EditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Sells of medecines"
+                    android:hint="Sales of medecines"
                     android:id="@+id/closeSells">
 
                 </EditText>

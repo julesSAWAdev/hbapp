@@ -90,7 +90,7 @@ public class ServiceDescriptionCeho extends AppCompatActivity {
                 boolean var = myDb.registerCehoServiceDescription(xyear,xdistrict,xhc,xcehodirection,xcehoservice,xcehoresponsiblename,xcehocurrentdata,xcehoresponsiblephoto,xcehoarea,xcehorequestedlistofsupplies,xcehocurrentlistofsupplies,xcehohygiene,xcehohandhygience);
 
                 if (var) {
-                    Intent intent = new Intent(getBaseContext(), ServiceDescriptionCashier.class);
+                    Intent intent = new Intent(getBaseContext(), Services.class);
                     intent.putExtra("year_id", year);
                     intent.putExtra("district", district);
                     intent.putExtra("hc", hc);

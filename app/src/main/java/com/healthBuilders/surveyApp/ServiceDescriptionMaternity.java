@@ -86,7 +86,7 @@ public class ServiceDescriptionMaternity extends AppCompatActivity {
                 boolean var = myDb.registerMaternityServiceDescription(xyear,xdistrict,xhc,xMaternitydirection,xMaternityservice,xMaternityresponsiblename,xMaternitycurrentdata,xMaternityresponsiblephoto,xMaternityarea,xMaternityrequestedlistofsupplies,xMaternitycurrentlistofsupplies,xMaternityhygiene,xMaternityhandhygience);
 
                 if (var) {
-                    Intent intent = new Intent(getBaseContext(), ServiceDescriptionHospitalization.class);
+                    Intent intent = new Intent(getBaseContext(), Services.class);
                     intent.putExtra("year_id", year);
                     intent.putExtra("district", district);
                     intent.putExtra("hc", hc);

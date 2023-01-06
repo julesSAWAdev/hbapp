@@ -86,7 +86,7 @@ public class ServiceDescriptionTitulaire extends AppCompatActivity {
                 boolean var = myDb.registerTitulaireServiceDescription(xyear,xdistrict,xhc,xtitulairedirection,xtitulaireservice,xtitulaireresponsiblename,xtitulairecurrentdata,xtitulaireresponsiblephoto,xtitulairearea,xtitulairerequestedlistofsupplies,xtitulairecurrentlistofsupplies,xtitulairehygiene,xtitulairehandhygience);
                 if(var) {
 
-                    Intent intent = new Intent(getBaseContext(), ServiceDescriptionDataManager.class);
+                    Intent intent = new Intent(getBaseContext(), Services.class);
                     intent.putExtra("year_id", year);
                     intent.putExtra("district", district);
                     intent.putExtra("hc", hc);

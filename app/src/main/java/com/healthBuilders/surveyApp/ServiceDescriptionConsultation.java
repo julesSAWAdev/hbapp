@@ -86,7 +86,7 @@ public class ServiceDescriptionConsultation extends AppCompatActivity {
                 boolean var = myDb.registerConsultationServiceDescription(xyear,xdistrict,xhc,xConsultationdirection,xConsultationservice,xConsultationresponsiblename,xConsultationcurrentdata,xConsultationresponsiblephoto,xConsultationarea,xConsultationrequestedlistofsupplies,xConsultationcurrentlistofsupplies,xConsultationhygiene,xConsultationhandhygience);
 
                 if(var) {
-                    Intent intent = new Intent(getBaseContext(), ServiceDescriptionMaternity.class);
+                    Intent intent = new Intent(getBaseContext(), Services.class);
                     intent.putExtra("year_id", year);
                     intent.putExtra("district", district);
                     intent.putExtra("hc", hc);

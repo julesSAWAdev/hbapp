@@ -86,7 +86,7 @@ public class ServiceDescriptionAccounting extends AppCompatActivity {
 
                 boolean var = myDb.registerAccountingServiceDescription(xyear,xdistrict,xhc,xaccountingdirection,xaccountingservice,xaccountingresponsiblename,xaccountingcurrentdata,xaccountingresponsiblephoto,xaccountingarea,xaccountingrequestedlistofsupplies,xaccountingcurrentlistofsupplies,xaccountinghygiene,xaccountinghandhygience);
                 if (var) {
-                    Intent intent = new Intent(getBaseContext(), ServiceDescriptionLaboratory.class);
+                    Intent intent = new Intent(getBaseContext(), Services.class);
                     intent.putExtra("year_id", year);
                     intent.putExtra("district", district);
                     intent.putExtra("hc", hc);

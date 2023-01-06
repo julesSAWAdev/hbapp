@@ -88,7 +88,7 @@ public class ServiceDescriptionToilets extends AppCompatActivity {
 
                 if (var) {
 
-                    Intent intent = new Intent(getBaseContext(), ServiceDescriptionNoticeboard.class);
+                    Intent intent = new Intent(getBaseContext(), Services.class);
                     intent.putExtra("year_id", year);
                     intent.putExtra("district", district);
                     intent.putExtra("hc", hc);

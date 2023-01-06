@@ -86,7 +86,7 @@ public class ServiceDescriptionFamilyplanning extends AppCompatActivity {
 
                 boolean var = myDb.registerFpServiceDescription(xyear,xdistrict,xhc,xfpdirection,xfpservice,xfpresponsiblename,xfpcurrentdata,xfpresponsiblephoto,xfparea,xfprequestedlistofsupplies,xfpcurrentlistofsupplies,xfphygiene,xfphandhygience);
                 if(var) {
-                    Intent intent = new Intent(getBaseContext(), ServiceDescriptionPharmacy.class);
+                    Intent intent = new Intent(getBaseContext(), Services.class);
 
                     intent.putExtra("year_id", year);
                     intent.putExtra("district", district);

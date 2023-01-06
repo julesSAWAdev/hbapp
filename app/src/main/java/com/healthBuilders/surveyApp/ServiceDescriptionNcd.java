@@ -84,7 +84,7 @@ public class ServiceDescriptionNcd extends AppCompatActivity {
                 boolean var = myDb.registerNcdServiceDescription(xyear,xdistrict,xhc,xncddirection,xncdservice,xncdresponsiblename,xncdcurrentdata,xncdresponsiblephoto,xncdarea,xncdrequestedlistofsupplies,xncdcurrentlistofsupplies,xncdhygiene,xncdhandhygience);
                 if (var) {
 
-                    Intent intent = new Intent(getBaseContext(), ServiceDescriptionCeho.class);
+                    Intent intent = new Intent(getBaseContext(), Services.class);
                     intent.putExtra("year_id", year);
                     intent.putExtra("district", district);
                     intent.putExtra("hc", hc);

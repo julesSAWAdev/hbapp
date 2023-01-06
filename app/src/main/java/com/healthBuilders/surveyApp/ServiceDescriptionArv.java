@@ -85,7 +85,7 @@ public class ServiceDescriptionArv extends AppCompatActivity {
                 boolean var = myDb.registerArvServiceDescription(xyear,xdistrict,xhc,xArvdirection,xArvservice,xArvresponsiblename,xArvcurrentdata,xArvresponsiblephoto,xArvarea,xArvrequestedlistofsupplies,xArvcurrentlistofsupplies,xArvhygiene,xArvhandhygience);
 
                 if (var) {
-                    Intent intent = new Intent(getBaseContext(), ServiceDescriptionCustomerCare.class);
+                    Intent intent = new Intent(getBaseContext(), Services.class);
                     intent.putExtra("year_id", year);
                     intent.putExtra("district", district);
                     intent.putExtra("hc", hc);

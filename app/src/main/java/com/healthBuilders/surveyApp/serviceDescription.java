@@ -90,7 +90,7 @@ public class serviceDescription extends AppCompatActivity {
                 boolean var = myDb.registerAncServiceDescription(xyear,xdistrict,xhc,xancdirection,xancservice,xancresponsiblename,xanccurrentdata,xancresponsiblephoto,xancarea,xancrequestedlistofsupplies,xanccurrentlistofsupplies,xanchygiene,xanchandhygience);
                 if (var){
                     Toast.makeText(serviceDescription.this,"Data added successfuly",Toast.LENGTH_SHORT);
-                    Intent intent = new Intent(getBaseContext(), ServiceDescriptionVaccination.class);
+                    Intent intent = new Intent(getBaseContext(), Services.class);
                     intent.putExtra("year_id", year);
                     intent.putExtra("district", district);
                     intent.putExtra("hc", hc);

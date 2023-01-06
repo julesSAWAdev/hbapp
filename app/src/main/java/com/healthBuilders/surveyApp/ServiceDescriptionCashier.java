@@ -87,7 +87,7 @@ public class ServiceDescriptionCashier extends AppCompatActivity {
                 boolean var = myDb.registerCashierServiceDescription(xyear,xdistrict,xhc,xcashierdirection,xcashierservice,xcashierresponsiblename,xcashiercurrentdata,xcashierresponsiblephoto,xcashierarea,xcashierrequestedlistofsupplies,xcashiercurrentlistofsupplies,xcashierhygiene,xcashierhandhygience);
 
                 if(var) {
-                    Intent intent = new Intent(getBaseContext(), ServiceDescriptionAccounting.class);
+                    Intent intent = new Intent(getBaseContext(), Services.class);
                     intent.putExtra("year_id", year);
                     intent.putExtra("district", district);
                     intent.putExtra("hc", hc);

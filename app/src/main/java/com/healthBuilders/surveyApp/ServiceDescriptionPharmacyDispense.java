@@ -85,7 +85,7 @@ public class ServiceDescriptionPharmacyDispense extends AppCompatActivity {
                 boolean var = myDb.registerPharmacyDispenseServiceDescription(xyear,xdistrict,xhc,xpharmacyDispdirection,xpharmacyDispservice,xpharmacyDispresponsiblename,xpharmacyDispcurrentdata,xpharmacyDispresponsiblephoto,xpharmacyDisparea,xpharmacyDisprequestedlistofsupplies,xpharmacyDispcurrentlistofsupplies,xpharmacyDisphygiene,xpharmacyDisphandhygience);
 
                 if(var) {
-                    Intent intent = new Intent(getBaseContext(), ServiceDescriptionNcd.class);
+                    Intent intent = new Intent(getBaseContext(), Services.class);
                     intent.putExtra("year_id", year);
                     intent.putExtra("district", district);
                     intent.putExtra("hc", hc);

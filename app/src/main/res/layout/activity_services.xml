@@ -1,0 +1,251 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity"
+    android:orientation="vertical"
+    android:background="#fff"
+    android:padding="20dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <ImageView
+            android:id="@+id/logoImage"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:src="@drawable/hb"
+            android:transitionName="logo_image"/>
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Service and area description"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:textColor="@color/blue"
+            android:transitionName="logo_desc"/>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="20dp"
+            tools:ignore="MissingClass"
+            android:theme="@style/Theme.MaterialComponents.DayNight.DarkActionBar">
+            >
+
+
+
+
+            <Button
+                android:id="@+id/ANC"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="1dp"
+                android:text="ANC"
+                android:textColor="#000"
+                android:backgroundTint="@color/white"/>
+
+            <Button
+                android:id="@+id/vaccination"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="2dp"
+                android:layout_marginBottom="1dp"
+                android:text="Vaccination"
+                android:textColor="#000"
+                android:backgroundTint="@color/white"/>
+
+            <Button
+                android:id="@+id/fplanning"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="2dp"
+                android:layout_marginBottom="1dp"
+                android:text="Family planning"
+                android:textColor="#000"
+                android:backgroundTint="@color/white"/>
+
+            <Button
+                android:id="@+id/pstock"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="2dp"
+                android:layout_marginBottom="1dp"
+                android:text="Pharmacy Stock"
+                android:textColor="#000"
+                android:backgroundTint="@color/white"/>
+
+            <Button
+                android:id="@+id/pdispensing"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="2dp"
+                android:layout_marginBottom="1dp"
+                android:text="Pharmacy dispensing"
+                android:textColor="#000"
+                android:backgroundTint="@color/white"/>
+
+            <Button
+                android:id="@+id/ncd"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="2dp"
+                android:layout_marginBottom="1dp"
+                android:text="NCD"
+                android:textColor="#000"
+                android:backgroundTint="@color/white"/>
+
+            <Button
+                android:id="@+id/ceho"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="2dp"
+                android:layout_marginBottom="1dp"
+                android:text="CEHO"
+                android:textColor="#000"
+                android:backgroundTint="@color/white"/>
+
+            <Button
+                android:id="@+id/cashier"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="2dp"
+                android:layout_marginBottom="1dp"
+                android:text="Cashier"
+                android:textColor="#000"
+                android:backgroundTint="@color/white"/>
+            <Button
+                android:id="@+id/accounting"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="2dp"
+                android:layout_marginBottom="1dp"
+                android:text="Accounting"
+                android:textColor="#000"
+                android:backgroundTint="@color/white"/>
+
+            <Button
+                android:id="@+id/laboratory"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="2dp"
+                android:layout_marginBottom="1dp"
+                android:text="Laboratory"
+                android:textColor="#000"
+                android:backgroundTint="@color/white"/>
+
+            <Button
+                android:id="@+id/titulaire"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="2dp"
+                android:layout_marginBottom="1dp"
+                android:text="Titulaire"
+                android:textColor="#000"
+                android:backgroundTint="@color/white"/>
+
+            <Button
+                android:id="@+id/datamanager"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="2dp"
+                android:layout_marginBottom="1dp"
+                android:text="Data Manager"
+                android:textColor="#000"
+                android:backgroundTint="@color/white"/>
+
+            <Button
+                android:id="@+id/arv"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="2dp"
+                android:layout_marginBottom="1dp"
+                android:text="ARV"
+                android:textColor="#000"
+                android:backgroundTint="@color/white"/>
+
+            <Button
+                android:id="@+id/custocare"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="2dp"
+                android:layout_marginBottom="1dp"
+                android:text="Customer care"
+                android:textColor="#000"
+                android:backgroundTint="@color/white"/>
+
+            <Button
+                android:id="@+id/consroom"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="2dp"
+                android:layout_marginBottom="1dp"
+                android:text="Consultation Room"
+                android:textColor="#000"
+                android:backgroundTint="@color/white"/>
+
+            <Button
+                android:id="@+id/maternity"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="2dp"
+                android:layout_marginBottom="1dp"
+                android:text="Maternity"
+                android:textColor="#000"
+                android:backgroundTint="@color/white"/>
+
+            <Button
+                android:id="@+id/hospitalization"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="2dp"
+                android:layout_marginBottom="1dp"
+                android:text="Hospitalization"
+                android:textColor="#000"
+                android:backgroundTint="@color/white"/>
+
+            <Button
+                android:id="@+id/toilets"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="2dp"
+                android:layout_marginBottom="1dp"
+                android:text="Toilets"
+                android:textColor="#000"
+                android:backgroundTint="@color/white"/>
+
+            <Button
+                android:id="@+id/noteboard"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="2dp"
+                android:layout_marginBottom="1dp"
+                android:text="Notice board"
+                android:textColor="#000"
+                android:backgroundTint="@color/white"/>
+
+            <Button
+                android:id="@+id/close"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="5dp"
+                android:text="Close Section"
+                android:textColor="#FFF"
+                android:backgroundTint="@color/red"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+
+</ScrollView>

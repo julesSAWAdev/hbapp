@@ -87,7 +87,7 @@ public class ServiceDescriptionVaccination extends AppCompatActivity {
                 boolean var = myDb.registerVacServiceDescription(xyear,xdistrict,xhc,xvacdirection,xvacservice,xvacresponsiblename,xvaccurrentdata,xvacresponsiblephoto,xvacarea,xvacrequestedlistofsupplies,xvaccurrentlistofsupplies,xvachygiene,xvachandhygience);
                 if (var) {
 
-                    Intent intent = new Intent(getBaseContext(), ServiceDescriptionFamilyplanning.class);
+                    Intent intent = new Intent(getBaseContext(), Services.class);
                     intent.putExtra("year_id", year);
                     intent.putExtra("district", district);
                     intent.putExtra("hc", hc);

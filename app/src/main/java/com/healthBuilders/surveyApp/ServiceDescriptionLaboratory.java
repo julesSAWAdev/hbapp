@@ -86,7 +86,7 @@ public class ServiceDescriptionLaboratory extends AppCompatActivity {
                 boolean var = myDb.registerLaboratoryServiceDescription(xyear,xdistrict,xhc,xlaboratorydirection,xlaboratoryservice,xlaboratoryresponsiblename,xlaboratorycurrentdata,xlaboratoryresponsiblephoto,xlaboratoryarea,xlaboratoryrequestedlistofsupplies,xlaboratorycurrentlistofsupplies,xlaboratoryhygiene,xlaboratoryhandhygience);
 
                 if (var) {
-                    Intent intent = new Intent(getBaseContext(), ServiceDescriptionTitulaire.class);
+                    Intent intent = new Intent(getBaseContext(), Services.class);
                     intent.putExtra("year_id", year);
                     intent.putExtra("district", district);
                     intent.putExtra("hc", hc);

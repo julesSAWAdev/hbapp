@@ -10,7 +10,8 @@
         android:roundIcon="@mipmap/ic_launcher"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ExpensesReview"></activity>
+        <activity android:name=".Services"></activity>
+        <activity android:name=".ExpensesReview" />
         <activity android:name=".Accounts" />
         <activity android:name=".IncomeReview" />
         <activity android:name=".InsuranceReview" />

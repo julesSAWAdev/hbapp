@@ -87,7 +87,7 @@ public class ServiceDescriptionHospitalization extends AppCompatActivity {
                 boolean var = myDb.registerHospitalizationServiceDescription(xyear,xdistrict,xhc,xHospitalizationdirection,xHospitalizationservice,xHospitalizationresponsiblename,xHospitalizationcurrentdata,xHospitalizationresponsiblephoto,xHospitalizationarea,xHospitalizationrequestedlistofsupplies,xHospitalizationcurrentlistofsupplies,xHospitalizationhygiene,xHospitalizationhandhygience);
                 if (var) {
 
-                    Intent intent = new Intent(getBaseContext(), ServiceDescriptionToilets.class);
+                    Intent intent = new Intent(getBaseContext(), Services.class);
                     intent.putExtra("year_id", year);
                     intent.putExtra("district", district);
                     intent.putExtra("hc", hc);

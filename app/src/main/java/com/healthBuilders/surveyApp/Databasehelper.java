@@ -46,30 +46,39 @@ public class Databasehelper extends SQLiteOpenHelper {
     private static final String COL3_4 = "organi";
     private static final String COL3_5 = "uptodate";
     private static final String COL3_6 = "accessible";
+    private static final String COLP_1 = "position1";
     private static final String COL3_7 = "labtecav";
     private static final String COL3_8 = "labsign";
     private static final String COL3_9 = "labemp";
+    private static final String COLP_2 = "position2";
     private static final String COL3_10 = "nursearv";
     private static final String COL3_11 = "nursearsign";
     private static final String COL3_12 = "nursearempsign";
+    private static final String COLP_3 = "position3";
     private static final String COL3_13 = "nursevacav";
     private static final String COL3_14 = "nursevacsign";
     private static final String COL3_15 = "nursevacempsign";
+    private static final String COLP_4 = "position4";
     private static final String COL3_16 = "custocareav";
     private static final String COL3_17 = "custcaresign";
     private static final String COL3_18 = "custcareemppsign";
+    private static final String COLP_5 = "position5";
     private static final String COL3_19 = "nursetbav";
     private static final String COL3_20 = "nursetbsign";
     private static final String COL3_21 = "nursetbempsign";
+    private static final String COLP_6 = "position6";
     private static final String COL3_22 = "nursechi";
     private static final String COL3_23 = "nursechisign";
     private static final String COL3_24 = "nursechiempsign";
+    private static final String COLP_7 = "position7";
     private static final String COL3_25 = "socialav";
     private static final String COL3_26 = "socialsign";
     private static final String COL3_27= "socialempsign";
+    private static final String COLP_8 = "position8";
     private static final String COL3_28 = "nursecpnav";
     private static final String COL3_29 = "nursecpnsign";
     private static final String COL3_30 = "nursecpnempsign";
+    private static final String COLP_9                                                                                                                                                                                                                                                                                      = "position9";
     private static final String COL3_31 = "midwifeav";
     private static final String COL3_32 = "midwifesign";
     private static final String COL3_33 = "midwifeempsign";
@@ -91,6 +100,8 @@ public class Databasehelper extends SQLiteOpenHelper {
     private static final String COL3_49= "patientrate";
     private static final String COL3_50= "staffmetting";
     private static final String COL3_51= "cosametting";
+    private static final String COL3_52= "cogemetting";
+    private static final String COL3_53= "chwmetting";
 
 
 
@@ -304,6 +315,7 @@ public class Databasehelper extends SQLiteOpenHelper {
     private static final String ex7="expensenumbered";
     private static final String ex8="expenseOrdered";
     private static final String ex9="expenseRecorded";
+    private static final String ex90="CURRENTDATA";
 
 
 
@@ -327,7 +339,7 @@ public class Databasehelper extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME + "(ID INTEGER PRIMARY KEY AUTOINCREMENT, FNAME TEXT, LNAME TEXT, EMAIL TEXT,PASSWORD TEXT)");
         db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME2 + "(YEAR TEXT, DISTRICT TEXT, HC TEXT,SECTOR TEXT, CELL TEXT,VILLAGE TEXT, PUBPOST TEXT, PRIPOST TEXT,POPULATION TEXT,PATIENTS TEXT,BEDS TEXT, CONSROOMS TEXT,HOSPROOMS TEXT,CHW TEXT,A0 TEXT,A1 TEXT,A2 TEXT,MIDWIFE TEXT)");
-        db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME3 + "(YEAR TEXT, DISTRICT TEXT, HC TEXT,ORGANI TEXT, UPTODATE TEXT,ACCESSIBLE TEXT, LABTECAV TEXT,LABSIGN TEXT,LABEMP TEXT,NURSEARV TEXT,NURSEARSIGN TEXT,NURSEAREMPSIGN TEXT,NURSEVACAV TEXT,NURSEVACSIGN TEXT,NURSEVACEMPSIGN TEXT,CUSTOCAREAV TEXT,CUSTCARESIGN TEXT,CUSTCAREEMPPSIGN TEXT,NURSETBAV TEXT,NURSETBSIGN TEXT,NURSETBEMPSIGN TEXT,NURSECHI TEXT,NURSECHISIGN TEXT,NURSECHIEMPSIGN TEXT,SOCIALAV TEXT,SOCIALSIGN TEXT,SOCIALEMPSIGN TEXT,NURSECPNAV TEXT,NURSECPNSIGN TEXT,NURSECPNEMPSIGN TEXT,MIDWIFEAV TEXT,MIDWIFESIGN TEXT,MIDWIFEEMPSIGN TEXT,SOPPHARMACY TEXT,EVIDENCE TEXT,QICOMITEE TEXT,TOTSTAFF TEXT,TOTNURSE TEXT,PAIDSTAFF TEXT,CLINICALSTAFF TEXT,TBSTAFF TEXT,STAFFINFECTION TEXT,STAFFCOVID TEXT,STAFFEVALUATED TEXT,STAFFILLNESS TEXT,STAFFINJURIES TEXT,STAFFHEPATITE TEXT,STAFFRATE TEXT,PATIENTRATE TEXT,STAFFMETTING TEXT,COSAMETTING TEXT)");
+        db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME3 + "(YEAR TEXT, DISTRICT TEXT, HC TEXT,ORGANI TEXT, UPTODATE TEXT,ACCESSIBLE TEXT,POSITION1 TEXT, LABTECAV TEXT,LABSIGN TEXT,LABEMP TEXT,POSITION2 TEXT, NURSEARV TEXT,NURSEARSIGN TEXT,NURSEAREMPSIGN TEXT,POSITON3 TEXT,NURSEVACAV TEXT,NURSEVACSIGN TEXT,NURSEVACEMPSIGN TEXT,POSITION4 TEXT, CUSTOCAREAV TEXT,CUSTCARESIGN TEXT,CUSTCAREEMPPSIGN TEXT,POSITION5 TEXT, NURSETBAV TEXT,NURSETBSIGN TEXT,NURSETBEMPSIGN TEXT,POSITION6 TEXT,NURSECHI TEXT,NURSECHISIGN TEXT,NURSECHIEMPSIGN TEXT,POSITION7 TEXT,SOCIALAV TEXT,SOCIALSIGN TEXT,SOCIALEMPSIGN TEXT,POSITION8 TEXT, NURSECPNAV TEXT,NURSECPNSIGN TEXT,NURSECPNEMPSIGN TEXT,POSITION9 TEXT,MIDWIFEAV TEXT,MIDWIFESIGN TEXT,MIDWIFEEMPSIGN TEXT,SOPPHARMACY TEXT,EVIDENCE TEXT,QICOMITEE TEXT,TOTSTAFF TEXT,TOTNURSE TEXT,PAIDSTAFF TEXT,CLINICALSTAFF TEXT,TBSTAFF TEXT,STAFFINFECTION TEXT,STAFFCOVID TEXT,STAFFEVALUATED TEXT,STAFFILLNESS TEXT,STAFFINJURIES TEXT,STAFFHEPATITE TEXT,STAFFRATE TEXT,PATIENTRATE TEXT,STAFFMETTING TEXT,COSAMETTING TEXT,COGEMEETING TEXT,CHWMEETING TEXT)");
         db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME4 + "(YEAR TEXT,DISTRICT TEXT,HC TEXT,DIRECTION TEXT,SERVICE TEXT,RESPONSIBLENAME TEXT,CURRENTDATA TEXT,RESPONSIBLEPHOTO TEXT,AREA TEXT,REQUESTEDLISTOFSUPPLIES TEXT,CURRENTLISTOFSUPPLIES,HYGIENE TEXT,HANDHYGIENE TEXT)");
         db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME5 + "(YEAR TEXT,DISTRICT TEXT,HC TEXT,DIRECTION TEXT,SERVICE TEXT,RESPONSIBLENAME TEXT,CURRENTDATA TEXT,RESPONSIBLEPHOTO TEXT,AREA TEXT,REQUESTEDLISTOFSUPPLIES TEXT,CURRENTLISTOFSUPPLIES,HYGIENE TEXT,HANDHYGIENE TEXT)");
         db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME6 + "(YEAR TEXT,DISTRICT TEXT,HC TEXT,DIRECTION TEXT,SERVICE TEXT,RESPONSIBLENAME TEXT,CURRENTDATA TEXT,RESPONSIBLEPHOTO TEXT,AREA TEXT,REQUESTEDLISTOFSUPPLIES TEXT,CURRENTLISTOFSUPPLIES,HYGIENE TEXT,HANDHYGIENE TEXT)");
@@ -964,7 +976,7 @@ public class Databasehelper extends SQLiteOpenHelper {
         values.put(anc_1,year);
         values.put(anc_2,district);
         values.put(anc_3,hc);
-        values.put(anc_4,currentdata);
+        values.put(ex90,currentdata);
 
         long result = db.insert(TABLE_NAME22, null, values);
         if (result == -1){
@@ -976,17 +988,17 @@ public class Databasehelper extends SQLiteOpenHelper {
     }
 
 
-        public boolean registerBasicInformation2(String year, String district, String hc, String organi,String uptodate,String accessible,String  labtecav,
-                                             String  labsign, String  labemp, String  nursearv, String  nursearsign, String  nursearempsign, String  nursevacav,
-                                             String  nursevacsign ,String  nursevacempsign,
-                                             String  custocareav, String  custcaresign, String  custcareemppsign, String  nursetbav ,String  nursetbsign ,
-                                             String  nursetbempsign, String  nursechi, String  nursechisign ,String  nursechiempsign ,String  socialav ,
-                                             String socialsign ,String  socialempsign ,String  nursecpnav ,String  nursecpnsign ,String  nursecpnempsign ,
-                                             String  midwifeav, String  midwifesign, String  midwifeempsign ,String  SOPpharmacy, String  evidence,
+        public boolean registerBasicInformation2(String year, String district, String hc, String organi,String uptodate,String accessible,String position1,String  labtecav,
+                                             String  labsign, String  labemp,String position2, String  nursearv, String  nursearsign, String  nursearempsign, String position3,String  nursevacav,
+                                             String  nursevacsign ,String  nursevacempsign,String position4, String  custocareav, String  custcaresign, String  custcareemppsign,
+                                                 String position5,String  nursetbav ,String  nursetbsign ,
+                                             String  nursetbempsign, String position6, String  nursechi, String  nursechisign ,String  nursechiempsign ,String position7, String  socialav ,
+                                             String socialsign ,String  socialempsign ,String position8, String  nursecpnav ,String  nursecpnsign ,String  nursecpnempsign ,
+                                                 String position9, String  midwifeav, String  midwifesign, String  midwifeempsign ,String  SOPpharmacy, String  evidence,
                                              String  qicomitee ,String  totstaff ,String  totnurse, String  paidstaff ,String  clinicalstaff,
                                              String  tbstaff ,String  staffinfection, String  staffcovid ,String  staffevaluated ,
                                              String  staffillness ,String  staffinjuries ,String  staffhepatite, String  staffrate ,
-                                             String  patientrate ,String  staffmetting, String cosametting ){
+                                             String  patientrate ,String  staffmetting, String cosametting, String cogemeeting,String chwmeeting ){
 
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
@@ -997,30 +1009,39 @@ public class Databasehelper extends SQLiteOpenHelper {
         values.put( COL3_4 ,organi);
         values.put( COL3_5 ,uptodate);
         values.put( COL3_6 ,accessible);
+        values.put( COLP_1 ,position1);
         values.put( COL3_7 ,labtecav);
         values.put( COL3_8 ,labsign);
         values.put( COL3_9 ,labemp);
+        values.put( COLP_2 ,position2);
         values.put( COL3_10 ,nursearv);
         values.put( COL3_11 ,nursearsign);
         values.put( COL3_12 ,nursearempsign);
+        values.put( COLP_3 ,position3);
         values.put( COL3_13 ,nursevacav);
         values.put( COL3_14 ,nursevacsign);
         values.put( COL3_15 ,nursevacempsign);
+        values.put( COLP_4 ,position4);
         values.put( COL3_16 ,custocareav);
         values.put( COL3_17 ,custcaresign);
         values.put( COL3_18 ,custcareemppsign);
+        values.put( COLP_5 ,position5);
         values.put( COL3_19 ,nursetbav);
         values.put( COL3_20 ,nursetbsign);
         values.put( COL3_21 ,nursetbempsign);
+        values.put( COLP_6 ,position6);
         values.put( COL3_22 ,nursechi);
         values.put( COL3_23 ,nursechisign);
         values.put( COL3_24 ,nursechiempsign);
+        values.put( COLP_7 ,position7);
         values.put( COL3_25 ,socialav);
         values.put( COL3_26 ,socialsign);
         values.put( COL3_27,socialempsign);
+        values.put( COLP_8 ,position8);
         values.put( COL3_28 ,nursecpnav);
         values.put( COL3_29 ,nursecpnsign);
         values.put( COL3_30 ,nursecpnempsign);
+        values.put( COLP_9 ,position9);
         values.put( COL3_31 ,midwifeav);
         values.put( COL3_32 ,midwifesign);
         values.put( COL3_33 ,midwifeempsign);
@@ -1042,6 +1063,8 @@ public class Databasehelper extends SQLiteOpenHelper {
         values.put( COL3_49,patientrate);
         values.put( COL3_50,staffmetting);
         values.put( COL3_51,cosametting);
+        values.put( COL3_52,cogemeeting);
+        values.put( COL3_53,chwmeeting);
 
         long result = db.insert(TABLE_NAME3, null, values);
         if (result == -1){
