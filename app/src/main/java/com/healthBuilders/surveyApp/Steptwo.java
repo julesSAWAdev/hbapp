@@ -324,8 +324,12 @@ public class Steptwo extends AppCompatActivity {
                         xtotstaff,xtotnurse,xpaidstaff,xclinicalstaff,xtbstaff,xstaffinfection,xstaffcovid,xstaffevaluated,xstaffillness,xstaffinjuries,xstaffhepatite,xstaffrate,xpatientrate,xstaffmeeting,xcosameeting,xcogemeeting,xchwmeeting);
                 if (var){
                     Toast.makeText(Steptwo.this,"record added succesfuly",Toast.LENGTH_SHORT);
-                    startActivity(new Intent(Steptwo.this, startPage.class));
-                    finish();
+                    Intent intent = new Intent(getBaseContext(), SurveySection.class);
+                    intent.putExtra("year_id", year);
+                    intent.putExtra("district", district);
+                    intent.putExtra("hc", hc);
+                    startActivity(intent);
+
                 }else{
                     Toast.makeText(Steptwo.this, "An error occured", Toast.LENGTH_SHORT).show();
                 }
