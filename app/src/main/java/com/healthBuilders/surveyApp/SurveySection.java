@@ -91,6 +91,20 @@ public class SurveySection extends AppCompatActivity {
                     intent.putExtra("hc", xhc);
                     startActivity(intent);
 
+                }else if (Step.equals("Pharmacy Management")){
+                    Intent intent = new Intent(getBaseContext(), pharmacymanagementReview.class);
+                    intent.putExtra("year_id", xyear);
+                    intent.putExtra("district", xdistrict);
+                    intent.putExtra("hc", xhc);
+                    startActivity(intent);
+
+                }else if (Step.equals("Safety Management & Health Education")){
+                    Intent intent = new Intent(getBaseContext(), safetyManagement.class);
+                    intent.putExtra("year_id", xyear);
+                    intent.putExtra("district", xdistrict);
+                    intent.putExtra("hc", xhc);
+                    startActivity(intent);
+
                 }
             }
         });

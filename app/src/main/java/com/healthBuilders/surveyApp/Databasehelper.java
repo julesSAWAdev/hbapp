@@ -318,8 +318,93 @@ public class Databasehelper extends SQLiteOpenHelper {
     private static final String ex90="CURRENTDATA";
 
 
+    //safetyManagement
+    private static final String TABLE_NAME48="safety_management";
+    private static final String sm1="year";
+    private static final String sm2="district";
+    private static final String sm3="hc";
+    private static final String sm4="rightsposted";
+    private static final String sm5="infection";
+    private static final String sm6="satisfactiontool";
+    private static final String sm7="satisfactiondata";
+    private static final String sm8="suggestionbox";
+    private static final String sm9="qiincident";
+    private static final String sm10="annualhazard";
+    private static final String sm11="ppe";
+    private static final String sm12="staffppe";
+    private static final String sm13="staffsatisfactiontool";
+    private static final String sm14="incidenttool";
+    private static final String sm15="asrh";
+    private static final String sm16="staffsatisfactiondata";
+    private static final String sm17="patientincidents";
+    private static final String sm18="patientincidentanalyzed";
+    private static final String sm19="numberhazards";
+    private static final String sm20="numberhazardsfixed";
 
 
+    //safetyManagement
+    private static final String TABLE_NAME49="healthEducation";
+    private static final String he1="year";
+    private static final String he2="district";
+    private static final String he3="hc";
+    private static final String he4="rmsessions";
+    private static final String he5="rmbeneficiones";
+    private static final String he6="rmscreened";
+    private static final String he7="idsessions";
+    private static final String he8="idbeneficiones";
+    private static final String he9="idscreened";
+    private static final String he10="ncsessions";
+    private static final String he11="ncbeneficiones";
+    private static final String he12="ncscreened";
+
+
+    //pharmacy management
+    private static final String TABLE_NAME50="pharmacyManagement";
+    private static final String pm1="year";
+    private static final String pm2="district";
+    private static final String pm3="hc";
+    private static final String pm4="drugseparate";
+    private static final String pm5="drugforms";
+    private static final String pm6="drugrequisition";
+    private static final String pm7="drugalphabet";
+    private static final String pm8="drugclass";
+    private static final String pm9="drugfifo";
+    private static final String pm10="drugfefo";
+    private static final String pm11="drugother";
+    private static final String pm12="drugnone";
+    private static final String pm13="pharmacydry";
+    private static final String pm14="pharmacyclean";
+    private static final String pm15="pharmacyprotected";
+    private static final String pm16="pharmacyorganized";
+    private static final String pm17="pharmacythermometer";
+    private static final String pm18="pharmacyrefrigerator";
+    private static final String pm19="pharmacymonitored";
+    private static final String pm20="pharmacyinventory";
+    private static final String pm21="pharmacyessentials";
+    private static final String pm22="pharmacynotes";
+    private static final String pm23="pharmacyregister";
+    private static final String pm24="pharmacytallies";
+    private static final String pm25="pharmacybook";
+    private static final String pm26="pharmacysigned";
+    private static final String pm27="pharmacytemperature";
+    private static final String pm28="pharmacyrefrigiratortemp";
+
+    //pharmacyStock
+    private static final String TABLE_NAME51="pharmacyStock";
+    private static final String ps1="year";
+    private static final String ps2="district";
+    private static final String ps3="hc";
+    private static final String ps4="drugname";
+    private static final String ps5="drugquantity";
+    private static final String ps6="drugquantityshelf";
+    private static final String ps7="drugavailable";
+    private static final String ps8="drugexpired";
+    private static final String ps9="drugrequested";
+    private static final String ps10="drugstockcard";
+    private static final String ps11="drugstockcardfilled";
+    private static final String ps12="drugexcess";
+    private static final String ps13="druginventory";
+    private static final String ps14="druglabel";
 
 
 
@@ -384,6 +469,10 @@ public class Databasehelper extends SQLiteOpenHelper {
         db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME45   + "(YEAR TEXT,DISTRICT TEXT,HC TEXT,INCOMEDATE TEXT,JOURNALINCOME TEXT,RECEIPTINCOME TEXT,INCOMEMATCH TEXT)");
         db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME46   + "(YEAR TEXT,DISTRICT TEXT,HC TEXT,ACCRECO TEXT,ACCBOOK TEXT)");
         db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME47   + "(YEAR TEXT,DISTRICT TEXT,HC TEXT,EXPENSEREFERENCE TEXT,EXPENSESIGNED TEXT,EXPENSEINVOICE TEXT,EXPENSENUMBERED TEXT,EXPENSEORDERED TEXT,EXPENSERECORDED TEXT)");
+        db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME48   + "(YEAR TEXT,DISTRICT TEXT,HC TEXT,  rightsposted TEXT, infection TEXT, satisfactiontool TEXT, satisfactiondata TEXT, suggestionbox TEXT, qiincident TEXT, annualhazard TEXT, ppe TEXT, staffppe TEXT,staffsatisfactiontool TEXT, incidenttool TEXT, asrh TEXT, staffsatisfactiondata TEXT, patientincidents TEXT, patientincidentanalyzed TEXT, numberhazards TEXT, numberhazardsfixed TEXT)");
+        db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME49   + "(YEAR TEXT,DISTRICT TEXT,HC TEXT, rmsessions TEXT, rmbeneficiones TEXT, rmscreened TEXT, idsessions TEXT, idbeneficiones TEXT, idscreened TEXT, ncsessions TEXT, ncbeneficiones TEXT, ncscreened TEXT)");
+        db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME50   + "(YEAR TEXT,DISTRICT TEXT,HC TEXT,drugseparate TEXT,drugforms TEXT,drugrequisition TEXT,drugalphabet TEXT,drugclass TEXT,drugfifo TEXT,drugfefo TEXT,drugother TEXT,drugnone TEXT,pharmacydry TEXT,pharmacyclean TEXT,pharmacyprotected TEXT,pharmacyorganized TEXT,pharmacythermometer TEXT,pharmacyrefrigerator TEXT,pharmacymonitored TEXT,pharmacyinventory TEXT,pharmacyessentials TEXT,pharmacynotes TEXT,pharmacyregister TEXT,pharmacytallies TEXT,pharmacybook TEXT,pharmacysigned TEXT, pharmacytemperature  TEXT,pharmacyrefrigiratortemp TEXT)");
+        db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME51   + "(YEAR TEXT,DISTRICT TEXT,HC TEXT,drugname TEXT,drugquantity TEXT,drugquantityshelf TEXT,drugavailable TEXT,drugexpired TEXT,drugrequested TEXT,drugstockcard TEXT,drugstockcardfilled TEXT,drugexcess TEXT,druginventory TEXT,druglabel TEXT)");
 
     }
 
@@ -436,6 +525,10 @@ public class Databasehelper extends SQLiteOpenHelper {
         db.execSQL("DROP TABLE IF EXISTS "+ TABLE_NAME45);
         db.execSQL("DROP TABLE IF EXISTS "+ TABLE_NAME46);
         db.execSQL("DROP TABLE IF EXISTS "+ TABLE_NAME47);
+        db.execSQL("DROP TABLE IF EXISTS "+ TABLE_NAME48);
+        db.execSQL("DROP TABLE IF EXISTS "+ TABLE_NAME49);
+        db.execSQL("DROP TABLE IF EXISTS "+ TABLE_NAME50);
+        db.execSQL("DROP TABLE IF EXISTS "+ TABLE_NAME51);
         onCreate(db);
     }
 
@@ -1653,6 +1746,135 @@ public class Databasehelper extends SQLiteOpenHelper {
 
     }
 
+    public boolean RegisterSafetyManagement(String year  ,String hc  ,String district, String rightsposted , String infection , String satisfactiontool , String satisfactiondata , String suggestionbox , String qiincident , String annualhazard , String ppe , String staffppe ,  String staffsatisfactiontool , String incidenttool , String asrh , String staffsatisfactiondata , String patientincidents , String patientincidentanalyzed , String numberhazards , String numberhazardsfixed ){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
 
+        values.put(sm1,year);
+        values.put(sm2,district);
+        values.put(sm3,hc);
+        values.put(sm4,rightsposted);
+        values.put(sm5,infection);
+        values.put(sm6  ,satisfactiontool);
+        values.put(sm7  ,satisfactiondata);
+        values.put(sm8  ,suggestionbox);
+        values.put(sm9  ,qiincident);
+        values.put(sm10  ,annualhazard);
+        values.put(sm11  ,ppe);
+        values.put(sm12  ,staffppe);
+        values.put(sm13  ,staffsatisfactiontool);
+        values.put(sm14  ,incidenttool);
+        values.put(sm15  ,asrh);
+        values.put(sm16  ,staffsatisfactiondata);
+        values.put(sm17  ,patientincidents);
+        values.put(sm18  ,patientincidentanalyzed);
+        values.put(sm19 ,numberhazards);
+        values.put(sm20 ,numberhazardsfixed);
+        long result = db.insert(TABLE_NAME48, null, values);
+        if (result == -1){
+            return false;
+        }else{
+            return true;
+        }
+
+
+
+    }
+
+    public boolean registerHealthEducation(String year, String district, String hc, String rmsessions , String rmbeneficiones , String rmscreened , String idsessions , String idbeneficiones , String idscreened , String ncsessions , String ncbeneficiones , String ncscreened){
+
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+
+        values.put(he1,year);
+        values.put(he2,district);
+        values.put(he3,hc);
+        values.put(he4,rmsessions);
+        values.put(he5,rmbeneficiones);
+        values.put(he6,rmscreened);
+        values.put(he7,idsessions);
+        values.put(he8,idbeneficiones);
+        values.put(he9,idscreened);
+        values.put(he10,ncsessions);
+        values.put(he11,ncbeneficiones);
+        values.put(he12,ncscreened);
+        long result = db.insert(TABLE_NAME49, null, values);
+        if (result == -1){
+            return false;
+        }else{
+            return true;
+        }
+
+    }
+
+    public boolean registerManagementReview(String year, String district, String hc,  String drugseparate, String drugforms, String drugrequisition, String drugalphabet, String drugclass, String drugfifo, String drugfefo, String drugother, String drugnone, String pharmacydry, String pharmacyclean, String pharmacyprotected, String pharmacyorganized, String pharmacythermometer, String pharmacyrefrigerator, String pharmacymonitored, String pharmacyinventory, String pharmacyessentials, String pharmacynotes, String pharmacyregister, String pharmacytallies, String pharmacybook, String pharmacysigned, String pharmacytemperature,  String pharmacyrefrigiratortemp){
+
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+
+        values.put(pm1,year);
+        values.put(pm2,district);
+        values.put(pm3,hc);
+        values.put(pm4,drugseparate);
+        values.put(pm5,drugforms);
+        values.put(pm6,drugrequisition);
+        values.put(pm7,drugalphabet);
+        values.put(pm8,drugclass);
+        values.put(pm9,drugfifo);
+        values.put(pm10,drugfefo);
+        values.put(pm11,drugother);
+        values.put(pm12,drugnone);
+        values.put(pm13,pharmacydry);
+        values.put(pm14,pharmacyclean);
+        values.put(pm15,pharmacyprotected);
+        values.put(pm16,pharmacyorganized);
+        values.put(pm17,pharmacythermometer);
+        values.put(pm18,pharmacyrefrigerator);
+        values.put(pm19,pharmacymonitored);
+        values.put(pm20,pharmacyinventory);
+        values.put(pm21,pharmacyessentials);
+        values.put(pm22,pharmacynotes);
+        values.put(pm23,pharmacyregister);
+        values.put(pm24,pharmacytallies);
+        values.put(pm25,pharmacybook);
+        values.put(pm26,pharmacysigned);
+        values.put(pm27,pharmacytemperature);
+        values.put(pm28,pharmacyrefrigiratortemp);
+        long result = db.insert(TABLE_NAME50, null, values);
+        if (result == -1){
+            return false;
+        }else{
+            return true;
+        }
+
+    }
+
+    public boolean registerPharmacyStock(String year, String district, String hc, String drugname , String drugquantity , String drugquantityshelf , String drugavailable , String drugexpired , String drugrequested , String drugstockcard , String drugstockcardfilled , String drugexcess , String druginventory , String druglabel){
+
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+
+        values.put(ps1,year);
+        values.put(ps2,district);
+        values.put(ps3,hc);
+        values.put(ps4,drugname);
+        values.put(ps5,drugquantity);
+        values.put(ps6,drugquantityshelf);
+        values.put(ps7,drugavailable);
+        values.put(ps8,drugexpired);
+        values.put(ps9,drugrequested);
+        values.put(ps10,drugstockcard);
+        values.put(ps11,drugstockcardfilled);
+        values.put(ps12,drugexcess);
+        values.put(ps13,druginventory);
+        values.put(ps14,druglabel);
+        long result = db.insert(TABLE_NAME51, null, values);
+        if (result == -1){
+            return false;
+        }else{
+            return true;
+        }
+
+    }
 
 }
