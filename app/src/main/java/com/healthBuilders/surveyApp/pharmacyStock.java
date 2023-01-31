@@ -104,7 +104,15 @@ public class pharmacyStock extends AppCompatActivity {
                 boolean var = myDb.registerPharmacyStock(xyear,xdistrict,xhc,xdrugname,xdrugquantity,xdrugquantityshelf,xdrugavailable,xdrugexpired,xdrugrequested,xdrugstockcard,xdrugstockcardfilled,xdrugexcess,xdruginventory,xdruglabel);
                 if (var) {
                     Toast.makeText(pharmacyStock.this, "Item recorded", Toast.LENGTH_LONG).show();
-
+                    drugname.setText("");
+                    drugavailable.setText("");
+                    drugexpired.setText("");
+                    drugrequested.setText("");
+                    drugstockcard.setText("");
+                    drugstockcardfilled.setText("");
+                    drugexcess.setText("");
+                    druginventory.setText("");
+                    druglabel.setText("");
                 }else{
                     Toast.makeText(pharmacyStock.this, "An error occured", Toast.LENGTH_LONG).show();
 

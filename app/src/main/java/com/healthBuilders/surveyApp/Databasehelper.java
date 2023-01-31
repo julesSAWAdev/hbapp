@@ -406,6 +406,116 @@ public class Databasehelper extends SQLiteOpenHelper {
     private static final String ps13="druginventory";
     private static final String ps14="druglabel";
 
+    //treatmentguideline hypertension
+
+    private static final String TABLE_NAME52="guidelines_hypertension";
+    private static final String hy1="year";
+    private static final String hy2="district";
+    private static final String hy3="hc";
+    private static final String hy4="patientid";
+    private static final String hy5="weightcheck";
+    private static final String hy6="currentprotocol";
+    private static final String hy7="bpcheck";
+    private static final String hy8="eyecheck";
+    private static final String hy9="procheck";
+    private static final String hy10="crecheck";
+    private static final String hy11="footcheck";
+
+    private static final String TABLE_NAME53="guidelines_diabetes";
+
+    private static final String TABLE_NAME54="guidelines_Asthma";
+    private static final String as1="year";
+    private static final String as2="district";
+    private static final String as3="hc";
+    private static final String as4="patientid";
+    private static final String as5="bpcheck";
+    private static final String as6="apptreatment";
+    private static final String as7="severeclass";
+
+
+    private static final String TABLE_NAME55="guidelines_Anc";
+    private static final String anc1="year";
+    private static final String anc2="district";
+    private static final String anc3="hc";
+    private static final String anc4="patientid";
+    private static final String anc5="nationalanc";
+    private static final String anc6="patienthistory";
+    private static final String anc7="bpcheck";
+    private static final String anc8="urinecheck";
+    private static final String anc9="hemoglobincheck";
+    private static final String anc10="rprcheck";
+    private static final String anc11="ultracheck";
+
+    private static final String TABLE_NAME56="guidelines_overall";
+    private static final String ov1="year";
+    private static final String ov2="district";
+    private static final String ov3="hc";
+    private static final String ov4="hyavailable";
+    private static final String ov5="hyuptodate";
+    private static final String ov6="hyinformed";
+    private static final String ov7="diaavailable";
+    private static final String ov8="diauptodate";
+    private static final String ov9="diainformed";
+    private static final String ov10="resavailable";
+    private static final String ov11="resuptodate";
+    private static final String ov12="resinformed";
+    private static final String ov13="malavailable";
+    private static final String ov14="maluptodate";
+    private static final String ov15="malinformed";
+    private static final String ov16="stiavailable";
+    private static final String ov17="stiuptodate";
+    private static final String ov18="stiinformed";
+
+
+    private static final String TABLE_NAME57="guidelines_maternity";
+    private static final String mat1="year";
+    private static final String mat2="district";
+    private static final String mat3="hc";
+    private static final String mat4="nationaprotocol";
+    private static final String mat5="essentialsupplies";
+    private static final String mat6="privacyprovided";
+    private static final String mat7="ppesupply";
+
+
+
+    private static final String TABLE_NAME58="referal_process";
+    private static final String ref1="year";
+    private static final String ref2="district";
+    private static final String ref3="hc";
+    private static final String ref4="reason";
+    private static final String ref5="findings";
+    private static final String ref6="procedures";
+    private static final String ref7="immediatecondition";
+    private static final String ref8="patienttransferedto";
+    private static final String ref9="feedback";
+    private static final String ref10="referalsheets";
+    private static final String ref11="standardform";
+
+    private static final String TABLE_NAME59="outpatient_malaria";
+    private static final String omal1="year";
+    private static final String omal2="district";
+    private static final String omal3="hc";
+    private static final String omal4="patientid";
+    private static final String omal5="assesment";
+    private static final String omal6="classification";
+    private static final String omal7="correcttreatment";
+    private static final String omal8="patienteducated";
+    private static final String omal9="followup";
+
+    private static final String TABLE_NAME60="outpatient_fever";
+    private static final String TABLE_NAME61="outpatient_cough";
+    private static final String TABLE_NAME62="outpatient_pnemonia";
+    private static final String TABLE_NAME63="outpatient_diarhea";
+
+
+    private static final String TABLE_NAME64="guidelinesASRH";
+    private static final String asr1="year";
+    private static final String asr2="district";
+    private static final String asr3="hc";
+    private static final String asr4="registers";
+    private static final String asr5="spaces";
+    private static final String asr6="rooms";
+
 
 
 
@@ -473,6 +583,19 @@ public class Databasehelper extends SQLiteOpenHelper {
         db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME49   + "(YEAR TEXT,DISTRICT TEXT,HC TEXT, rmsessions TEXT, rmbeneficiones TEXT, rmscreened TEXT, idsessions TEXT, idbeneficiones TEXT, idscreened TEXT, ncsessions TEXT, ncbeneficiones TEXT, ncscreened TEXT)");
         db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME50   + "(YEAR TEXT,DISTRICT TEXT,HC TEXT,drugseparate TEXT,drugforms TEXT,drugrequisition TEXT,drugalphabet TEXT,drugclass TEXT,drugfifo TEXT,drugfefo TEXT,drugother TEXT,drugnone TEXT,pharmacydry TEXT,pharmacyclean TEXT,pharmacyprotected TEXT,pharmacyorganized TEXT,pharmacythermometer TEXT,pharmacyrefrigerator TEXT,pharmacymonitored TEXT,pharmacyinventory TEXT,pharmacyessentials TEXT,pharmacynotes TEXT,pharmacyregister TEXT,pharmacytallies TEXT,pharmacybook TEXT,pharmacysigned TEXT, pharmacytemperature  TEXT,pharmacyrefrigiratortemp TEXT)");
         db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME51   + "(YEAR TEXT,DISTRICT TEXT,HC TEXT,drugname TEXT,drugquantity TEXT,drugquantityshelf TEXT,drugavailable TEXT,drugexpired TEXT,drugrequested TEXT,drugstockcard TEXT,drugstockcardfilled TEXT,drugexcess TEXT,druginventory TEXT,druglabel TEXT)");
+        db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME52   + "(YEAR TEXT,DISTRICT TEXT,HC TEXT,patientid TEXT,weightcheck TEXT,currentprotocol TEXT,bpcheck TEXT,eyecheck TEXT,procheck TEXT,crecheck TEXT)");
+        db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME53   + "(YEAR TEXT,DISTRICT TEXT,HC TEXT,patientid TEXT,weightcheck TEXT,currentprotocol TEXT,bpcheck TEXT,eyecheck TEXT,procheck TEXT,crecheck TEXT,footcheck TEXT)");
+        db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME54   + "(YEAR TEXT,DISTRICT TEXT,HC TEXT,patientid TEXT,bpcheck TEXT,apptreatment TEXT,severeclass TEXT)");
+        db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME55   + "(YEAR TEXT,DISTRICT TEXT,HC TEXT,patientid TEXT,nationalanc TEXT,patienthistory TEXT,bpcheck TEXT,urinecheck TEXT,hemoglobincheck TEXT,rprcheck TEXT,ultracheck TEXT)");
+        db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME56   + "(YEAR TEXT,DISTRICT TEXT,HC TEXT,hyavailable TEXT,hyuptodate TEXT,hyinformed TEXT,diaavailable TEXT,diauptodate TEXT,diainformed TEXT,resavailable TEXT,resuptodate TEXT,resinformed TEXT,malavailable TEXT,maluptodate TEXT,malinformed TEXT,stiavailable TEXT,stiuptodate TEXT,stiinformed TEXT)");
+        db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME57   + "(YEAR TEXT,DISTRICT TEXT,HC TEXT,nationaprotocol TEXT,essentialsupplies TEXT,privacyprovided TEXT,ppesupply TEXT)");
+        db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME58   + "(YEAR TEXT,DISTRICT TEXT,HC TEXT, reason TEXT,findings TEXT,procedures TEXT,immediatecondition TEXT,patienttransferedto TEXT,feedback TEXT,referalsheets TEXT,standardform TEXT)");
+        db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME59   + "(YEAR TEXT,DISTRICT TEXT,HC TEXT, patientid TEXT,assesment TEXT,classification TEXT,correcttreatment TEXT,patienteducated TEXT,followup TEXT)");
+        db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME60   + "(YEAR TEXT,DISTRICT TEXT,HC TEXT, patientid TEXT,assesment TEXT,classification TEXT,correcttreatment TEXT,patienteducated TEXT,followup TEXT)");
+        db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME61   + "(YEAR TEXT,DISTRICT TEXT,HC TEXT, patientid TEXT,assesment TEXT,classification TEXT,correcttreatment TEXT,patienteducated TEXT)");
+        db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME62   + "(YEAR TEXT,DISTRICT TEXT,HC TEXT, patientid TEXT,assesment TEXT,classification TEXT,correcttreatment TEXT,patienteducated TEXT,followup TEXT)");
+        db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME63   + "(YEAR TEXT,DISTRICT TEXT,HC TEXT, patientid TEXT,assesment TEXT,classification TEXT,correcttreatment TEXT,patienteducated TEXT,followup TEXT)");
+        db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME64   + "(YEAR TEXT,DISTRICT TEXT,HC TEXT,registers TEXT,spaces TEXT,rooms TEXT)");
 
     }
 
@@ -529,6 +652,19 @@ public class Databasehelper extends SQLiteOpenHelper {
         db.execSQL("DROP TABLE IF EXISTS "+ TABLE_NAME49);
         db.execSQL("DROP TABLE IF EXISTS "+ TABLE_NAME50);
         db.execSQL("DROP TABLE IF EXISTS "+ TABLE_NAME51);
+        db.execSQL("DROP TABLE IF EXISTS "+ TABLE_NAME52);
+        db.execSQL("DROP TABLE IF EXISTS "+ TABLE_NAME53);
+        db.execSQL("DROP TABLE IF EXISTS "+ TABLE_NAME54);
+        db.execSQL("DROP TABLE IF EXISTS "+ TABLE_NAME55);
+        db.execSQL("DROP TABLE IF EXISTS "+ TABLE_NAME56);
+        db.execSQL("DROP TABLE IF EXISTS "+ TABLE_NAME57);
+        db.execSQL("DROP TABLE IF EXISTS "+ TABLE_NAME58);
+        db.execSQL("DROP TABLE IF EXISTS "+ TABLE_NAME59);
+        db.execSQL("DROP TABLE IF EXISTS "+ TABLE_NAME60);
+        db.execSQL("DROP TABLE IF EXISTS "+ TABLE_NAME61);
+        db.execSQL("DROP TABLE IF EXISTS "+ TABLE_NAME62);
+        db.execSQL("DROP TABLE IF EXISTS "+ TABLE_NAME63);
+        db.execSQL("DROP TABLE IF EXISTS "+ TABLE_NAME64);
         onCreate(db);
     }
 
@@ -1869,6 +2005,312 @@ public class Databasehelper extends SQLiteOpenHelper {
         values.put(ps13,druginventory);
         values.put(ps14,druglabel);
         long result = db.insert(TABLE_NAME51, null, values);
+        if (result == -1){
+            return false;
+        }else{
+            return true;
+        }
+
+    }
+
+    public boolean registerTGhypertension(String year, String district, String hc, String patientid,String weightcheck,String currentprotocol,String bpcheck,String eyecheck,String procheck,String crecheck){
+
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+
+        values.put(hy1,year);
+        values.put(hy2,district);
+        values.put(hy3,hc);
+        values.put(hy4,patientid);
+        values.put(hy5,weightcheck);
+        values.put(hy6,currentprotocol);
+        values.put(hy7,bpcheck);
+        values.put(hy8,eyecheck);
+        values.put(hy9,procheck);
+        values.put(hy10,crecheck);
+        long result = db.insert(TABLE_NAME52, null, values);
+        if (result == -1){
+            return false;
+        }else{
+            return true;
+        }
+    }
+
+
+    public boolean registerTGdiabetes(String year, String district, String hc, String patientid,String weightcheck,String currentprotocol,String bpcheck,String eyecheck,String procheck,String crecheck,String footcheck){
+
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+
+        values.put(hy1,year);
+        values.put(hy2,district);
+        values.put(hy3,hc);
+        values.put(hy4,patientid);
+        values.put(hy5,weightcheck);
+        values.put(hy6,currentprotocol);
+        values.put(hy7,bpcheck);
+        values.put(hy8,eyecheck);
+        values.put(hy9,procheck);
+        values.put(hy10,crecheck);
+        values.put(hy11,footcheck);
+        long result = db.insert(TABLE_NAME53, null, values);
+        if (result == -1){
+            return false;
+        }else{
+            return true;
+        }
+
+    }
+
+    public boolean registerAsthma(String year, String district, String hc, String patientid,String bpcheck,String apptreatment,String severeclass){
+
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+
+        values.put(as1,year);
+        values.put(as2,district);
+        values.put(as3,hc);
+        values.put(as4,patientid);
+        values.put(as5,bpcheck);
+        values.put(as6,apptreatment);
+        values.put(as7,severeclass);
+        long result = db.insert(TABLE_NAME54, null, values);
+        if (result == -1){
+            return false;
+        }else{
+            return true;
+        }
+
+    }
+
+    public boolean registerAnc(String year, String district, String hc, String patientid, String nationalanc, String patienthistory, String bpcheck, String urinecheck, String hemoglobincheck, String rprcheck,String ultracheck){
+
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+
+        values.put(anc1,year);
+        values.put(anc2,district);
+        values.put(anc3,hc);
+        values.put(anc4,patientid);
+        values.put(anc5,nationalanc);
+        values.put(anc6,patienthistory);
+        values.put(anc7,bpcheck);
+        values.put(anc8,urinecheck);
+        values.put(anc9,hemoglobincheck);
+        values.put(anc10,rprcheck);
+        values.put(anc11,ultracheck);
+        long result = db.insert(TABLE_NAME55, null, values);
+        if (result == -1){
+            return false;
+        }else{
+            return true;
+        }
+
+    }
+
+    public boolean registerOverall(String year, String district, String hc, String hyavailable, String hyuptodate, String hyinformed,String diaavailable, String diauptodate, String diainformed,String resavailable, String resuptodate, String resinformed,String malavailable, String maluptodate, String malinformed,String stiavailable, String stiuptodate, String stiinformed){
+
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+
+        values.put(ov1,year);
+        values.put(ov2,district);
+        values.put(ov3,hc);
+        values.put(ov4,hyavailable);
+        values.put(ov5,hyuptodate);
+        values.put(ov6,hyinformed);
+        values.put(ov7,diaavailable);
+        values.put(ov8,diauptodate);
+        values.put(ov9,diainformed);
+        values.put(ov10,resavailable);
+        values.put(ov11,resuptodate);
+        values.put(ov12,resinformed);
+        values.put(ov13,malavailable);
+        values.put(ov14,maluptodate);
+        values.put(ov15,malinformed);
+        values.put(ov16,stiavailable);
+        values.put(ov17,stiuptodate);
+        values.put(ov18,stiinformed);
+        long result = db.insert(TABLE_NAME56, null, values);
+        if (result == -1){
+            return false;
+        }else{
+            return true;
+        }
+
+    }
+
+
+    public boolean registerMaternity(String year, String district, String hc, String nationaprotocol,String essentialsupplies,String privacyprovided,String ppesupply){
+
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+
+        values.put(mat1,year);
+        values.put(mat2,district);
+        values.put(mat3,hc);
+        values.put(mat4,nationaprotocol);
+        values.put(mat5,essentialsupplies);
+        values.put(mat6,privacyprovided);
+        values.put(mat7,ppesupply);
+        long result = db.insert(TABLE_NAME57, null, values);
+        if (result == -1){
+            return false;
+        }else{
+            return true;
+        }
+
+    }
+
+    public boolean registerReferal(String year, String district, String hc,  String reason,String findings,String procedures,String immediatecondition,String patienttransferedto,String feedback,String referalsheets,String standardform){
+
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+
+        values.put(ref1,year);
+        values.put(ref2,district);
+        values.put(ref3,hc);
+        values.put(ref4,reason);
+        values.put(ref5,findings);
+        values.put(ref6,procedures);
+        values.put(ref7,immediatecondition);
+        values.put(ref8,patienttransferedto);
+        values.put(ref9,feedback);
+        values.put(ref10,referalsheets);
+        values.put(ref11,standardform);
+        long result = db.insert(TABLE_NAME58, null, values);
+        if (result == -1){
+            return false;
+        }else{
+            return true;
+        }
+
+    }
+
+    public boolean registerOutMalaria(String year, String district, String hc, String patientid , String assesment  ,String classification  ,String correcttreatment  ,String patienteducated  ,String followup  ){
+
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+
+        values.put( omal1,year);
+        values.put( omal2,district);
+        values.put( omal3,hc);
+        values.put( omal4,patientid);
+        values.put( omal5,assesment);
+        values.put( omal6,classification);
+        values.put( omal7,correcttreatment);
+        values.put( omal8,patienteducated);
+        values.put( omal9,followup);
+        long result = db.insert(TABLE_NAME59, null, values);
+        if (result == -1){
+            return false;
+        }else{
+            return true;
+        }
+
+    }
+
+    public boolean registerOutFever(String year, String district, String hc, String patientid , String assesment  ,String classification  ,String correcttreatment  ,String patienteducated  ,String followup  ){
+
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+
+        values.put( omal1,year);
+        values.put( omal2,district);
+        values.put( omal3,hc);
+        values.put( omal4,patientid);
+        values.put( omal5,assesment);
+        values.put( omal6,classification);
+        values.put( omal7,correcttreatment);
+        values.put( omal8,patienteducated);
+        values.put( omal9,followup);
+        long result = db.insert(TABLE_NAME60, null, values);
+        if (result == -1){
+            return false;
+        }else{
+            return true;
+        }
+
+    }
+    public boolean registerOutCough(String year, String district, String hc, String patientid , String assesment  ,String classification  ,String correcttreatment  ,String patienteducated){
+
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+
+        values.put( omal1,year);
+        values.put( omal2,district);
+        values.put( omal3,hc);
+        values.put( omal4,patientid);
+        values.put( omal5,assesment);
+        values.put( omal6,classification);
+        values.put( omal7,correcttreatment);
+        values.put( omal8,patienteducated);
+        long result = db.insert(TABLE_NAME61, null, values);
+        if (result == -1){
+            return false;
+        }else{
+            return true;
+        }
+
+    }
+
+    public boolean registerOutPnemonia(String year, String district, String hc, String patientid , String assesment  ,String classification  ,String correcttreatment  ,String patienteducated  ,String followup  ){
+
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+
+        values.put( omal1,year);
+        values.put( omal2,district);
+        values.put( omal3,hc);
+        values.put( omal4,patientid);
+        values.put( omal5,assesment);
+        values.put( omal6,classification);
+        values.put( omal7,correcttreatment);
+        values.put( omal8,patienteducated);
+        values.put( omal9,followup);
+        long result = db.insert(TABLE_NAME62, null, values);
+        if (result == -1){
+            return false;
+        }else{
+            return true;
+        }
+
+    }
+    public boolean registerOutDiarhea(String year, String district, String hc, String patientid , String assesment  ,String classification  ,String correcttreatment  ,String patienteducated  ,String followup  ){
+
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+
+        values.put( omal1,year);
+        values.put( omal2,district);
+        values.put( omal3,hc);
+        values.put( omal4,patientid);
+        values.put( omal5,assesment);
+        values.put( omal6,classification);
+        values.put( omal7,correcttreatment);
+        values.put( omal8,patienteducated);
+        values.put( omal9,followup);
+        long result = db.insert(TABLE_NAME63, null, values);
+        if (result == -1){
+            return false;
+        }else{
+            return true;
+        }
+
+    }
+
+    public boolean registerASRH(String year, String district, String hc, String registers,String spaces,String rooms  ){
+
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+
+        values.put( asr1,year);
+        values.put( asr2,district);
+        values.put( asr3,hc);
+        values.put( asr4,registers);
+        values.put( asr5,spaces);
+        values.put( asr6,rooms);
+        long result = db.insert(TABLE_NAME64, null, values);
         if (result == -1){
             return false;
         }else{

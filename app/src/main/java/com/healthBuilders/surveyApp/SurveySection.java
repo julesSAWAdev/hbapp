@@ -105,6 +105,13 @@ public class SurveySection extends AppCompatActivity {
                     intent.putExtra("hc", xhc);
                     startActivity(intent);
 
+                }else {
+                    Intent intent = new Intent(getBaseContext(), treatmentguidelineHypertensioin.class);
+                    intent.putExtra("year_id", xyear);
+                    intent.putExtra("district", xdistrict);
+                    intent.putExtra("hc", xhc);
+                    startActivity(intent);
+
                 }
             }
         });
