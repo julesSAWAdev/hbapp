@@ -48,33 +48,40 @@
             >
 
 
+
+
+
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Appropriate ASRH registers are available"
-                android:transitionName="username_trans"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                tools:ignore="InvalidId"
-                app:boxStrokeColor="@color/red">
-                <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/directions"
+                android:layout_weight="1"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu"
+                >
+                <AutoCompleteTextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:id="@+id/Registers"/>
-            </com.google.android.material.textfield.TextInputLayout>
-            <com.google.android.material.textfield.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="There is dedicated space for ASRH"
-                android:transitionName="username_trans"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                tools:ignore="InvalidId"
-                app:boxStrokeColor="@color/red">
-                <com.google.android.material.textfield.TextInputEditText
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/Spaces"/>
+                    android:hint="Appropriate ASRH registers are available"
+                    android:id="@+id/Registers">
+
+                </AutoCompleteTextView>
             </com.google.android.material.textfield.TextInputLayout>
 
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/directions"
+                android:layout_weight="1"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu"
+                >
+                <AutoCompleteTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="There is dedicated space for ASRH"
+                    android:id="@+id/Spaces">
+
+                </AutoCompleteTextView>
+            </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"

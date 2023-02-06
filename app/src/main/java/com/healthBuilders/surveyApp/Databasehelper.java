@@ -548,6 +548,16 @@ public class Databasehelper extends SQLiteOpenHelper {
     private static final String ki11="malucases";
     private static final String ki12="maludeaths";
 
+    private static final String TABLE_NAME67="AdmitedPatient_outcome";
+    private static final String ap1="year";
+    private static final String ap2="district";
+    private static final String ap3="hc";
+    private static final String ap4="patientid";
+    private static final String ap5="admissiondate";
+    private static final String ap6="dischargedate";
+    private static final String ap7="duration";
+    private static final String ap8="outcome";
+
 
 
 
@@ -632,6 +642,7 @@ public class Databasehelper extends SQLiteOpenHelper {
         db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME64   + "(YEAR TEXT,DISTRICT TEXT,HC TEXT,registers TEXT,spaces TEXT,rooms TEXT)");
         db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME65   + "(YEAR TEXT,DISTRICT TEXT,HC TEXT,patientid TEXT,assessmentchecklist  TEXT,biographicaldata  TEXT,relevanthistory  TEXT,chiefcomplaint  TEXT,rapidsurvey  TEXT,vitalsigns  TEXT,examsytem  TEXT,diagnosis  TEXT,nursingplan  TEXT,soapnote  TEXT,treatmanetplan  TEXT,complete  TEXT)");
         db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME66   + "(YEAR TEXT,DISTRICT TEXT,HC TEXT,yearid TEXT, diacases TEXT,diadeaths TEXT,pnecases TEXT,pnedeaths TEXT,malcases TEXT, maldeaths TEXT,malucases TEXT, maludeaths TEXT)");
+        db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME67   + "(YEAR TEXT,DISTRICT TEXT,HC TEXT,patientid TEXT, admissiondate TEXT, dischargedate TEXT, duration TEXT,outcome TEXT)");
 
     }
 
@@ -703,6 +714,7 @@ public class Databasehelper extends SQLiteOpenHelper {
         db.execSQL("DROP TABLE IF EXISTS "+ TABLE_NAME64);
         db.execSQL("DROP TABLE IF EXISTS "+ TABLE_NAME65);
         db.execSQL("DROP TABLE IF EXISTS "+ TABLE_NAME66);
+        db.execSQL("DROP TABLE IF EXISTS "+ TABLE_NAME67);
         onCreate(db);
     }
 
@@ -2406,6 +2418,28 @@ public class Databasehelper extends SQLiteOpenHelper {
         values.put( ki11,malucases);
         values.put( ki12,maludeaths);
         long result = db.insert(TABLE_NAME66, null, values);
+        if (result == -1){
+            return false;
+        }else{
+            return true;
+        }
+
+    }
+
+    public boolean registerAdmittedPatients(String year, String district, String hc,String patientid, String admissiondate, String dischargedate, String duration,String outcome){
+
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+
+        values.put(ap1,year);
+        values.put(ap2,district);
+        values.put(ap3,hc);
+        values.put(ap4,patientid);
+        values.put(ap5,admissiondate);
+        values.put(ap6,dischargedate);
+        values.put(ap7,duration);
+        values.put(ap8,outcome);
+        long result = db.insert(TABLE_NAME67, null, values);
         if (result == -1){
             return false;
         }else{

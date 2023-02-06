@@ -81,7 +81,7 @@ public class outpatientCough extends AppCompatActivity {
         close.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getBaseContext(), outpatientCough .class);
+                Intent intent = new Intent(getBaseContext(), outpatientPnemonia .class);
                 intent.putExtra("year_id", year);
                 intent.putExtra("district", district);
                 intent.putExtra("hc", hc);

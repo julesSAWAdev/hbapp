@@ -50,15 +50,17 @@
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="The national protocol/guidlines are available(BEmoNc)"
-                android:transitionName="username_trans"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                tools:ignore="InvalidId"
-                app:boxStrokeColor="@color/red">
-                <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/directions"
+                android:layout_weight="1"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu"
+                >
+                <AutoCompleteTextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:id="@+id/nationalProtocol"/>
+                    android:hint="The national protocol/guidlines are available(BEmoNc)"
+                    android:id="@+id/nationalProtocol">
+
+                </AutoCompleteTextView>
             </com.google.android.material.textfield.TextInputLayout>
 
 

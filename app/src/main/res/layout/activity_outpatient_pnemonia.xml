@@ -64,15 +64,17 @@
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Assessment is complete"
-                android:transitionName="username_trans"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                tools:ignore="InvalidId"
-                app:boxStrokeColor="@color/red">
-                <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/directions"
+                android:layout_weight="1"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu"
+                >
+                <AutoCompleteTextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:id="@+id/Assesment"/>
+                    android:hint="Assesmentis complete?"
+                    android:id="@+id/Assesment">
+
+                </AutoCompleteTextView>
             </com.google.android.material.textfield.TextInputLayout>
 
 
