@@ -516,6 +516,40 @@ public class Databasehelper extends SQLiteOpenHelper {
     private static final String asr5="spaces";
     private static final String asr6="rooms";
 
+    private static final String TABLE_NAME65="inpatient_care";
+    private static final String inc1="year";
+    private static final String inc2="district";
+    private static final String inc3="hc";
+    private static final String inc4="patientid";
+    private static final String inc5="assessmentchecklist";
+    private static final String inc6="biographicaldata";
+    private static final String inc7="relevanthistory";
+    private static final String inc8="chiefcomplaint";
+    private static final String inc9="rapidsurvey";
+    private static final String inc10="vitalsigns";
+    private static final String inc11="examsytem";
+    private static final String inc12="diagnosis";
+    private static final String inc13="nursingplan";
+    private static final String inc14="soapnote";
+    private static final String inc15="treatmanetplan";
+    private static final String inc16="complete";
+
+    private static final String TABLE_NAME66="key_indicators";
+    private static final String ki1="year";
+    private static final String ki2="district";
+    private static final String ki3="hc";
+    private static final String ki4="yearId";
+    private static final String ki5="diacases";
+    private static final String ki6="diadeaths";
+    private static final String ki7="pnecases";
+    private static final String ki8="pnedeaths";
+    private static final String ki9="malcases";
+    private static final String ki10="maldeaths";
+    private static final String ki11="malucases";
+    private static final String ki12="maludeaths";
+
+
+
 
 
 
@@ -596,6 +630,8 @@ public class Databasehelper extends SQLiteOpenHelper {
         db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME62   + "(YEAR TEXT,DISTRICT TEXT,HC TEXT, patientid TEXT,assesment TEXT,classification TEXT,correcttreatment TEXT,patienteducated TEXT,followup TEXT)");
         db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME63   + "(YEAR TEXT,DISTRICT TEXT,HC TEXT, patientid TEXT,assesment TEXT,classification TEXT,correcttreatment TEXT,patienteducated TEXT,followup TEXT)");
         db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME64   + "(YEAR TEXT,DISTRICT TEXT,HC TEXT,registers TEXT,spaces TEXT,rooms TEXT)");
+        db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME65   + "(YEAR TEXT,DISTRICT TEXT,HC TEXT,patientid TEXT,assessmentchecklist  TEXT,biographicaldata  TEXT,relevanthistory  TEXT,chiefcomplaint  TEXT,rapidsurvey  TEXT,vitalsigns  TEXT,examsytem  TEXT,diagnosis  TEXT,nursingplan  TEXT,soapnote  TEXT,treatmanetplan  TEXT,complete  TEXT)");
+        db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME66   + "(YEAR TEXT,DISTRICT TEXT,HC TEXT,yearid TEXT, diacases TEXT,diadeaths TEXT,pnecases TEXT,pnedeaths TEXT,malcases TEXT, maldeaths TEXT,malucases TEXT, maludeaths TEXT)");
 
     }
 
@@ -665,6 +701,8 @@ public class Databasehelper extends SQLiteOpenHelper {
         db.execSQL("DROP TABLE IF EXISTS "+ TABLE_NAME62);
         db.execSQL("DROP TABLE IF EXISTS "+ TABLE_NAME63);
         db.execSQL("DROP TABLE IF EXISTS "+ TABLE_NAME64);
+        db.execSQL("DROP TABLE IF EXISTS "+ TABLE_NAME65);
+        db.execSQL("DROP TABLE IF EXISTS "+ TABLE_NAME66);
         onCreate(db);
     }
 
@@ -2311,6 +2349,63 @@ public class Databasehelper extends SQLiteOpenHelper {
         values.put( asr5,spaces);
         values.put( asr6,rooms);
         long result = db.insert(TABLE_NAME64, null, values);
+        if (result == -1){
+            return false;
+        }else{
+            return true;
+        }
+
+    }
+
+
+    public boolean registerInpatientCare(String year, String district, String hc,String patientid,String assessmentchecklist ,String biographicaldata ,String relevanthistory ,String chiefcomplaint ,String rapidsurvey ,String vitalsigns ,String examsytem ,String diagnosis ,String nursingplan ,String soapnote ,String treatmanetplan ,String complete){
+
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+
+        values.put( inc1,year);
+        values.put( inc2,district);
+        values.put( inc3,hc);
+        values.put( inc4,patientid);
+        values.put( inc5,assessmentchecklist);
+        values.put( inc6,biographicaldata);
+        values.put( inc7,relevanthistory);
+        values.put( inc8,chiefcomplaint);
+        values.put( inc9,rapidsurvey);
+        values.put( inc10,vitalsigns);
+        values.put( inc11,examsytem);
+        values.put( inc12,diagnosis);
+        values.put( inc13,nursingplan);
+        values.put( inc14,soapnote);
+        values.put( inc15,treatmanetplan);
+        values.put( inc16,complete);
+        long result = db.insert(TABLE_NAME65, null, values);
+        if (result == -1){
+            return false;
+        }else{
+            return true;
+        }
+
+    }
+
+    public boolean registerKeyIndicators(String year, String district, String hc,String yearid, String diacases,String diadeaths,String pnecases,String pnedeaths,String malcases, String maldeaths,String malucases, String maludeaths){
+
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+
+        values.put( ki1,year);
+        values.put( ki2,district);
+        values.put( ki3,hc);
+        values.put( ki4,yearid);
+        values.put( ki5,diacases);
+        values.put( ki6,diadeaths);
+        values.put( ki7,pnecases);
+        values.put( ki8,pnedeaths);
+        values.put( ki9,malcases);
+        values.put( ki10,maldeaths);
+        values.put( ki11,malucases);
+        values.put( ki12,maludeaths);
+        long result = db.insert(TABLE_NAME66, null, values);
         if (result == -1){
             return false;
         }else{

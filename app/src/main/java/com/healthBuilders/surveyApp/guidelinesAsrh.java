@@ -61,7 +61,7 @@ public class guidelinesAsrh extends AppCompatActivity {
                 boolean var = myDb.registerASRH(xyear,xdistrict,xhc,xregisters,xspaces,xrooms);
                 if (var) {
                     Toast.makeText(guidelinesAsrh.this, "Item recorded", Toast.LENGTH_LONG).show();
-                    Intent intent = new Intent(getBaseContext(), guidelinesAsrh .class);
+                    Intent intent = new Intent(getBaseContext(), inpatientsCare .class);
                     intent.putExtra("year_id", year);
                     intent.putExtra("district", district);
                     intent.putExtra("hc", hc);
