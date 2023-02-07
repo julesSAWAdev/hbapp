@@ -559,9 +559,20 @@ public class Databasehelper extends SQLiteOpenHelper {
     private static final String ap8="outcome";
 
 
+    private static final String TABLE_NAME68="outcome_hypertensionBP";
+    private static final String oh1="year";
+    private static final String oh2="district";
+    private static final String oh3="hc";
+    private static final String oh4="patientid";
+    private static final String oh5="month1";
+    private static final String oh6="month2";
+    private static final String oh7="month3";
+    private static final String oh8="month4";
+    private static final String oh9="month5";
+    private static final String oh10="month6";
 
-
-
+    private static final String TABLE_NAME69="outcome_diabetesBS";
+    private static final String TABLE_NAME70="outcome_AsthmaClass";
 
 
 
@@ -643,6 +654,9 @@ public class Databasehelper extends SQLiteOpenHelper {
         db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME65   + "(YEAR TEXT,DISTRICT TEXT,HC TEXT,patientid TEXT,assessmentchecklist  TEXT,biographicaldata  TEXT,relevanthistory  TEXT,chiefcomplaint  TEXT,rapidsurvey  TEXT,vitalsigns  TEXT,examsytem  TEXT,diagnosis  TEXT,nursingplan  TEXT,soapnote  TEXT,treatmanetplan  TEXT,complete  TEXT)");
         db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME66   + "(YEAR TEXT,DISTRICT TEXT,HC TEXT,yearid TEXT, diacases TEXT,diadeaths TEXT,pnecases TEXT,pnedeaths TEXT,malcases TEXT, maldeaths TEXT,malucases TEXT, maludeaths TEXT)");
         db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME67   + "(YEAR TEXT,DISTRICT TEXT,HC TEXT,patientid TEXT, admissiondate TEXT, dischargedate TEXT, duration TEXT,outcome TEXT)");
+        db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME68   + "(YEAR TEXT,DISTRICT TEXT,HC TEXT,patientid TEXT, month1 TEXT, month2 TEXT, month3 TEXT,month4 TEXT,month5 TEXT,month6 TEXT)");
+        db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME69   + "(YEAR TEXT,DISTRICT TEXT,HC TEXT,patientid TEXT, month1 TEXT, month2 TEXT, month3 TEXT,month4 TEXT,month5 TEXT,month6 TEXT)");
+        db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME70   + "(YEAR TEXT,DISTRICT TEXT,HC TEXT,patientid TEXT, month1 TEXT, month2 TEXT, month3 TEXT,month4 TEXT,month5 TEXT,month6 TEXT)");
 
     }
 
@@ -715,6 +729,9 @@ public class Databasehelper extends SQLiteOpenHelper {
         db.execSQL("DROP TABLE IF EXISTS "+ TABLE_NAME65);
         db.execSQL("DROP TABLE IF EXISTS "+ TABLE_NAME66);
         db.execSQL("DROP TABLE IF EXISTS "+ TABLE_NAME67);
+        db.execSQL("DROP TABLE IF EXISTS "+ TABLE_NAME68);
+        db.execSQL("DROP TABLE IF EXISTS "+ TABLE_NAME69);
+        db.execSQL("DROP TABLE IF EXISTS "+ TABLE_NAME70);
         onCreate(db);
     }
 
@@ -2440,6 +2457,77 @@ public class Databasehelper extends SQLiteOpenHelper {
         values.put(ap7,duration);
         values.put(ap8,outcome);
         long result = db.insert(TABLE_NAME67, null, values);
+        if (result == -1){
+            return false;
+        }else{
+            return true;
+        }
+
+    }
+    public boolean registerAdmittedPatientsHypertensionBP(String year, String district, String hc,String patientid, String month1, String month2, String month3,String month4,String month5,String month6){
+
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+
+        values.put(oh1,year);
+        values.put(oh2,district);
+        values.put(oh3,hc);
+        values.put(oh4,patientid);
+        values.put(oh5,month1);
+        values.put(oh6,month2);
+        values.put(oh7,month3);
+        values.put(oh8,month4);
+        values.put(oh9,month5);
+        values.put(oh10,month6);
+        long result = db.insert(TABLE_NAME68, null, values);
+        if (result == -1){
+            return false;
+        }else{
+            return true;
+        }
+
+    }
+
+    public boolean registerAdmittedPatientsDiabetes(String year, String district, String hc,String patientid, String month1, String month2, String month3,String month4,String month5,String month6){
+
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+
+        values.put(oh1,year);
+        values.put(oh2,district);
+        values.put(oh3,hc);
+        values.put(oh4,patientid);
+        values.put(oh5,month1);
+        values.put(oh6,month2);
+        values.put(oh7,month3);
+        values.put(oh8,month4);
+        values.put(oh9,month5);
+        values.put(oh10,month6);
+        long result = db.insert(TABLE_NAME69, null, values);
+        if (result == -1){
+            return false;
+        }else{
+            return true;
+        }
+
+    }
+
+    public boolean registerAdmittedPatientsAsthma(String year, String district, String hc,String patientid, String month1, String month2, String month3,String month4,String month5,String month6){
+
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+
+        values.put(oh1,year);
+        values.put(oh2,district);
+        values.put(oh3,hc);
+        values.put(oh4,patientid);
+        values.put(oh5,month1);
+        values.put(oh6,month2);
+        values.put(oh7,month3);
+        values.put(oh8,month4);
+        values.put(oh9,month5);
+        values.put(oh10,month6);
+        long result = db.insert(TABLE_NAME70, null, values);
         if (result == -1){
             return false;
         }else{

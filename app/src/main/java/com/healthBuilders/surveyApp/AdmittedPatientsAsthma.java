@@ -14,7 +14,7 @@ import com.google.android.material.textfield.TextInputEditText;
 
 import java.util.Calendar;
 
-public class AdmittedPatientsHypertension extends AppCompatActivity {
+public class AdmittedPatientsAsthma extends AppCompatActivity {
     TextInputEditText patientid,month1,month2,month3,month4,month5,month6;
     Button save,close;
     String[] response = new String[]{ "Yes","No"};
@@ -26,24 +26,24 @@ public class AdmittedPatientsHypertension extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        setContentView(R.layout.activity_admitted_patients_hypertension);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        setContentView(R.layout.activity_admitted_patients_asthma);
 
         Intent intent = getIntent();
         final String year = getIntent().getStringExtra("year_id");
         final String district = getIntent().getStringExtra("district");
         final String hc = getIntent().getStringExtra("hc");
 
-        patientid=findViewById(R.id.patientid);
-        month1=findViewById(R.id.Month1);
-        month2=findViewById(R.id.Month2);
-        month3=findViewById(R.id.Month3);
-        month4=findViewById(R.id.Month4);
-        month5=findViewById(R.id.Month5);
-        month6=findViewById(R.id.Month6);
+        patientid = findViewById(R.id.patientid);
+        month1 = findViewById(R.id.Month1);
+        month2 = findViewById(R.id.Month2);
+        month3 = findViewById(R.id.Month3);
+        month4 = findViewById(R.id.Month4);
+        month5 = findViewById(R.id.Month5);
+        month6 = findViewById(R.id.Month6);
 
-        save=findViewById(R.id.save);
-        close=findViewById(R.id.close);
+        save = findViewById(R.id.save);
+        close = findViewById(R.id.close);
 
         myDb = new Databasehelper(this);
 
@@ -51,9 +51,9 @@ public class AdmittedPatientsHypertension extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                final String xyear= year;
+                final String xyear = year;
                 final String xdistrict = district;
-                final String xhc= hc;
+                final String xhc = hc;
                 final String xpatientid = patientid.getText().toString().trim();
                 final String xmonth1 = month1.getText().toString().trim();
                 final String xmonth2 = month2.getText().toString().trim();
@@ -63,11 +63,11 @@ public class AdmittedPatientsHypertension extends AppCompatActivity {
                 final String xmonth6 = month6.getText().toString().trim();
 
 
-                boolean var = myDb.registerAdmittedPatientsHypertensionBP(xyear,xdistrict,xhc,xpatientid,xmonth1,xmonth2,xmonth3,xmonth4,xmonth5,xmonth6);
+                boolean var = myDb.registerAdmittedPatientsAsthma(xyear, xdistrict, xhc, xpatientid, xmonth1, xmonth2, xmonth3, xmonth4, xmonth5, xmonth6);
                 if (var) {
-                    Toast.makeText(AdmittedPatientsHypertension.this, "Item recorded", Toast.LENGTH_LONG).show();
-                }else{
-                    Toast.makeText(AdmittedPatientsHypertension.this, "An error occured", Toast.LENGTH_LONG).show();
+                    Toast.makeText(AdmittedPatientsAsthma.this, "Item recorded", Toast.LENGTH_LONG).show();
+                } else {
+                    Toast.makeText(AdmittedPatientsAsthma.this, "An error occured", Toast.LENGTH_LONG).show();
 
                 }
             }
@@ -76,7 +76,7 @@ public class AdmittedPatientsHypertension extends AppCompatActivity {
         close.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getBaseContext(), AdmittedPatientsDiabetes .class);
+                Intent intent = new Intent(getBaseContext(), AdmittedPatientsAsthma.class);
                 intent.putExtra("year_id", year);
                 intent.putExtra("district", district);
                 intent.putExtra("hc", hc);

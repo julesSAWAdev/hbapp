@@ -24,7 +24,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Admited outcomes: Hypertension"
+            android:text="Admited outcomes: Asthma"
             android:textSize="20sp"
             android:textStyle="bold"
             android:textColor="@color/blue"
@@ -33,7 +33,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Fill in BP values for the last 6 months"
+            android:text="Asthma Classification"
             android:textSize="18sp"
             android:textColor="@color/blue"
             android:transitionName="logo_desc"/>
