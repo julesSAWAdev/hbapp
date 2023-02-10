@@ -77,6 +77,7 @@ public class Registration extends AppCompatActivity {
         boolean var = myDb.registerUSer(firstname,lastname,email,password);
         if (var){
             Toast.makeText(Registration.this,"user added succesfuly",Toast.LENGTH_LONG);
+
             startActivity(new Intent(Registration.this, LoginActivity.class));
 
         }else{

@@ -15,10 +15,11 @@ import android.widget.Toast;
 import com.google.android.material.textfield.TextInputEditText;
 
 public class pharmacyStock extends AppCompatActivity {
-    TextInputEditText drugname,drugquantity,drugquantityshelf;
-    AutoCompleteTextView drugavailable,drugexpired,drugrequested,drugstockcard,drugstockcardfilled,drugexcess,
+    TextInputEditText drugquantity,drugquantityshelf;
+    AutoCompleteTextView drugname,drugavailable,drugexpired,drugrequested,drugstockcard,drugstockcardfilled,drugexcess,
                         druginventory,druglabel;
     String[] response = new String[]{ "Yes","No","N/A"};
+    String[] drugs = new String[]{ "1.Amitriptyline capsule/tablet","2.Amoxicillin capsule/tablet","3.Atenolol capsule/tablet","4.Captopril capsule/tablet","5.Ciprofloxacin capsule/tablet","6.Co-trimoxazole suspension","7.Diazepam capsule/tablet","8.Diclofenac capsule/tablet","9.Glibenclamide capsule/tablet","10.Vitamin K inj","11.Dexamethazone inj","12.Paracetamol oral suspension","13.Salbutamol inhaler","14.Oxyctocin Inj Ampules"};
     private ProgressDialog progressDialog;
     private Databasehelper myDb;
     Button saveItem,closePage;
@@ -54,8 +55,10 @@ public class pharmacyStock extends AppCompatActivity {
 
         //adapter
         ArrayAdapter<String> adapterDist = new ArrayAdapter<>(this, R.layout.dropdown_item2, response);
+        ArrayAdapter<String> adapterDist1 = new ArrayAdapter<>(this, R.layout.dropdown_item2, drugs);
 
         //set adapters
+        drugname.setAdapter(adapterDist1);
         drugavailable.setAdapter(adapterDist);
         drugexpired.setAdapter(adapterDist);
         drugrequested.setAdapter(adapterDist);

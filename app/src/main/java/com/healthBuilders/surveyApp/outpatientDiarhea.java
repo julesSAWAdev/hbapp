@@ -15,7 +15,7 @@ import android.widget.Toast;
 import com.google.android.material.textfield.TextInputEditText;
 
 public class outpatientDiarhea extends AppCompatActivity {
-    AutoCompleteTextView assesment,classification,correcttreatment,patienteducated,followup;
+    AutoCompleteTextView assesment,classification,correcttreatment,patienteducated,followup,orsgiven;
     TextInputEditText patientid;
     Button save,close;
     String[] response = new String[]{ "Yes","No","N/A"};
@@ -42,6 +42,7 @@ public class outpatientDiarhea extends AppCompatActivity {
         correcttreatment=findViewById(R.id.correctTreatment);
         patienteducated=findViewById(R.id.patientEducated);
         followup=findViewById(R.id.followUP);
+        orsgiven=findViewById(R.id.orsGiven);
         save=findViewById(R.id.Savebtn);
         close=findViewById(R.id.Closebtn);
 
@@ -53,6 +54,7 @@ public class outpatientDiarhea extends AppCompatActivity {
         correcttreatment.setAdapter(adapterDist);
         patienteducated.setAdapter(adapterDist);
         followup.setAdapter(adapterDist);
+        orsgiven.setAdapter(adapterDist);
 
 
         save.setOnClickListener(new View.OnClickListener() {
@@ -68,12 +70,18 @@ public class outpatientDiarhea extends AppCompatActivity {
                 final String xcorrecttreatment = correcttreatment.getText().toString().trim();
                 final String xpatienteducated = patienteducated.getText().toString().trim();
                 final String xfollowup = followup.getText().toString().trim();
+                final String xorsgiven = orsgiven.getText().toString().trim();
 
 
 
-                boolean var = myDb.registerOutDiarhea(xyear,xdistrict,xhc,xpatientid,xassesment,xclassification,xcorrecttreatment,xpatienteducated,xfollowup);
+                boolean var = myDb.registerOutDiarhea(xyear,xdistrict,xhc,xpatientid,xassesment,xclassification,xcorrecttreatment,xpatienteducated,xfollowup,xorsgiven);
                 if (var) {
                     Toast.makeText(outpatientDiarhea.this, "Item recorded", Toast.LENGTH_LONG).show();
+                    assesment.setText("");
+                    classification.setText("");
+                    correcttreatment.setText("");
+                    patienteducated.setText("");
+                    followup.setText("");
                 }else{
                     Toast.makeText(outpatientDiarhea.this, "An error occured", Toast.LENGTH_LONG).show();
 

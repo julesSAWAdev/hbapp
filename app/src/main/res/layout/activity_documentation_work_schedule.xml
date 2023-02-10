@@ -96,23 +96,7 @@
 
                 </AutoCompleteTextView>
             </com.google.android.material.textfield.TextInputLayout>
-            <com.google.android.material.textfield.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/cuurentdata"
-                android:layout_weight="1"
-                android:layout_marginTop="5dp"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu"
-                >
-                <AutoCompleteTextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="Approved by COSA"
-                    android:id="@+id/workcosa">
-
-                </AutoCompleteTextView>
-            </com.google.android.material.textfield.TextInputLayout>
-            <com.google.android.material.textfield.TextInputLayout
+             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/reponsiblephoto"
@@ -128,11 +112,6 @@
 
                 </AutoCompleteTextView>
             </com.google.android.material.textfield.TextInputLayout>
-
-
-
-
-
 
             <Button
                 android:id="@+id/worknext"

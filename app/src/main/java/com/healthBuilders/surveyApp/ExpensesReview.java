@@ -16,7 +16,7 @@ import com.google.android.material.textfield.TextInputEditText;
 public class ExpensesReview extends AppCompatActivity {
     TextInputEditText expenseReference;
     AutoCompleteTextView expenseSigned,expenseInvoice,expenseNumbered,expenseOrdered,expenseRecorded;
-    Button savecont;
+    Button savecont,close;
     String[] response = new String[]{ "Yes","No"};
     private Databasehelper myDb;
 
@@ -39,6 +39,7 @@ public class ExpensesReview extends AppCompatActivity {
         expenseRecorded=findViewById(R.id.expenseRecorded);
 
         savecont=findViewById(R.id.saviNext);
+        close=findViewById(R.id.Close);
 
         myDb = new Databasehelper(this);
 
@@ -67,25 +68,28 @@ public class ExpensesReview extends AppCompatActivity {
 
                 boolean var = myDb.registerExpenseReview(xyear, xdistrict, xhc, xexpenseReference, xexpenseSigned,xexpenseInvoice,xexpenseNumbered,xexpenseOrdered,xexpenseRecorded);
                 if (var) {
-
-
-                    Intent intent = new Intent(getBaseContext(), ExpensesReview.class);
-                    intent.putExtra("year_id", year);
-                    intent.putExtra("district", district);
-                    intent.putExtra("hc", hc);
-
-
-                    //startActivity(intent);
-                    //finish();
-                    //finish();
-
-
                     Toast.makeText(ExpensesReview.this, "data saved", Toast.LENGTH_SHORT).show();
                 } else {
 
                     Toast.makeText(ExpensesReview.this, "An error occured", Toast.LENGTH_SHORT).show();
 
                 }
+            }
+
+        });
+
+        close.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                    Intent intent = new Intent(getBaseContext(), SurveySection.class);
+                    intent.putExtra("year_id", year);
+                    intent.putExtra("district", district);
+                    intent.putExtra("hc", hc);
+
+
+                    startActivity(intent);
+
             }
 
         });

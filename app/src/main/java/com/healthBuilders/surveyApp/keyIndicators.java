@@ -68,7 +68,15 @@ public class keyIndicators extends AppCompatActivity {
                 boolean var = myDb.registerKeyIndicators(xyear,xdistrict,xhc,xyearid,xdiacases,xdiadeaths,xpnecases,xpnedeaths,xmalcases,xmaldeaths,xmalucases,xmaludeaths);
                 if (var) {
                     Toast.makeText(keyIndicators.this, "Item recorded", Toast.LENGTH_LONG).show();
-
+                    yearid.setText("");
+                    diacases.setText("");
+                    diadeaths.setText("");
+                    pnecases.setText("");
+                    pnedeaths.setText("");
+                    malcases.setText("");
+                    maldeaths.setText("");
+                    malucases.setText("");
+                    maludeaths.setText("");
                 }else{
                     Toast.makeText(keyIndicators.this, "An error occured", Toast.LENGTH_LONG).show();
 

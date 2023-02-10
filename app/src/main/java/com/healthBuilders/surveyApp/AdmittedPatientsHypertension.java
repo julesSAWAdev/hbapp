@@ -66,6 +66,13 @@ public class AdmittedPatientsHypertension extends AppCompatActivity {
                 boolean var = myDb.registerAdmittedPatientsHypertensionBP(xyear,xdistrict,xhc,xpatientid,xmonth1,xmonth2,xmonth3,xmonth4,xmonth5,xmonth6);
                 if (var) {
                     Toast.makeText(AdmittedPatientsHypertension.this, "Item recorded", Toast.LENGTH_LONG).show();
+                patientid.setText("");
+                month1.setText("");
+                month2.setText("");
+                month3.setText("");
+                month4.setText("");
+                month5.setText("");
+                month6.setText("");
                 }else{
                     Toast.makeText(AdmittedPatientsHypertension.this, "An error occured", Toast.LENGTH_LONG).show();
 

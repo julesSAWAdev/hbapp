@@ -62,7 +62,7 @@ public class Accounts extends AppCompatActivity {
 
 
                     startActivity(intent);
-                    finish();
+                    //finish();
 
 
                     Toast.makeText(Accounts.this, "data saved", Toast.LENGTH_SHORT).show();

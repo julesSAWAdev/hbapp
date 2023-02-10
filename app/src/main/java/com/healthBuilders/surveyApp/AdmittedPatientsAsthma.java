@@ -66,6 +66,13 @@ public class AdmittedPatientsAsthma extends AppCompatActivity {
                 boolean var = myDb.registerAdmittedPatientsAsthma(xyear, xdistrict, xhc, xpatientid, xmonth1, xmonth2, xmonth3, xmonth4, xmonth5, xmonth6);
                 if (var) {
                     Toast.makeText(AdmittedPatientsAsthma.this, "Item recorded", Toast.LENGTH_LONG).show();
+                    patientid.setText("");
+                    month1.setText("");
+                    month2.setText("");
+                    month3.setText("");
+                    month4.setText("");
+                    month5.setText("");
+                    month6.setText("");
                 } else {
                     Toast.makeText(AdmittedPatientsAsthma.this, "An error occured", Toast.LENGTH_LONG).show();
 
@@ -76,7 +83,7 @@ public class AdmittedPatientsAsthma extends AppCompatActivity {
         close.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getBaseContext(), AdmittedPatientsAsthma.class);
+                Intent intent = new Intent(getBaseContext(), SurveySection.class);
                 intent.putExtra("year_id", year);
                 intent.putExtra("district", district);
                 intent.putExtra("hc", hc);

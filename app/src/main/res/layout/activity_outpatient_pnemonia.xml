@@ -104,7 +104,7 @@
                 <AutoCompleteTextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Correct treatent is provided"
+                    android:hint="Correct antibiotic is provided"
                     android:id="@+id/correctTreatment">
 
                 </AutoCompleteTextView>

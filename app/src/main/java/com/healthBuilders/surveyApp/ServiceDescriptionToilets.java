@@ -14,7 +14,7 @@ import android.widget.Button;
 import android.widget.Toast;
 
 public class ServiceDescriptionToilets extends AppCompatActivity {
-    AutoCompleteTextView Toiletsdirection,Toiletsservice,Toiletsresponsiblename,Toiletscurrentdata,Toiletsresponsiblephoto,Toiletsarea,Toiletsrequestedlistofsupplies,Toiletscurrentlistofsupplies,Toiletshygiene,Toiletshandhygience;
+    AutoCompleteTextView Toiletsdirection,Toiletsarea,Toiletshygiene,Toiletshandhygience;
     String[] response = new String[]{ "Yes","No","N/A"};
     private ProgressDialog progressDialog;
     private Databasehelper myDb;
@@ -40,25 +40,13 @@ public class ServiceDescriptionToilets extends AppCompatActivity {
         ArrayAdapter<String> adapterDist = new ArrayAdapter<>(this, R.layout.dropdown_item2, response);
 
         Toiletsdirection = findViewById(R.id.Toiletsdirectiontxt);
-        Toiletsservice = findViewById(R.id.Toiletsservicelabeltxt);
-        Toiletsresponsiblename = findViewById(R.id.Toiletsresponsenametxt);
-        Toiletscurrentdata = findViewById(R.id.Toiletscurrentdatatxt);
-        Toiletsresponsiblephoto = findViewById(R.id.Toiletsresponsiblephototxt);
         Toiletsarea = findViewById(R.id.Toiletsareamaintenedtxt);
-        Toiletsrequestedlistofsupplies = findViewById(R.id.Toiletssuppliestxt);
-        Toiletscurrentlistofsupplies = findViewById(R.id.Toiletsexisingsuppliestxt);
         Toiletshygiene = findViewById(R.id.Toiletshygienetxt);
         Toiletshandhygience = findViewById(R.id.Toiletshandtxt);
 
         //family planning adapterlist
         Toiletsdirection.setAdapter(adapterDist);
-        Toiletsservice.setAdapter(adapterDist);
-        Toiletsresponsiblename.setAdapter(adapterDist);
-        Toiletscurrentdata.setAdapter(adapterDist);
-        Toiletsresponsiblephoto.setAdapter(adapterDist);
         Toiletsarea.setAdapter(adapterDist);
-        Toiletsrequestedlistofsupplies.setAdapter(adapterDist);
-        Toiletscurrentlistofsupplies.setAdapter(adapterDist);
         Toiletshygiene.setAdapter(adapterDist);
         Toiletshandhygience.setAdapter(adapterDist);
 
@@ -74,19 +62,14 @@ public class ServiceDescriptionToilets extends AppCompatActivity {
                 final String xdistrict = district;
                 final String xhc= hc;
                 final String xToiletsdirection = Toiletsdirection.getText().toString().trim();
-                final String xToiletsservice = Toiletsservice.getText().toString().trim();
-                final String xToiletsresponsiblename = Toiletsresponsiblename.getText().toString().trim();
-                final String xToiletscurrentdata = Toiletscurrentdata.getText().toString().trim();
-                final String xToiletsresponsiblephoto = Toiletsresponsiblephoto.getText().toString().trim();
                 final String xToiletsarea = Toiletsarea.getText().toString().trim();
-                final String xToiletsrequestedlistofsupplies = Toiletsrequestedlistofsupplies.getText().toString().trim();
-                final String xToiletscurrentlistofsupplies = Toiletscurrentlistofsupplies.getText().toString().trim();
-                final String xToiletshygiene = Toiletshygiene.getText().toString().trim();
+                 final String xToiletshygiene = Toiletshygiene.getText().toString().trim();
                 final String xToiletshandhygience = Toiletshandhygience.getText().toString().trim();
 
-                boolean var = myDb.registerToiletsServiceDescription(xyear,xdistrict,xhc,xToiletsdirection,xToiletsservice,xToiletsresponsiblename,xToiletscurrentdata,xToiletsresponsiblephoto,xToiletsarea,xToiletsrequestedlistofsupplies,xToiletscurrentlistofsupplies,xToiletshygiene,xToiletshandhygience);
+                boolean var = myDb.registerToiletsServiceDescription(xyear,xdistrict,xhc,xToiletsdirection,xToiletsarea,xToiletshygiene,xToiletshandhygience);
 
                 if (var) {
+                    Toast.makeText(ServiceDescriptionToilets.this, "Data recorded", Toast.LENGTH_SHORT).show();
 
                     Intent intent = new Intent(getBaseContext(), Services.class);
                     intent.putExtra("year_id", year);

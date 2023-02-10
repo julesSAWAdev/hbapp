@@ -136,7 +136,10 @@ public class pharmacymanagementReview extends AppCompatActivity {
                 final String xpharmacyrefrigiratortemp= pharmacyrefrigiratortemp.getText().toString().trim();
                 boolean var = myDb.registerManagementReview(xyear,xdistrict,xhc,xdrugseparate,xdrugforms,xdrugrequisition,xdrugalphabet,xdrugclass,xdrugfifo,xdrugfefo,xdrugother,xdrugnone,xpharmacydry,xpharmacyclean,xpharmacyprotected,xpharmacyorganized,xpharmacythermometer,xpharmacyrefrigerator,xpharmacymonitored,xpharmacyinventory,xpharmacyessentials,xpharmacynotes,xpharmacyregister,xpharmacytallies,xpharmacybook,xpharmacysigned,xpharmacytemperature,xpharmacyrefrigiratortemp);
                 if (var) {
-                Intent intent = new Intent(getBaseContext(), pharmacyStock.class);
+
+                    Toast.makeText(pharmacymanagementReview.this, "Data recorded", Toast.LENGTH_LONG).show();
+
+                    Intent intent = new Intent(getBaseContext(), pharmacyStock.class);
                 intent.putExtra("year_id", year);
                 intent.putExtra("district", district);
                 intent.putExtra("hc", hc);

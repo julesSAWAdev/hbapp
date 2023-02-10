@@ -490,6 +490,7 @@ public class Databasehelper extends SQLiteOpenHelper {
     private static final String ref9="feedback";
     private static final String ref10="referalsheets";
     private static final String ref11="standardform";
+    private static final String ref12="transport";
 
     private static final String TABLE_NAME59="outpatient_malaria";
     private static final String omal1="year";
@@ -501,6 +502,8 @@ public class Databasehelper extends SQLiteOpenHelper {
     private static final String omal7="correcttreatment";
     private static final String omal8="patienteducated";
     private static final String omal9="followup";
+    private static final String omal10="malaria";
+    private static final String omal11="orsgiven";
 
     private static final String TABLE_NAME60="outpatient_fever";
     private static final String TABLE_NAME61="outpatient_cough";
@@ -607,21 +610,21 @@ public class Databasehelper extends SQLiteOpenHelper {
         db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME18 + "(YEAR TEXT,DISTRICT TEXT,HC TEXT,DIRECTION TEXT,SERVICE TEXT,RESPONSIBLENAME TEXT,CURRENTDATA TEXT,RESPONSIBLEPHOTO TEXT,AREA TEXT,REQUESTEDLISTOFSUPPLIES TEXT,CURRENTLISTOFSUPPLIES,HYGIENE TEXT,HANDHYGIENE TEXT)");
         db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME19 + "(YEAR TEXT,DISTRICT TEXT,HC TEXT,DIRECTION TEXT,SERVICE TEXT,RESPONSIBLENAME TEXT,CURRENTDATA TEXT,RESPONSIBLEPHOTO TEXT,AREA TEXT,REQUESTEDLISTOFSUPPLIES TEXT,CURRENTLISTOFSUPPLIES,HYGIENE TEXT,HANDHYGIENE TEXT)");
         db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME20 + "(YEAR TEXT,DISTRICT TEXT,HC TEXT,DIRECTION TEXT,SERVICE TEXT,RESPONSIBLENAME TEXT,CURRENTDATA TEXT,RESPONSIBLEPHOTO TEXT,AREA TEXT,REQUESTEDLISTOFSUPPLIES TEXT,CURRENTLISTOFSUPPLIES,HYGIENE TEXT,HANDHYGIENE TEXT)");
-        db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME21 + "(YEAR TEXT,DISTRICT TEXT,HC TEXT,DIRECTION TEXT,SERVICE TEXT,RESPONSIBLENAME TEXT,CURRENTDATA TEXT,RESPONSIBLEPHOTO TEXT,AREA TEXT,REQUESTEDLISTOFSUPPLIES TEXT,CURRENTLISTOFSUPPLIES,HYGIENE TEXT,HANDHYGIENE TEXT)");
+        db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME21 + "(YEAR TEXT,DISTRICT TEXT,HC TEXT,DIRECTION TEXT,SERVICE TEXT,AREA TEXT,HYGIENE TEXT,HANDHYGIENE TEXT)");
         db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME22 + "(YEAR TEXT,DISTRICT TEXT,HC TEXT,CURRENTDATA TEXT)");
         db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME23 + "(YEAR TEXT,DISTRICT TEXT,HC TEXT,AVAILABLE TEXT,TRACKED TEXT,APPROVEDTI TEXT,APPROVEDCOSA TEXT,COMSTAFF TEXT)");
-        db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME24 + "(YEAR TEXT,DISTRICT TEXT,HC TEXT,AVAILABLE TEXT,TRACKED TEXT,APPROVEDTI TEXT,APPROVEDCOSA TEXT,COMSTAFF TEXT)");
+        db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME24 + "(YEAR TEXT,DISTRICT TEXT,HC TEXT,AVAILABLE TEXT,TRACKED TEXT,APPROVEDTI TEXT,COMSTAFF TEXT)");
         db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME25 + "(YEAR TEXT,DISTRICT TEXT,HC TEXT,AVAILABLE TEXT,TRACKED TEXT,APPROVEDTI TEXT,APPROVEDCOSA TEXT,COMSTAFF TEXT)");
-        db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME26 + "(YEAR TEXT,DISTRICT TEXT,HC TEXT,AVAILABLE TEXT,TRACKED TEXT,APPROVEDTI TEXT,APPROVEDCOSA TEXT,COMSTAFF TEXT)");
-        db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME27   + "(YEAR TEXT,DISTRICT TEXT,HC TEXT,AVAILABLE TEXT,TRACKED TEXT,APPROVEDTI TEXT,APPROVEDCOSA TEXT,COMSTAFF TEXT)");
-        db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME28   + "(YEAR TEXT,DISTRICT TEXT,HC TEXT,AVAILABLE TEXT,TRACKED TEXT,APPROVEDTI TEXT,APPROVEDCOSA TEXT,COMSTAFF TEXT)");
+        db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME26 + "(YEAR TEXT,DISTRICT TEXT,HC TEXT,AVAILABLE TEXT,TRACKED TEXT,APPROVEDTI TEXT,COMSTAFF TEXT)");
+        db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME27   + "(YEAR TEXT,DISTRICT TEXT,HC TEXT,AVAILABLE TEXT,TRACKED TEXT,APPROVEDTI TEXT,COMSTAFF TEXT)");
+        db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME28   + "(YEAR TEXT,DISTRICT TEXT,HC TEXT,AVAILABLE TEXT,TRACKED TEXT,APPROVEDTI TEXT,COMSTAFF TEXT)");
         db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME29   + "(YEAR TEXT,DISTRICT TEXT,HC TEXT,AVAILABLE TEXT,TRACKED TEXT)");
         db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME30   + "(YEAR TEXT,DISTRICT TEXT,HC TEXT,AVAILABLE TEXT,TRACKED TEXT)");
         db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME31   + "(YEAR TEXT,DISTRICT TEXT,HC TEXT,AVAILABLE TEXT,TRACKED TEXT)");
         db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME32   + "(YEAR TEXT,DISTRICT TEXT,HC TEXT,AVAILABLE TEXT,TRACKED TEXT)");
         db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME33   + "(YEAR TEXT,DISTRICT TEXT,HC TEXT,AVAILABLE TEXT,TRACKED TEXT,APPROVED TEXT)");
         db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME34   + "(YEAR TEXT,DISTRICT TEXT,HC TEXT,AVAILABLE TEXT,TRACKED TEXT,APPROVED TEXT)");
-        db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME35 + "(YEAR TEXT,DISTRICT TEXT,HC TEXT,STAFFLATRINES TEXT,PATIRNETLATRINES TEXT,TOTALLATRINES TEXT,BROKENLATRINES TEXT,CLEANLATRINES TEXT,ODORLESSLATRINES TEXT,HANDWASHLATRINES TEXT,LATRINESCHEDULES,OPD TEXT,HOSPITALIZATIONROOMS TEXT)");
+        db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME35 + "(YEAR TEXT,DISTRICT TEXT,HC TEXT,STAFFLATRINES TEXT,PATIRNETLATRINES TEXT,TOTALLATRINES TEXT,BROKENLATRINES TEXT,CLEANLATRINES TEXT,ODORLESSLATRINES TEXT,HANDWASHLATRINES TEXT,LATRINESCHEDULES)");
         db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME36   + "(YEAR TEXT,DISTRICT TEXT,HC TEXT,AVAILABLE TEXT,SIGNED TEXT,SUBMITED TEXT,DMAVAILABLE TEXT)");
         db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME37   + "(YEAR TEXT,DISTRICT TEXT,HC TEXT,PATIENTFILE TEXT,REGISTER TEXT,HMIS_HARDCOPY TEXT,HMIS_SOFTCOPY TEXT,ACCURATE TEXT)");
         db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME38   + "(YEAR TEXT,DISTRICT TEXT,HC TEXT,PATIENTFILE TEXT,REGISTER TEXT,HMIS_HARDCOPY TEXT,HMIS_SOFTCOPY TEXT,ACCURATE TEXT)");
@@ -644,12 +647,12 @@ public class Databasehelper extends SQLiteOpenHelper {
         db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME55   + "(YEAR TEXT,DISTRICT TEXT,HC TEXT,patientid TEXT,nationalanc TEXT,patienthistory TEXT,bpcheck TEXT,urinecheck TEXT,hemoglobincheck TEXT,rprcheck TEXT,ultracheck TEXT)");
         db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME56   + "(YEAR TEXT,DISTRICT TEXT,HC TEXT,hyavailable TEXT,hyuptodate TEXT,hyinformed TEXT,diaavailable TEXT,diauptodate TEXT,diainformed TEXT,resavailable TEXT,resuptodate TEXT,resinformed TEXT,malavailable TEXT,maluptodate TEXT,malinformed TEXT,stiavailable TEXT,stiuptodate TEXT,stiinformed TEXT)");
         db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME57   + "(YEAR TEXT,DISTRICT TEXT,HC TEXT,nationaprotocol TEXT,essentialsupplies TEXT,privacyprovided TEXT,ppesupply TEXT)");
-        db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME58   + "(YEAR TEXT,DISTRICT TEXT,HC TEXT, reason TEXT,findings TEXT,procedures TEXT,immediatecondition TEXT,patienttransferedto TEXT,feedback TEXT,referalsheets TEXT,standardform TEXT)");
+        db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME58   + "(YEAR TEXT,DISTRICT TEXT,HC TEXT, reason TEXT,findings TEXT,procedures TEXT,immediatecondition TEXT,patienttransferedto TEXT,feedback TEXT,referalsheets TEXT,standardform TEXT,transport TEXT)");
         db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME59   + "(YEAR TEXT,DISTRICT TEXT,HC TEXT, patientid TEXT,assesment TEXT,classification TEXT,correcttreatment TEXT,patienteducated TEXT,followup TEXT)");
-        db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME60   + "(YEAR TEXT,DISTRICT TEXT,HC TEXT, patientid TEXT,assesment TEXT,classification TEXT,correcttreatment TEXT,patienteducated TEXT,followup TEXT)");
+        db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME60   + "(YEAR TEXT,DISTRICT TEXT,HC TEXT, patientid TEXT,assesment TEXT,classification TEXT,correcttreatment TEXT,patienteducated TEXT,followup TEXT,malaria TEXT)");
         db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME61   + "(YEAR TEXT,DISTRICT TEXT,HC TEXT, patientid TEXT,assesment TEXT,classification TEXT,correcttreatment TEXT,patienteducated TEXT)");
         db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME62   + "(YEAR TEXT,DISTRICT TEXT,HC TEXT, patientid TEXT,assesment TEXT,classification TEXT,correcttreatment TEXT,patienteducated TEXT,followup TEXT)");
-        db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME63   + "(YEAR TEXT,DISTRICT TEXT,HC TEXT, patientid TEXT,assesment TEXT,classification TEXT,correcttreatment TEXT,patienteducated TEXT,followup TEXT)");
+        db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME63   + "(YEAR TEXT,DISTRICT TEXT,HC TEXT, patientid TEXT,assesment TEXT,classification TEXT,correcttreatment TEXT,patienteducated TEXT,followup TEXT,orsgiven TEXT)");
         db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME64   + "(YEAR TEXT,DISTRICT TEXT,HC TEXT,registers TEXT,spaces TEXT,rooms TEXT)");
         db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME65   + "(YEAR TEXT,DISTRICT TEXT,HC TEXT,patientid TEXT,assessmentchecklist  TEXT,biographicaldata  TEXT,relevanthistory  TEXT,chiefcomplaint  TEXT,rapidsurvey  TEXT,vitalsigns  TEXT,examsytem  TEXT,diagnosis  TEXT,nursingplan  TEXT,soapnote  TEXT,treatmanetplan  TEXT,complete  TEXT)");
         db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME66   + "(YEAR TEXT,DISTRICT TEXT,HC TEXT,yearid TEXT, diacases TEXT,diadeaths TEXT,pnecases TEXT,pnedeaths TEXT,malcases TEXT, maldeaths TEXT,malucases TEXT, maludeaths TEXT)");
@@ -1238,7 +1241,7 @@ public class Databasehelper extends SQLiteOpenHelper {
         }
 
     }
-    public boolean registerToiletsServiceDescription(String year, String district, String hc,String direction,String service,String responsiblename,String currentdata,String responsiblephoto,String area,String requestedlistofsupplies,String currentlistofsupplies,String hygiene,String handgygiene){
+    public boolean registerToiletsServiceDescription(String year, String district, String hc,String direction,String area,String hygiene,String handgygiene){
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
 
@@ -1246,13 +1249,7 @@ public class Databasehelper extends SQLiteOpenHelper {
         values.put(anc_2,district);
         values.put(anc_3,hc);
         values.put(anc_4,direction);
-        values.put(anc_5,service);
-        values.put(anc_6,responsiblename);
-        values.put(anc_7,currentdata);
-        values.put(anc_8,responsiblephoto);
         values.put(anc_9,area);
-        values.put(anc_10,requestedlistofsupplies);
-        values.put(anc_11,currentlistofsupplies);
         values.put(anc_12,hygiene);
         values.put(anc_13,handgygiene);
 
@@ -1411,7 +1408,7 @@ public class Databasehelper extends SQLiteOpenHelper {
 
     }
 
-    public boolean registerDocumentationBusinessPlan(String year, String district, String hc,String available,String tracked,String approvedti,String approvedcosa,String comsatff){
+    public boolean registerDocumentationBusinessPlan(String year, String district, String hc,String available,String tracked,String approvedti,String comsatff){
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
 
@@ -1421,7 +1418,6 @@ public class Databasehelper extends SQLiteOpenHelper {
         values.put(doc_4,available);
         values.put(doc_5,tracked);
         values.put(doc_6,approvedti);
-        values.put(doc_7,approvedcosa);
         values.put(doc_8,comsatff);
         long result = db.insert(TABLE_NAME24, null, values);
         if (result == -1){
@@ -1453,7 +1449,7 @@ public class Databasehelper extends SQLiteOpenHelper {
 
     }
 
-    public boolean registerDocumentationInService(String year, String district, String hc,String available,String tracked,String approvedti,String approvedcosa,String comsatff){
+    public boolean registerDocumentationInService(String year, String district, String hc,String available,String tracked,String approvedti,String comsatff){
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
 
@@ -1463,7 +1459,6 @@ public class Databasehelper extends SQLiteOpenHelper {
         values.put(doc_4,available);
         values.put(doc_5,tracked);
         values.put(doc_6,approvedti);
-        values.put(doc_7,approvedcosa);
         values.put(doc_8,comsatff);
         long result = db.insert(TABLE_NAME26, null, values);
         if (result == -1){
@@ -1475,7 +1470,7 @@ public class Databasehelper extends SQLiteOpenHelper {
     }
 
 
-    public boolean registerDocumentationWorkSchedule(String year, String district, String hc,String available,String tracked,String approvedti,String approvedcosa,String comsatff){
+    public boolean registerDocumentationWorkSchedule(String year, String district, String hc,String available,String tracked,String approvedti,String comsatff){
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
 
@@ -1485,7 +1480,6 @@ public class Databasehelper extends SQLiteOpenHelper {
         values.put(doc_4,available);
         values.put(doc_5,tracked);
         values.put(doc_6,approvedti);
-        values.put(doc_7,approvedcosa);
         values.put(doc_8,comsatff);
         long result = db.insert(TABLE_NAME27, null, values);
         if (result == -1){
@@ -1496,7 +1490,7 @@ public class Databasehelper extends SQLiteOpenHelper {
 
     }
 
-    public boolean registerDocumentationQiplan(String year, String district, String hc,String available,String tracked,String approvedti,String approvedcosa,String comsatff){
+    public boolean registerDocumentationQiplan(String year, String district, String hc,String available,String tracked,String approvedti,String comsatff){
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
 
@@ -1506,7 +1500,6 @@ public class Databasehelper extends SQLiteOpenHelper {
         values.put(doc_4,available);
         values.put(doc_5,tracked);
         values.put(doc_6,approvedti);
-        values.put(doc_7,approvedcosa);
         values.put(doc_8,comsatff);
         long result = db.insert(TABLE_NAME28, null, values);
         if (result == -1){
@@ -1626,7 +1619,7 @@ public class Databasehelper extends SQLiteOpenHelper {
 
     }
 
-    public boolean registerDocumentationSanitation(String year, String district, String hc,String stafflatrines,String patientlatrines,String totlatrines,String brokelatrines,String cleanlatrines,String nodorlatrines,String handwashlatrine,String schedulelatrine,String opd,String hospirooms){
+    public boolean registerDocumentationSanitation(String year, String district, String hc,String stafflatrines,String patientlatrines,String totlatrines,String brokelatrines,String cleanlatrines,String nodorlatrines,String handwashlatrine,String schedulelatrine){
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
 
@@ -1641,8 +1634,6 @@ public class Databasehelper extends SQLiteOpenHelper {
         values.put(s9,nodorlatrines);
         values.put(s10,handwashlatrine);
         values.put(s11,schedulelatrine);
-        values.put(s12,opd);
-        values.put(s13,hospirooms);
 
         long result = db.insert(TABLE_NAME35, null, values);
         if (result == -1){
@@ -2229,7 +2220,7 @@ public class Databasehelper extends SQLiteOpenHelper {
 
     }
 
-    public boolean registerReferal(String year, String district, String hc,  String reason,String findings,String procedures,String immediatecondition,String patienttransferedto,String feedback,String referalsheets,String standardform){
+    public boolean registerReferal(String year, String district, String hc,  String reason,String findings,String procedures,String immediatecondition,String patienttransferedto,String feedback,String referalsheets,String standardform,String transport){
 
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
@@ -2245,6 +2236,7 @@ public class Databasehelper extends SQLiteOpenHelper {
         values.put(ref9,feedback);
         values.put(ref10,referalsheets);
         values.put(ref11,standardform);
+        values.put(ref12,transport);
         long result = db.insert(TABLE_NAME58, null, values);
         if (result == -1){
             return false;
@@ -2277,7 +2269,7 @@ public class Databasehelper extends SQLiteOpenHelper {
 
     }
 
-    public boolean registerOutFever(String year, String district, String hc, String patientid , String assesment  ,String classification  ,String correcttreatment  ,String patienteducated  ,String followup  ){
+    public boolean registerOutFever(String year, String district, String hc, String patientid , String assesment  ,String classification  ,String correcttreatment  ,String patienteducated  ,String followup,String malaria  ){
 
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
@@ -2291,6 +2283,7 @@ public class Databasehelper extends SQLiteOpenHelper {
         values.put( omal7,correcttreatment);
         values.put( omal8,patienteducated);
         values.put( omal9,followup);
+        values.put( omal10,malaria);
         long result = db.insert(TABLE_NAME60, null, values);
         if (result == -1){
             return false;
@@ -2343,7 +2336,7 @@ public class Databasehelper extends SQLiteOpenHelper {
         }
 
     }
-    public boolean registerOutDiarhea(String year, String district, String hc, String patientid , String assesment  ,String classification  ,String correcttreatment  ,String patienteducated  ,String followup  ){
+    public boolean registerOutDiarhea(String year, String district, String hc, String patientid , String assesment  ,String classification  ,String correcttreatment  ,String patienteducated  ,String followup  ,String orsgiven){
 
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
@@ -2357,6 +2350,7 @@ public class Databasehelper extends SQLiteOpenHelper {
         values.put( omal7,correcttreatment);
         values.put( omal8,patienteducated);
         values.put( omal9,followup);
+        values.put( omal11,followup);
         long result = db.insert(TABLE_NAME63, null, values);
         if (result == -1){
             return false;

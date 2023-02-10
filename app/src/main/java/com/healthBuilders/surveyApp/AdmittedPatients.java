@@ -125,6 +125,12 @@ public class AdmittedPatients extends AppCompatActivity {
                 boolean var = myDb.registerAdmittedPatients(xyear,xdistrict,xhc,xpatientid,xadmissiondate,xdischargedate,xduration,xoutcome);
                 if (var) {
                     Toast.makeText(AdmittedPatients.this, "Item recorded", Toast.LENGTH_LONG).show();
+                patientid.setText("");
+                admissiondate.setText("");
+                dischargedate.setText("");
+                duration.setText("");
+                outcome.setText("");
+
                 }else{
                     Toast.makeText(AdmittedPatients.this, "An error occured", Toast.LENGTH_LONG).show();
 

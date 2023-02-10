@@ -16,7 +16,7 @@ import com.google.android.material.textfield.TextInputEditText;
 
 public class referralProcess extends AppCompatActivity {
     AutoCompleteTextView reason,findings,procedures,immediatecondition,patienttransferedto,feedback,
-            referalsheets,standardform;
+            referalsheets,standardform,transport;
     TextInputEditText patientid;
     Button save,close;
     String[] response = new String[]{ "Yes","No","N/A"};
@@ -47,6 +47,7 @@ public class referralProcess extends AppCompatActivity {
         feedback=findViewById(R.id.Feedback);
         referalsheets=findViewById(R.id.referalSheets);
         standardform=findViewById(R.id.standardForm);
+        transport=findViewById(R.id.Transport);
         save=findViewById(R.id.Savebtn);
         close=findViewById(R.id.Closebtn);
 
@@ -61,6 +62,7 @@ public class referralProcess extends AppCompatActivity {
         feedback.setAdapter(adapterDist);
         referalsheets.setAdapter(adapterDist);
         standardform.setAdapter(adapterDist);
+        transport.setAdapter(adapterDist);
 
         save.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -77,12 +79,22 @@ public class referralProcess extends AppCompatActivity {
                 final String xfeedback = feedback.getText().toString().trim();
                 final String xreferalsheets = referalsheets.getText().toString().trim();
                 final String xstandardform = standardform.getText().toString().trim();
+                final String xtransport = transport.getText().toString().trim();
 
 
 
-                boolean var = myDb.registerReferal(xyear,xdistrict,xhc,xreason,xfindings,xprocedures,ximmediatecondition,xpatienttransferedto,xfeedback,xreferalsheets,xstandardform);
+                boolean var = myDb.registerReferal(xyear,xdistrict,xhc,xreason,xfindings,xprocedures,ximmediatecondition,xpatienttransferedto,xfeedback,xreferalsheets,xstandardform,xtransport);
                 if (var) {
                     Toast.makeText(referralProcess.this, "Item recorded", Toast.LENGTH_LONG).show();
+                    reason.setText("");
+                    findings.setText("");
+                    procedures.setText("");
+                    immediatecondition.setText("");
+                    patienttransferedto.setText("");
+                    feedback.setText("");
+                    referalsheets.setText("");
+                    standardform.setText("");
+                    transport.setText("");
                 }else{
                     Toast.makeText(referralProcess.this, "An error occured", Toast.LENGTH_LONG).show();
 

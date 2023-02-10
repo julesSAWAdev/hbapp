@@ -13,7 +13,7 @@ import android.widget.Button;
 import android.widget.Toast;
 
 public class DocumentationBusinessPlan extends AppCompatActivity {
-    AutoCompleteTextView available,tracked,approvedti,approvedcosa,comstaff;
+    AutoCompleteTextView available,tracked,approvedti,comstaff;
     Button savenext;
     String[] response = new String[]{ "Yes","No","N/A"};
     private ProgressDialog progressDialog;
@@ -34,7 +34,6 @@ public class DocumentationBusinessPlan extends AppCompatActivity {
         available=findViewById(R.id.bplanavailable);
         tracked=findViewById(R.id.bplantrack);
         approvedti=findViewById(R.id.bplanapproved);
-        approvedcosa=findViewById(R.id.bplancosa);
         comstaff=findViewById(R.id.bplancommunicated);
 
         myDb = new Databasehelper(this);
@@ -42,7 +41,6 @@ public class DocumentationBusinessPlan extends AppCompatActivity {
         available.setAdapter(adapterDist);
         tracked.setAdapter(adapterDist);
         approvedti.setAdapter(adapterDist);
-        approvedcosa.setAdapter(adapterDist);
         comstaff.setAdapter(adapterDist);
 
         savenext = findViewById(R.id.bplannext);
@@ -57,10 +55,11 @@ public class DocumentationBusinessPlan extends AppCompatActivity {
                 final String xavailable=available.getText().toString().trim();
                 final String xtracked=tracked.getText().toString().trim();
                 final String xapprovedti=approvedti.getText().toString().trim();
-                final String xapprovedcosa=approvedcosa.getText().toString().trim();
                 final String ccomstaff=comstaff.getText().toString().trim();
-                boolean var = myDb.registerDocumentationBusinessPlan(xyear,xdistrict,xhc,xavailable,xtracked,xapprovedti,xapprovedcosa,ccomstaff);
+                boolean var = myDb.registerDocumentationBusinessPlan(xyear,xdistrict,xhc,xavailable,xtracked,xapprovedti,ccomstaff);
                 if (var) {
+                    Toast.makeText(DocumentationBusinessPlan.this, "Data recorded", Toast.LENGTH_SHORT).show();
+
                     Intent intent = new Intent(getBaseContext(), DocumentationBudget.class);
                     intent.putExtra("year_id", year);
                     intent.putExtra("district", district);

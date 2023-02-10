@@ -12,8 +12,13 @@ import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.google.android.material.textfield.TextInputEditText;
+
+import java.awt.font.TextAttribute;
+
 public class DataAccuracyBcg extends AppCompatActivity {
-    AutoCompleteTextView patientfile,register,hmis_hardcopy,hmis_softcopy,accurate;
+    TextInputEditText patientfile,register,hmis_hardcopy,hmis_softcopy;
+    AutoCompleteTextView accurate;
     Button savenext;
     String[] response = new String[]{ "Yes","No","N/A"};
     private ProgressDialog progressDialog;
@@ -42,10 +47,7 @@ public class DataAccuracyBcg extends AppCompatActivity {
         myDb = new Databasehelper(this);
 
         ArrayAdapter<String> adapterDist = new ArrayAdapter<>(this, R.layout.dropdown_item2, response);
-        patientfile.setAdapter(adapterDist);
-        register.setAdapter(adapterDist);
-        hmis_hardcopy.setAdapter(adapterDist);
-        hmis_softcopy.setAdapter(adapterDist);
+
         accurate.setAdapter(adapterDist);
 
         savenext.setOnClickListener(new View.OnClickListener() {

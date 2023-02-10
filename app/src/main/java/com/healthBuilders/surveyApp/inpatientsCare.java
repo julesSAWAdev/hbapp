@@ -96,7 +96,19 @@ public class inpatientsCare extends AppCompatActivity {
                 boolean var = myDb.registerInpatientCare(xyear,xdistrict,xhc,xpatientid,xassessmentchecklist,xbiographicaldata,xrelevanthistory,xchiefcomplaint,xrapidsurvey,xvitalsigns,xexamsytem,xdiagnosis,xnursingplan,xsoapnote,xtreatmanetplan,xcomplete);
                 if (var) {
                     Toast.makeText(inpatientsCare.this, "Item recorded", Toast.LENGTH_LONG).show();
-
+                    assessmentchecklist.setText("");
+                    biographicaldata.setText("");
+                    relevanthistory.setText("");
+                    chiefcomplaint.setText("");
+                    rapidsurvey.setText("");
+                    vitalsigns.setText("");
+                    examsytem.setText("");
+                    diagnosis.setText("");
+                    nursingplan.setText("");
+                    soapnote.setText("");
+                    treatmanetplan.setText("");
+                    complete.setText("");
+                    patinetid.setText("");
                 }else{
                     Toast.makeText(inpatientsCare.this, "An error occured", Toast.LENGTH_LONG).show();
 

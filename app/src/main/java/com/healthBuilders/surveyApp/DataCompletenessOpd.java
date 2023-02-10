@@ -13,7 +13,7 @@ import android.widget.Toast;
 
 public class DataCompletenessOpd extends AppCompatActivity {
     EditText lines,fields,blanks;
-    Button savenext;
+    Button savenext,closenext;
     private ProgressDialog progressDialog;
     private Databasehelper myDb;
 
@@ -34,6 +34,7 @@ public class DataCompletenessOpd extends AppCompatActivity {
         blanks=findViewById(R.id.blanks);
 
         savenext=findViewById(R.id.deliveryNext);
+        closenext=findViewById(R.id.closeNext);
 
         myDb = new Databasehelper(this);
 
@@ -51,7 +52,22 @@ public class DataCompletenessOpd extends AppCompatActivity {
                 boolean var = myDb.registerDatamanagementOpdRegisters(xyear,xdistrict,xhc,xlines,xfields,xblanks);
                 if (var) {
 
+                    Toast.makeText(DataCompletenessOpd.this, "Line recorded", Toast.LENGTH_LONG).show();
+                    lines.setText("");
+                    fields.setText("");
+                    blanks.setText("");
+                }else{
+                    Toast.makeText(DataCompletenessOpd.this, "An error occured", Toast.LENGTH_SHORT).show();
 
+                }
+            }
+
+
+        });
+
+        closenext.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
                     Intent intent = new Intent(getBaseContext(), DataManagementMaternal.class);
                     intent.putExtra("year_id", year);
                     intent.putExtra("district", district);
@@ -59,11 +75,6 @@ public class DataCompletenessOpd extends AppCompatActivity {
 
 
                     startActivity(intent);
-                    finish();
-                }else{
-                    Toast.makeText(DataCompletenessOpd.this, "An error occured", Toast.LENGTH_SHORT).show();
-
-                }
             }
 
 

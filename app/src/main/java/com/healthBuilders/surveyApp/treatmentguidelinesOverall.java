@@ -81,6 +81,12 @@ public class treatmentguidelinesOverall extends AppCompatActivity {
         stiuptodate.setAdapter(adapterDist);
         stiavailable.setAdapter(adapterDist);
 
+        hyinformed.setAdapter(adapterDist);
+        diainformed.setAdapter(adapterDist);
+        resinformed.setAdapter(adapterDist);
+        stiinformed.setAdapter(adapterDist);
+        malinformed.setAdapter(adapterDist);
+
 
         save.setOnClickListener(new View.OnClickListener() {
             @Override

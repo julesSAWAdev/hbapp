@@ -175,39 +175,7 @@
 
                 </EditText>
             </com.google.android.material.textfield.TextInputLayout>
-            <com.google.android.material.textfield.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/lab"
-                android:layout_weight="1"
-                android:layout_marginTop="5dp"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                >
-                <EditText
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="Total number of OPD"
-                    android:id="@+id/opd">
-
-                </EditText>
-            </com.google.android.material.textfield.TextInputLayout>
-            <com.google.android.material.textfield.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/hosp"
-                android:layout_weight="1"
-                android:layout_marginTop="5dp"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                >
-                <EditText
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="Total number of hospitalization rooms"
-                    android:id="@+id/hospirooms">
-
-                </EditText>
-            </com.google.android.material.textfield.TextInputLayout>
-
+            
             <Button
                 android:id="@+id/saniNext"
                 android:layout_width="match_parent"

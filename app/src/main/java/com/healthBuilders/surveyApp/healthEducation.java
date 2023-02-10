@@ -12,8 +12,10 @@ import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.google.android.material.textfield.TextInputEditText;
+
 public class healthEducation extends AppCompatActivity {
-    AutoCompleteTextView rmsessions,rmbeneficiones,rmscreened,idsessions,idbeneficiones,idscreened,
+    TextInputEditText rmsessions,rmbeneficiones,rmscreened,idsessions,idbeneficiones,idscreened,
             ncsessions,ncbeneficiones,ncscreened;
     Button saveNext;
     String[] response = new String[]{ "Yes","No","N/A"};
@@ -44,28 +46,7 @@ public class healthEducation extends AppCompatActivity {
         ncbeneficiones=findViewById(R.id.ncdEdBeneficiones);
         ncscreened=findViewById(R.id.ncdEdScreened);
 
-
-
         saveNext=findViewById(R.id.nextPage2);
-
-        //adapter
-        ArrayAdapter<String> adapterDist = new ArrayAdapter<>(this, R.layout.dropdown_item2, response);
-
-        //set adapters
-        rmsessions.setAdapter(adapterDist);
-        rmbeneficiones.setAdapter(adapterDist);
-        rmscreened.setAdapter(adapterDist);
-
-        idsessions.setAdapter(adapterDist);
-        idbeneficiones.setAdapter(adapterDist);
-        idscreened.setAdapter(adapterDist);
-
-
-        ncsessions.setAdapter(adapterDist);
-        ncbeneficiones.setAdapter(adapterDist);
-        ncscreened.setAdapter(adapterDist);
-
-
         myDb = new Databasehelper(this);
 
         saveNext.setOnClickListener(new View.OnClickListener() {
@@ -87,6 +68,9 @@ public class healthEducation extends AppCompatActivity {
 
                 boolean var = myDb.registerHealthEducation(xyear,xdistrict,xhc,xrmsessions,xrmbeneficiones,xrmscreened,xidsessions,xidbeneficiones,xidscreened,xncsessions,xncbeneficiones,xncscreened);
                 if (var) {
+
+                    Toast.makeText(healthEducation.this, "Data recorded", Toast.LENGTH_LONG).show();
+
                     Intent intent = new Intent(getBaseContext(), SurveySection.class);
                     intent.putExtra("year_id", year);
                     intent.putExtra("district", district);

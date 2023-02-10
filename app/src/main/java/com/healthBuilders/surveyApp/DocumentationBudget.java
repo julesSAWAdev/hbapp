@@ -63,6 +63,8 @@ public class DocumentationBudget extends AppCompatActivity {
                 final String ccomstaff=comstaff.getText().toString().trim();
                 boolean var = myDb.registerDocumentationBudget(xyear,xdistrict,xhc,xavailable,xtracked,xapprovedti,xapprovedcosa,ccomstaff);
                 if (var) {
+                    Toast.makeText(DocumentationBudget.this, "Data recorded", Toast.LENGTH_SHORT).show();
+
                     Intent intent = new Intent(getBaseContext(), DocumentationInservice.class);
                     intent.putExtra("year_id", year);
                     intent.putExtra("district", district);

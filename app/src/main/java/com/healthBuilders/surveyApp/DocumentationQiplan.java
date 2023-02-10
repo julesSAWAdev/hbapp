@@ -13,7 +13,7 @@ import android.widget.Button;
 import android.widget.Toast;
 
 public class DocumentationQiplan extends AppCompatActivity {
-    AutoCompleteTextView available,tracked,approvedti,approvedcosa,comstaff;
+    AutoCompleteTextView available,tracked,approvedti,comstaff;
     Button savenext;
     String[] response = new String[]{ "Yes","No","N/A"};
     private ProgressDialog progressDialog;
@@ -35,7 +35,6 @@ public class DocumentationQiplan extends AppCompatActivity {
         available=findViewById(R.id.qiavailable);
         tracked=findViewById(R.id.qitrack);
         approvedti=findViewById(R.id.qiapproved);
-        approvedcosa=findViewById(R.id.qicosa);
         comstaff=findViewById(R.id.qicommunicated);
 
         myDb = new Databasehelper(this);
@@ -44,7 +43,6 @@ public class DocumentationQiplan extends AppCompatActivity {
         available.setAdapter(adapterDist);
         tracked.setAdapter(adapterDist);
         approvedti.setAdapter(adapterDist);
-        approvedcosa.setAdapter(adapterDist);
         comstaff.setAdapter(adapterDist);
 
         savenext = findViewById(R.id.qinext);
@@ -59,11 +57,12 @@ public class DocumentationQiplan extends AppCompatActivity {
                 final String xavailable=available.getText().toString().trim();
                 final String xtracked=tracked.getText().toString().trim();
                 final String xapprovedti=approvedti.getText().toString().trim();
-                final String xapprovedcosa=approvedcosa.getText().toString().trim();
                 final String ccomstaff=comstaff.getText().toString().trim();
 
-                boolean var = myDb.registerDocumentationQiplan(xyear,xdistrict,xhc,xavailable,xtracked,xapprovedti,xapprovedcosa,ccomstaff);
+                boolean var = myDb.registerDocumentationQiplan(xyear,xdistrict,xhc,xavailable,xtracked,xapprovedti,ccomstaff);
                 if (var) {
+                    Toast.makeText(DocumentationQiplan.this, "Data recorded", Toast.LENGTH_SHORT).show();
+
                     Intent intent = new Intent(getBaseContext(), DocumentationRegister.class);
                     intent.putExtra("year_id", year);
                     intent.putExtra("district", district);

@@ -65,6 +65,9 @@ public class DocumentationActionPlan extends AppCompatActivity {
 
                 boolean var = myDb.registerDocumentationActionPlan(xyear,xdistrict,xhc,xavailable,xtracked,xapprovedti,xapprovedcosa,ccomstaff);
                 if (var) {
+
+                    Toast.makeText(DocumentationActionPlan.this, "Data recorded", Toast.LENGTH_SHORT).show();
+
                     Intent intent = new Intent(getBaseContext(), DocumentationBusinessPlan.class);
                     intent.putExtra("year_id", year);
                     intent.putExtra("district", district);

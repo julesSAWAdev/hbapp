@@ -13,7 +13,7 @@ import android.widget.Button;
 import android.widget.Toast;
 
 public class DocumentationWorkSchedule extends AppCompatActivity {
-    AutoCompleteTextView available,tracked,approvedti,approvedcosa,comstaff;
+    AutoCompleteTextView available,tracked,approvedti,comstaff;
     Button savenext;
     String[] response = new String[]{ "Yes","No","N/A"};
     private ProgressDialog progressDialog;
@@ -36,7 +36,6 @@ public class DocumentationWorkSchedule extends AppCompatActivity {
         available=findViewById(R.id.workavailable);
         tracked=findViewById(R.id.worktrack);
         approvedti=findViewById(R.id.workapproved);
-        approvedcosa=findViewById(R.id.workcosa);
         comstaff=findViewById(R.id.workcommunicated);
 
         myDb = new Databasehelper(this);
@@ -45,7 +44,6 @@ public class DocumentationWorkSchedule extends AppCompatActivity {
         available.setAdapter(adapterDist);
         tracked.setAdapter(adapterDist);
         approvedti.setAdapter(adapterDist);
-        approvedcosa.setAdapter(adapterDist);
         comstaff.setAdapter(adapterDist);
 
         savenext = findViewById(R.id.worknext);
@@ -60,12 +58,12 @@ public class DocumentationWorkSchedule extends AppCompatActivity {
                 final String xavailable=available.getText().toString().trim();
                 final String xtracked=tracked.getText().toString().trim();
                 final String xapprovedti=approvedti.getText().toString().trim();
-                final String xapprovedcosa=approvedcosa.getText().toString().trim();
                 final String ccomstaff=comstaff.getText().toString().trim();
 
-                boolean var = myDb.registerDocumentationWorkSchedule(xyear,xdistrict,xhc,xavailable,xtracked,xapprovedti,xapprovedcosa,ccomstaff);
+                boolean var = myDb.registerDocumentationWorkSchedule(xyear,xdistrict,xhc,xavailable,xtracked,xapprovedti,ccomstaff);
                 if (var) {
 
+                    Toast.makeText(DocumentationWorkSchedule.this, "Data recorded", Toast.LENGTH_SHORT).show();
 
                     Intent intent = new Intent(getBaseContext(), DocumentationQiplan.class);
                     intent.putExtra("year_id", year);

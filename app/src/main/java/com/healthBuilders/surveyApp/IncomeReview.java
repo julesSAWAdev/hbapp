@@ -25,7 +25,7 @@ import java.util.Locale;
 public class IncomeReview extends AppCompatActivity {
     TextInputEditText incomeDate,journalIncome,receiptIncome;
     AutoCompleteTextView incomeMatch;
-    Button savecont;
+    Button savecont,close;
     String[] response = new String[]{ "Yes","No"};
     Calendar myCalendar;
      private ProgressDialog progressDialog;
@@ -50,6 +50,7 @@ public class IncomeReview extends AppCompatActivity {
         incomeMatch=findViewById(R.id.incomeMatch);
 
         savecont=findViewById(R.id.saviNext);
+        close=findViewById(R.id.Close);
 
         myCalendar=Calendar.getInstance();
         myDb = new Databasehelper(this);
@@ -101,6 +102,20 @@ public class IncomeReview extends AppCompatActivity {
                 boolean var = myDb.registerIncomeReview(xyear,xdistrict,xhc,xincomeDate,xjournalIncome,xreceiptIncome,xincomeMatch);
                 if (var) {
 
+                    Toast.makeText(IncomeReview.this, "data saved", Toast.LENGTH_SHORT).show();
+                }else{
+
+                    Toast.makeText(IncomeReview.this, "An error occured", Toast.LENGTH_SHORT).show();
+
+                }
+            }
+
+
+        });
+
+        close.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
 
                     Intent intent = new Intent(getBaseContext(), Accounts.class);
                     intent.putExtra("year_id", year);
@@ -109,15 +124,7 @@ public class IncomeReview extends AppCompatActivity {
 
 
                     startActivity(intent);
-                    finish();
 
-
-                    Toast.makeText(IncomeReview.this, "data saved", Toast.LENGTH_SHORT).show();
-                }else{
-
-                    Toast.makeText(IncomeReview.this, "An error occured", Toast.LENGTH_SHORT).show();
-
-                }
             }
 
 

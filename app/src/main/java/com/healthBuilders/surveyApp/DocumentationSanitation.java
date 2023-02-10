@@ -15,7 +15,7 @@ import android.widget.Toast;
 
 public class DocumentationSanitation extends AppCompatActivity {
     EditText stafflatrines,patientlatrines,totallatrines,brokenlatrines,cleanlatrines,odorlesslatrines,handwashlatrines,
-    scheduledlatrines,opd,hosprooms;
+    scheduledlatrines;
     Button savenext;
     private ProgressDialog progressDialog;
     private Databasehelper myDb;
@@ -40,8 +40,6 @@ public class DocumentationSanitation extends AppCompatActivity {
         odorlesslatrines=findViewById(R.id.noodorlatrines);
         handwashlatrines=findViewById(R.id.handwashslatrine);
         scheduledlatrines=findViewById(R.id.scheduleslatrines);
-        opd=findViewById(R.id.opd);
-        hosprooms=findViewById(R.id.hospirooms);
 
         savenext=findViewById(R.id.saniNext);
 
@@ -62,10 +60,8 @@ public class DocumentationSanitation extends AppCompatActivity {
                 final String xodorlesslatrines=odorlesslatrines.getText().toString().trim();
                 final String xhandwashlatrines=handwashlatrines.getText().toString().trim();
                 final String xscheduledlatrines=scheduledlatrines.getText().toString().trim();
-                final String xopd=opd.getText().toString().trim();
-                final String xhosprooms=hosprooms.getText().toString().trim();
 
-                boolean var = myDb.registerDocumentationSanitation(xyear,xdistrict,xhc,xstafflatrines,xpatientlatrines,xtotallatrines,xbrokenlatrines,xcleanlatrines,xodorlesslatrines,xhandwashlatrines,xscheduledlatrines,xopd,xhosprooms);
+                boolean var = myDb.registerDocumentationSanitation(xyear,xdistrict,xhc,xstafflatrines,xpatientlatrines,xtotallatrines,xbrokenlatrines,xcleanlatrines,xodorlesslatrines,xhandwashlatrines,xscheduledlatrines);
                 if (var) {
 
 
