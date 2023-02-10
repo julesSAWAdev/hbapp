@@ -76,7 +76,7 @@ public class pharmacyStock extends AppCompatActivity {
             public void onClick(View v) {
 
 
-                    Intent intent = new Intent(getBaseContext(), SurveySection.class);
+                    Intent intent = new Intent(getBaseContext(), valueOfPharmacy.class);
                     intent.putExtra("year_id", year);
                     intent.putExtra("district", district);
                     intent.putExtra("hc", hc);

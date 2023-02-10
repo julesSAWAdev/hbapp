@@ -330,9 +330,20 @@
                 android:layout_height="match_parent"
                 android:layout_marginTop="10dp"
                 android:layout_marginBottom="5dp"
-                android:text="Save and continue"
+                android:text="Save"
                 android:textColor="#fff"
                 android:backgroundTint="@color/red"/>
+
+            <Button
+                android:id="@+id/Close"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="5dp"
+                android:text="Close and continue"
+                android:textColor="#fff"
+                android:backgroundTint="@color/red"/>
+
         </LinearLayout>
 
     </LinearLayout>

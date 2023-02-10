@@ -68,6 +68,12 @@ public class ExpensesReview extends AppCompatActivity {
 
                 boolean var = myDb.registerExpenseReview(xyear, xdistrict, xhc, xexpenseReference, xexpenseSigned,xexpenseInvoice,xexpenseNumbered,xexpenseOrdered,xexpenseRecorded);
                 if (var) {
+                    expenseReference.setText("");
+                    expenseSigned.setText("");
+                    expenseInvoice.setText("");
+                    expenseNumbered.setText("");
+                    expenseOrdered.setText("");
+                    expenseRecorded.setText("");
                     Toast.makeText(ExpensesReview.this, "data saved", Toast.LENGTH_SHORT).show();
                 } else {
 

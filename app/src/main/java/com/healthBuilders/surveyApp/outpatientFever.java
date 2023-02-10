@@ -78,6 +78,7 @@ public class outpatientFever extends AppCompatActivity {
                 boolean var = myDb.registerOutFever(xyear,xdistrict,xhc,xpatientid,xassesment,xclassification,xcorrecttreatment,xpatienteducated,xfollowup,xmalaria);
                 if (var) {
                     Toast.makeText(outpatientFever.this, "Item recorded", Toast.LENGTH_LONG).show();
+                    patientid.setText("");
                     assesment.setText("");
                     classification.setText("");
                     correcttreatment.setText("");

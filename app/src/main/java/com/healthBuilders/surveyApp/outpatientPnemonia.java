@@ -75,6 +75,7 @@ public class outpatientPnemonia extends AppCompatActivity {
                 boolean var = myDb.registerOutPnemonia(xyear,xdistrict,xhc,xpatientid,xassesment,xclassification,xcorrecttreatment,xpatienteducated,xfollowup);
                 if (var) {
                     Toast.makeText(outpatientPnemonia.this, "Item recorded", Toast.LENGTH_LONG).show();
+                    patientid.setText("");
                     assesment.setText("");
                     classification.setText("");
                     correcttreatment.setText("");

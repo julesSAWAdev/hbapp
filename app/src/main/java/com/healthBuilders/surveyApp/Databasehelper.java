@@ -243,6 +243,7 @@ public class Databasehelper extends SQLiteOpenHelper {
     private static final String m19="contraceptiveusers";
     private static final String m20="mr2vaccines";
     private static final String m21="ultrasoundscans";
+    private static final String m22="deadunderfive";
 
     //finance review
     private static final String fr1="year";
@@ -577,6 +578,26 @@ public class Databasehelper extends SQLiteOpenHelper {
     private static final String TABLE_NAME69="outcome_diabetesBS";
     private static final String TABLE_NAME70="outcome_AsthmaClass";
 
+    private static final String TABLE_NAME71="value_pharmacyStock";
+    private static final String vp1="year";
+    private static final String vp2="district";
+    private static final String vp3="hc";
+    private static final String vp4="fyear";
+    private static final String vp5="medcost";
+    private static final String vp6="medexpcost";
+    private static final String vp7="valuestock";
+
+    private static final String TABLE_NAME72="pharmacy_dispensary";
+    private static final String pd1="year";
+    private static final String pd2="district";
+    private static final String pd3="hc";
+    private static final String pd4="drugname";
+    private static final String pd5="drugexpired";
+    private static final String pd6="pharmacyregister";
+    private static final String pd7="pharmacytallies";
+    private static final String pd8="pharmacybook";
+    private static final String pd9="pharmacysigned";
+    private static final String pd10="consumptiontotal";
 
 
 
@@ -631,7 +652,7 @@ public class Databasehelper extends SQLiteOpenHelper {
         db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME39   + "(YEAR TEXT,DISTRICT TEXT,HC TEXT,PATIENTFILE TEXT,REGISTER TEXT,HMIS_HARDCOPY TEXT,HMIS_SOFTCOPY TEXT,ACCURATE TEXT)");
         db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME40   + "(YEAR TEXT,DISTRICT TEXT,HC TEXT,PATIENTFILE TEXT,REGISTER TEXT,HMIS_HARDCOPY TEXT,HMIS_SOFTCOPY TEXT,LABREGISTER TEXT,ACCURATE TEXT)");
         db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME41   + "(YEAR TEXT,DISTRICT TEXT,HC TEXT,LINES TEXT,FIELDS TEXT,BLANKS TEXT)");
-        db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME42   + "(YEAR TEXT,DISTRICT TEXT,HC TEXT,maternalyear TEXT,obsetricalANC TEXT,registrations TEXT,referalsANC TEXT,obsetricalMaternity TEXT,deliveries TEXT,livebirths TEXT,maternaldeaths TEXT,neonataldeaths TEXT,stillbirths TEXT,postpartun TEXT,anc4 TEXT,anc1 TEXT,underfivedeaths TEXT,childrenconsulted TEXT,contraceptiveusers TEXT,mr2vaccines TEXT,ultrasoundscans TEXT)");
+        db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME42   + "(YEAR TEXT,DISTRICT TEXT,HC TEXT,maternalyear TEXT,obsetricalANC TEXT,registrations TEXT,referalsANC TEXT,obsetricalMaternity TEXT,deliveries TEXT,livebirths TEXT,maternaldeaths TEXT,neonataldeaths TEXT,stillbirths TEXT,postpartun TEXT,anc4 TEXT,anc1 TEXT,underfivedeaths TEXT,childrenconsulted TEXT,contraceptiveusers TEXT,mr2vaccines TEXT,ultrasoundscans TEXT,deadunderfive TEXT)");
         db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME43   + "(year TEXT,district TEXT,hc TEXT,fyear TEXT, cbank TEXT, cpetty TEXT, creceivable TEXT, cpayable TEXT, cpharmacy TEXT, crevenue TEXT, chcincome TEXT, cmedecines TEXT, cexpenses TEXT, chrexpenses TEXT, cexpenditure TEXT, cpmedecines TEXT, cequipments TEXT, ctravel TEXT, cabudget TEXT, cpbudget TEXT)");
         db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME44   + "(YEAR TEXT,HC TEXT,DISTRICT TEXT,fyear TEXT,ivperiod TEXT,subcbhi TEXT,subrssb TEXT,submmi TEXT,returncbhi TEXT,returnrssb TEXT,returnmmi TEXT,verifyrssb TEXT,verifymmi TEXT,amountcbhi TEXT,amountrssb TEXT,amountmmi TEXT,aftercbhi TEXT,afterrssb TEXT,aftermmi TEXT)");
         db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME45   + "(YEAR TEXT,DISTRICT TEXT,HC TEXT,INCOMEDATE TEXT,JOURNALINCOME TEXT,RECEIPTINCOME TEXT,INCOMEMATCH TEXT)");
@@ -639,7 +660,7 @@ public class Databasehelper extends SQLiteOpenHelper {
         db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME47   + "(YEAR TEXT,DISTRICT TEXT,HC TEXT,EXPENSEREFERENCE TEXT,EXPENSESIGNED TEXT,EXPENSEINVOICE TEXT,EXPENSENUMBERED TEXT,EXPENSEORDERED TEXT,EXPENSERECORDED TEXT)");
         db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME48   + "(YEAR TEXT,DISTRICT TEXT,HC TEXT,  rightsposted TEXT, infection TEXT, satisfactiontool TEXT, satisfactiondata TEXT, suggestionbox TEXT, qiincident TEXT, annualhazard TEXT, ppe TEXT, staffppe TEXT,staffsatisfactiontool TEXT, incidenttool TEXT, asrh TEXT, staffsatisfactiondata TEXT, patientincidents TEXT, patientincidentanalyzed TEXT, numberhazards TEXT, numberhazardsfixed TEXT)");
         db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME49   + "(YEAR TEXT,DISTRICT TEXT,HC TEXT, rmsessions TEXT, rmbeneficiones TEXT, rmscreened TEXT, idsessions TEXT, idbeneficiones TEXT, idscreened TEXT, ncsessions TEXT, ncbeneficiones TEXT, ncscreened TEXT)");
-        db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME50   + "(YEAR TEXT,DISTRICT TEXT,HC TEXT,drugseparate TEXT,drugforms TEXT,drugrequisition TEXT,drugalphabet TEXT,drugclass TEXT,drugfifo TEXT,drugfefo TEXT,drugother TEXT,drugnone TEXT,pharmacydry TEXT,pharmacyclean TEXT,pharmacyprotected TEXT,pharmacyorganized TEXT,pharmacythermometer TEXT,pharmacyrefrigerator TEXT,pharmacymonitored TEXT,pharmacyinventory TEXT,pharmacyessentials TEXT,pharmacynotes TEXT,pharmacyregister TEXT,pharmacytallies TEXT,pharmacybook TEXT,pharmacysigned TEXT, pharmacytemperature  TEXT,pharmacyrefrigiratortemp TEXT)");
+        db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME50   + "(YEAR TEXT,DISTRICT TEXT,HC TEXT,drugseparate TEXT,drugforms TEXT,drugrequisition TEXT,drugalphabet TEXT,drugclass TEXT,drugfifo TEXT,drugfefo TEXT,drugother TEXT,drugnone TEXT,pharmacydry TEXT,pharmacyclean TEXT,pharmacyprotected TEXT,pharmacyorganized TEXT,pharmacythermometer TEXT,pharmacyrefrigerator TEXT,pharmacymonitored TEXT,pharmacyinventory TEXT,pharmacyessentials TEXT,pharmacynotes TEXT, pharmacytemperature  TEXT,pharmacyrefrigiratortemp TEXT)");
         db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME51   + "(YEAR TEXT,DISTRICT TEXT,HC TEXT,drugname TEXT,drugquantity TEXT,drugquantityshelf TEXT,drugavailable TEXT,drugexpired TEXT,drugrequested TEXT,drugstockcard TEXT,drugstockcardfilled TEXT,drugexcess TEXT,druginventory TEXT,druglabel TEXT)");
         db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME52   + "(YEAR TEXT,DISTRICT TEXT,HC TEXT,patientid TEXT,weightcheck TEXT,currentprotocol TEXT,bpcheck TEXT,eyecheck TEXT,procheck TEXT,crecheck TEXT)");
         db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME53   + "(YEAR TEXT,DISTRICT TEXT,HC TEXT,patientid TEXT,weightcheck TEXT,currentprotocol TEXT,bpcheck TEXT,eyecheck TEXT,procheck TEXT,crecheck TEXT,footcheck TEXT)");
@@ -660,6 +681,8 @@ public class Databasehelper extends SQLiteOpenHelper {
         db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME68   + "(YEAR TEXT,DISTRICT TEXT,HC TEXT,patientid TEXT, month1 TEXT, month2 TEXT, month3 TEXT,month4 TEXT,month5 TEXT,month6 TEXT)");
         db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME69   + "(YEAR TEXT,DISTRICT TEXT,HC TEXT,patientid TEXT, month1 TEXT, month2 TEXT, month3 TEXT,month4 TEXT,month5 TEXT,month6 TEXT)");
         db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME70   + "(YEAR TEXT,DISTRICT TEXT,HC TEXT,patientid TEXT, month1 TEXT, month2 TEXT, month3 TEXT,month4 TEXT,month5 TEXT,month6 TEXT)");
+        db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME71   + "(YEAR TEXT,DISTRICT TEXT,HC TEXT,fyear TEXT,medcost TEXT,medexpcost TEXT,valuestock TEXT)");
+        db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME72   + "(YEAR TEXT,DISTRICT TEXT,HC TEXT,drugname TEXT ,drugexpired TEXT ,pharmacyregister TEXT ,pharmacytallies TEXT,pharmacybook TEXT ,pharmacysigned TEXT,consumptiontotal  TEXT)");
 
     }
 
@@ -735,6 +758,8 @@ public class Databasehelper extends SQLiteOpenHelper {
         db.execSQL("DROP TABLE IF EXISTS "+ TABLE_NAME68);
         db.execSQL("DROP TABLE IF EXISTS "+ TABLE_NAME69);
         db.execSQL("DROP TABLE IF EXISTS "+ TABLE_NAME70);
+        db.execSQL("DROP TABLE IF EXISTS "+ TABLE_NAME71);
+        db.execSQL("DROP TABLE IF EXISTS "+ TABLE_NAME72);
         onCreate(db);
     }
 
@@ -1771,7 +1796,7 @@ public class Databasehelper extends SQLiteOpenHelper {
 
     }
 
-    public boolean registerMaternalNeonatal( String year,String district,String hc,String maternalyear, String obsetricalANC, String registrations, String referalsANC, String obsetricalMaternity, String deliveries, String livebirths, String maternaldeaths, String neonataldeaths, String stillbirths, String postpartun, String anc4, String anc1, String underfivedeaths, String childrenconsulted, String contraceptiveusers, String mr2vaccines, String ultrasoundscans){
+    public boolean registerMaternalNeonatal( String year,String district,String hc,String maternalyear, String obsetricalANC, String registrations, String referalsANC, String obsetricalMaternity, String deliveries, String livebirths, String maternaldeaths, String neonataldeaths, String stillbirths, String postpartun, String anc4, String anc1, String underfivedeaths, String childrenconsulted, String contraceptiveusers, String mr2vaccines, String ultrasoundscans,String deadunderfive){
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
 
@@ -1796,6 +1821,7 @@ public class Databasehelper extends SQLiteOpenHelper {
         values.put(m19  ,contraceptiveusers);
         values.put(m20  ,mr2vaccines);
         values.put(m21  ,ultrasoundscans);
+        values.put(m22  ,deadunderfive);
         long result = db.insert(TABLE_NAME42, null, values);
         if (result == -1){
             return false;
@@ -2001,7 +2027,7 @@ public class Databasehelper extends SQLiteOpenHelper {
 
     }
 
-    public boolean registerManagementReview(String year, String district, String hc,  String drugseparate, String drugforms, String drugrequisition, String drugalphabet, String drugclass, String drugfifo, String drugfefo, String drugother, String drugnone, String pharmacydry, String pharmacyclean, String pharmacyprotected, String pharmacyorganized, String pharmacythermometer, String pharmacyrefrigerator, String pharmacymonitored, String pharmacyinventory, String pharmacyessentials, String pharmacynotes, String pharmacyregister, String pharmacytallies, String pharmacybook, String pharmacysigned, String pharmacytemperature,  String pharmacyrefrigiratortemp){
+    public boolean registerManagementReview(String year, String district, String hc,  String drugseparate, String drugforms, String drugrequisition, String drugalphabet, String drugclass, String drugfifo, String drugfefo, String drugother, String drugnone, String pharmacydry, String pharmacyclean, String pharmacyprotected, String pharmacyorganized, String pharmacythermometer, String pharmacyrefrigerator, String pharmacymonitored, String pharmacyinventory, String pharmacyessentials, String pharmacynotes, String pharmacytemperature,  String pharmacyrefrigiratortemp){
 
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
@@ -2028,10 +2054,6 @@ public class Databasehelper extends SQLiteOpenHelper {
         values.put(pm20,pharmacyinventory);
         values.put(pm21,pharmacyessentials);
         values.put(pm22,pharmacynotes);
-        values.put(pm23,pharmacyregister);
-        values.put(pm24,pharmacytallies);
-        values.put(pm25,pharmacybook);
-        values.put(pm26,pharmacysigned);
         values.put(pm27,pharmacytemperature);
         values.put(pm28,pharmacyrefrigiratortemp);
         long result = db.insert(TABLE_NAME50, null, values);
@@ -2530,4 +2552,47 @@ public class Databasehelper extends SQLiteOpenHelper {
 
     }
 
+    public boolean registerValuePharmacyStock(String year, String district, String hc,String fyear,String medcost,String medexpcost,String valuestock){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+
+        values.put(vp1,year);
+        values.put(vp2,district);
+        values.put(vp3,hc);
+        values.put(vp4,fyear);
+        values.put(vp5,medcost);
+        values.put(vp6,medexpcost);
+        values.put(vp7,valuestock);
+
+        long result = db.insert(TABLE_NAME71, null, values);
+        if (result == -1){
+            return false;
+        }else{
+            return true;
+        }
+
+    }
+
+    public boolean registerValuePharmacyDispensary(String year, String district, String hc,String drugname ,String drugexpired,String pharmacyregister,String pharmacytallies,String pharmacybook,String pharmacysigned,String consumptiontotal ) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+
+        values.put(pd1, year);
+        values.put(pd2, district);
+        values.put(pd3, hc);
+        values.put(pd4, drugname);
+        values.put(pd5, drugexpired);
+        values.put(pd6, pharmacyregister);
+        values.put(pd7, pharmacytallies);
+        values.put(pd8, pharmacybook);
+        values.put(pd9, pharmacysigned);
+        values.put(pd10, consumptiontotal);
+
+        long result = db.insert(TABLE_NAME72, null, values);
+        if (result == -1) {
+            return false;
+        } else {
+            return true;
+        }
+    }
 }

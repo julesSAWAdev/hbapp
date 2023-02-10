@@ -26,7 +26,7 @@ public class InsuranceReview extends AppCompatActivity {
     TextInputEditText invoiceCBHI,invoiceRSSB,invoiceMMI,returnCBHI,returnRSSB,returnMMI,verifyRSSB,verifyMMI,
                         amountCBHI,amountRSSB,amountMMI,afterCBHI,afterRSSB,afterMMI,fyear,ivperiod;
     Calendar myCalendar;
-    Button savecont;
+    Button savecont,close;
     private ProgressDialog progressDialog;
     private Databasehelper myDb;
 
@@ -67,6 +67,7 @@ public class InsuranceReview extends AppCompatActivity {
 
 
         savecont=findViewById(R.id.saviNext);
+        close=findViewById(R.id.Close);
         myCalendar=Calendar.getInstance();
         myDb = new Databasehelper(this);
 
@@ -320,21 +321,45 @@ public class InsuranceReview extends AppCompatActivity {
                 boolean var = myDb.RegisterAssuranceReview(xyear,xdistrict,xhc,xfyear,xivperiod,xinvoiceCBHI,xinvoiceRSSB,xinvoiceMMI,xreturnCBHI,xreturnRSSB,xreturnMMI,
                         xverifyRSSB,xverifyMMI,xamountCBHI,xamountRSSB,xamountMMI,xafterCBHI,xafterRSSB,xafterMMI);
                 if (var) {
+                    fyear.setText("");
+                    ivperiod.setText("");
+                    invoiceCBHI.setText("");
+                    invoiceRSSB.setText("");
+                    invoiceMMI.setText("");
+                    returnCBHI.setText("");
+                    returnRSSB.setText("");
+                    returnMMI.setText("");
+                    verifyRSSB.setText("");
+                    verifyMMI.setText("");
+                    amountCBHI.setText("");
+                    amountRSSB.setText("");
+                    amountMMI.setText("");
+                    afterCBHI.setText("");
+                    afterRSSB.setText("");
+                    afterMMI.setText("");
+                    Toast.makeText(InsuranceReview.this, "Data saved", Toast.LENGTH_SHORT).show();
 
-
-                    Intent intent = new Intent(getBaseContext(), IncomeReview.class);
-                    intent.putExtra("year_id", year);
-                    intent.putExtra("district", district);
-                    intent.putExtra("hc", hc);
-
-
-                    startActivity(intent);
-                    finish();
                 }else{
 
                     Toast.makeText(InsuranceReview.this, "An error occured", Toast.LENGTH_SHORT).show();
 
                 }
+            }
+
+
+        });
+
+        close.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getBaseContext(), IncomeReview.class);
+                intent.putExtra("year_id", year);
+                intent.putExtra("district", district);
+                intent.putExtra("hc", hc);
+
+
+                startActivity(intent);
+                finish();
             }
 
 

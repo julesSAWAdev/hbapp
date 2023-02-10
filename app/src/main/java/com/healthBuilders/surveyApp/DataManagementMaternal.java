@@ -12,7 +12,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 public class DataManagementMaternal extends AppCompatActivity {
-    EditText maternalyear,obsetricalANC,registrations,referalsANC,obsetricalMaternity,deliveries,livebirths,maternaldeaths,neonataldeaths,stillbirths,postpartun,anc4,anc1,underfivedeaths,childrenconsulted,contraceptiveusers,mr2vaccines,ultrasoundscans;
+    EditText deadunderfive,maternalyear,obsetricalANC,registrations,referalsANC,obsetricalMaternity,deliveries,livebirths,maternaldeaths,neonataldeaths,stillbirths,postpartun,anc4,anc1,underfivedeaths,childrenconsulted,contraceptiveusers,mr2vaccines,ultrasoundscans;
     Button savenext;
     String[] response = new String[]{ "Yes","No","N/A"};
     private ProgressDialog progressDialog;
@@ -47,6 +47,7 @@ public class DataManagementMaternal extends AppCompatActivity {
          contraceptiveusers=findViewById(R.id.maternalcontraceptives);
          mr2vaccines=findViewById(R.id.maternalmr2);
          ultrasoundscans=findViewById(R.id.maternalultrasound);
+         deadunderfive=findViewById(R.id.deadUnderFive);
 
          savenext=findViewById(R.id.maternalNext);
 
@@ -77,10 +78,11 @@ public class DataManagementMaternal extends AppCompatActivity {
                 final String xcontraceptiveusers=contraceptiveusers.getText().toString().trim();
                 final String xmr2vaccines=mr2vaccines.getText().toString().trim();
                 final String xultrasoundscans=ultrasoundscans.getText().toString().trim();
+                final String xdeadunderfive=deadunderfive.getText().toString().trim();
 
 
                 boolean var = myDb.registerMaternalNeonatal(xyear,xdistrict,xhc,xmaternalyear,xobsetricalANC,xregistrations,xreferalsANC,xobsetricalMaternity,xdeliveries,xlivebirths,
-                        xmaternaldeaths,xneonataldeaths,xstillbirths,xpostpartun,xanc4,xanc1,xunderfivedeaths,xchildrenconsulted,xcontraceptiveusers,xmr2vaccines,xultrasoundscans);
+                        xmaternaldeaths,xneonataldeaths,xstillbirths,xpostpartun,xanc4,xanc1,xunderfivedeaths,xchildrenconsulted,xcontraceptiveusers,xmr2vaccines,xultrasoundscans,xdeadunderfive);
                 if (var) {
 
 

@@ -75,6 +75,7 @@ public class outpatientMalaria extends AppCompatActivity {
                 boolean var = myDb.registerOutMalaria(xyear,xdistrict,xhc,xpatientid,xassesment,xclassification,xcorrecttreatment,xpatienteducated,xfollowup);
                 if (var) {
                     Toast.makeText(outpatientMalaria.this, "Item recorded", Toast.LENGTH_LONG).show();
+                    patientid.setText("");
                     assesment.setText("");
                     classification.setText("");
                     correcttreatment.setText("");

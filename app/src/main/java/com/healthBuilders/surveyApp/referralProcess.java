@@ -86,6 +86,7 @@ public class referralProcess extends AppCompatActivity {
                 boolean var = myDb.registerReferal(xyear,xdistrict,xhc,xreason,xfindings,xprocedures,ximmediatecondition,xpatienttransferedto,xfeedback,xreferalsheets,xstandardform,xtransport);
                 if (var) {
                     Toast.makeText(referralProcess.this, "Item recorded", Toast.LENGTH_LONG).show();
+                    patientid.setText("");
                     reason.setText("");
                     findings.setText("");
                     procedures.setText("");

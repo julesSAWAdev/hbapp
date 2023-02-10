@@ -18,7 +18,7 @@ public class pharmacymanagementReview extends AppCompatActivity {
     Button save;
     AutoCompleteTextView drugseparate,drugforms,drugrequisition,drugalphabet,drugclass,drugfifo,drugfefo,drugother,
             drugnone,pharmacydry,pharmacyclean,pharmacyprotected,pharmacyorganized,pharmacythermometer,pharmacyrefrigerator,
-                        pharmacymonitored,pharmacyinventory,pharmacyessentials,pharmacynotes,pharmacyregister,pharmacytallies,pharmacybook,pharmacysigned;
+                        pharmacymonitored,pharmacyinventory,pharmacyessentials,pharmacynotes;
 
     TextInputEditText pharmacytemperature,pharmacyrefrigiratortemp;
     String[] response = new String[]{ "Yes","No","N/A"};
@@ -59,11 +59,6 @@ public class pharmacymanagementReview extends AppCompatActivity {
         pharmacyinventory=findViewById(R.id.pharmacyInventory);
         pharmacyessentials=findViewById(R.id.pharmacyEssentials);
         pharmacynotes=findViewById(R.id.pharmacyNotes);
-        pharmacyregister=findViewById(R.id.pharmacyRegister);
-        pharmacytallies=findViewById(R.id.pharmacyTallies);
-        pharmacybook=findViewById(R.id.pharmacyBook);
-        pharmacysigned=findViewById(R.id.pharmacySigned);
-
 
         pharmacytemperature=findViewById(R.id.pharmacyTemparature);
         pharmacyrefrigiratortemp=findViewById(R.id.pharmacyRefrigiratorTemparature);
@@ -93,10 +88,6 @@ public class pharmacymanagementReview extends AppCompatActivity {
         pharmacyinventory.setAdapter(adapterDist);
         pharmacyessentials.setAdapter(adapterDist);
         pharmacynotes.setAdapter(adapterDist);
-        pharmacyregister.setAdapter(adapterDist);
-        pharmacytallies.setAdapter(adapterDist);
-        pharmacybook.setAdapter(adapterDist);
-        pharmacysigned.setAdapter(adapterDist);
 
         myDb = new Databasehelper(this);
 
@@ -128,13 +119,9 @@ public class pharmacymanagementReview extends AppCompatActivity {
                 final String xpharmacyinventory= pharmacyinventory.getText().toString().trim();
                 final String xpharmacyessentials= pharmacyessentials.getText().toString().trim();
                 final String xpharmacynotes= pharmacynotes.getText().toString().trim();
-                final String xpharmacyregister= pharmacyregister.getText().toString().trim();
-                final String xpharmacytallies= pharmacytallies.getText().toString().trim();
-                final String xpharmacybook= pharmacybook.getText().toString().trim();
-                final String xpharmacysigned= pharmacysigned.getText().toString().trim();
                 final String xpharmacytemperature= pharmacytemperature.getText().toString().trim();
                 final String xpharmacyrefrigiratortemp= pharmacyrefrigiratortemp.getText().toString().trim();
-                boolean var = myDb.registerManagementReview(xyear,xdistrict,xhc,xdrugseparate,xdrugforms,xdrugrequisition,xdrugalphabet,xdrugclass,xdrugfifo,xdrugfefo,xdrugother,xdrugnone,xpharmacydry,xpharmacyclean,xpharmacyprotected,xpharmacyorganized,xpharmacythermometer,xpharmacyrefrigerator,xpharmacymonitored,xpharmacyinventory,xpharmacyessentials,xpharmacynotes,xpharmacyregister,xpharmacytallies,xpharmacybook,xpharmacysigned,xpharmacytemperature,xpharmacyrefrigiratortemp);
+                boolean var = myDb.registerManagementReview(xyear,xdistrict,xhc,xdrugseparate,xdrugforms,xdrugrequisition,xdrugalphabet,xdrugclass,xdrugfifo,xdrugfefo,xdrugother,xdrugnone,xpharmacydry,xpharmacyclean,xpharmacyprotected,xpharmacyorganized,xpharmacythermometer,xpharmacyrefrigerator,xpharmacymonitored,xpharmacyinventory,xpharmacyessentials,xpharmacynotes,xpharmacytemperature,xpharmacyrefrigiratortemp);
                 if (var) {
 
                     Toast.makeText(pharmacymanagementReview.this, "Data recorded", Toast.LENGTH_LONG).show();

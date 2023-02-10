@@ -77,6 +77,7 @@ public class outpatientDiarhea extends AppCompatActivity {
                 boolean var = myDb.registerOutDiarhea(xyear,xdistrict,xhc,xpatientid,xassesment,xclassification,xcorrecttreatment,xpatienteducated,xfollowup,xorsgiven);
                 if (var) {
                     Toast.makeText(outpatientDiarhea.this, "Item recorded", Toast.LENGTH_LONG).show();
+                    patientid.setText("");
                     assesment.setText("");
                     classification.setText("");
                     correcttreatment.setText("");

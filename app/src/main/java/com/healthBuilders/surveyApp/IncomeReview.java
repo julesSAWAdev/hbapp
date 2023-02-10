@@ -101,7 +101,10 @@ public class IncomeReview extends AppCompatActivity {
 
                 boolean var = myDb.registerIncomeReview(xyear,xdistrict,xhc,xincomeDate,xjournalIncome,xreceiptIncome,xincomeMatch);
                 if (var) {
-
+                        incomeDate.setText("");
+                        journalIncome.setText("");
+                        receiptIncome.setText("");
+                        incomeMatch.setText("");
                     Toast.makeText(IncomeReview.this, "data saved", Toast.LENGTH_SHORT).show();
                 }else{
 

@@ -71,6 +71,7 @@ public class outpatientCough extends AppCompatActivity {
                 boolean var = myDb.registerOutCough(xyear,xdistrict,xhc,xpatientid,xassesment,xclassification,xcorrecttreatment,xpatienteducated);
                 if (var) {
                     Toast.makeText(outpatientCough.this, "Item recorded", Toast.LENGTH_LONG).show();
+                    patientid.setText("");
                     assesment.setText("");
                     classification.setText("");
                     correcttreatment.setText("");

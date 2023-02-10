@@ -336,6 +336,23 @@
                 </EditText>
             </com.google.android.material.textfield.TextInputLayout>
 
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/hosphwee"
+                android:layout_weight="1"
+                android:layout_marginTop="5dp"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                >
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Under five deaths"
+                    android:id="@+id/deadUnderFive">
+
+                </EditText>
+            </com.google.android.material.textfield.TextInputLayout>
+
             <Button
                 android:id="@+id/maternalNext"
                 android:layout_width="match_parent"
