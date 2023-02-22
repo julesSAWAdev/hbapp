@@ -5,6 +5,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 
 import android.app.ProgressDialog;
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Pair;
@@ -33,6 +35,8 @@ public class LoginActivity extends AppCompatActivity {
     private ProgressDialog progressDialog;
     private Databasehelper myDB;
 
+    BroadcastReceiver broadcastReceiver;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -54,6 +58,12 @@ public class LoginActivity extends AppCompatActivity {
         loading = findViewById(R.id.loading);
 
         myDB = new Databasehelper(this);
+        /*broadcastReceiver = new BroadcastReceiver() {
+            @Override
+            public void onReceive(Context context, Intent intent) {
+
+            }
+        };*/
 
         loginbtn.setOnClickListener(new View.OnClickListener() {
             @Override

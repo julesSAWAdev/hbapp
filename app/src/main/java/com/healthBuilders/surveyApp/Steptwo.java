@@ -324,7 +324,7 @@ public class Steptwo extends AppCompatActivity {
                         xtotstaff,xtotnurse,xpaidstaff,xclinicalstaff,xtbstaff,xstaffinfection,xstaffcovid,xstaffevaluated,xstaffillness,xstaffinjuries,xstaffhepatite,xstaffrate,xpatientrate,xstaffmeeting,xcosameeting,xcogemeeting,xchwmeeting);
                 if (var){
                     Toast.makeText(Steptwo.this,"record added succesfuly",Toast.LENGTH_SHORT);
-                    Intent intent = new Intent(getBaseContext(), SurveySection.class);
+                    Intent intent = new Intent(getBaseContext(), generalInformaion2.class);
                     intent.putExtra("year_id", year);
                     intent.putExtra("district", district);
                     intent.putExtra("hc", hc);

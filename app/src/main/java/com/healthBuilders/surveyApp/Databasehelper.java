@@ -10,598 +10,617 @@ import androidx.annotation.Nullable;
 
 public class Databasehelper extends SQLiteOpenHelper {
 
-    private static final String DATABASE_NAME = "hbexercise";
-    private static final String TABLE_NAME = "users";
 
-    private static final String COL_1 = "ID";
-    private static final String COL_2 = "FNAME";
-    private static final String COL_3 = "LNAME";
-    private static final String COL_4 = "EMAIL";
-    private static final String COL_5 = "PASSWORD";
 
-    private static final String TABLE_NAME2 = "BASIC_INFO";
-    private static final String COL2_1 = "year";
-    private static final String COL2_2 = "district";
-    private static final String COL2_3 = "hc";
-    private static final String COL2_4 = "sector";
-    private static final String COL2_5 = "cell";
-    private static final String COL2_6 = "village";
-    private static final String COL2_7 = "pubpost";
-    private static final String COL2_8 = "pripost";
-    private static final String COL2_9 = "population";
-    private static final String COL2_10 = "patients";
-    private static final String COL2_11 = "beds";
-    private static final String COL2_12 = "consrooms";
-    private static final String COL2_13 = "hosprooms";
-    private static final String COL2_14 = "chw";
-    private static final String COL2_15 = "a0";
-    private static final String COL2_16 = "a1";
-    private static final String COL2_17 = "a2";
-    private static final String COL2_18 = "midwife";
 
-    private static final String TABLE_NAME3="BASIC_INFO2";
-    private static final String COL3_1 = "year";
-    private static final String COL3_2 = "district";
-    private static final String COL3_3 = "hc";
-    private static final String COL3_4 = "organi";
-    private static final String COL3_5 = "uptodate";
-    private static final String COL3_6 = "accessible";
-    private static final String COLP_1 = "position1";
-    private static final String COL3_7 = "labtecav";
-    private static final String COL3_8 = "labsign";
-    private static final String COL3_9 = "labemp";
-    private static final String COLP_2 = "position2";
-    private static final String COL3_10 = "nursearv";
-    private static final String COL3_11 = "nursearsign";
-    private static final String COL3_12 = "nursearempsign";
-    private static final String COLP_3 = "position3";
-    private static final String COL3_13 = "nursevacav";
-    private static final String COL3_14 = "nursevacsign";
-    private static final String COL3_15 = "nursevacempsign";
-    private static final String COLP_4 = "position4";
-    private static final String COL3_16 = "custocareav";
-    private static final String COL3_17 = "custcaresign";
-    private static final String COL3_18 = "custcareemppsign";
-    private static final String COLP_5 = "position5";
-    private static final String COL3_19 = "nursetbav";
-    private static final String COL3_20 = "nursetbsign";
-    private static final String COL3_21 = "nursetbempsign";
-    private static final String COLP_6 = "position6";
-    private static final String COL3_22 = "nursechi";
-    private static final String COL3_23 = "nursechisign";
-    private static final String COL3_24 = "nursechiempsign";
-    private static final String COLP_7 = "position7";
-    private static final String COL3_25 = "socialav";
-    private static final String COL3_26 = "socialsign";
-    private static final String COL3_27= "socialempsign";
-    private static final String COLP_8 = "position8";
-    private static final String COL3_28 = "nursecpnav";
-    private static final String COL3_29 = "nursecpnsign";
-    private static final String COL3_30 = "nursecpnempsign";
-    private static final String COLP_9                                                                                                                                                                                                                                                                                      = "position9";
-    private static final String COL3_31 = "midwifeav";
-    private static final String COL3_32 = "midwifesign";
-    private static final String COL3_33 = "midwifeempsign";
-    private static final String COL3_34 = "SOPpharmacy";
-    private static final String COL3_35 = "evidence";
-    private static final String COL3_36 = "qicomitee";
-    private static final String COL3_37 = "totstaff";
-    private static final String COL3_38 = "totnurse";
-    private static final String COL3_39 = "paidstaff";
-    private static final String COL3_40 = "clinicalstaff";
-    private static final String COL3_41 = "tbstaff";
-    private static final String COL3_42 = "staffinfection";
-    private static final String COL3_43 = "staffcovid";
-    private static final String COL3_44 = "staffevaluated";
-    private static final String COL3_45= "staffillness";
-    private static final String COL3_46 = "staffinjuries";
-    private static final String COL3_47= "staffhepatite";
-    private static final String COL3_48= "staffrate";
-    private static final String COL3_49= "patientrate";
-    private static final String COL3_50= "staffmetting";
-    private static final String COL3_51= "cosametting";
-    private static final String COL3_52= "cogemetting";
-    private static final String COL3_53= "chwmetting";
+    public static final String server_url1= "http://report.healthbuilders.org/app/home.php";
+    public static final String UI_broadcast="com.healthBuilders.surveyApp.uiupdatebroadcast";
+
+    public static final int sync_status_failed= 0;
+
+    public static final String DATABASE_NAME = "hbexercise";
+    public static final String TABLE_NAME = "users";
+
+    public static final String COL_1 = "ID";
+    public static final String COL_2 = "FNAME";
+    public static final String COL_3 = "LNAME";
+    public static final String COL_4 = "EMAIL";
+    public static final String COL_5 = "PASSWORD";
+    public static final String COL_6 = "STATUS";
+
+    public static final String TABLE_NAME2 = "BASIC_INFO";
+    public static final String COL2_1 = "year";
+    public static final String COL2_2 = "district";
+    public static final String COL2_3 = "hc";
+    public static final String COL2_4 = "sector";
+    public static final String COL2_5 = "cell";
+    public static final String COL2_6 = "village";
+    public static final String COL2_7 = "pubpost";
+    public static final String COL2_8 = "pripost";
+    public static final String COL2_9 = "population";
+    public static final String COL2_10 = "patients";
+    public static final String COL2_11 = "beds";
+    public static final String COL2_12 = "consrooms";
+    public static final String COL2_13 = "hosprooms";
+    public static final String COL2_14 = "chw";
+    public static final String COL2_15 = "a0";
+    public static final String COL2_16 = "a1";
+    public static final String COL2_17 = "a2";
+    public static final String COL2_18 = "midwife";
+    public static final String COL2_19 = "STATUS";
+
+    public static final String TABLE_NAME3="BASIC_INFO2";
+    public static final String COL3_1 = "year";
+    public static final String COL3_2 = "district";
+    public static final String COL3_3 = "hc";
+    public static final String COL3_4 = "organi";
+    public static final String COL3_5 = "uptodate";
+    public static final String COL3_6 = "accessible";
+    public static final String COLP_1 = "position1";
+    public static final String COL3_7 = "labtecav";
+    public static final String COL3_8 = "labsign";
+    public static final String COL3_9 = "labemp";
+    public static final String COLP_2 = "position2";
+    public static final String COL3_10 = "nursearv";
+    public static final String COL3_11 = "nursearsign";
+    public static final String COL3_12 = "nursearempsign";
+    public static final String COLP_3 = "position3";
+    public static final String COL3_13 = "nursevacav";
+    public static final String COL3_14 = "nursevacsign";
+    public static final String COL3_15 = "nursevacempsign";
+    public static final String COLP_4 = "position4";
+    public static final String COL3_16 = "custocareav";
+    public static final String COL3_17 = "custcaresign";
+    public static final String COL3_18 = "custcareemppsign";
+    public static final String COLP_5 = "position5";
+    public static final String COL3_19 = "nursetbav";
+    public static final String COL3_20 = "nursetbsign";
+    public static final String COL3_21 = "nursetbempsign";
+    public static final String COLP_6 = "position6";
+    public static final String COL3_22 = "nursechi";
+    public static final String COL3_23 = "nursechisign";
+    public static final String COL3_24 = "nursechiempsign";
+    public static final String COLP_7 = "position7";
+    public static final String COL3_25 = "socialav";
+    public static final String COL3_26 = "socialsign";
+    public static final String COL3_27= "socialempsign";
+    public static final String COLP_8 = "position8";
+    public static final String COL3_28 = "nursecpnav";
+    public static final String COL3_29 = "nursecpnsign";
+    public static final String COL3_30 = "nursecpnempsign";
+    public static final String COLP_9  = "position9";
+    public static final String COL3_31 = "midwifeav";
+    public static final String COL3_32 = "midwifesign";
+    public static final String COL3_33 = "midwifeempsign";
+    public static final String COL3_34 = "SOPpharmacy";
+    public static final String COL3_35 = "evidence";
+    public static final String COL3_36 = "qicomitee";
+    public static final String COL3_37 = "totstaff";
+    public static final String COL3_38 = "totnurse";
+    public static final String COL3_39 = "paidstaff";
+    public static final String COL3_40 = "clinicalstaff";
+    public static final String COL3_41 = "tbstaff";
+    public static final String COL3_42 = "staffinfection";
+    public static final String COL3_43 = "staffcovid";
+    public static final String COL3_44 = "staffevaluated";
+    public static final String COL3_45= "staffillness";
+    public static final String COL3_46 = "staffinjuries";
+    public static final String COL3_47= "staffhepatite";
+    public static final String COL3_48= "staffrate";
+    public static final String COL3_49= "patientrate";
+    public static final String COL3_50= "staffmetting";
+    public static final String COL3_51= "cosametting";
+    public static final String COL3_52= "cogemetting";
+    public static final String COL3_53= "chwmetting";
 
 
 
     //Service description table
-    private static final String TABLE_NAME4="Anc_servicedescription";
-    private static final String anc_1= "year";
-    private static final String anc_2= "district";
-    private static final String anc_3= "hc";
-    private static final String anc_4= "direction";
-    private static final String anc_5= "service";
-    private static final String anc_6= "responsiblename";
-    private static final String anc_7= "currentdata";
-    private static final String anc_8= "responsiblephoto";
-    private static final String anc_9= "area";
-    private static final String anc_10= "requestedlistofsupplies";
-    private static final String anc_11= "currentlistofsupplies";
-    private static final String anc_12= "hygiene";
-    private static final String anc_13= "handhygiene";
+    public static final String TABLE_NAME4="Anc_servicedescription";
+    public static final String anc_1= "year";
+    public static final String anc_2= "district";
+    public static final String anc_3= "hc";
+    public static final String anc_4= "direction";
+    public static final String anc_5= "service";
+    public static final String anc_6= "responsiblename";
+    public static final String anc_7= "currentdata";
+    public static final String anc_8= "responsiblephoto";
+    public static final String anc_9= "area";
+    public static final String anc_10= "requestedlistofsupplies";
+    public static final String anc_11= "currentlistofsupplies";
+    public static final String anc_12= "hygiene";
+    public static final String anc_13= "handhygiene";
 
-    private static final String TABLE_NAME5="vaccinaion_description";
-    private static final String TABLE_NAME6="familyplanning_description";
-    private static final String TABLE_NAME7="pharmacystock_description";
-    private static final String TABLE_NAME8="pharmacydispensing_description";
-    private static final String TABLE_NAME9="ncd_description";
-    private static final String TABLE_NAME10="ceho_description";
-    private static final String TABLE_NAME11="cashier_description";
-    private static final String TABLE_NAME12="accounting_description";
-    private static final String TABLE_NAME13="laboratory_description";
-    private static final String TABLE_NAME14="titulaire_description";
-    private static final String TABLE_NAME15="datamanager_description";
-    private static final String TABLE_NAME16="arv_description";
-    private static final String TABLE_NAME17="customercare_description";
-    private static final String TABLE_NAME18="consultationroom_description";
-    private static final String TABLE_NAME19="maternity_description";
-    private static final String TABLE_NAME20="hospitalization_description";
-    private static final String TABLE_NAME21="toilets_description";
-    private static final String TABLE_NAME22="noticeboard_description";
+    public static final String TABLE_NAME5="vaccinaion_description";
+    public static final String TABLE_NAME6="familyplanning_description";
+    public static final String TABLE_NAME7="pharmacystock_description";
+    public static final String TABLE_NAME8="pharmacydispensing_description";
+    public static final String TABLE_NAME9="ncd_description";
+    public static final String TABLE_NAME10="ceho_description";
+    public static final String TABLE_NAME11="cashier_description";
+    public static final String TABLE_NAME12="accounting_description";
+    public static final String TABLE_NAME13="laboratory_description";
+    public static final String TABLE_NAME14="titulaire_description";
+    public static final String TABLE_NAME15="datamanager_description";
+    public static final String TABLE_NAME16="arv_description";
+    public static final String TABLE_NAME17="customercare_description";
+    public static final String TABLE_NAME18="consultationroom_description";
+    public static final String TABLE_NAME19="maternity_description";
+    public static final String TABLE_NAME20="hospitalization_description";
+    public static final String TABLE_NAME21="toilets_description";
+    public static final String TABLE_NAME22="noticeboard_description";
 
     //documentation and sanitation
-    private static final String TABLE_NAME23="documentation_actionplan";
-    private static final String TABLE_NAME24="documentation_businessplan";
-    private static final String TABLE_NAME25="documentation_budget";
-    private static final String TABLE_NAME26="documentation_inservice";
-    private static final String TABLE_NAME27="documentation_workschedule";
-    private static final String TABLE_NAME28="documentation_qiplan";
-    private static final String TABLE_NAME29="external_trainings";
-    private static final String TABLE_NAME30="attendance_register";
-    private static final String TABLE_NAME31="payables_register";
-    private static final String TABLE_NAME32="receivables_register";
-    private static final String TABLE_NAME33="malaria_plan";
-    private static final String TABLE_NAME34="customercare_program";
-    private static final String TABLE_NAME35="sanitation";
-    private static final String TABLE_NAME36="datamanagement_sop";
-    private static final String TABLE_NAME37="datamanagement_deliveries";
-    private static final String TABLE_NAME38="datamanagement_NCD";
-    private static final String TABLE_NAME39="datamanagement_BCG";
-    private static final String TABLE_NAME40="datamanagement_Malaria";
-    private static final String TABLE_NAME41="datamanagement_opdregisters";
-    private static final String TABLE_NAME42="maternal_neonatal";
-    private static final String TABLE_NAME43="finance_review";
-    private static final String TABLE_NAME44="insurance_review";
-    private static final String TABLE_NAME45="income_review";
-    private static final String TABLE_NAME46="Accounts";
-    private static final String TABLE_NAME47="expense_review";
+    public static final String TABLE_NAME23="documentation_actionplan";
+    public static final String TABLE_NAME24="documentation_businessplan";
+    public static final String TABLE_NAME25="documentation_budget";
+    public static final String TABLE_NAME26="documentation_inservice";
+    public static final String TABLE_NAME27="documentation_workschedule";
+    public static final String TABLE_NAME28="documentation_qiplan";
+    public static final String TABLE_NAME29="external_trainings";
+    public static final String TABLE_NAME30="attendance_register";
+    public static final String TABLE_NAME31="payables_register";
+    public static final String TABLE_NAME32="receivables_register";
+    public static final String TABLE_NAME33="malaria_plan";
+    public static final String TABLE_NAME34="customercare_program";
+    public static final String TABLE_NAME35="sanitation";
+    public static final String TABLE_NAME36="datamanagement_sop";
+    public static final String TABLE_NAME37="datamanagement_deliveries";
+    public static final String TABLE_NAME38="datamanagement_NCD";
+    public static final String TABLE_NAME39="datamanagement_BCG";
+    public static final String TABLE_NAME40="datamanagement_Malaria";
+    public static final String TABLE_NAME41="datamanagement_opdregisters";
+    public static final String TABLE_NAME42="maternal_neonatal";
+    public static final String TABLE_NAME43="finance_review";
+    public static final String TABLE_NAME44="insurance_review";
+    public static final String TABLE_NAME45="income_review";
+    public static final String TABLE_NAME46="Accounts";
+    public static final String TABLE_NAME47="expense_review";
 
-    private static final String doc_1= "year";
-    private static final String doc_2= "district";
-    private static final String doc_3= "hc";
-    private static final String doc_4= "available";
-    private static final String doc_5= "tracked";
-    private static final String doc_6= "approvedti";
-    private static final String doc_7= "approvedcosa";
-    private static final String doc_8= "comstaff";
-    private static final String doc_9= "approved";
+    public static final String doc_1= "year";
+    public static final String doc_2= "district";
+    public static final String doc_3= "hc";
+    public static final String doc_4= "available";
+    public static final String doc_5= "tracked";
+    public static final String doc_6= "approvedti";
+    public static final String doc_7= "approvedcosa";
+    public static final String doc_8= "comstaff";
+    public static final String doc_9= "approved";
 
 
     //sanitation
-    private static final String s1= "year";
-    private static final String s2= "district";
-    private static final String s3= "hc";
-    private static final String s4= "STAFFLATRINES";
-    private static final String s5= "PATIRNETLATRINES";
-    private static final String s6= "TOTALLATRINES";
-    private static final String s7= "BROKENLATRINES";
-    private static final String s8= "CLEANLATRINES";
-    private static final String s9= "ODORLESSLATRINES";
-    private static final String s10= "HANDWASHLATRINES";
-    private static final String s11= "LATRINESCHEDULES";
-    private static final String s12= "OPD";
-    private static final String s13= "HOSPITALIZATIONROOMS";
+    public static final String s1= "year";
+    public static final String s2= "district";
+    public static final String s3= "hc";
+    public static final String s4= "STAFFLATRINES";
+    public static final String s5= "PATIRNETLATRINES";
+    public static final String s6= "TOTALLATRINES";
+    public static final String s7= "BROKENLATRINES";
+    public static final String s8= "CLEANLATRINES";
+    public static final String s9= "ODORLESSLATRINES";
+    public static final String s10= "HANDWASHLATRINES";
+    public static final String s11= "LATRINESCHEDULES";
+    public static final String s12= "OPD";
+    public static final String s13= "HOSPITALIZATIONROOMS";
 
     //data management SOP
-    private static final String d1= "year";
-    private static final String d2= "district";
-    private static final String d3= "hc";
-    private static final String d4= "available";
-    private static final String d5= "signed";
-    private static final String d6= "submited";
-    private static final String d7= "dmavailable";
+    public static final String d1= "year";
+    public static final String d2= "district";
+    public static final String d3= "hc";
+    public static final String d4= "available";
+    public static final String d5= "signed";
+    public static final String d6= "submited";
+    public static final String d7= "dmavailable";
 
     //data management data accuracy deliveries
-    private static final String de1= "year";
-    private static final String de2= "district";
-    private static final String de3= "hc";
-    private static final String de4= "patientfile";
-    private static final String de5= "register";
-    private static final String de6= "hmis_hardcopy";
-    private static final String de7= "hmis_softcopy";
-    private static final String de8= "accurate";
-    private static final String de10= "labregister";
+    public static final String de1= "year";
+    public static final String de2= "district";
+    public static final String de3= "hc";
+    public static final String de4= "patientfile";
+    public static final String de5= "register";
+    public static final String de6= "hmis_hardcopy";
+    public static final String de7= "hmis_softcopy";
+    public static final String de8= "accurate";
+    public static final String de10= "labregister";
 
     //opd registers
-    private static final String opd1= "year";
-    private static final String opd2= "district";
-    private static final String opd3= "hc";
-    private static final String opd4= "lines";
-    private static final String opd5= "fields";
-    private static final String opd6= "blanks";
+    public static final String opd1= "year";
+    public static final String opd2= "district";
+    public static final String opd3= "hc";
+    public static final String opd4= "lines";
+    public static final String opd5= "fields";
+    public static final String opd6= "blanks";
 
     ///maternity and neonatal health
-    private static final String m1="year";
-    private static final String m2="district";
-    private static final String m3="hc";
-    private static final String m4="maternalyear";
-    private static final String m5="obsetricalANC";
-    private static final String m6="registrations";
-    private static final String m7="referalsANC";
-    private static final String m8="obsetricalMaternity";
-    private static final String m9="deliveries";
-    private static final String m10="livebirths";
-    private static final String m11="maternaldeaths";
-    private static final String m12="neonataldeaths";
-    private static final String m13="stillbirths";
-    private static final String m14="postpartun";
-    private static final String m15="anc4";
-    private static final String m16="anc1";
-    private static final String m17="underfivedeaths";
-    private static final String m18="childrenconsulted";
-    private static final String m19="contraceptiveusers";
-    private static final String m20="mr2vaccines";
-    private static final String m21="ultrasoundscans";
-    private static final String m22="deadunderfive";
+    public static final String m1="year";
+    public static final String m2="district";
+    public static final String m3="hc";
+    public static final String m4="maternalyear";
+    public static final String m5="obsetricalANC";
+    public static final String m6="registrations";
+    public static final String m7="referalsANC";
+    public static final String m8="obsetricalMaternity";
+    public static final String m9="deliveries";
+    public static final String m10="livebirths";
+    public static final String m11="maternaldeaths";
+    public static final String m12="neonataldeaths";
+    public static final String m13="stillbirths";
+    public static final String m14="postpartun";
+    public static final String m15="anc4";
+    public static final String m16="anc1";
+    public static final String m17="underfivedeaths";
+    public static final String m18="childrenconsulted";
+    public static final String m19="contraceptiveusers";
+    public static final String m20="mr2vaccines";
+    public static final String m21="ultrasoundscans";
+    public static final String m22="deadunderfive";
 
     //finance review
-    private static final String fr1="year";
-    private static final String fr2="district";
-    private static final String fr3="hc";
-    private static final String fr4="fyear";
-    private static final String fr5="cbank";
-    private static final String fr6="cpetty";
-    private static final String fr7="creceivable";
-    private static final String fr8="cpayable";
-    private static final String fr9="cpharmacy";
-    private static final String fr10="crevenue";
-    private static final String fr11="chcincome";
-    private static final String fr12="cmedecines";
-    private static final String fr13="cexpenses";
-    private static final String fr14="chrexpenses";
-    private static final String fr15="cexpenditure";
-    private static final String fr16="cpmedecines";
-    private static final String fr17="cequipments";
-    private static final String fr18="ctravel";
-    private static final String fr19="cabudget";
-    private static final String fr20="cpbudget";
+    public static final String fr1="year";
+    public static final String fr2="district";
+    public static final String fr3="hc";
+    public static final String fr4="fyear";
+    public static final String fr5="cbank";
+    public static final String fr6="cpetty";
+    public static final String fr7="creceivable";
+    public static final String fr8="cpayable";
+    public static final String fr9="cpharmacy";
+    public static final String fr10="crevenue";
+    public static final String fr11="chcincome";
+    public static final String fr12="cmedecines";
+    public static final String fr13="cexpenses";
+    public static final String fr14="chrexpenses";
+    public static final String fr15="cexpenditure";
+    public static final String fr16="cpmedecines";
+    public static final String fr17="cequipments";
+    public static final String fr18="ctravel";
+    public static final String fr19="cabudget";
+    public static final String fr20="cpbudget";
 
     //insurancereview
-    private static final String iv1="year";
-    private static final String iv2="district";
-    private static final String iv3="hc";
-    private static final String iv4="fyear";
-    private static final String iv5="ivperiod";
-    private static final String iv6="subcbhi";
-    private static final String iv7="subrssb";
-    private static final String iv8="submmi";
-    private static final String iv9="returncbhi";
-    private static final String iv10="returnrssb";
-    private static final String iv11="returnmmi";
-    private static final String iv12="verifyrssb";
-    private static final String iv13="verifymmi";
-    private static final String iv14="amountcbhi";
-    private static final String iv15="amountrssb";
-    private static final String iv16="amountmmi";
-    private static final String iv17="aftercbhi";
-    private static final String iv18="afterrssb";
-    private static final String iv19="aftermmi";
+    public static final String iv1="year";
+    public static final String iv2="district";
+    public static final String iv3="hc";
+    public static final String iv4="fyear";
+    public static final String iv5="ivperiod";
+    public static final String iv6="subcbhi";
+    public static final String iv7="subrssb";
+    public static final String iv8="submmi";
+    public static final String iv9="returncbhi";
+    public static final String iv10="returnrssb";
+    public static final String iv11="returnmmi";
+    public static final String iv12="verifyrssb";
+    public static final String iv13="verifymmi";
+    public static final String iv14="amountcbhi";
+    public static final String iv15="amountrssb";
+    public static final String iv16="amountmmi";
+    public static final String iv17="aftercbhi";
+    public static final String iv18="afterrssb";
+    public static final String iv19="aftermmi";
 
 
     //incomereview
-    private static final String ic1="year";
-    private static final String ic2="district";
-    private static final String ic3="hc";
-    private static final String ic4="incomedate";
-    private static final String ic5="journalincome";
-    private static final String ic6="receiptincome";
-    private static final String ic7="incomematch";
+    public static final String ic1="year";
+    public static final String ic2="district";
+    public static final String ic3="hc";
+    public static final String ic4="incomedate";
+    public static final String ic5="journalincome";
+    public static final String ic6="receiptincome";
+    public static final String ic7="incomematch";
 
 
     //incomereview
-    private static final String acc1="year";
-    private static final String acc2="district";
-    private static final String acc3="hc";
-    private static final String acc4="accreco";
-    private static final String acc5="accbook";
+    public static final String acc1="year";
+    public static final String acc2="district";
+    public static final String acc3="hc";
+    public static final String acc4="accreco";
+    public static final String acc5="accbook";
 
     //expense review
-    private static final String ex1="year";
-    private static final String ex2="district";
-    private static final String ex3="hc";
-    private static final String ex4="expenseReference";
-    private static final String ex5="expenseSigned";
-    private static final String ex6="expenseinvoice";
-    private static final String ex7="expensenumbered";
-    private static final String ex8="expenseOrdered";
-    private static final String ex9="expenseRecorded";
-    private static final String ex90="CURRENTDATA";
+    public static final String ex1="year";
+    public static final String ex2="district";
+    public static final String ex3="hc";
+    public static final String ex4="expenseReference";
+    public static final String ex5="expenseSigned";
+    public static final String ex6="expenseinvoice";
+    public static final String ex7="expensenumbered";
+    public static final String ex8="expenseOrdered";
+    public static final String ex9="expenseRecorded";
+    public static final String ex90="CURRENTDATA";
 
 
     //safetyManagement
-    private static final String TABLE_NAME48="safety_management";
-    private static final String sm1="year";
-    private static final String sm2="district";
-    private static final String sm3="hc";
-    private static final String sm4="rightsposted";
-    private static final String sm5="infection";
-    private static final String sm6="satisfactiontool";
-    private static final String sm7="satisfactiondata";
-    private static final String sm8="suggestionbox";
-    private static final String sm9="qiincident";
-    private static final String sm10="annualhazard";
-    private static final String sm11="ppe";
-    private static final String sm12="staffppe";
-    private static final String sm13="staffsatisfactiontool";
-    private static final String sm14="incidenttool";
-    private static final String sm15="asrh";
-    private static final String sm16="staffsatisfactiondata";
-    private static final String sm17="patientincidents";
-    private static final String sm18="patientincidentanalyzed";
-    private static final String sm19="numberhazards";
-    private static final String sm20="numberhazardsfixed";
+    public static final String TABLE_NAME48="safety_management";
+    public static final String sm1="year";
+    public static final String sm2="district";
+    public static final String sm3="hc";
+    public static final String sm4="rightsposted";
+    public static final String sm5="infection";
+    public static final String sm6="satisfactiontool";
+    public static final String sm7="satisfactiondata";
+    public static final String sm8="suggestionbox";
+    public static final String sm9="qiincident";
+    public static final String sm10="annualhazard";
+    public static final String sm11="ppe";
+    public static final String sm12="staffppe";
+    public static final String sm13="staffsatisfactiontool";
+    public static final String sm14="incidenttool";
+    public static final String sm15="asrh";
+    public static final String sm16="staffsatisfactiondata";
+    public static final String sm17="patientincidents";
+    public static final String sm18="patientincidentanalyzed";
+    public static final String sm19="numberhazards";
+    public static final String sm20="numberhazardsfixed";
 
 
     //safetyManagement
-    private static final String TABLE_NAME49="healthEducation";
-    private static final String he1="year";
-    private static final String he2="district";
-    private static final String he3="hc";
-    private static final String he4="rmsessions";
-    private static final String he5="rmbeneficiones";
-    private static final String he6="rmscreened";
-    private static final String he7="idsessions";
-    private static final String he8="idbeneficiones";
-    private static final String he9="idscreened";
-    private static final String he10="ncsessions";
-    private static final String he11="ncbeneficiones";
-    private static final String he12="ncscreened";
+    public static final String TABLE_NAME49="healthEducation";
+    public static final String he1="year";
+    public static final String he2="district";
+    public static final String he3="hc";
+    public static final String he4="rmsessions";
+    public static final String he5="rmbeneficiones";
+    public static final String he6="rmscreened";
+    public static final String he7="idsessions";
+    public static final String he8="idbeneficiones";
+    public static final String he9="idscreened";
+    public static final String he10="ncsessions";
+    public static final String he11="ncbeneficiones";
+    public static final String he12="ncscreened";
 
 
     //pharmacy management
-    private static final String TABLE_NAME50="pharmacyManagement";
-    private static final String pm1="year";
-    private static final String pm2="district";
-    private static final String pm3="hc";
-    private static final String pm4="drugseparate";
-    private static final String pm5="drugforms";
-    private static final String pm6="drugrequisition";
-    private static final String pm7="drugalphabet";
-    private static final String pm8="drugclass";
-    private static final String pm9="drugfifo";
-    private static final String pm10="drugfefo";
-    private static final String pm11="drugother";
-    private static final String pm12="drugnone";
-    private static final String pm13="pharmacydry";
-    private static final String pm14="pharmacyclean";
-    private static final String pm15="pharmacyprotected";
-    private static final String pm16="pharmacyorganized";
-    private static final String pm17="pharmacythermometer";
-    private static final String pm18="pharmacyrefrigerator";
-    private static final String pm19="pharmacymonitored";
-    private static final String pm20="pharmacyinventory";
-    private static final String pm21="pharmacyessentials";
-    private static final String pm22="pharmacynotes";
-    private static final String pm23="pharmacyregister";
-    private static final String pm24="pharmacytallies";
-    private static final String pm25="pharmacybook";
-    private static final String pm26="pharmacysigned";
-    private static final String pm27="pharmacytemperature";
-    private static final String pm28="pharmacyrefrigiratortemp";
+    public static final String TABLE_NAME50="pharmacyManagement";
+    public static final String pm1="year";
+    public static final String pm2="district";
+    public static final String pm3="hc";
+    public static final String pm4="drugseparate";
+    public static final String pm5="drugforms";
+    public static final String pm6="drugrequisition";
+    public static final String pm7="drugalphabet";
+    public static final String pm8="drugclass";
+    public static final String pm9="drugfifo";
+    public static final String pm10="drugfefo";
+    public static final String pm11="drugother";
+    public static final String pm12="drugnone";
+    public static final String pm13="pharmacydry";
+    public static final String pm14="pharmacyclean";
+    public static final String pm15="pharmacyprotected";
+    public static final String pm16="pharmacyorganized";
+    public static final String pm17="pharmacythermometer";
+    public static final String pm18="pharmacyrefrigerator";
+    public static final String pm19="pharmacymonitored";
+    public static final String pm20="pharmacyinventory";
+    public static final String pm21="pharmacyessentials";
+    public static final String pm22="pharmacynotes";
+    public static final String pm23="pharmacyregister";
+    public static final String pm24="pharmacytallies";
+    public static final String pm25="pharmacybook";
+    public static final String pm26="pharmacysigned";
+    public static final String pm27="pharmacytemperature";
+    public static final String pm28="pharmacyrefrigiratortemp";
 
     //pharmacyStock
-    private static final String TABLE_NAME51="pharmacyStock";
-    private static final String ps1="year";
-    private static final String ps2="district";
-    private static final String ps3="hc";
-    private static final String ps4="drugname";
-    private static final String ps5="drugquantity";
-    private static final String ps6="drugquantityshelf";
-    private static final String ps7="drugavailable";
-    private static final String ps8="drugexpired";
-    private static final String ps9="drugrequested";
-    private static final String ps10="drugstockcard";
-    private static final String ps11="drugstockcardfilled";
-    private static final String ps12="drugexcess";
-    private static final String ps13="druginventory";
-    private static final String ps14="druglabel";
+    public static final String TABLE_NAME51="pharmacyStock";
+    public static final String ps1="year";
+    public static final String ps2="district";
+    public static final String ps3="hc";
+    public static final String ps4="drugname";
+    public static final String ps5="drugquantity";
+    public static final String ps6="drugquantityshelf";
+    public static final String ps7="drugavailable";
+    public static final String ps8="drugexpired";
+    public static final String ps9="drugrequested";
+    public static final String ps10="drugstockcard";
+    public static final String ps11="drugstockcardfilled";
+    public static final String ps12="drugexcess";
+    public static final String ps13="druginventory";
+    public static final String ps14="druglabel";
 
     //treatmentguideline hypertension
 
-    private static final String TABLE_NAME52="guidelines_hypertension";
-    private static final String hy1="year";
-    private static final String hy2="district";
-    private static final String hy3="hc";
-    private static final String hy4="patientid";
-    private static final String hy5="weightcheck";
-    private static final String hy6="currentprotocol";
-    private static final String hy7="bpcheck";
-    private static final String hy8="eyecheck";
-    private static final String hy9="procheck";
-    private static final String hy10="crecheck";
-    private static final String hy11="footcheck";
+    public static final String TABLE_NAME52="guidelines_hypertension";
+    public static final String hy1="year";
+    public static final String hy2="district";
+    public static final String hy3="hc";
+    public static final String hy4="patientid";
+    public static final String hy5="weightcheck";
+    public static final String hy6="currentprotocol";
+    public static final String hy7="bpcheck";
+    public static final String hy8="eyecheck";
+    public static final String hy9="procheck";
+    public static final String hy10="crecheck";
+    public static final String hy11="footcheck";
 
-    private static final String TABLE_NAME53="guidelines_diabetes";
+    public static final String TABLE_NAME53="guidelines_diabetes";
 
-    private static final String TABLE_NAME54="guidelines_Asthma";
-    private static final String as1="year";
-    private static final String as2="district";
-    private static final String as3="hc";
-    private static final String as4="patientid";
-    private static final String as5="bpcheck";
-    private static final String as6="apptreatment";
-    private static final String as7="severeclass";
-
-
-    private static final String TABLE_NAME55="guidelines_Anc";
-    private static final String anc1="year";
-    private static final String anc2="district";
-    private static final String anc3="hc";
-    private static final String anc4="patientid";
-    private static final String anc5="nationalanc";
-    private static final String anc6="patienthistory";
-    private static final String anc7="bpcheck";
-    private static final String anc8="urinecheck";
-    private static final String anc9="hemoglobincheck";
-    private static final String anc10="rprcheck";
-    private static final String anc11="ultracheck";
-
-    private static final String TABLE_NAME56="guidelines_overall";
-    private static final String ov1="year";
-    private static final String ov2="district";
-    private static final String ov3="hc";
-    private static final String ov4="hyavailable";
-    private static final String ov5="hyuptodate";
-    private static final String ov6="hyinformed";
-    private static final String ov7="diaavailable";
-    private static final String ov8="diauptodate";
-    private static final String ov9="diainformed";
-    private static final String ov10="resavailable";
-    private static final String ov11="resuptodate";
-    private static final String ov12="resinformed";
-    private static final String ov13="malavailable";
-    private static final String ov14="maluptodate";
-    private static final String ov15="malinformed";
-    private static final String ov16="stiavailable";
-    private static final String ov17="stiuptodate";
-    private static final String ov18="stiinformed";
+    public static final String TABLE_NAME54="guidelines_Asthma";
+    public static final String as1="year";
+    public static final String as2="district";
+    public static final String as3="hc";
+    public static final String as4="patientid";
+    public static final String as5="bpcheck";
+    public static final String as6="apptreatment";
+    public static final String as7="severeclass";
 
 
-    private static final String TABLE_NAME57="guidelines_maternity";
-    private static final String mat1="year";
-    private static final String mat2="district";
-    private static final String mat3="hc";
-    private static final String mat4="nationaprotocol";
-    private static final String mat5="essentialsupplies";
-    private static final String mat6="privacyprovided";
-    private static final String mat7="ppesupply";
+    public static final String TABLE_NAME55="guidelines_Anc";
+    public static final String anc1="year";
+    public static final String anc2="district";
+    public static final String anc3="hc";
+    public static final String anc4="patientid";
+    public static final String anc5="nationalanc";
+    public static final String anc6="patienthistory";
+    public static final String anc7="bpcheck";
+    public static final String anc8="urinecheck";
+    public static final String anc9="hemoglobincheck";
+    public static final String anc10="rprcheck";
+    public static final String anc11="ultracheck";
+
+    public static final String TABLE_NAME56="guidelines_overall";
+    public static final String ov1="year";
+    public static final String ov2="district";
+    public static final String ov3="hc";
+    public static final String ov4="hyavailable";
+    public static final String ov5="hyuptodate";
+    public static final String ov6="hyinformed";
+    public static final String ov7="diaavailable";
+    public static final String ov8="diauptodate";
+    public static final String ov9="diainformed";
+    public static final String ov10="resavailable";
+    public static final String ov11="resuptodate";
+    public static final String ov12="resinformed";
+    public static final String ov13="malavailable";
+    public static final String ov14="maluptodate";
+    public static final String ov15="malinformed";
+    public static final String ov16="stiavailable";
+    public static final String ov17="stiuptodate";
+    public static final String ov18="stiinformed";
 
 
-
-    private static final String TABLE_NAME58="referal_process";
-    private static final String ref1="year";
-    private static final String ref2="district";
-    private static final String ref3="hc";
-    private static final String ref4="reason";
-    private static final String ref5="findings";
-    private static final String ref6="procedures";
-    private static final String ref7="immediatecondition";
-    private static final String ref8="patienttransferedto";
-    private static final String ref9="feedback";
-    private static final String ref10="referalsheets";
-    private static final String ref11="standardform";
-    private static final String ref12="transport";
-
-    private static final String TABLE_NAME59="outpatient_malaria";
-    private static final String omal1="year";
-    private static final String omal2="district";
-    private static final String omal3="hc";
-    private static final String omal4="patientid";
-    private static final String omal5="assesment";
-    private static final String omal6="classification";
-    private static final String omal7="correcttreatment";
-    private static final String omal8="patienteducated";
-    private static final String omal9="followup";
-    private static final String omal10="malaria";
-    private static final String omal11="orsgiven";
-
-    private static final String TABLE_NAME60="outpatient_fever";
-    private static final String TABLE_NAME61="outpatient_cough";
-    private static final String TABLE_NAME62="outpatient_pnemonia";
-    private static final String TABLE_NAME63="outpatient_diarhea";
-
-
-    private static final String TABLE_NAME64="guidelinesASRH";
-    private static final String asr1="year";
-    private static final String asr2="district";
-    private static final String asr3="hc";
-    private static final String asr4="registers";
-    private static final String asr5="spaces";
-    private static final String asr6="rooms";
-
-    private static final String TABLE_NAME65="inpatient_care";
-    private static final String inc1="year";
-    private static final String inc2="district";
-    private static final String inc3="hc";
-    private static final String inc4="patientid";
-    private static final String inc5="assessmentchecklist";
-    private static final String inc6="biographicaldata";
-    private static final String inc7="relevanthistory";
-    private static final String inc8="chiefcomplaint";
-    private static final String inc9="rapidsurvey";
-    private static final String inc10="vitalsigns";
-    private static final String inc11="examsytem";
-    private static final String inc12="diagnosis";
-    private static final String inc13="nursingplan";
-    private static final String inc14="soapnote";
-    private static final String inc15="treatmanetplan";
-    private static final String inc16="complete";
-
-    private static final String TABLE_NAME66="key_indicators";
-    private static final String ki1="year";
-    private static final String ki2="district";
-    private static final String ki3="hc";
-    private static final String ki4="yearId";
-    private static final String ki5="diacases";
-    private static final String ki6="diadeaths";
-    private static final String ki7="pnecases";
-    private static final String ki8="pnedeaths";
-    private static final String ki9="malcases";
-    private static final String ki10="maldeaths";
-    private static final String ki11="malucases";
-    private static final String ki12="maludeaths";
-
-    private static final String TABLE_NAME67="AdmitedPatient_outcome";
-    private static final String ap1="year";
-    private static final String ap2="district";
-    private static final String ap3="hc";
-    private static final String ap4="patientid";
-    private static final String ap5="admissiondate";
-    private static final String ap6="dischargedate";
-    private static final String ap7="duration";
-    private static final String ap8="outcome";
-
-
-    private static final String TABLE_NAME68="outcome_hypertensionBP";
-    private static final String oh1="year";
-    private static final String oh2="district";
-    private static final String oh3="hc";
-    private static final String oh4="patientid";
-    private static final String oh5="month1";
-    private static final String oh6="month2";
-    private static final String oh7="month3";
-    private static final String oh8="month4";
-    private static final String oh9="month5";
-    private static final String oh10="month6";
-
-    private static final String TABLE_NAME69="outcome_diabetesBS";
-    private static final String TABLE_NAME70="outcome_AsthmaClass";
-
-    private static final String TABLE_NAME71="value_pharmacyStock";
-    private static final String vp1="year";
-    private static final String vp2="district";
-    private static final String vp3="hc";
-    private static final String vp4="fyear";
-    private static final String vp5="medcost";
-    private static final String vp6="medexpcost";
-    private static final String vp7="valuestock";
-
-    private static final String TABLE_NAME72="pharmacy_dispensary";
-    private static final String pd1="year";
-    private static final String pd2="district";
-    private static final String pd3="hc";
-    private static final String pd4="drugname";
-    private static final String pd5="drugexpired";
-    private static final String pd6="pharmacyregister";
-    private static final String pd7="pharmacytallies";
-    private static final String pd8="pharmacybook";
-    private static final String pd9="pharmacysigned";
-    private static final String pd10="consumptiontotal";
+    public static final String TABLE_NAME57="guidelines_maternity";
+    public static final String mat1="year";
+    public static final String mat2="district";
+    public static final String mat3="hc";
+    public static final String mat4="nationaprotocol";
+    public static final String mat5="essentialsupplies";
+    public static final String mat6="privacyprovided";
+    public static final String mat7="ppesupply";
 
 
 
+    public static final String TABLE_NAME58="referal_process";
+    public static final String ref1="year";
+    public static final String ref2="district";
+    public static final String ref3="hc";
+    public static final String ref4="reason";
+    public static final String ref5="findings";
+    public static final String ref6="procedures";
+    public static final String ref7="immediatecondition";
+    public static final String ref8="patienttransferedto";
+    public static final String ref9="feedback";
+    public static final String ref10="referalsheets";
+    public static final String ref11="standardform";
+    public static final String ref12="transport";
 
+    public static final String TABLE_NAME59="outpatient_malaria";
+    public static final String omal1="year";
+    public static final String omal2="district";
+    public static final String omal3="hc";
+    public static final String omal4="patientid";
+    public static final String omal5="assesment";
+    public static final String omal6="classification";
+    public static final String omal7="correcttreatment";
+    public static final String omal8="patienteducated";
+    public static final String omal9="followup";
+    public static final String omal10="malaria";
+    public static final String omal11="orsgiven";
+
+    public static final String TABLE_NAME60="outpatient_fever";
+    public static final String TABLE_NAME61="outpatient_cough";
+    public static final String TABLE_NAME62="outpatient_pnemonia";
+    public static final String TABLE_NAME63="outpatient_diarhea";
+
+
+    public static final String TABLE_NAME64="guidelinesASRH";
+    public static final String asr1="year";
+    public static final String asr2="district";
+    public static final String asr3="hc";
+    public static final String asr4="registers";
+    public static final String asr5="spaces";
+    public static final String asr6="rooms";
+
+    public static final String TABLE_NAME65="inpatient_care";
+    public static final String inc1="year";
+    public static final String inc2="district";
+    public static final String inc3="hc";
+    public static final String inc4="patientid";
+    public static final String inc5="assessmentchecklist";
+    public static final String inc6="biographicaldata";
+    public static final String inc7="relevanthistory";
+    public static final String inc8="chiefcomplaint";
+    public static final String inc9="rapidsurvey";
+    public static final String inc10="vitalsigns";
+    public static final String inc11="examsytem";
+    public static final String inc12="diagnosis";
+    public static final String inc13="nursingplan";
+    public static final String inc14="soapnote";
+    public static final String inc15="treatmanetplan";
+    public static final String inc16="complete";
+
+    public static final String TABLE_NAME66="key_indicators";
+    public static final String ki1="year";
+    public static final String ki2="district";
+    public static final String ki3="hc";
+    public static final String ki4="yearId";
+    public static final String ki5="diacases";
+    public static final String ki6="diadeaths";
+    public static final String ki7="pnecases";
+    public static final String ki8="pnedeaths";
+    public static final String ki9="malcases";
+    public static final String ki10="maldeaths";
+    public static final String ki11="malucases";
+    public static final String ki12="maludeaths";
+
+    public static final String TABLE_NAME67="AdmitedPatient_outcome";
+    public static final String ap1="year";
+    public static final String ap2="district";
+    public static final String ap3="hc";
+    public static final String ap4="patientid";
+    public static final String ap5="admissiondate";
+    public static final String ap6="dischargedate";
+    public static final String ap7="duration";
+    public static final String ap8="outcome";
+
+
+    public static final String TABLE_NAME68="outcome_hypertensionBP";
+    public static final String oh1="year";
+    public static final String oh2="district";
+    public static final String oh3="hc";
+    public static final String oh4="patientid";
+    public static final String oh5="month1";
+    public static final String oh6="month2";
+    public static final String oh7="month3";
+    public static final String oh8="month4";
+    public static final String oh9="month5";
+    public static final String oh10="month6";
+
+    public static final String TABLE_NAME69="outcome_diabetesBS";
+    public static final String TABLE_NAME70="outcome_AsthmaClass";
+
+    public static final String TABLE_NAME71="value_pharmacyStock";
+    public static final String vp1="year";
+    public static final String vp2="district";
+    public static final String vp3="hc";
+    public static final String vp4="fyear";
+    public static final String vp5="medcost";
+    public static final String vp6="medexpcost";
+    public static final String vp7="valuestock";
+
+    public static final String TABLE_NAME72="pharmacy_dispensary";
+    public static final String pd1="year";
+    public static final String pd2="district";
+    public static final String pd3="hc";
+    public static final String pd4="drugname";
+    public static final String pd5="drugexpired";
+    public static final String pd6="pharmacyregister";
+    public static final String pd7="pharmacytallies";
+    public static final String pd8="pharmacybook";
+    public static final String pd9="pharmacysigned";
+    public static final String pd10="consumptiontotal";
+
+
+    public static final String TABLE_NAME73="generalinformation2";
+    public static final String gi1="year";
+    public static final String gi2="district";
+    public static final String gi3="hc";
+    public static final String gi4="meetmonth";
+    public static final String gi5="qifocalperson";
+    public static final String gi6="qifocalpersonletter";
+    public static final String gi7="ipcfocalperson";
+    public static final String gi8="ipcfocalpersonletter";
+    public static final String gi9="custofocalperson";
+    public static final String gi10="custofocalpersonletter";
 
 
     public Databasehelper(@Nullable Context context ) {
@@ -611,78 +630,79 @@ public class Databasehelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME + "(ID INTEGER PRIMARY KEY AUTOINCREMENT, FNAME TEXT, LNAME TEXT, EMAIL TEXT,PASSWORD TEXT)");
-        db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME2 + "(YEAR TEXT, DISTRICT TEXT, HC TEXT,SECTOR TEXT, CELL TEXT,VILLAGE TEXT, PUBPOST TEXT, PRIPOST TEXT,POPULATION TEXT,PATIENTS TEXT,BEDS TEXT, CONSROOMS TEXT,HOSPROOMS TEXT,CHW TEXT,A0 TEXT,A1 TEXT,A2 TEXT,MIDWIFE TEXT)");
-        db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME3 + "(YEAR TEXT, DISTRICT TEXT, HC TEXT,ORGANI TEXT, UPTODATE TEXT,ACCESSIBLE TEXT,POSITION1 TEXT, LABTECAV TEXT,LABSIGN TEXT,LABEMP TEXT,POSITION2 TEXT, NURSEARV TEXT,NURSEARSIGN TEXT,NURSEAREMPSIGN TEXT,POSITION3 TEXT,NURSEVACAV TEXT,NURSEVACSIGN TEXT,NURSEVACEMPSIGN TEXT,POSITION4 TEXT, CUSTOCAREAV TEXT,CUSTCARESIGN TEXT,CUSTCAREEMPPSIGN TEXT,POSITION5 TEXT, NURSETBAV TEXT,NURSETBSIGN TEXT,NURSETBEMPSIGN TEXT,POSITION6 TEXT,NURSECHI TEXT,NURSECHISIGN TEXT,NURSECHIEMPSIGN TEXT,POSITION7 TEXT,SOCIALAV TEXT,SOCIALSIGN TEXT,SOCIALEMPSIGN TEXT,POSITION8 TEXT, NURSECPNAV TEXT,NURSECPNSIGN TEXT,NURSECPNEMPSIGN TEXT,POSITION9 TEXT,MIDWIFEAV TEXT,MIDWIFESIGN TEXT,MIDWIFEEMPSIGN TEXT,SOPPHARMACY TEXT,EVIDENCE TEXT,QICOMITEE TEXT,TOTSTAFF TEXT,TOTNURSE TEXT,PAIDSTAFF TEXT,CLINICALSTAFF TEXT,TBSTAFF TEXT,STAFFINFECTION TEXT,STAFFCOVID TEXT,STAFFEVALUATED TEXT,STAFFILLNESS TEXT,STAFFINJURIES TEXT,STAFFHEPATITE TEXT,STAFFRATE TEXT,PATIENTRATE TEXT,STAFFMETTING TEXT,COSAMETTING TEXT,COGEMETTING TEXT,CHWMETTING TEXT)");
-        db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME4 + "(YEAR TEXT,DISTRICT TEXT,HC TEXT,DIRECTION TEXT,SERVICE TEXT,RESPONSIBLENAME TEXT,CURRENTDATA TEXT,RESPONSIBLEPHOTO TEXT,AREA TEXT,REQUESTEDLISTOFSUPPLIES TEXT,CURRENTLISTOFSUPPLIES,HYGIENE TEXT,HANDHYGIENE TEXT)");
-        db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME5 + "(YEAR TEXT,DISTRICT TEXT,HC TEXT,DIRECTION TEXT,SERVICE TEXT,RESPONSIBLENAME TEXT,CURRENTDATA TEXT,RESPONSIBLEPHOTO TEXT,AREA TEXT,REQUESTEDLISTOFSUPPLIES TEXT,CURRENTLISTOFSUPPLIES,HYGIENE TEXT,HANDHYGIENE TEXT)");
-        db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME6 + "(YEAR TEXT,DISTRICT TEXT,HC TEXT,DIRECTION TEXT,SERVICE TEXT,RESPONSIBLENAME TEXT,CURRENTDATA TEXT,RESPONSIBLEPHOTO TEXT,AREA TEXT,REQUESTEDLISTOFSUPPLIES TEXT,CURRENTLISTOFSUPPLIES,HYGIENE TEXT,HANDHYGIENE TEXT)");
-        db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME7 + "(YEAR TEXT,DISTRICT TEXT,HC TEXT,DIRECTION TEXT,SERVICE TEXT,RESPONSIBLENAME TEXT,CURRENTDATA TEXT,RESPONSIBLEPHOTO TEXT,AREA TEXT,REQUESTEDLISTOFSUPPLIES TEXT,CURRENTLISTOFSUPPLIES,HYGIENE TEXT,HANDHYGIENE TEXT)");
-        db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME8 + "(YEAR TEXT,DISTRICT TEXT,HC TEXT,DIRECTION TEXT,SERVICE TEXT,RESPONSIBLENAME TEXT,CURRENTDATA TEXT,RESPONSIBLEPHOTO TEXT,AREA TEXT,REQUESTEDLISTOFSUPPLIES TEXT,CURRENTLISTOFSUPPLIES,HYGIENE TEXT,HANDHYGIENE TEXT)");
-        db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME9 + "(YEAR TEXT,DISTRICT TEXT,HC TEXT,DIRECTION TEXT,SERVICE TEXT,RESPONSIBLENAME TEXT,CURRENTDATA TEXT,RESPONSIBLEPHOTO TEXT,AREA TEXT,REQUESTEDLISTOFSUPPLIES TEXT,CURRENTLISTOFSUPPLIES,HYGIENE TEXT,HANDHYGIENE TEXT)");
-        db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME10 + "(YEAR TEXT,DISTRICT TEXT,HC TEXT,DIRECTION TEXT,SERVICE TEXT,RESPONSIBLENAME TEXT,CURRENTDATA TEXT,RESPONSIBLEPHOTO TEXT,AREA TEXT,REQUESTEDLISTOFSUPPLIES TEXT,CURRENTLISTOFSUPPLIES,HYGIENE TEXT,HANDHYGIENE TEXT)");
-        db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME11 + "(YEAR TEXT,DISTRICT TEXT,HC TEXT,DIRECTION TEXT,SERVICE TEXT,RESPONSIBLENAME TEXT,CURRENTDATA TEXT,RESPONSIBLEPHOTO TEXT,AREA TEXT,REQUESTEDLISTOFSUPPLIES TEXT,CURRENTLISTOFSUPPLIES,HYGIENE TEXT,HANDHYGIENE TEXT)");
-        db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME12 + "(YEAR TEXT,DISTRICT TEXT,HC TEXT,DIRECTION TEXT,SERVICE TEXT,RESPONSIBLENAME TEXT,CURRENTDATA TEXT,RESPONSIBLEPHOTO TEXT,AREA TEXT,REQUESTEDLISTOFSUPPLIES TEXT,CURRENTLISTOFSUPPLIES,HYGIENE TEXT,HANDHYGIENE TEXT)");
-        db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME13 + "(YEAR TEXT,DISTRICT TEXT,HC TEXT,DIRECTION TEXT,SERVICE TEXT,RESPONSIBLENAME TEXT,CURRENTDATA TEXT,RESPONSIBLEPHOTO TEXT,AREA TEXT,REQUESTEDLISTOFSUPPLIES TEXT,CURRENTLISTOFSUPPLIES,HYGIENE TEXT,HANDHYGIENE TEXT)");
-        db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME14 + "(YEAR TEXT,DISTRICT TEXT,HC TEXT,DIRECTION TEXT,SERVICE TEXT,RESPONSIBLENAME TEXT,CURRENTDATA TEXT,RESPONSIBLEPHOTO TEXT,AREA TEXT,REQUESTEDLISTOFSUPPLIES TEXT,CURRENTLISTOFSUPPLIES,HYGIENE TEXT,HANDHYGIENE TEXT)");
-        db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME15 + "(YEAR TEXT,DISTRICT TEXT,HC TEXT,DIRECTION TEXT,SERVICE TEXT,RESPONSIBLENAME TEXT,CURRENTDATA TEXT,RESPONSIBLEPHOTO TEXT,AREA TEXT,REQUESTEDLISTOFSUPPLIES TEXT,CURRENTLISTOFSUPPLIES,HYGIENE TEXT,HANDHYGIENE TEXT)");
-        db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME16 + "(YEAR TEXT,DISTRICT TEXT,HC TEXT,DIRECTION TEXT,SERVICE TEXT,RESPONSIBLENAME TEXT,CURRENTDATA TEXT,RESPONSIBLEPHOTO TEXT,AREA TEXT,REQUESTEDLISTOFSUPPLIES TEXT,CURRENTLISTOFSUPPLIES,HYGIENE TEXT,HANDHYGIENE TEXT)");
-        db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME17 + "(YEAR TEXT,DISTRICT TEXT,HC TEXT,DIRECTION TEXT,SERVICE TEXT,RESPONSIBLENAME TEXT,CURRENTDATA TEXT,RESPONSIBLEPHOTO TEXT,AREA TEXT,REQUESTEDLISTOFSUPPLIES TEXT,CURRENTLISTOFSUPPLIES,HYGIENE TEXT,HANDHYGIENE TEXT)");
-        db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME18 + "(YEAR TEXT,DISTRICT TEXT,HC TEXT,DIRECTION TEXT,SERVICE TEXT,RESPONSIBLENAME TEXT,CURRENTDATA TEXT,RESPONSIBLEPHOTO TEXT,AREA TEXT,REQUESTEDLISTOFSUPPLIES TEXT,CURRENTLISTOFSUPPLIES,HYGIENE TEXT,HANDHYGIENE TEXT)");
-        db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME19 + "(YEAR TEXT,DISTRICT TEXT,HC TEXT,DIRECTION TEXT,SERVICE TEXT,RESPONSIBLENAME TEXT,CURRENTDATA TEXT,RESPONSIBLEPHOTO TEXT,AREA TEXT,REQUESTEDLISTOFSUPPLIES TEXT,CURRENTLISTOFSUPPLIES,HYGIENE TEXT,HANDHYGIENE TEXT)");
-        db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME20 + "(YEAR TEXT,DISTRICT TEXT,HC TEXT,DIRECTION TEXT,SERVICE TEXT,RESPONSIBLENAME TEXT,CURRENTDATA TEXT,RESPONSIBLEPHOTO TEXT,AREA TEXT,REQUESTEDLISTOFSUPPLIES TEXT,CURRENTLISTOFSUPPLIES,HYGIENE TEXT,HANDHYGIENE TEXT)");
-        db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME21 + "(YEAR TEXT,DISTRICT TEXT,HC TEXT,DIRECTION TEXT,SERVICE TEXT,AREA TEXT,HYGIENE TEXT,HANDHYGIENE TEXT)");
-        db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME22 + "(YEAR TEXT,DISTRICT TEXT,HC TEXT,CURRENTDATA TEXT)");
-        db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME23 + "(YEAR TEXT,DISTRICT TEXT,HC TEXT,AVAILABLE TEXT,TRACKED TEXT,APPROVEDTI TEXT,APPROVEDCOSA TEXT,COMSTAFF TEXT)");
-        db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME24 + "(YEAR TEXT,DISTRICT TEXT,HC TEXT,AVAILABLE TEXT,TRACKED TEXT,APPROVEDTI TEXT,COMSTAFF TEXT)");
-        db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME25 + "(YEAR TEXT,DISTRICT TEXT,HC TEXT,AVAILABLE TEXT,TRACKED TEXT,APPROVEDTI TEXT,APPROVEDCOSA TEXT,COMSTAFF TEXT)");
-        db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME26 + "(YEAR TEXT,DISTRICT TEXT,HC TEXT,AVAILABLE TEXT,TRACKED TEXT,APPROVEDTI TEXT,COMSTAFF TEXT)");
-        db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME27   + "(YEAR TEXT,DISTRICT TEXT,HC TEXT,AVAILABLE TEXT,TRACKED TEXT,APPROVEDTI TEXT,COMSTAFF TEXT)");
-        db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME28   + "(YEAR TEXT,DISTRICT TEXT,HC TEXT,AVAILABLE TEXT,TRACKED TEXT,APPROVEDTI TEXT,COMSTAFF TEXT)");
-        db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME29   + "(YEAR TEXT,DISTRICT TEXT,HC TEXT,AVAILABLE TEXT,TRACKED TEXT)");
-        db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME30   + "(YEAR TEXT,DISTRICT TEXT,HC TEXT,AVAILABLE TEXT,TRACKED TEXT)");
-        db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME31   + "(YEAR TEXT,DISTRICT TEXT,HC TEXT,AVAILABLE TEXT,TRACKED TEXT)");
-        db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME32   + "(YEAR TEXT,DISTRICT TEXT,HC TEXT,AVAILABLE TEXT,TRACKED TEXT)");
-        db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME33   + "(YEAR TEXT,DISTRICT TEXT,HC TEXT,AVAILABLE TEXT,TRACKED TEXT,APPROVED TEXT)");
-        db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME34   + "(YEAR TEXT,DISTRICT TEXT,HC TEXT,AVAILABLE TEXT,TRACKED TEXT,APPROVED TEXT)");
-        db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME35 + "(YEAR TEXT,DISTRICT TEXT,HC TEXT,STAFFLATRINES TEXT,PATIRNETLATRINES TEXT,TOTALLATRINES TEXT,BROKENLATRINES TEXT,CLEANLATRINES TEXT,ODORLESSLATRINES TEXT,HANDWASHLATRINES TEXT,LATRINESCHEDULES)");
-        db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME36   + "(YEAR TEXT,DISTRICT TEXT,HC TEXT,AVAILABLE TEXT,SIGNED TEXT,SUBMITED TEXT,DMAVAILABLE TEXT)");
-        db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME37   + "(YEAR TEXT,DISTRICT TEXT,HC TEXT,PATIENTFILE TEXT,REGISTER TEXT,HMIS_HARDCOPY TEXT,HMIS_SOFTCOPY TEXT,ACCURATE TEXT)");
-        db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME38   + "(YEAR TEXT,DISTRICT TEXT,HC TEXT,PATIENTFILE TEXT,REGISTER TEXT,HMIS_HARDCOPY TEXT,HMIS_SOFTCOPY TEXT,ACCURATE TEXT)");
-        db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME39   + "(YEAR TEXT,DISTRICT TEXT,HC TEXT,PATIENTFILE TEXT,REGISTER TEXT,HMIS_HARDCOPY TEXT,HMIS_SOFTCOPY TEXT,ACCURATE TEXT)");
-        db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME40   + "(YEAR TEXT,DISTRICT TEXT,HC TEXT,PATIENTFILE TEXT,REGISTER TEXT,HMIS_HARDCOPY TEXT,HMIS_SOFTCOPY TEXT,LABREGISTER TEXT,ACCURATE TEXT)");
-        db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME41   + "(YEAR TEXT,DISTRICT TEXT,HC TEXT,LINES TEXT,FIELDS TEXT,BLANKS TEXT)");
-        db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME42   + "(YEAR TEXT,DISTRICT TEXT,HC TEXT,maternalyear TEXT,obsetricalANC TEXT,registrations TEXT,referalsANC TEXT,obsetricalMaternity TEXT,deliveries TEXT,livebirths TEXT,maternaldeaths TEXT,neonataldeaths TEXT,stillbirths TEXT,postpartun TEXT,anc4 TEXT,anc1 TEXT,underfivedeaths TEXT,childrenconsulted TEXT,contraceptiveusers TEXT,mr2vaccines TEXT,ultrasoundscans TEXT,deadunderfive TEXT)");
-        db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME43   + "(year TEXT,district TEXT,hc TEXT,fyear TEXT, cbank TEXT, cpetty TEXT, creceivable TEXT, cpayable TEXT, cpharmacy TEXT, crevenue TEXT, chcincome TEXT, cmedecines TEXT, cexpenses TEXT, chrexpenses TEXT, cexpenditure TEXT, cpmedecines TEXT, cequipments TEXT, ctravel TEXT, cabudget TEXT, cpbudget TEXT)");
-        db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME44   + "(YEAR TEXT,HC TEXT,DISTRICT TEXT,fyear TEXT,ivperiod TEXT,subcbhi TEXT,subrssb TEXT,submmi TEXT,returncbhi TEXT,returnrssb TEXT,returnmmi TEXT,verifyrssb TEXT,verifymmi TEXT,amountcbhi TEXT,amountrssb TEXT,amountmmi TEXT,aftercbhi TEXT,afterrssb TEXT,aftermmi TEXT)");
-        db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME45   + "(YEAR TEXT,DISTRICT TEXT,HC TEXT,INCOMEDATE TEXT,JOURNALINCOME TEXT,RECEIPTINCOME TEXT,INCOMEMATCH TEXT)");
-        db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME46   + "(YEAR TEXT,DISTRICT TEXT,HC TEXT,ACCRECO TEXT,ACCBOOK TEXT)");
-        db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME47   + "(YEAR TEXT,DISTRICT TEXT,HC TEXT,EXPENSEREFERENCE TEXT,EXPENSESIGNED TEXT,EXPENSEINVOICE TEXT,EXPENSENUMBERED TEXT,EXPENSEORDERED TEXT,EXPENSERECORDED TEXT)");
-        db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME48   + "(YEAR TEXT,DISTRICT TEXT,HC TEXT,  rightsposted TEXT, infection TEXT, satisfactiontool TEXT, satisfactiondata TEXT, suggestionbox TEXT, qiincident TEXT, annualhazard TEXT, ppe TEXT, staffppe TEXT,staffsatisfactiontool TEXT, incidenttool TEXT, asrh TEXT, staffsatisfactiondata TEXT, patientincidents TEXT, patientincidentanalyzed TEXT, numberhazards TEXT, numberhazardsfixed TEXT)");
-        db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME49   + "(YEAR TEXT,DISTRICT TEXT,HC TEXT, rmsessions TEXT, rmbeneficiones TEXT, rmscreened TEXT, idsessions TEXT, idbeneficiones TEXT, idscreened TEXT, ncsessions TEXT, ncbeneficiones TEXT, ncscreened TEXT)");
-        db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME50   + "(YEAR TEXT,DISTRICT TEXT,HC TEXT,drugseparate TEXT,drugforms TEXT,drugrequisition TEXT,drugalphabet TEXT,drugclass TEXT,drugfifo TEXT,drugfefo TEXT,drugother TEXT,drugnone TEXT,pharmacydry TEXT,pharmacyclean TEXT,pharmacyprotected TEXT,pharmacyorganized TEXT,pharmacythermometer TEXT,pharmacyrefrigerator TEXT,pharmacymonitored TEXT,pharmacyinventory TEXT,pharmacyessentials TEXT,pharmacynotes TEXT, pharmacytemperature  TEXT,pharmacyrefrigiratortemp TEXT)");
-        db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME51   + "(YEAR TEXT,DISTRICT TEXT,HC TEXT,drugname TEXT,drugquantity TEXT,drugquantityshelf TEXT,drugavailable TEXT,drugexpired TEXT,drugrequested TEXT,drugstockcard TEXT,drugstockcardfilled TEXT,drugexcess TEXT,druginventory TEXT,druglabel TEXT)");
-        db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME52   + "(YEAR TEXT,DISTRICT TEXT,HC TEXT,patientid TEXT,weightcheck TEXT,currentprotocol TEXT,bpcheck TEXT,eyecheck TEXT,procheck TEXT,crecheck TEXT)");
-        db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME53   + "(YEAR TEXT,DISTRICT TEXT,HC TEXT,patientid TEXT,weightcheck TEXT,currentprotocol TEXT,bpcheck TEXT,eyecheck TEXT,procheck TEXT,crecheck TEXT,footcheck TEXT)");
-        db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME54   + "(YEAR TEXT,DISTRICT TEXT,HC TEXT,patientid TEXT,bpcheck TEXT,apptreatment TEXT,severeclass TEXT)");
-        db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME55   + "(YEAR TEXT,DISTRICT TEXT,HC TEXT,patientid TEXT,nationalanc TEXT,patienthistory TEXT,bpcheck TEXT,urinecheck TEXT,hemoglobincheck TEXT,rprcheck TEXT,ultracheck TEXT)");
-        db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME56   + "(YEAR TEXT,DISTRICT TEXT,HC TEXT,hyavailable TEXT,hyuptodate TEXT,hyinformed TEXT,diaavailable TEXT,diauptodate TEXT,diainformed TEXT,resavailable TEXT,resuptodate TEXT,resinformed TEXT,malavailable TEXT,maluptodate TEXT,malinformed TEXT,stiavailable TEXT,stiuptodate TEXT,stiinformed TEXT)");
-        db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME57   + "(YEAR TEXT,DISTRICT TEXT,HC TEXT,nationaprotocol TEXT,essentialsupplies TEXT,privacyprovided TEXT,ppesupply TEXT)");
-        db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME58   + "(YEAR TEXT,DISTRICT TEXT,HC TEXT, reason TEXT,findings TEXT,procedures TEXT,immediatecondition TEXT,patienttransferedto TEXT,feedback TEXT,referalsheets TEXT,standardform TEXT,transport TEXT)");
-        db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME59   + "(YEAR TEXT,DISTRICT TEXT,HC TEXT, patientid TEXT,assesment TEXT,classification TEXT,correcttreatment TEXT,patienteducated TEXT,followup TEXT)");
-        db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME60   + "(YEAR TEXT,DISTRICT TEXT,HC TEXT, patientid TEXT,assesment TEXT,classification TEXT,correcttreatment TEXT,patienteducated TEXT,followup TEXT,malaria TEXT)");
-        db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME61   + "(YEAR TEXT,DISTRICT TEXT,HC TEXT, patientid TEXT,assesment TEXT,classification TEXT,correcttreatment TEXT,patienteducated TEXT)");
-        db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME62   + "(YEAR TEXT,DISTRICT TEXT,HC TEXT, patientid TEXT,assesment TEXT,classification TEXT,correcttreatment TEXT,patienteducated TEXT,followup TEXT)");
-        db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME63   + "(YEAR TEXT,DISTRICT TEXT,HC TEXT, patientid TEXT,assesment TEXT,classification TEXT,correcttreatment TEXT,patienteducated TEXT,followup TEXT,orsgiven TEXT)");
-        db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME64   + "(YEAR TEXT,DISTRICT TEXT,HC TEXT,registers TEXT,spaces TEXT,rooms TEXT)");
-        db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME65   + "(YEAR TEXT,DISTRICT TEXT,HC TEXT,patientid TEXT,assessmentchecklist  TEXT,biographicaldata  TEXT,relevanthistory  TEXT,chiefcomplaint  TEXT,rapidsurvey  TEXT,vitalsigns  TEXT,examsytem  TEXT,diagnosis  TEXT,nursingplan  TEXT,soapnote  TEXT,treatmanetplan  TEXT,complete  TEXT)");
-        db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME66   + "(YEAR TEXT,DISTRICT TEXT,HC TEXT,yearid TEXT, diacases TEXT,diadeaths TEXT,pnecases TEXT,pnedeaths TEXT,malcases TEXT, maldeaths TEXT,malucases TEXT, maludeaths TEXT)");
-        db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME67   + "(YEAR TEXT,DISTRICT TEXT,HC TEXT,patientid TEXT, admissiondate TEXT, dischargedate TEXT, duration TEXT,outcome TEXT)");
-        db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME68   + "(YEAR TEXT,DISTRICT TEXT,HC TEXT,patientid TEXT, month1 TEXT, month2 TEXT, month3 TEXT,month4 TEXT,month5 TEXT,month6 TEXT)");
-        db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME69   + "(YEAR TEXT,DISTRICT TEXT,HC TEXT,patientid TEXT, month1 TEXT, month2 TEXT, month3 TEXT,month4 TEXT,month5 TEXT,month6 TEXT)");
-        db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME70   + "(YEAR TEXT,DISTRICT TEXT,HC TEXT,patientid TEXT, month1 TEXT, month2 TEXT, month3 TEXT,month4 TEXT,month5 TEXT,month6 TEXT)");
-        db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME71   + "(YEAR TEXT,DISTRICT TEXT,HC TEXT,fyear TEXT,medcost TEXT,medexpcost TEXT,valuestock TEXT)");
-        db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME72   + "(YEAR TEXT,DISTRICT TEXT,HC TEXT,drugname TEXT ,drugexpired TEXT ,pharmacyregister TEXT ,pharmacytallies TEXT,pharmacybook TEXT ,pharmacysigned TEXT,consumptiontotal  TEXT)");
+        db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME + "(ID INTEGER PRIMARY KEY AUTOINCREMENT, FNAME TEXT, LNAME TEXT, EMAIL TEXT,PASSWORD TEXT,STATUS DEFAULT 0)");
+        db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME2 + "(YEAR TEXT, DISTRICT TEXT, HC TEXT,SECTOR TEXT, CELL TEXT,VILLAGE TEXT, PUBPOST TEXT, PRIPOST TEXT,POPULATION TEXT,PATIENTS TEXT,BEDS TEXT, CONSROOMS TEXT,HOSPROOMS TEXT,CHW TEXT,A0 TEXT,A1 TEXT,A2 TEXT,MIDWIFE TEXT,STATUS DEFAULT 0)");
+        db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME3 + "(YEAR TEXT, DISTRICT TEXT, HC TEXT,ORGANI TEXT, UPTODATE TEXT,ACCESSIBLE TEXT,POSITION1 TEXT, LABTECAV TEXT,LABSIGN TEXT,LABEMP TEXT,POSITION2 TEXT, NURSEARV TEXT,NURSEARSIGN TEXT,NURSEAREMPSIGN TEXT,POSITION3 TEXT,NURSEVACAV TEXT,NURSEVACSIGN TEXT,NURSEVACEMPSIGN TEXT,POSITION4 TEXT, CUSTOCAREAV TEXT,CUSTCARESIGN TEXT,CUSTCAREEMPPSIGN TEXT,POSITION5 TEXT, NURSETBAV TEXT,NURSETBSIGN TEXT,NURSETBEMPSIGN TEXT,POSITION6 TEXT,NURSECHI TEXT,NURSECHISIGN TEXT,NURSECHIEMPSIGN TEXT,POSITION7 TEXT,SOCIALAV TEXT,SOCIALSIGN TEXT,SOCIALEMPSIGN TEXT,POSITION8 TEXT, NURSECPNAV TEXT,NURSECPNSIGN TEXT,NURSECPNEMPSIGN TEXT,POSITION9 TEXT,MIDWIFEAV TEXT,MIDWIFESIGN TEXT,MIDWIFEEMPSIGN TEXT,SOPPHARMACY TEXT,EVIDENCE TEXT,QICOMITEE TEXT,TOTSTAFF TEXT,TOTNURSE TEXT,PAIDSTAFF TEXT,CLINICALSTAFF TEXT,TBSTAFF TEXT,STAFFINFECTION TEXT,STAFFCOVID TEXT,STAFFEVALUATED TEXT,STAFFILLNESS TEXT,STAFFINJURIES TEXT,STAFFHEPATITE TEXT,STAFFRATE TEXT,PATIENTRATE TEXT,STAFFMETTING TEXT,COSAMETTING TEXT,COGEMETTING TEXT,CHWMETTING TEXT,STATUS DEFAULT 0)");
+        db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME4 + "(YEAR TEXT,DISTRICT TEXT,HC TEXT,DIRECTION TEXT,SERVICE TEXT,RESPONSIBLENAME TEXT,CURRENTDATA TEXT,RESPONSIBLEPHOTO TEXT,AREA TEXT,REQUESTEDLISTOFSUPPLIES TEXT,CURRENTLISTOFSUPPLIES TEXT,HYGIENE TEXT,HANDHYGIENE TEXT,STATUS DEFAULT 0)");
+        db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME5 + "(YEAR TEXT,DISTRICT TEXT,HC TEXT,DIRECTION TEXT,SERVICE TEXT,RESPONSIBLENAME TEXT,CURRENTDATA TEXT,RESPONSIBLEPHOTO TEXT,AREA TEXT,REQUESTEDLISTOFSUPPLIES TEXT,CURRENTLISTOFSUPPLIES TEXT,HYGIENE TEXT,HANDHYGIENE TEXT,STATUS DEFAULT 0)");
+        db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME6 + "(YEAR TEXT,DISTRICT TEXT,HC TEXT,DIRECTION TEXT,SERVICE TEXT,RESPONSIBLENAME TEXT,CURRENTDATA TEXT,RESPONSIBLEPHOTO TEXT,AREA TEXT,REQUESTEDLISTOFSUPPLIES TEXT,CURRENTLISTOFSUPPLIES TEXT,HYGIENE TEXT,HANDHYGIENE TEXT,STATUS DEFAULT 0)");
+        db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME7 + "(YEAR TEXT,DISTRICT TEXT,HC TEXT,DIRECTION TEXT,SERVICE TEXT,RESPONSIBLENAME TEXT,CURRENTDATA TEXT,RESPONSIBLEPHOTO TEXT,AREA TEXT,REQUESTEDLISTOFSUPPLIES TEXT,CURRENTLISTOFSUPPLIES TEXT,HYGIENE TEXT,HANDHYGIENE TEXT,STATUS DEFAULT 0)");
+        db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME8 + "(YEAR TEXT,DISTRICT TEXT,HC TEXT,DIRECTION TEXT,SERVICE TEXT,RESPONSIBLENAME TEXT,CURRENTDATA TEXT,RESPONSIBLEPHOTO TEXT,AREA TEXT,REQUESTEDLISTOFSUPPLIES TEXT,CURRENTLISTOFSUPPLIES TEXT,HYGIENE TEXT,HANDHYGIENE TEXT,STATUS DEFAULT 0)");
+        db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME9 + "(YEAR TEXT,DISTRICT TEXT,HC TEXT,DIRECTION TEXT,SERVICE TEXT,RESPONSIBLENAME TEXT,CURRENTDATA TEXT,RESPONSIBLEPHOTO TEXT,AREA TEXT,REQUESTEDLISTOFSUPPLIES TEXT,CURRENTLISTOFSUPPLIES TEXT,HYGIENE TEXT,HANDHYGIENE TEXT,STATUS DEFAULT 0)");
+        db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME10 + "(YEAR TEXT,DISTRICT TEXT,HC TEXT,DIRECTION TEXT,SERVICE TEXT,RESPONSIBLENAME TEXT,CURRENTDATA TEXT,RESPONSIBLEPHOTO TEXT,AREA TEXT,REQUESTEDLISTOFSUPPLIES TEXT,CURRENTLISTOFSUPPLIES TEXT,HYGIENE TEXT,HANDHYGIENE TEXT,STATUS DEFAULT 0)");
+        db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME11 + "(YEAR TEXT,DISTRICT TEXT,HC TEXT,DIRECTION TEXT,SERVICE TEXT,RESPONSIBLENAME TEXT,CURRENTDATA TEXT,RESPONSIBLEPHOTO TEXT,AREA TEXT,REQUESTEDLISTOFSUPPLIES TEXT,CURRENTLISTOFSUPPLIES TEXT,HYGIENE TEXT,HANDHYGIENE TEXT,STATUS DEFAULT 0)");
+        db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME12 + "(YEAR TEXT,DISTRICT TEXT,HC TEXT,DIRECTION TEXT,SERVICE TEXT,RESPONSIBLENAME TEXT,CURRENTDATA TEXT,RESPONSIBLEPHOTO TEXT,AREA TEXT,REQUESTEDLISTOFSUPPLIES TEXT,CURRENTLISTOFSUPPLIES TEXT,HYGIENE TEXT,HANDHYGIENE TEXT,STATUS DEFAULT 0)");
+        db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME13 + "(YEAR TEXT,DISTRICT TEXT,HC TEXT,DIRECTION TEXT,SERVICE TEXT,RESPONSIBLENAME TEXT,CURRENTDATA TEXT,RESPONSIBLEPHOTO TEXT,AREA TEXT,REQUESTEDLISTOFSUPPLIES TEXT,CURRENTLISTOFSUPPLIES TEXT,HYGIENE TEXT,HANDHYGIENE TEXT,STATUS DEFAULT 0)");
+        db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME14 + "(YEAR TEXT,DISTRICT TEXT,HC TEXT,DIRECTION TEXT,SERVICE TEXT,RESPONSIBLENAME TEXT,CURRENTDATA TEXT,RESPONSIBLEPHOTO TEXT,AREA TEXT,REQUESTEDLISTOFSUPPLIES TEXT,CURRENTLISTOFSUPPLIES TEXT,HYGIENE TEXT,HANDHYGIENE TEXT,STATUS DEFAULT 0)");
+        db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME15 + "(YEAR TEXT,DISTRICT TEXT,HC TEXT,DIRECTION TEXT,SERVICE TEXT,RESPONSIBLENAME TEXT,CURRENTDATA TEXT,RESPONSIBLEPHOTO TEXT,AREA TEXT,REQUESTEDLISTOFSUPPLIES TEXT,CURRENTLISTOFSUPPLIES TEXT,HYGIENE TEXT,HANDHYGIENE TEXT,STATUS DEFAULT 0)");
+        db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME16 + "(YEAR TEXT,DISTRICT TEXT,HC TEXT,DIRECTION TEXT,SERVICE TEXT,RESPONSIBLENAME TEXT,CURRENTDATA TEXT,RESPONSIBLEPHOTO TEXT,AREA TEXT,REQUESTEDLISTOFSUPPLIES TEXT,CURRENTLISTOFSUPPLIES TEXT,HYGIENE TEXT,HANDHYGIENE TEXT,STATUS DEFAULT 0)");
+        db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME17 + "(YEAR TEXT,DISTRICT TEXT,HC TEXT,DIRECTION TEXT,SERVICE TEXT,RESPONSIBLENAME TEXT,CURRENTDATA TEXT,RESPONSIBLEPHOTO TEXT,AREA TEXT,REQUESTEDLISTOFSUPPLIES TEXT,CURRENTLISTOFSUPPLIES TEXT,HYGIENE TEXT,HANDHYGIENE TEXT,STATUS DEFAULT 0)");
+        db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME18 + "(YEAR TEXT,DISTRICT TEXT,HC TEXT,DIRECTION TEXT,SERVICE TEXT,RESPONSIBLENAME TEXT,CURRENTDATA TEXT,RESPONSIBLEPHOTO TEXT,AREA TEXT,REQUESTEDLISTOFSUPPLIES TEXT,CURRENTLISTOFSUPPLIES TEXT,HYGIENE TEXT,HANDHYGIENE TEXT,STATUS DEFAULT 0)");
+        db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME19 + "(YEAR TEXT,DISTRICT TEXT,HC TEXT,DIRECTION TEXT,SERVICE TEXT,RESPONSIBLENAME TEXT,CURRENTDATA TEXT,RESPONSIBLEPHOTO TEXT,AREA TEXT,REQUESTEDLISTOFSUPPLIES TEXT,CURRENTLISTOFSUPPLIES TEXT,HYGIENE TEXT,HANDHYGIENE TEXT,STATUS DEFAULT 0)");
+        db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME20 + "(YEAR TEXT,DISTRICT TEXT,HC TEXT,DIRECTION TEXT,SERVICE TEXT,RESPONSIBLENAME TEXT,CURRENTDATA TEXT,RESPONSIBLEPHOTO TEXT,AREA TEXT,REQUESTEDLISTOFSUPPLIES TEXT,CURRENTLISTOFSUPPLIES TEXT,HYGIENE TEXT,HANDHYGIENE TEXT,STATUS DEFAULT 0)");
+        db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME21 + "(YEAR TEXT,DISTRICT TEXT,HC TEXT,DIRECTION TEXT,SERVICE TEXT,AREA TEXT,HYGIENE TEXT,HANDHYGIENE TEXT,STATUS DEFAULT 0)");
+        db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME22 + "(YEAR TEXT,DISTRICT TEXT,HC TEXT,CURRENTDATA TEXT,STATUS DEFAULT 0)");
+        db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME23 + "(YEAR TEXT,DISTRICT TEXT,HC TEXT,AVAILABLE TEXT,TRACKED TEXT,APPROVEDTI TEXT,APPROVEDCOSA TEXT,COMSTAFF TEXT,STATUS DEFAULT 0)");
+        db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME24 + "(YEAR TEXT,DISTRICT TEXT,HC TEXT,AVAILABLE TEXT,TRACKED TEXT,APPROVEDTI TEXT,COMSTAFF TEXT,STATUS DEFAULT 0)");
+        db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME25 + "(YEAR TEXT,DISTRICT TEXT,HC TEXT,AVAILABLE TEXT,TRACKED TEXT,APPROVEDTI TEXT,APPROVEDCOSA TEXT,COMSTAFF TEXT,STATUS DEFAULT 0)");
+        db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME26 + "(YEAR TEXT,DISTRICT TEXT,HC TEXT,AVAILABLE TEXT,TRACKED TEXT,APPROVEDTI TEXT,COMSTAFF TEXT,STATUS DEFAULT 0)");
+        db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME27   + "(YEAR TEXT,DISTRICT TEXT,HC TEXT,AVAILABLE TEXT,TRACKED TEXT,APPROVEDTI TEXT,COMSTAFF TEXT,STATUS DEFAULT 0)");
+        db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME28   + "(YEAR TEXT,DISTRICT TEXT,HC TEXT,AVAILABLE TEXT,TRACKED TEXT,APPROVEDTI TEXT,COMSTAFF TEXT,STATUS DEFAULT 0)");
+        db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME29   + "(YEAR TEXT,DISTRICT TEXT,HC TEXT,AVAILABLE TEXT,TRACKED TEXT,STATUS DEFAULT 0)");
+        db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME30   + "(YEAR TEXT,DISTRICT TEXT,HC TEXT,AVAILABLE TEXT,TRACKED TEXT,STATUS DEFAULT 0)");
+        db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME31   + "(YEAR TEXT,DISTRICT TEXT,HC TEXT,AVAILABLE TEXT,TRACKED TEXT,STATUS DEFAULT 0)");
+        db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME32   + "(YEAR TEXT,DISTRICT TEXT,HC TEXT,AVAILABLE TEXT,TRACKED TEXT,STATUS DEFAULT 0)");
+        db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME33   + "(YEAR TEXT,DISTRICT TEXT,HC TEXT,AVAILABLE TEXT,TRACKED TEXT,APPROVED TEXT,STATUS DEFAULT 0)");
+        db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME34   + "(YEAR TEXT,DISTRICT TEXT,HC TEXT,AVAILABLE TEXT,TRACKED TEXT,APPROVED TEXT,STATUS DEFAULT 0)");
+        db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME35 + "(YEAR TEXT,DISTRICT TEXT,HC TEXT,STAFFLATRINES TEXT,PATIRNETLATRINES TEXT,TOTALLATRINES TEXT,BROKENLATRINES TEXT,CLEANLATRINES TEXT,ODORLESSLATRINES TEXT,HANDWASHLATRINES TEXT,LATRINESCHEDULES TEXT,STATUS DEFAULT 0)");
+        db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME36   + "(YEAR TEXT,DISTRICT TEXT,HC TEXT,AVAILABLE TEXT,SIGNED TEXT,SUBMITED TEXT,DMAVAILABLE TEXT,STATUS DEFAULT 0)");
+        db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME37   + "(YEAR TEXT,DISTRICT TEXT,HC TEXT,PATIENTFILE TEXT,REGISTER TEXT,HMIS_HARDCOPY TEXT,HMIS_SOFTCOPY TEXT,ACCURATE TEXT,STATUS DEFAULT 0)");
+        db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME38   + "(YEAR TEXT,DISTRICT TEXT,HC TEXT,PATIENTFILE TEXT,REGISTER TEXT,HMIS_HARDCOPY TEXT,HMIS_SOFTCOPY TEXT,ACCURATE TEXT,STATUS DEFAULT 0)");
+        db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME39   + "(YEAR TEXT,DISTRICT TEXT,HC TEXT,PATIENTFILE TEXT,REGISTER TEXT,HMIS_HARDCOPY TEXT,HMIS_SOFTCOPY TEXT,ACCURATE TEXT,STATUS DEFAULT 0)");
+        db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME40   + "(YEAR TEXT,DISTRICT TEXT,HC TEXT,PATIENTFILE TEXT,REGISTER TEXT,HMIS_HARDCOPY TEXT,HMIS_SOFTCOPY TEXT,LABREGISTER TEXT,ACCURATE TEXT,STATUS DEFAULT 0)");
+        db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME41   + "(YEAR TEXT,DISTRICT TEXT,HC TEXT,LINES TEXT,FIELDS TEXT,BLANKS TEXT,STATUS DEFAULT 0)");
+        db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME42   + "(YEAR TEXT,DISTRICT TEXT,HC TEXT,maternalyear TEXT,obsetricalANC TEXT,registrations TEXT,referalsANC TEXT,obsetricalMaternity TEXT,deliveries TEXT,livebirths TEXT,maternaldeaths TEXT,neonataldeaths TEXT,stillbirths TEXT,postpartun TEXT,anc4 TEXT,anc1 TEXT,underfivedeaths TEXT,childrenconsulted TEXT,contraceptiveusers TEXT,mr2vaccines TEXT,ultrasoundscans TEXT,deadunderfive TEXT,STATUS DEFAULT 0)");
+        db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME43   + "(year TEXT,district TEXT,hc TEXT,fyear TEXT, cbank TEXT, cpetty TEXT, creceivable TEXT, cpayable TEXT, cpharmacy TEXT, crevenue TEXT, chcincome TEXT, cmedecines TEXT, cexpenses TEXT, chrexpenses TEXT, cexpenditure TEXT, cpmedecines TEXT, cequipments TEXT, ctravel TEXT, cabudget TEXT, cpbudget TEXT,STATUS DEFAULT 0)");
+        db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME44   + "(YEAR TEXT,HC TEXT,DISTRICT TEXT,fyear TEXT,ivperiod TEXT,subcbhi TEXT,subrssb TEXT,submmi TEXT,returncbhi TEXT,returnrssb TEXT,returnmmi TEXT,verifyrssb TEXT,verifymmi TEXT,amountcbhi TEXT,amountrssb TEXT,amountmmi TEXT,aftercbhi TEXT,afterrssb TEXT,aftermmi TEXT,STATUS DEFAULT 0)");
+        db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME45   + "(YEAR TEXT,DISTRICT TEXT,HC TEXT,INCOMEDATE TEXT,JOURNALINCOME TEXT,RECEIPTINCOME TEXT,INCOMEMATCH TEXT,STATUS DEFAULT 0)");
+        db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME46   + "(YEAR TEXT,DISTRICT TEXT,HC TEXT,ACCRECO TEXT,ACCBOOK TEXT,STATUS DEFAULT 0)");
+        db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME47   + "(YEAR TEXT,DISTRICT TEXT,HC TEXT,EXPENSEREFERENCE TEXT,EXPENSESIGNED TEXT,EXPENSEINVOICE TEXT,EXPENSENUMBERED TEXT,EXPENSEORDERED TEXT,EXPENSERECORDED TEXT,STATUS DEFAULT 0)");
+        db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME48   + "(YEAR TEXT,DISTRICT TEXT,HC TEXT,  rightsposted TEXT, infection TEXT, satisfactiontool TEXT, satisfactiondata TEXT, suggestionbox TEXT, qiincident TEXT, annualhazard TEXT, ppe TEXT, staffppe TEXT,staffsatisfactiontool TEXT, incidenttool TEXT, asrh TEXT, staffsatisfactiondata TEXT, patientincidents TEXT, patientincidentanalyzed TEXT, numberhazards TEXT, numberhazardsfixed TEXT,STATUS DEFAULT 0)");
+        db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME49   + "(YEAR TEXT,DISTRICT TEXT,HC TEXT, rmsessions TEXT, rmbeneficiones TEXT, rmscreened TEXT, idsessions TEXT, idbeneficiones TEXT, idscreened TEXT, ncsessions TEXT, ncbeneficiones TEXT, ncscreened TEXT,STATUS DEFAULT 0)");
+        db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME50   + "(YEAR TEXT,DISTRICT TEXT,HC TEXT,drugseparate TEXT,drugforms TEXT,drugrequisition TEXT,drugalphabet TEXT,drugclass TEXT,drugfifo TEXT,drugfefo TEXT,drugother TEXT,drugnone TEXT,pharmacydry TEXT,pharmacyclean TEXT,pharmacyprotected TEXT,pharmacyorganized TEXT,pharmacythermometer TEXT,pharmacyrefrigerator TEXT,pharmacymonitored TEXT,pharmacyinventory TEXT,pharmacyessentials TEXT,pharmacynotes TEXT, pharmacytemperature  TEXT,pharmacyrefrigiratortemp TEXT,STATUS DEFAULT 0)");
+        db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME51   + "(YEAR TEXT,DISTRICT TEXT,HC TEXT,drugname TEXT,drugquantity TEXT,drugquantityshelf TEXT,drugavailable TEXT,drugexpired TEXT,drugrequested TEXT,drugstockcard TEXT,drugstockcardfilled TEXT,drugexcess TEXT,druginventory TEXT,druglabel TEXT,STATUS DEFAULT 0)");
+        db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME52   + "(YEAR TEXT,DISTRICT TEXT,HC TEXT,patientid TEXT,weightcheck TEXT,currentprotocol TEXT,bpcheck TEXT,eyecheck TEXT,procheck TEXT,crecheck TEXT,STATUS DEFAULT 0)");
+        db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME53   + "(YEAR TEXT,DISTRICT TEXT,HC TEXT,patientid TEXT,weightcheck TEXT,currentprotocol TEXT,bpcheck TEXT,eyecheck TEXT,procheck TEXT,crecheck TEXT,footcheck TEXT,STATUS DEFAULT 0)");
+        db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME54   + "(YEAR TEXT,DISTRICT TEXT,HC TEXT,patientid TEXT,bpcheck TEXT,apptreatment TEXT,severeclass TEXT,STATUS DEFAULT 0)");
+        db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME55   + "(YEAR TEXT,DISTRICT TEXT,HC TEXT,patientid TEXT,nationalanc TEXT,patienthistory TEXT,bpcheck TEXT,urinecheck TEXT,hemoglobincheck TEXT,rprcheck TEXT,ultracheck TEXT,STATUS DEFAULT 0)");
+        db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME56   + "(YEAR TEXT,DISTRICT TEXT,HC TEXT,hyavailable TEXT,hyuptodate TEXT,hyinformed TEXT,diaavailable TEXT,diauptodate TEXT,diainformed TEXT,resavailable TEXT,resuptodate TEXT,resinformed TEXT,malavailable TEXT,maluptodate TEXT,malinformed TEXT,stiavailable TEXT,stiuptodate TEXT,stiinformed TEXT,STATUS DEFAULT 0)");
+        db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME57   + "(YEAR TEXT,DISTRICT TEXT,HC TEXT,nationaprotocol TEXT,essentialsupplies TEXT,privacyprovided TEXT,ppesupply TEXT,STATUS DEFAULT 0)");
+        db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME58   + "(YEAR TEXT,DISTRICT TEXT,HC TEXT, reason TEXT,findings TEXT,procedures TEXT,immediatecondition TEXT,patienttransferedto TEXT,feedback TEXT,referalsheets TEXT,standardform TEXT,transport TEXT,STATUS DEFAULT 0)");
+        db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME59   + "(YEAR TEXT,DISTRICT TEXT,HC TEXT, patientid TEXT,assesment TEXT,classification TEXT,correcttreatment TEXT,patienteducated TEXT,followup TEXT,STATUS DEFAULT 0)");
+        db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME60   + "(YEAR TEXT,DISTRICT TEXT,HC TEXT, patientid TEXT,assesment TEXT,classification TEXT,correcttreatment TEXT,patienteducated TEXT,followup TEXT,malaria TEXT,STATUS DEFAULT 0)");
+        db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME61   + "(YEAR TEXT,DISTRICT TEXT,HC TEXT, patientid TEXT,assesment TEXT,classification TEXT,correcttreatment TEXT,patienteducated TEXT,STATUS DEFAULT 0)");
+        db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME62   + "(YEAR TEXT,DISTRICT TEXT,HC TEXT, patientid TEXT,assesment TEXT,classification TEXT,correcttreatment TEXT,patienteducated TEXT,followup TEXT,STATUS DEFAULT 0)");
+        db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME63   + "(YEAR TEXT,DISTRICT TEXT,HC TEXT, patientid TEXT,assesment TEXT,classification TEXT,correcttreatment TEXT,patienteducated TEXT,followup TEXT,orsgiven TEXT,STATUS DEFAULT 0)");
+        db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME64   + "(YEAR TEXT,DISTRICT TEXT,HC TEXT,registers TEXT,spaces TEXT,rooms TEXT,STATUS DEFAULT 0)");
+        db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME65   + "(YEAR TEXT,DISTRICT TEXT,HC TEXT,patientid TEXT,assessmentchecklist  TEXT,biographicaldata  TEXT,relevanthistory  TEXT,chiefcomplaint  TEXT,rapidsurvey  TEXT,vitalsigns  TEXT,examsytem  TEXT,diagnosis  TEXT,nursingplan  TEXT,soapnote  TEXT,treatmanetplan  TEXT,complete  TEXT,STATUS DEFAULT 0)");
+        db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME66   + "(YEAR TEXT,DISTRICT TEXT,HC TEXT,yearid TEXT, diacases TEXT,diadeaths TEXT,pnecases TEXT,pnedeaths TEXT,malcases TEXT, maldeaths TEXT,malucases TEXT, maludeaths TEXT,STATUS DEFAULT 0)");
+        db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME67   + "(YEAR TEXT,DISTRICT TEXT,HC TEXT,patientid TEXT, admissiondate TEXT, dischargedate TEXT, duration TEXT,outcome TEXT,STATUS DEFAULT 0)");
+        db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME68   + "(YEAR TEXT,DISTRICT TEXT,HC TEXT,patientid TEXT, month1 TEXT, month2 TEXT, month3 TEXT,month4 TEXT,month5 TEXT,month6 TEXT,STATUS DEFAULT 0)");
+        db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME69   + "(YEAR TEXT,DISTRICT TEXT,HC TEXT,patientid TEXT, month1 TEXT, month2 TEXT, month3 TEXT,month4 TEXT,month5 TEXT,month6 TEXT,STATUS DEFAULT 0)");
+        db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME70   + "(YEAR TEXT,DISTRICT TEXT,HC TEXT,patientid TEXT, month1 TEXT, month2 TEXT, month3 TEXT,month4 TEXT,month5 TEXT,month6 TEXT,STATUS DEFAULT 0)");
+        db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME71   + "(YEAR TEXT,DISTRICT TEXT,HC TEXT,fyear TEXT,medcost TEXT,medexpcost TEXT,valuestock TEXT,STATUS DEFAULT 0)");
+        db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME72   + "(YEAR TEXT,DISTRICT TEXT,HC TEXT,drugname TEXT ,drugexpired TEXT ,pharmacyregister TEXT ,pharmacytallies TEXT,pharmacybook TEXT ,pharmacysigned TEXT,consumptiontotal  TEXT,STATUS DEFAULT 0)");
+        db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME73   + "(YEAR TEXT,DISTRICT TEXT,HC TEXT,meetmonth TEXT,qifocalperson TEXT,qifocalpersonletter TEXT,ipcfocalperson TEXT,ipcfocalpersonletter TEXT,custofocalperson TEXT,custofocalpersonletter TEXT,STATUS DEFAULT 0)");
 
     }
 
@@ -760,6 +780,7 @@ public class Databasehelper extends SQLiteOpenHelper {
         db.execSQL("DROP TABLE IF EXISTS "+ TABLE_NAME70);
         db.execSQL("DROP TABLE IF EXISTS "+ TABLE_NAME71);
         db.execSQL("DROP TABLE IF EXISTS "+ TABLE_NAME72);
+        db.execSQL("DROP TABLE IF EXISTS "+ TABLE_NAME73);
         onCreate(db);
     }
 
@@ -2594,5 +2615,85 @@ public class Databasehelper extends SQLiteOpenHelper {
         } else {
             return true;
         }
+    }
+
+    public boolean registerGeneralinformation2(String year, String district, String hc,String meetmonth,String qifocalperson,String qifocalpersonletter,String ipcfocalperson,String ipcfocalpersonletter,String custofocalperson,String custofocalpersonletter) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+
+        values.put(gi1, year);
+        values.put(gi2, district);
+        values.put(gi3, hc);
+        values.put(gi4, meetmonth);
+        values.put(gi5, qifocalperson);
+        values.put(gi6, qifocalpersonletter);
+        values.put(gi7, ipcfocalperson);
+        values.put(gi8, ipcfocalpersonletter);
+        values.put(gi9, custofocalperson);
+        values.put(gi10, custofocalpersonletter);
+
+        long result = db.insert(TABLE_NAME73, null, values);
+        if (result == -1) {
+            return false;
+        } else {
+            return true;
+        }
+    }
+
+     public static Cursor getUSers(String status, SQLiteDatabase db){
+        Cursor cursor;
+        String[] projections = {COL_1,COL_2,COL_3,COL_4,COL_5,COL_6};
+        String selection = COL_6+" LIKE ?";
+        String[] selection_args = {status};
+        cursor= db.query(TABLE_NAME,projections,selection,selection_args  ,null,null,null);
+        return cursor;
+     }
+     public static int updateUsers(String old_status, String status,SQLiteDatabase db){
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("STATUS",status);
+        String selection = COL_6+" LIKE ?";
+        String[] selection_args = {old_status};
+        int count = db.update(TABLE_NAME,contentValues,selection,selection_args);
+        return count;
+
+
+     }
+
+    public static Cursor getBasicInfo(String status, SQLiteDatabase db){
+        Cursor cursor;
+        String[] projections = {COL2_1,COL2_2,COL2_3,COL2_4,COL2_5,COL2_6,COL2_7,COL2_8,COL2_9,COL2_10,COL2_11,COL2_12,COL2_13,COL2_14,COL2_15,COL2_16,COL2_17,COL2_18};
+        String selection = COL2_19+" LIKE ?";
+        String[] selection_args = {status};
+        cursor= db.query(TABLE_NAME2,projections,selection,selection_args  ,null,null,null);
+        return cursor;
+    }
+    public static int updateBasicInfo(String old_status, String status,SQLiteDatabase db){
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("STATUS",status);
+        String selection = COL2_19+" LIKE ?";
+        String[] selection_args = {old_status};
+        int count = db.update(TABLE_NAME2,contentValues,selection,selection_args);
+        return count;
+
+
+    }
+
+    public static Cursor getBasicInfo2(String status, SQLiteDatabase db){
+        Cursor cursor;
+        String[] projections = {COL3_1, COL3_2, COL3_3, COL3_4, COL3_5, COL3_6, COLP_1, COL3_7, COL3_8, COL3_9, COLP_2, COL3_10, COL3_11, COL3_12, COLP_3, COL3_13, COL3_14, COL3_15, COLP_4, COL3_16, COL3_17, COL3_18, COLP_5, COL3_19, COL3_20, COL3_21, COLP_6, COL3_22, COL3_23, COL3_24, COLP_7, COL3_25, COL3_26, COL3_27,COLP_8, COL3_28, COL3_29, COL3_30, COLP_9,  COL3_31, COL3_32, COL3_33, COL3_34, COL3_35, COL3_36, COL3_37, COL3_38, COL3_39, COL3_40, COL3_41, COL3_42, COL3_43, COL3_44,  COL3_45, COL3_46,  COL3_47, COL3_48, COL3_49, COL3_50, COL3_51, COL3_52, COL3_53 };
+        String selection = COL2_19+" LIKE ?";
+        String[] selection_args = {status};
+        cursor= db.query(TABLE_NAME3,projections,selection,selection_args  ,null,null,null);
+        return cursor;
+    }
+    public static int updateBasicInfo2(String old_status, String status,SQLiteDatabase db){
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("STATUS",status);
+        String selection = COL2_19+" LIKE ?";
+        String[] selection_args = {old_status};
+        int count = db.update(TABLE_NAME3,contentValues,selection,selection_args);
+        return count;
+
+
     }
 }
