@@ -15,7 +15,7 @@ import android.widget.Toast;
 import com.google.android.material.textfield.TextInputEditText;
 
 public class DataAccuracyMalaria extends AppCompatActivity {
-    TextInputEditText patientfile,register,hmis_hardcopy,hmis_softcopy,labregister;
+    TextInputEditText patientfile,register,hmis_hardcopy,hmis_softcopy,labregister,pharmacy;
     AutoCompleteTextView accurate;
     Button savenext;
     String[] response = new String[]{ "Yes","No","N/A"};
@@ -41,6 +41,7 @@ public class DataAccuracyMalaria extends AppCompatActivity {
         hmis_softcopy=findViewById(R.id.deliverysoftcopy);
         labregister=findViewById(R.id.malarialabregister);
         accurate=findViewById(R.id.deliveryaccurate);
+        pharmacy=findViewById(R.id.pharmacydata);
 
         savenext=findViewById(R.id.deliveryNext);
 
@@ -63,8 +64,9 @@ public class DataAccuracyMalaria extends AppCompatActivity {
                 final String xhmis_softcopy=hmis_softcopy.getText().toString().trim();
                 final String xlabregister=labregister.getText().toString().trim();
                 final String xacurrate=accurate.getText().toString().trim();
+                final String xpharmacy=pharmacy.getText().toString().trim();
 
-                boolean var = myDb.registerDatamanagementMalaria(xyear,xdistrict,xhc,xpatientfile,xregister,xhmis_hardcopy,xhmis_softcopy,xlabregister,xacurrate);
+                boolean var = myDb.registerDatamanagementMalaria(xyear,xdistrict,xhc,xpatientfile,xregister,xhmis_hardcopy,xhmis_softcopy,xacurrate,xlabregister,xpharmacy);
                 if (var) {
 
 

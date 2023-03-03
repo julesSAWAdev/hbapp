@@ -222,6 +222,7 @@ public class Databasehelper extends SQLiteOpenHelper {
     public static final String de7= "hmis_softcopy";
     public static final String de8= "accurate";
     public static final String de10= "labregister";
+    public static final String de11= "pharmacy";
 
     //opd registers
     public static final String opd1= "year";
@@ -669,7 +670,7 @@ public class Databasehelper extends SQLiteOpenHelper {
         db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME37   + "(YEAR TEXT,DISTRICT TEXT,HC TEXT,PATIENTFILE TEXT,REGISTER TEXT,HMIS_HARDCOPY TEXT,HMIS_SOFTCOPY TEXT,ACCURATE TEXT,STATUS DEFAULT 0)");
         db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME38   + "(YEAR TEXT,DISTRICT TEXT,HC TEXT,PATIENTFILE TEXT,REGISTER TEXT,HMIS_HARDCOPY TEXT,HMIS_SOFTCOPY TEXT,ACCURATE TEXT,STATUS DEFAULT 0)");
         db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME39   + "(YEAR TEXT,DISTRICT TEXT,HC TEXT,PATIENTFILE TEXT,REGISTER TEXT,HMIS_HARDCOPY TEXT,HMIS_SOFTCOPY TEXT,ACCURATE TEXT,STATUS DEFAULT 0)");
-        db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME40   + "(YEAR TEXT,DISTRICT TEXT,HC TEXT,PATIENTFILE TEXT,REGISTER TEXT,HMIS_HARDCOPY TEXT,HMIS_SOFTCOPY TEXT,LABREGISTER TEXT,ACCURATE TEXT,STATUS DEFAULT 0)");
+        db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME40   + "(YEAR TEXT,DISTRICT TEXT,HC TEXT,PATIENTFILE TEXT,REGISTER TEXT,HMIS_HARDCOPY TEXT,HMIS_SOFTCOPY TEXT,ACCURATE TEXT,LABREGISTER TEXT,PHARMACY TEXT,STATUS DEFAULT 0)");
         db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME41   + "(YEAR TEXT,DISTRICT TEXT,HC TEXT,LINES TEXT,FIELDS TEXT,BLANKS TEXT,STATUS DEFAULT 0)");
         db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME42   + "(YEAR TEXT,DISTRICT TEXT,HC TEXT,maternalyear TEXT,obsetricalANC TEXT,registrations TEXT,referalsANC TEXT,obsetricalMaternity TEXT,deliveries TEXT,livebirths TEXT,maternaldeaths TEXT,neonataldeaths TEXT,stillbirths TEXT,postpartun TEXT,anc4 TEXT,anc1 TEXT,underfivedeaths TEXT,childrenconsulted TEXT,contraceptiveusers TEXT,mr2vaccines TEXT,ultrasoundscans TEXT,deadunderfive TEXT,STATUS DEFAULT 0)");
         db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME43   + "(year TEXT,district TEXT,hc TEXT,fyear TEXT, cbank TEXT, cpetty TEXT, creceivable TEXT, cpayable TEXT, cpharmacy TEXT, crevenue TEXT, chcincome TEXT, cmedecines TEXT, cexpenses TEXT, chrexpenses TEXT, cexpenditure TEXT, cpmedecines TEXT, cequipments TEXT, ctravel TEXT, cabudget TEXT, cpbudget TEXT,STATUS DEFAULT 0)");
@@ -1327,13 +1328,13 @@ public class Databasehelper extends SQLiteOpenHelper {
     }
 
 
-        public boolean registerBasicInformation2(String year, String district, String hc, String organi,String uptodate,String accessible,String position1,String  labtecav,
+    public boolean registerBasicInformation2(String year, String district, String hc, String organi,String uptodate,String accessible,String position1,String  labtecav,
                                              String  labsign, String  labemp,String position2, String  nursearv, String  nursearsign, String  nursearempsign, String position3,String  nursevacav,
                                              String  nursevacsign ,String  nursevacempsign,String position4, String  custocareav, String  custcaresign, String  custcareemppsign,
-                                                 String position5,String  nursetbav ,String  nursetbsign ,
+                                             String position5,String  nursetbav ,String  nursetbsign ,
                                              String  nursetbempsign, String position6, String  nursechi, String  nursechisign ,String  nursechiempsign ,String position7, String  socialav ,
                                              String socialsign ,String  socialempsign ,String position8, String  nursecpnav ,String  nursecpnsign ,String  nursecpnempsign ,
-                                                 String position9, String  midwifeav, String  midwifesign, String  midwifeempsign ,String  SOPpharmacy, String  evidence,
+                                             String position9, String  midwifeav, String  midwifesign, String  midwifeempsign ,String  SOPpharmacy, String  evidence,
                                              String  qicomitee ,String  totstaff ,String  totnurse, String  paidstaff ,String  clinicalstaff,
                                              String  tbstaff ,String  staffinfection, String  staffcovid ,String  staffevaluated ,
                                              String  staffillness ,String  staffinjuries ,String  staffhepatite, String  staffrate ,
@@ -1772,7 +1773,7 @@ public class Databasehelper extends SQLiteOpenHelper {
 
     }
 
-    public boolean registerDatamanagementMalaria(String year, String district, String hc,String patientfile,String register,String hmis_hardcopy,String hmis_softcopy,String labregister,String accurate){
+    public boolean registerDatamanagementMalaria(String year, String district, String hc,String patientfile,String register,String hmis_hardcopy,String hmis_softcopy,String labregister,String accurate,String pharmacy){
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
 
@@ -1783,8 +1784,9 @@ public class Databasehelper extends SQLiteOpenHelper {
         values.put(de5,register);
         values.put(de6,hmis_hardcopy);
         values.put(de7,hmis_softcopy);
-        values.put(de10,labregister);
         values.put(de8,accurate);
+        values.put(de10,labregister);
+        values.put(de11,pharmacy);
         long result = db.insert(TABLE_NAME40, null, values);
         if (result == -1){
             return false;
@@ -2640,15 +2642,15 @@ public class Databasehelper extends SQLiteOpenHelper {
         }
     }
 
-     public static Cursor getUSers(String status, SQLiteDatabase db){
+    public static Cursor getUSers(String status, SQLiteDatabase db){
         Cursor cursor;
         String[] projections = {COL_1,COL_2,COL_3,COL_4,COL_5,COL_6};
         String selection = COL_6+" LIKE ?";
         String[] selection_args = {status};
         cursor= db.query(TABLE_NAME,projections,selection,selection_args  ,null,null,null);
         return cursor;
-     }
-     public static int updateUsers(String old_status, String status,SQLiteDatabase db){
+    }
+    public static int updateUsers(String old_status, String status,SQLiteDatabase db){
         ContentValues contentValues = new ContentValues();
         contentValues.put("STATUS",status);
         String selection = COL_6+" LIKE ?";
@@ -2657,7 +2659,7 @@ public class Databasehelper extends SQLiteOpenHelper {
         return count;
 
 
-     }
+    }
 
     public static Cursor getBasicInfo(String status, SQLiteDatabase db){
         Cursor cursor;
@@ -2692,6 +2694,716 @@ public class Databasehelper extends SQLiteOpenHelper {
         String selection = COL2_19+" LIKE ?";
         String[] selection_args = {old_status};
         int count = db.update(TABLE_NAME3,contentValues,selection,selection_args);
+        return count;
+
+
+    }
+
+    public static Cursor getAnc_servicedescription(String status, SQLiteDatabase db){
+        Cursor cursor;
+        String[] projections = {anc_1,anc_2,anc_3,anc_4,anc_5,anc_6,anc_7,anc_8,anc_9,anc_10,anc_11,anc_12,anc_13};
+        String selection = COL2_19+" LIKE ?";
+        String[] selection_args = {status};
+        cursor= db.query(TABLE_NAME4,projections,selection,selection_args  ,null,null,null);
+        return cursor;
+    }
+    public static int updateAnc_servicedescription(String old_status, String status,SQLiteDatabase db){
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("STATUS",status);
+        String selection = COL2_19+" LIKE ?";
+        String[] selection_args = {old_status};
+        int count = db.update(TABLE_NAME4,contentValues,selection,selection_args);
+        return count;
+
+
+    }
+
+    public static Cursor getVacc_servicedescription(String status, SQLiteDatabase db){
+        Cursor cursor;
+        String[] projections = {anc_1,anc_2,anc_3,anc_4,anc_5,anc_6,anc_7,anc_8,anc_9,anc_10,anc_11,anc_12,anc_13};
+        String selection = COL2_19+" LIKE ?";
+        String[] selection_args = {status};
+        cursor= db.query(TABLE_NAME5,projections,selection,selection_args  ,null,null,null);
+        return cursor;
+    }
+    public static int updateVacc_servicedescription(String old_status, String status,SQLiteDatabase db){
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("STATUS",status);
+        String selection = COL2_19+" LIKE ?";
+        String[] selection_args = {old_status};
+        int count = db.update(TABLE_NAME5,contentValues,selection,selection_args);
+        return count;
+
+
+    }
+
+    public static Cursor getFam_servicedescription(String status, SQLiteDatabase db){
+        Cursor cursor;
+        String[] projections = {anc_1,anc_2,anc_3,anc_4,anc_5,anc_6,anc_7,anc_8,anc_9,anc_10,anc_11,anc_12,anc_13};
+        String selection = COL2_19+" LIKE ?";
+        String[] selection_args = {status};
+        cursor= db.query(TABLE_NAME6,projections,selection,selection_args  ,null,null,null);
+        return cursor;
+    }
+    public static int updateFam_servicedescription(String old_status, String status,SQLiteDatabase db){
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("STATUS",status);
+        String selection = COL2_19+" LIKE ?";
+        String[] selection_args = {old_status};
+        int count = db.update(TABLE_NAME6,contentValues,selection,selection_args);
+        return count;
+
+
+    }
+
+    public static Cursor getPharmaStock_servicedescription(String status, SQLiteDatabase db){
+        Cursor cursor;
+        String[] projections = {anc_1,anc_2,anc_3,anc_4,anc_5,anc_6,anc_7,anc_8,anc_9,anc_10,anc_11,anc_12,anc_13};
+        String selection = COL2_19+" LIKE ?";
+        String[] selection_args = {status};
+        cursor= db.query(TABLE_NAME7,projections,selection,selection_args  ,null,null,null);
+        return cursor;
+    }
+    public static int updatePharmaStock_servicedescription(String old_status, String status,SQLiteDatabase db){
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("STATUS",status);
+        String selection = COL2_19+" LIKE ?";
+        String[] selection_args = {old_status};
+        int count = db.update(TABLE_NAME7,contentValues,selection,selection_args);
+        return count;
+
+
+    }
+
+    public static Cursor getPharmaDisp_servicedescription(String status, SQLiteDatabase db){
+        Cursor cursor;
+        String[] projections = {anc_1,anc_2,anc_3,anc_4,anc_5,anc_6,anc_7,anc_8,anc_9,anc_10,anc_11,anc_12,anc_13};
+        String selection = COL2_19+" LIKE ?";
+        String[] selection_args = {status};
+        cursor= db.query(TABLE_NAME8,projections,selection,selection_args  ,null,null,null);
+        return cursor;
+    }
+    public static int updatePharmacyDisp_servicedescription(String old_status, String status,SQLiteDatabase db){
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("STATUS",status);
+        String selection = COL2_19+" LIKE ?";
+        String[] selection_args = {old_status};
+        int count = db.update(TABLE_NAME8,contentValues,selection,selection_args);
+        return count;
+
+
+    }
+
+    public static Cursor getncd_servicedescription(String status, SQLiteDatabase db){
+        Cursor cursor;
+        String[] projections = {anc_1,anc_2,anc_3,anc_4,anc_5,anc_6,anc_7,anc_8,anc_9,anc_10,anc_11,anc_12,anc_13};
+        String selection = COL2_19+" LIKE ?";
+        String[] selection_args = {status};
+        cursor= db.query(TABLE_NAME9,projections,selection,selection_args  ,null,null,null);
+        return cursor;
+    }
+    public static int updatencd_servicedescription(String old_status, String status,SQLiteDatabase db){
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("STATUS",status);
+        String selection = COL2_19+" LIKE ?";
+        String[] selection_args = {old_status};
+        int count = db.update(TABLE_NAME9,contentValues,selection,selection_args);
+        return count;
+
+
+    }
+
+    public static Cursor getceho_servicedescription(String status, SQLiteDatabase db){
+        Cursor cursor;
+        String[] projections = {anc_1,anc_2,anc_3,anc_4,anc_5,anc_6,anc_7,anc_8,anc_9,anc_10,anc_11,anc_12,anc_13};
+        String selection = COL2_19+" LIKE ?";
+        String[] selection_args = {status};
+        cursor= db.query(TABLE_NAME10,projections,selection,selection_args  ,null,null,null);
+        return cursor;
+    }
+    public static int updateceho_servicedescription(String old_status, String status,SQLiteDatabase db){
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("STATUS",status);
+        String selection = COL2_19+" LIKE ?";
+        String[] selection_args = {old_status};
+        int count = db.update(TABLE_NAME10,contentValues,selection,selection_args);
+        return count;
+
+
+    }
+
+
+    public static Cursor getcashier_servicedescription(String status, SQLiteDatabase db){
+        Cursor cursor;
+        String[] projections = {anc_1,anc_2,anc_3,anc_4,anc_5,anc_6,anc_7,anc_8,anc_9,anc_10,anc_11,anc_12,anc_13};
+        String selection = COL2_19+" LIKE ?";
+        String[] selection_args = {status};
+        cursor= db.query(TABLE_NAME11,projections,selection,selection_args  ,null,null,null);
+        return cursor;
+    }
+    public static int updatecashier_servicedescription(String old_status, String status,SQLiteDatabase db){
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("STATUS",status);
+        String selection = COL2_19+" LIKE ?";
+        String[] selection_args = {old_status};
+        int count = db.update(TABLE_NAME11,contentValues,selection,selection_args);
+        return count;
+
+
+    }
+
+
+    public static Cursor getAccounting_servicedescription(String status, SQLiteDatabase db){
+        Cursor cursor;
+        String[] projections = {anc_1,anc_2,anc_3,anc_4,anc_5,anc_6,anc_7,anc_8,anc_9,anc_10,anc_11,anc_12,anc_13};
+        String selection = COL2_19+" LIKE ?";
+        String[] selection_args = {status};
+        cursor= db.query(TABLE_NAME12,projections,selection,selection_args  ,null,null,null);
+        return cursor;
+    }
+    public static int updateAccounting_servicedescription(String old_status, String status,SQLiteDatabase db){
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("STATUS",status);
+        String selection = COL2_19+" LIKE ?";
+        String[] selection_args = {old_status};
+        int count = db.update(TABLE_NAME12,contentValues,selection,selection_args);
+        return count;
+
+
+    }
+
+    public static Cursor getLaboratory_servicedescription(String status, SQLiteDatabase db){
+        Cursor cursor;
+        String[] projections = {anc_1,anc_2,anc_3,anc_4,anc_5,anc_6,anc_7,anc_8,anc_9,anc_10,anc_11,anc_12,anc_13};
+        String selection = COL2_19+" LIKE ?";
+        String[] selection_args = {status};
+        cursor= db.query(TABLE_NAME13,projections,selection,selection_args  ,null,null,null);
+        return cursor;
+    }
+    public static int updateLaboratory_servicedescription(String old_status, String status,SQLiteDatabase db){
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("STATUS",status);
+        String selection = COL2_19+" LIKE ?";
+        String[] selection_args = {old_status};
+        int count = db.update(TABLE_NAME13,contentValues,selection,selection_args);
+        return count;
+
+
+    }
+
+    public static Cursor getTitulaire_servicedescription(String status, SQLiteDatabase db){
+        Cursor cursor;
+        String[] projections = {anc_1,anc_2,anc_3,anc_4,anc_5,anc_6,anc_7,anc_8,anc_9,anc_10,anc_11,anc_12,anc_13};
+        String selection = COL2_19+" LIKE ?";
+        String[] selection_args = {status};
+        cursor= db.query(TABLE_NAME14,projections,selection,selection_args  ,null,null,null);
+        return cursor;
+    }
+    public static int updateTitulaire_servicedescription(String old_status, String status,SQLiteDatabase db){
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("STATUS",status);
+        String selection = COL2_19+" LIKE ?";
+        String[] selection_args = {old_status};
+        int count = db.update(TABLE_NAME14,contentValues,selection,selection_args);
+        return count;
+
+
+    }
+
+    public static Cursor getDataman_servicedescription(String status, SQLiteDatabase db){
+        Cursor cursor;
+        String[] projections = {anc_1,anc_2,anc_3,anc_4,anc_5,anc_6,anc_7,anc_8,anc_9,anc_10,anc_11,anc_12,anc_13};
+        String selection = COL2_19+" LIKE ?";
+        String[] selection_args = {status};
+        cursor= db.query(TABLE_NAME15,projections,selection,selection_args  ,null,null,null);
+        return cursor;
+    }
+    public static int updateDataman_servicedescription(String old_status, String status,SQLiteDatabase db){
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("STATUS",status);
+        String selection = COL2_19+" LIKE ?";
+        String[] selection_args = {old_status};
+        int count = db.update(TABLE_NAME15,contentValues,selection,selection_args);
+        return count;
+
+
+    }
+
+    public static Cursor getArv_servicedescription(String status, SQLiteDatabase db){
+        Cursor cursor;
+        String[] projections = {anc_1,anc_2,anc_3,anc_4,anc_5,anc_6,anc_7,anc_8,anc_9,anc_10,anc_11,anc_12,anc_13};
+        String selection = COL2_19+" LIKE ?";
+        String[] selection_args = {status};
+        cursor= db.query(TABLE_NAME16,projections,selection,selection_args  ,null,null,null);
+        return cursor;
+    }
+    public static int updateArv_servicedescription(String old_status, String status,SQLiteDatabase db){
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("STATUS",status);
+        String selection = COL2_19+" LIKE ?";
+        String[] selection_args = {old_status};
+        int count = db.update(TABLE_NAME16,contentValues,selection,selection_args);
+        return count;
+
+
+    }
+
+    public static Cursor getCustoCare_servicedescription(String status, SQLiteDatabase db){
+        Cursor cursor;
+        String[] projections = {anc_1,anc_2,anc_3,anc_4,anc_5,anc_6,anc_7,anc_8,anc_9,anc_10,anc_11,anc_12,anc_13};
+        String selection = COL2_19+" LIKE ?";
+        String[] selection_args = {status};
+        cursor= db.query(TABLE_NAME17,projections,selection,selection_args  ,null,null,null);
+        return cursor;
+    }
+    public static int updateCustoCare_servicedescription(String old_status, String status,SQLiteDatabase db){
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("STATUS",status);
+        String selection = COL2_19+" LIKE ?";
+        String[] selection_args = {old_status};
+        int count = db.update(TABLE_NAME17,contentValues,selection,selection_args);
+        return count;
+
+
+    }
+
+    public static Cursor getConsroom_servicedescription(String status, SQLiteDatabase db){
+        Cursor cursor;
+        String[] projections = {anc_1,anc_2,anc_3,anc_4,anc_5,anc_6,anc_7,anc_8,anc_9,anc_10,anc_11,anc_12,anc_13};
+        String selection = COL2_19+" LIKE ?";
+        String[] selection_args = {status};
+        cursor= db.query(TABLE_NAME18,projections,selection,selection_args  ,null,null,null);
+        return cursor;
+    }
+    public static int updateConsroom_servicedescription(String old_status, String status,SQLiteDatabase db){
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("STATUS",status);
+        String selection = COL2_19+" LIKE ?";
+        String[] selection_args = {old_status};
+        int count = db.update(TABLE_NAME18,contentValues,selection,selection_args);
+        return count;
+
+
+    }
+
+    public static Cursor getMaternity_servicedescription(String status, SQLiteDatabase db){
+        Cursor cursor;
+        String[] projections = {anc_1,anc_2,anc_3,anc_4,anc_5,anc_6,anc_7,anc_8,anc_9,anc_10,anc_11,anc_12,anc_13};
+        String selection = COL2_19+" LIKE ?";
+        String[] selection_args = {status};
+        cursor= db.query(TABLE_NAME19,projections,selection,selection_args  ,null,null,null);
+        return cursor;
+    }
+    public static int updateMaternity_servicedescription(String old_status, String status,SQLiteDatabase db){
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("STATUS",status);
+        String selection = COL2_19+" LIKE ?";
+        String[] selection_args = {old_status};
+        int count = db.update(TABLE_NAME19,contentValues,selection,selection_args);
+        return count;
+
+
+    }
+
+    public static Cursor getHosproom_servicedescription(String status, SQLiteDatabase db){
+        Cursor cursor;
+        String[] projections = {anc_1,anc_2,anc_3,anc_4,anc_5,anc_6,anc_7,anc_8,anc_9,anc_10,anc_11,anc_12,anc_13};
+        String selection = COL2_19+" LIKE ?";
+        String[] selection_args = {status};
+        cursor= db.query(TABLE_NAME20,projections,selection,selection_args  ,null,null,null);
+        return cursor;
+    }
+    public static int updateHosproom_servicedescription(String old_status, String status,SQLiteDatabase db){
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("STATUS",status);
+        String selection = COL2_19+" LIKE ?";
+        String[] selection_args = {old_status};
+        int count = db.update(TABLE_NAME20,contentValues,selection,selection_args);
+        return count;
+
+
+    }
+
+    public static Cursor gettoilets_servicedescription(String status, SQLiteDatabase db){
+        Cursor cursor;
+        String[] projections = {anc_1,anc_2,anc_3,anc_4,anc_9,anc_12,anc_13};
+        String selection = COL2_19+" LIKE ?";
+        String[] selection_args = {status};
+        cursor= db.query(TABLE_NAME21,projections,selection,selection_args  ,null,null,null);
+        return cursor;
+    }
+    public static int updatetoilets_servicedescription(String old_status, String status,SQLiteDatabase db){
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("STATUS",status);
+        String selection = COL2_19+" LIKE ?";
+        String[] selection_args = {old_status};
+        int count = db.update(TABLE_NAME21,contentValues,selection,selection_args);
+        return count;
+
+
+    }
+
+
+    public static Cursor getNoticeboard_servicedescription(String status, SQLiteDatabase db){
+        Cursor cursor;
+        String[] projections = {anc_1,anc_2,anc_3,anc_7};
+        String selection = COL2_19+" LIKE ?";
+        String[] selection_args = {status};
+        cursor= db.query(TABLE_NAME22,projections,selection,selection_args  ,null,null,null);
+        return cursor;
+    }
+    public static int updateNoticeboard_servicedescription(String old_status, String status,SQLiteDatabase db){
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("STATUS",status);
+        String selection = COL2_19+" LIKE ?";
+        String[] selection_args = {old_status};
+        int count = db.update(TABLE_NAME22,contentValues,selection,selection_args);
+        return count;
+
+
+    }
+
+
+    public static Cursor getDocumentation_actionplan(String status, SQLiteDatabase db){
+        Cursor cursor;
+        String[] projections = {doc_1,doc_2,doc_3,doc_4,doc_5,doc_6,doc_7,doc_8};
+        String selection = COL2_19+" LIKE ?";
+        String[] selection_args = {status};
+        cursor= db.query(TABLE_NAME23,projections,selection,selection_args  ,null,null,null);
+        return cursor;
+    }
+    public static int updateDocumentation_actionplan(String old_status, String status,SQLiteDatabase db){
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("STATUS",status);
+        String selection = COL2_19+" LIKE ?";
+        String[] selection_args = {old_status};
+        int count = db.update(TABLE_NAME23,contentValues,selection,selection_args);
+        return count;
+
+
+    }
+
+    public static Cursor getDocumentation_businessplan(String status, SQLiteDatabase db){
+        Cursor cursor;
+        String[] projections = {doc_1,doc_2,doc_3,doc_4,doc_5,doc_6,doc_8};
+        String selection = COL2_19+" LIKE ?";
+        String[] selection_args = {status};
+        cursor= db.query(TABLE_NAME24,projections,selection,selection_args  ,null,null,null);
+        return cursor;
+    }
+    public static int updateDocumentation_businessplan(String old_status, String status,SQLiteDatabase db){
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("STATUS",status);
+        String selection = COL2_19+" LIKE ?";
+        String[] selection_args = {old_status};
+        int count = db.update(TABLE_NAME24,contentValues,selection,selection_args);
+        return count;
+
+
+    }
+
+    public static Cursor getDocumentation_budgetplan(String status, SQLiteDatabase db){
+        Cursor cursor;
+        String[] projections =  {doc_1,doc_2,doc_3,doc_4,doc_5,doc_6,doc_7,doc_8};
+        String selection = COL2_19+" LIKE ?";
+        String[] selection_args = {status};
+        cursor= db.query(TABLE_NAME25,projections,selection,selection_args  ,null,null,null);
+        return cursor;
+    }
+    public static int updateDocumentation_budgetplan(String old_status, String status,SQLiteDatabase db){
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("STATUS",status);
+        String selection = COL2_19+" LIKE ?";
+        String[] selection_args = {old_status};
+        int count = db.update(TABLE_NAME25,contentValues,selection,selection_args);
+        return count;
+
+
+    }
+
+    public static Cursor getDocumentation_inservice(String status, SQLiteDatabase db){
+        Cursor cursor;
+        String[] projections = {doc_1,doc_2,doc_3,doc_4,doc_5,doc_6,doc_8};
+        String selection = COL2_19+" LIKE ?";
+        String[] selection_args = {status};
+        cursor= db.query(TABLE_NAME26,projections,selection,selection_args  ,null,null,null);
+        return cursor;
+    }
+    public static int updateDocumentation_inservice(String old_status, String status,SQLiteDatabase db){
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("STATUS",status);
+        String selection = COL2_19+" LIKE ?";
+        String[] selection_args = {old_status};
+        int count = db.update(TABLE_NAME26,contentValues,selection,selection_args);
+        return count;
+
+
+    }
+
+    public static Cursor getDocumentation_work(String status, SQLiteDatabase db){
+        Cursor cursor;
+        String[] projections = {doc_1,doc_2,doc_3,doc_4,doc_5,doc_6,doc_8};
+        String selection = COL2_19+" LIKE ?";
+        String[] selection_args = {status};
+        cursor= db.query(TABLE_NAME27,projections,selection,selection_args  ,null,null,null);
+        return cursor;
+    }
+    public static int updateDocumentation_work(String old_status, String status,SQLiteDatabase db){
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("STATUS",status);
+        String selection = COL2_19+" LIKE ?";
+        String[] selection_args = {old_status};
+        int count = db.update(TABLE_NAME27,contentValues,selection,selection_args);
+        return count;
+
+
+    }
+
+    public static Cursor getDocumentation_qiplan(String status, SQLiteDatabase db){
+        Cursor cursor;
+        String[] projections = {doc_1,doc_2,doc_3,doc_4,doc_5,doc_6,doc_8};
+        String selection = COL2_19+" LIKE ?";
+        String[] selection_args = {status};
+        cursor= db.query(TABLE_NAME28,projections,selection,selection_args  ,null,null,null);
+        return cursor;
+    }
+    public static int updateDocumentation_qiplan(String old_status, String status,SQLiteDatabase db){
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("STATUS",status);
+        String selection = COL2_19+" LIKE ?";
+        String[] selection_args = {old_status};
+        int count = db.update(TABLE_NAME28,contentValues,selection,selection_args);
+        return count;
+
+
+    }
+
+
+    public static Cursor getDocumentation_externaltraining(String status, SQLiteDatabase db){
+        Cursor cursor;
+        String[] projections = {doc_1,doc_2,doc_3,doc_4,doc_5};
+        String selection = COL2_19+" LIKE ?";
+        String[] selection_args = {status};
+        cursor= db.query(TABLE_NAME29,projections,selection,selection_args  ,null,null,null);
+        return cursor;
+    }
+    public static int updateDocumentation_externaltraining(String old_status, String status,SQLiteDatabase db){
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("STATUS",status);
+        String selection = COL2_19+" LIKE ?";
+        String[] selection_args = {old_status};
+        int count = db.update(TABLE_NAME29,contentValues,selection,selection_args);
+        return count;
+
+
+    }
+
+    public static Cursor getDocumentation_attendanceregister(String status, SQLiteDatabase db){
+        Cursor cursor;
+        String[] projections = {doc_1,doc_2,doc_3,doc_4,doc_5};
+        String selection = COL2_19+" LIKE ?";
+        String[] selection_args = {status};
+        cursor= db.query(TABLE_NAME30,projections,selection,selection_args  ,null,null,null);
+        return cursor;
+    }
+    public static int updateDocumentation_attendanceregisters(String old_status, String status,SQLiteDatabase db){
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("STATUS",status);
+        String selection = COL2_19+" LIKE ?";
+        String[] selection_args = {old_status};
+        int count = db.update(TABLE_NAME30,contentValues,selection,selection_args);
+        return count;
+
+
+    }
+
+
+    public static Cursor getDocumentation_payableregister(String status, SQLiteDatabase db){
+        Cursor cursor;
+        String[] projections = {doc_1,doc_2,doc_3,doc_4,doc_5};
+        String selection = COL2_19+" LIKE ?";
+        String[] selection_args = {status};
+        cursor= db.query(TABLE_NAME31,projections,selection,selection_args  ,null,null,null);
+        return cursor;
+    }
+    public static int updateDocumentation_payableregisters(String old_status, String status,SQLiteDatabase db){
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("STATUS",status);
+        String selection = COL2_19+" LIKE ?";
+        String[] selection_args = {old_status};
+        int count = db.update(TABLE_NAME31,contentValues,selection,selection_args);
+        return count;
+
+
+    }
+
+
+    public static Cursor getDocumentation_receivableregister(String status, SQLiteDatabase db){
+        Cursor cursor;
+        String[] projections = {doc_1,doc_2,doc_3,doc_4,doc_5};
+        String selection = COL2_19+" LIKE ?";
+        String[] selection_args = {status};
+        cursor= db.query(TABLE_NAME32,projections,selection,selection_args  ,null,null,null);
+        return cursor;
+    }
+    public static int updateDocumentation_receivableregisters(String old_status, String status,SQLiteDatabase db){
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("STATUS",status);
+        String selection = COL2_19+" LIKE ?";
+        String[] selection_args = {old_status};
+        int count = db.update(TABLE_NAME32,contentValues,selection,selection_args);
+        return count;
+
+
+    }
+
+    public static Cursor getDocumentation_malariaplan(String status, SQLiteDatabase db){
+        Cursor cursor;
+        String[] projections = {doc_1,doc_2,doc_3,doc_4,doc_5,doc_9};
+        String selection = COL2_19+" LIKE ?";
+        String[] selection_args = {status};
+        cursor= db.query(TABLE_NAME33,projections,selection,selection_args  ,null,null,null);
+        return cursor;
+    }
+    public static int updateDocumentation_malariaplan(String old_status, String status,SQLiteDatabase db){
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("STATUS",status);
+        String selection = COL2_19+" LIKE ?";
+        String[] selection_args = {old_status};
+        int count = db.update(TABLE_NAME33,contentValues,selection,selection_args);
+        return count;
+
+
+    }
+
+    public static Cursor getDocumentation_CustomerCareProgram(String status, SQLiteDatabase db){
+        Cursor cursor;
+        String[] projections = {doc_1,doc_2,doc_3,doc_4,doc_5,doc_9};
+        String selection = COL2_19+" LIKE ?";
+        String[] selection_args = {status};
+        cursor= db.query(TABLE_NAME34,projections,selection,selection_args  ,null,null,null);
+        return cursor;
+    }
+    public static int updateDocumentation_CustomerCareprogram(String old_status, String status,SQLiteDatabase db){
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("STATUS",status);
+        String selection = COL2_19+" LIKE ?";
+        String[] selection_args = {old_status};
+        int count = db.update(TABLE_NAME34,contentValues,selection,selection_args);
+        return count;
+
+
+    }
+
+    public static Cursor getDocumentation_sanitation(String status, SQLiteDatabase db){
+        Cursor cursor;
+        String[] projections = {s1,s2,s3,s4,s5,s6,s7,s8,s9,s10,s11};
+        String selection = COL2_19+" LIKE ?";
+        String[] selection_args = {status};
+        cursor= db.query(TABLE_NAME35,projections,selection,selection_args  ,null,null,null);
+        return cursor;
+    }
+    public static int updateDocumentation_sanitation(String old_status, String status,SQLiteDatabase db){
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("STATUS",status);
+        String selection = COL2_19+" LIKE ?";
+        String[] selection_args = {old_status};
+        int count = db.update(TABLE_NAME35,contentValues,selection,selection_args);
+        return count;
+
+
+    }
+
+    public static Cursor getdata_datamanagemntSOP(String status, SQLiteDatabase db){
+        Cursor cursor;
+        String[] projections =  {d1,d2,d3,d4,d5,d6,d7};
+        String selection = COL2_19+" LIKE ?";
+        String[] selection_args = {status};
+        cursor= db.query(TABLE_NAME36,projections,selection,selection_args  ,null,null,null);
+        return cursor;
+    }
+    public static int updateData_datamanagementSOP(String old_status, String status, SQLiteDatabase db){
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("STATUS",status);
+        String selection = COL2_19+" LIKE ?";
+        String[] selection_args = {old_status};
+        int count = db.update(TABLE_NAME36,contentValues,selection,selection_args);
+        return count;
+
+
+    }
+
+    public static Cursor getData_datamanagementDeliveries(String status, SQLiteDatabase db){
+        Cursor cursor;
+        String[] projections =  {de1,de2,de3,de4,de5,de6,de7,de8};
+        String selection = COL2_19+" LIKE ?";
+        String[] selection_args = {status};
+        cursor= db.query(TABLE_NAME37,projections,selection,selection_args  ,null,null,null);
+        return cursor;
+    }
+    public static int updateData_datamanagementDeliveries(String old_status, String status,SQLiteDatabase db){
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("STATUS",status);
+        String selection = COL2_19+" LIKE ?";
+        String[] selection_args = {old_status};
+        int count = db.update(TABLE_NAME37,contentValues,selection,selection_args);
+        return count;
+
+
+    }
+
+    public static Cursor getData_datamanagementNCD(String status, SQLiteDatabase db){
+        Cursor cursor;
+        String[] projections =  {de1,de2,de3,de4,de5,de6,de7,de8};
+        String selection = COL2_19+" LIKE ?";
+        String[] selection_args = {status};
+        cursor= db.query(TABLE_NAME38,projections,selection,selection_args  ,null,null,null);
+        return cursor;
+    }
+    public static int updateData_datamanagementNCD(String old_status, String status,SQLiteDatabase db){
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("STATUS",status);
+        String selection = COL2_19+" LIKE ?";
+        String[] selection_args = {old_status};
+        int count = db.update(TABLE_NAME38,contentValues,selection,selection_args);
+        return count;
+
+
+    }
+
+    public static Cursor getData_datamanagementBCG(String status, SQLiteDatabase db){
+        Cursor cursor;
+        String[] projections =  {de1,de2,de3,de4,de5,de6,de7,de8};
+        String selection = COL2_19+" LIKE ?";
+        String[] selection_args = {status};
+        cursor= db.query(TABLE_NAME39,projections,selection,selection_args  ,null,null,null);
+        return cursor;
+    }
+    public static int updateData_datamanagementBCG(String old_status, String status,SQLiteDatabase db){
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("STATUS",status);
+        String selection = COL2_19+" LIKE ?";
+        String[] selection_args = {old_status};
+        int count = db.update(TABLE_NAME39,contentValues,selection,selection_args);
+        return count;
+
+
+    }
+
+    public static Cursor getData_MalariaCases(String status, SQLiteDatabase db){
+        Cursor cursor;
+        String[] projections =  {de1,de2,de3,de4,de5,de6,de7,de8,de10,de11};
+        String selection = COL2_19+" LIKE ?";
+        String[] selection_args = {status};
+        cursor= db.query(TABLE_NAME40,projections,selection,selection_args  ,null,null,null);
+        return cursor;
+    }
+    public static int updateData_MalariaCases(String old_status, String status,SQLiteDatabase db){
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("STATUS",status);
+        String selection = COL2_19+" LIKE ?";
+        String[] selection_args = {old_status};
+        int count = db.update(TABLE_NAME40,contentValues,selection,selection_args);
         return count;
 
 

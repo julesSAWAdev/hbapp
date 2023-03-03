@@ -23,7 +23,7 @@ import java.util.Calendar;
 import java.util.Locale;
 
 public class InsuranceReview extends AppCompatActivity {
-    TextInputEditText invoiceCBHI,invoiceRSSB,invoiceMMI,returnCBHI,returnRSSB,returnMMI,verifyRSSB,verifyMMI,
+    TextInputEditText invoiceCBHI,invoiceRSSB,invoiceMMI,returnCBHI,returnRSSB,returnMMI,verifyCBHI,verifyRSSB,verifyMMI,
                         amountCBHI,amountRSSB,amountMMI,afterCBHI,afterRSSB,afterMMI,fyear,ivperiod;
     Calendar myCalendar;
     Button savecont,close;
@@ -55,6 +55,7 @@ public class InsuranceReview extends AppCompatActivity {
 
         verifyRSSB=findViewById(R.id.verifyrssb);
         verifyMMI=findViewById(R.id.verifymmi);
+        verifyCBHI=findViewById(R.id.verifycbhi);
 
         amountCBHI=findViewById(R.id.amountcbhi);
         amountRSSB=findViewById(R.id.amountrssb);
@@ -252,6 +253,22 @@ public class InsuranceReview extends AppCompatActivity {
             public void onClick(View v) {
 
                 new DatePickerDialog(InsuranceReview.this,dateSetListener5,
+                        myCalendar.get(Calendar.YEAR),
+                        myCalendar.get(Calendar.MONTH),
+                        myCalendar.get(Calendar.DAY_OF_MONTH)).show();
+
+
+            }
+
+
+        });
+
+        verifyCBHI.setOnClickListener(new View.OnClickListener() {
+            @RequiresApi(api = Build.VERSION_CODES.N)
+            @Override
+            public void onClick(View v) {
+
+                new DatePickerDialog(InsuranceReview.this,dateSetListener6,
                         myCalendar.get(Calendar.YEAR),
                         myCalendar.get(Calendar.MONTH),
                         myCalendar.get(Calendar.DAY_OF_MONTH)).show();

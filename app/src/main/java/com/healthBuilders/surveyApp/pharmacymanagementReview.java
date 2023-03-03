@@ -22,6 +22,7 @@ public class pharmacymanagementReview extends AppCompatActivity {
 
     TextInputEditText pharmacytemperature,pharmacyrefrigiratortemp;
     String[] response = new String[]{ "Yes","No","N/A"};
+    String[] response1 = new String[]{ "Once/week","Twice/week","Thrice/week","More often","Other"};
     private ProgressDialog progressDialog;
     private Databasehelper myDb;
 
@@ -67,11 +68,12 @@ public class pharmacymanagementReview extends AppCompatActivity {
 
         //adapter
         ArrayAdapter<String> adapterDist = new ArrayAdapter<>(this, R.layout.dropdown_item2, response);
+        ArrayAdapter<String> adapterDist1 = new ArrayAdapter<>(this, R.layout.dropdown_item2, response1);
 
         //set adapters
         drugseparate.setAdapter(adapterDist);
         drugforms.setAdapter(adapterDist);
-        drugrequisition.setAdapter(adapterDist);
+        drugrequisition.setAdapter(adapterDist1);
         drugalphabet.setAdapter(adapterDist);
         drugclass.setAdapter(adapterDist);
         drugfifo.setAdapter(adapterDist);
