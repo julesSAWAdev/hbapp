@@ -326,6 +326,7 @@ public class InsuranceReview extends AppCompatActivity {
                 final String xreturnCBHI=returnCBHI.getText().toString();
                 final String xreturnRSSB=returnRSSB.getText().toString();
                 final String xreturnMMI=returnMMI.getText().toString();
+                final String xverifyCBHI=verifyCBHI.getText().toString();
                 final String xverifyRSSB=verifyRSSB.getText().toString();
                 final String xverifyMMI=verifyMMI.getText().toString();
                 final String xamountCBHI=amountCBHI.getText().toString();
@@ -336,7 +337,7 @@ public class InsuranceReview extends AppCompatActivity {
                 final String xafterMMI=afterMMI.getText().toString();
 
                 boolean var = myDb.RegisterAssuranceReview(xyear,xdistrict,xhc,xfyear,xivperiod,xinvoiceCBHI,xinvoiceRSSB,xinvoiceMMI,xreturnCBHI,xreturnRSSB,xreturnMMI,
-                        xverifyRSSB,xverifyMMI,xamountCBHI,xamountRSSB,xamountMMI,xafterCBHI,xafterRSSB,xafterMMI);
+                        xverifyRSSB,xverifyMMI,xamountCBHI,xamountRSSB,xamountMMI,xafterCBHI,xafterRSSB,xafterMMI,xverifyCBHI);
                 if (var) {
                     fyear.setText("");
                     ivperiod.setText("");

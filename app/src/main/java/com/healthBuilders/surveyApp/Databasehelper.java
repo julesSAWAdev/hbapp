@@ -298,6 +298,7 @@ public class Databasehelper extends SQLiteOpenHelper {
     public static final String iv17="aftercbhi";
     public static final String iv18="afterrssb";
     public static final String iv19="aftermmi";
+    public static final String iv20="verifycbhi";
 
 
     //incomereview
@@ -310,7 +311,7 @@ public class Databasehelper extends SQLiteOpenHelper {
     public static final String ic7="incomematch";
 
 
-    //incomereview
+    //Accounts
     public static final String acc1="year";
     public static final String acc2="district";
     public static final String acc3="hc";
@@ -674,7 +675,7 @@ public class Databasehelper extends SQLiteOpenHelper {
         db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME41   + "(YEAR TEXT,DISTRICT TEXT,HC TEXT,LINES TEXT,FIELDS TEXT,BLANKS TEXT,STATUS DEFAULT 0)");
         db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME42   + "(YEAR TEXT,DISTRICT TEXT,HC TEXT,maternalyear TEXT,obsetricalANC TEXT,registrations TEXT,referalsANC TEXT,obsetricalMaternity TEXT,deliveries TEXT,livebirths TEXT,maternaldeaths TEXT,neonataldeaths TEXT,stillbirths TEXT,postpartun TEXT,anc4 TEXT,anc1 TEXT,underfivedeaths TEXT,childrenconsulted TEXT,contraceptiveusers TEXT,mr2vaccines TEXT,ultrasoundscans TEXT,deadunderfive TEXT,STATUS DEFAULT 0)");
         db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME43   + "(year TEXT,district TEXT,hc TEXT,fyear TEXT, cbank TEXT, cpetty TEXT, creceivable TEXT, cpayable TEXT, cpharmacy TEXT, crevenue TEXT, chcincome TEXT, cmedecines TEXT, cexpenses TEXT, chrexpenses TEXT, cexpenditure TEXT, cpmedecines TEXT, cequipments TEXT, ctravel TEXT, cabudget TEXT, cpbudget TEXT,STATUS DEFAULT 0)");
-        db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME44   + "(YEAR TEXT,HC TEXT,DISTRICT TEXT,fyear TEXT,ivperiod TEXT,subcbhi TEXT,subrssb TEXT,submmi TEXT,returncbhi TEXT,returnrssb TEXT,returnmmi TEXT,verifyrssb TEXT,verifymmi TEXT,amountcbhi TEXT,amountrssb TEXT,amountmmi TEXT,aftercbhi TEXT,afterrssb TEXT,aftermmi TEXT,STATUS DEFAULT 0)");
+        db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME44   + "(YEAR TEXT,HC TEXT,DISTRICT TEXT,fyear TEXT,ivperiod TEXT,subcbhi TEXT,subrssb TEXT,submmi TEXT,returncbhi TEXT,returnrssb TEXT,returnmmi TEXT,verifyrssb TEXT,verifymmi TEXT,amountcbhi TEXT,amountrssb TEXT,amountmmi TEXT,aftercbhi TEXT,afterrssb TEXT,aftermmi TEXT,verifyCBHI TEXT,STATUS DEFAULT 0)");
         db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME45   + "(YEAR TEXT,DISTRICT TEXT,HC TEXT,INCOMEDATE TEXT,JOURNALINCOME TEXT,RECEIPTINCOME TEXT,INCOMEMATCH TEXT,STATUS DEFAULT 0)");
         db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME46   + "(YEAR TEXT,DISTRICT TEXT,HC TEXT,ACCRECO TEXT,ACCBOOK TEXT,STATUS DEFAULT 0)");
         db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME47   + "(YEAR TEXT,DISTRICT TEXT,HC TEXT,EXPENSEREFERENCE TEXT,EXPENSESIGNED TEXT,EXPENSEINVOICE TEXT,EXPENSENUMBERED TEXT,EXPENSEORDERED TEXT,EXPENSERECORDED TEXT,STATUS DEFAULT 0)");
@@ -1894,7 +1895,7 @@ public class Databasehelper extends SQLiteOpenHelper {
     }
 
 
-    public boolean RegisterAssuranceReview(String year  ,String hc  ,String district  ,String fyear  ,String ivperiod  ,String subcbhi  ,String subrssb  ,String submmi  ,String returncbhi  ,String returnrssb  ,String returnmmi  ,String verifyrssb  ,String verifymmi  ,String amountcbhi  ,String amountrssb  ,String amountmmi  ,String aftercbhi  ,String afterrssb  ,String aftermmi){
+    public boolean RegisterAssuranceReview(String year  ,String hc  ,String district  ,String fyear  ,String ivperiod  ,String subcbhi  ,String subrssb  ,String submmi  ,String returncbhi  ,String returnrssb  ,String returnmmi  ,String verifyrssb  ,String verifymmi  ,String amountcbhi  ,String amountrssb  ,String amountmmi  ,String aftercbhi  ,String afterrssb  ,String aftermmi,String verifyCBHI){
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
 
@@ -1917,6 +1918,7 @@ public class Databasehelper extends SQLiteOpenHelper {
         values.put(iv17  ,aftercbhi);
         values.put(iv18  ,afterrssb);
         values.put(iv19 ,aftermmi);
+        values.put(iv20 ,aftermmi);
         long result = db.insert(TABLE_NAME44, null, values);
         if (result == -1){
             return false;
@@ -3408,4 +3410,218 @@ public class Databasehelper extends SQLiteOpenHelper {
 
 
     }
+
+
+    public static Cursor getData_OPDregisters(String status, SQLiteDatabase db){
+        Cursor cursor;
+        String[] projections =  {opd1,opd2,opd3,opd4,opd5,opd6};
+        String selection = COL2_19+" LIKE ?";
+        String[] selection_args = {status};
+        cursor= db.query(TABLE_NAME41,projections,selection,selection_args  ,null,null,null);
+        return cursor;
+    }
+    public static int updateData_OPDregisters(String old_status, String status,SQLiteDatabase db){
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("STATUS",status);
+        String selection = COL2_19+" LIKE ?";
+        String[] selection_args = {old_status};
+        int count = db.update(TABLE_NAME41,contentValues,selection,selection_args);
+        return count;
+
+
+    }
+
+
+    public static Cursor getData_MaternalNeonatal(String status, SQLiteDatabase db){
+        Cursor cursor;
+        String[] projections =  {m1,m2,m3,m4,m5,m6,m7,m8,m9,m10,m11,m12,m13,m14,m15,m16,m17,m18,m19,m20,m21,m22};
+        String selection = COL2_19+" LIKE ?";
+        String[] selection_args = {status};
+        cursor= db.query(TABLE_NAME42,projections,selection,selection_args  ,null,null,null);
+        return cursor;
+    }
+    public static int updateData_MaternalNeonatal(String old_status, String status,SQLiteDatabase db){
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("STATUS",status);
+        String selection = COL2_19+" LIKE ?";
+        String[] selection_args = {old_status};
+        int count = db.update(TABLE_NAME42,contentValues,selection,selection_args);
+        return count;
+
+
+    }
+
+    public static Cursor getData_Finance_review(String status, SQLiteDatabase db){
+        Cursor cursor;
+        String[] projections =  {fr1,fr2,fr3,fr4,fr5,fr6,fr7,fr8,fr9,fr10,fr11,fr12,fr13,fr14,fr15,fr16,fr17,fr18,fr19,fr20};
+        String selection = COL2_19+" LIKE ?";
+        String[] selection_args = {status};
+        cursor= db.query(TABLE_NAME43,projections,selection,selection_args  ,null,null,null);
+        return cursor;
+    }
+    public static int updateData_Finance_review(String old_status, String status,SQLiteDatabase db){
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("STATUS",status);
+        String selection = COL2_19+" LIKE ?";
+        String[] selection_args = {old_status};
+        int count = db.update(TABLE_NAME43,contentValues,selection,selection_args);
+        return count;
+
+
+    }
+
+    public static Cursor getData_Insurance_review(String status, SQLiteDatabase db){
+        Cursor cursor;
+        String[] projections =  {iv1,iv2,iv3,iv4,iv5,iv6,iv7,iv8,iv9,iv10,iv11,iv12,iv13,iv14,iv15,iv16,iv17,iv18,iv19,iv20};
+        String selection = COL2_19+" LIKE ?";
+        String[] selection_args = {status};
+        cursor= db.query(TABLE_NAME44,projections,selection,selection_args  ,null,null,null);
+        return cursor;
+    }
+    public static int updateData_Insurance_review(String old_status, String status,SQLiteDatabase db){
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("STATUS",status);
+        String selection = COL2_19+" LIKE ?";
+        String[] selection_args = {old_status};
+        int count = db.update(TABLE_NAME44,contentValues,selection,selection_args);
+        return count;
+
+
+    }
+
+    public static Cursor getData_Income_review(String status, SQLiteDatabase db){
+        Cursor cursor;
+        String[] projections =  {ic1,ic2,ic3,ic4,ic5,ic6,ic7};
+        String selection = COL2_19+" LIKE ?";
+        String[] selection_args = {status};
+        cursor= db.query(TABLE_NAME45,projections,selection,selection_args  ,null,null,null);
+        return cursor;
+    }
+    public static int updateData_Income_review(String old_status, String status,SQLiteDatabase db){
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("STATUS",status);
+        String selection = COL2_19+" LIKE ?";
+        String[] selection_args = {old_status};
+        int count = db.update(TABLE_NAME45,contentValues,selection,selection_args);
+        return count;
+
+
+    }
+
+    public static Cursor getData_Accounts(String status, SQLiteDatabase db){
+        Cursor cursor;
+        String[] projections =  {acc1,acc2,acc3,acc4,acc5};
+        String selection = COL2_19+" LIKE ?";
+        String[] selection_args = {status};
+        cursor= db.query(TABLE_NAME46,projections,selection,selection_args  ,null,null,null);
+        return cursor;
+    }
+    public static int updateData_Accountss(String old_status, String status,SQLiteDatabase db){
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("STATUS",status);
+        String selection = COL2_19+" LIKE ?";
+        String[] selection_args = {old_status};
+        int count = db.update(TABLE_NAME46,contentValues,selection,selection_args);
+        return count;
+
+
+    }
+
+    public static Cursor getData_Expense_review(String status, SQLiteDatabase db){
+        Cursor cursor;
+        String[] projections =  {ex1,ex2,ex3,ex4,ex5,ex6,ex7,ex8,ex9};
+        String selection = COL2_19+" LIKE ?";
+        String[] selection_args = {status};
+        cursor= db.query(TABLE_NAME47,projections,selection,selection_args  ,null,null,null);
+        return cursor;
+    }
+    public static int updateData_Expense_review(String old_status, String status,SQLiteDatabase db){
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("STATUS",status);
+        String selection = COL2_19+" LIKE ?";
+        String[] selection_args = {old_status};
+        int count = db.update(TABLE_NAME47,contentValues,selection,selection_args);
+        return count;
+
+
+    }
+
+    public static Cursor getData_SafetyManagement(String status, SQLiteDatabase db){
+        Cursor cursor;
+        String[] projections =  {sm1,sm2,sm3,sm4,sm5,sm6,sm7,sm8,sm9,sm10,sm11,sm12,sm13,sm14,sm15,sm16,sm17,sm18,sm19,sm20};
+        String selection = COL2_19+" LIKE ?";
+        String[] selection_args = {status};
+        cursor= db.query(TABLE_NAME48,projections,selection,selection_args  ,null,null,null);
+        return cursor;
+    }
+    public static int updateData_safetyManagement(String old_status, String status,SQLiteDatabase db){
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("STATUS",status);
+        String selection = COL2_19+" LIKE ?";
+        String[] selection_args = {old_status};
+        int count = db.update(TABLE_NAME48,contentValues,selection,selection_args);
+        return count;
+
+
+    }
+
+
+    public static Cursor getData_HealthEducation(String status, SQLiteDatabase db){
+        Cursor cursor;
+        String[] projections =  {sm1,sm2,sm3,sm4,sm5,sm6,sm7,sm8,sm9,sm10,sm11,sm12,sm13,sm14,sm15,sm16,sm17,sm18,sm19,sm20};
+        String selection = COL2_19+" LIKE ?";
+        String[] selection_args = {status};
+        cursor= db.query(TABLE_NAME49,projections,selection,selection_args  ,null,null,null);
+        return cursor;
+    }
+    public static int updateData_HealthEducation(String old_status, String status,SQLiteDatabase db){
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("STATUS",status);
+        String selection = COL2_19+" LIKE ?";
+        String[] selection_args = {old_status};
+        int count = db.update(TABLE_NAME49,contentValues,selection,selection_args);
+        return count;
+
+
+    }
+
+
+    public static Cursor getData_PharmacyManagement(String status, SQLiteDatabase db){
+        Cursor cursor;
+        String[] projections =  {pm1,pm2,pm3,pm4,pm5,pm6,pm7,pm8,pm9,pm10,pm11,pm12,pm13,pm14,pm15,pm16,pm17,pm18,pm19,pm20,pm21,pm22,pm27,pm28};
+        String selection = COL2_19+" LIKE ?";
+        String[] selection_args = {status};
+        cursor= db.query(TABLE_NAME50,projections,selection,selection_args  ,null,null,null);
+        return cursor;
+    }
+    public static int updateData_PharmacyManagement(String old_status, String status,SQLiteDatabase db){
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("STATUS",status);
+        String selection = COL2_19+" LIKE ?";
+        String[] selection_args = {old_status};
+        int count = db.update(TABLE_NAME50,contentValues,selection,selection_args);
+        return count;
+
+
+    }
+
+    public static Cursor getData_PharmacyStock(String status, SQLiteDatabase db){
+        Cursor cursor;
+        String[] projections =  {ps1,ps2,ps3,ps4,ps5,ps6,ps7,ps8,ps9,ps10,ps11,ps12,ps13,ps14};
+        String selection = COL2_19+" LIKE ?";
+        String[] selection_args = {status};
+        cursor= db.query(TABLE_NAME51,projections,selection,selection_args  ,null,null,null);
+        return cursor;
+    }
+    public static int updateData_PharmacyStock(String old_status, String status,SQLiteDatabase db){
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("STATUS",status);
+        String selection = COL2_19+" LIKE ?";
+        String[] selection_args = {old_status};
+        int count = db.update(TABLE_NAME51,contentValues,selection,selection_args);
+        return count;
+
+
+    }
+
 }
