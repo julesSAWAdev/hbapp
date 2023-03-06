@@ -160,6 +160,29 @@ public class startPage extends AppCompatActivity {
                     readData_HealthEducation();
                     readData_PharmacyManagement();
                     readData_PharmacyStock();
+                    readData_HypertensionGuidlines();
+                    readData_diabetesguidelines();
+                    readData_AsthmaGuidelines();
+                    readData_Ancguidelines();
+                    readData_Overallguidelines();
+                    readData_MaternityGuidelines();
+                    readData_referalProcess();
+                    readData_outpatientMalaria();
+                    readData_outpatientFever();
+                    readData_outpatientCough();
+                    readData_outpatientPnemonia();
+                    readData_outpatientDiar();
+                    readData_guideAsrh();
+                    readData_inpatientCare();
+                    readData_KeyIndicators();
+                    readData_AdmittedPatients();
+                    readData_outcome_hypertensionBP();
+                    readData_outcome_DiabetesBS();
+                    readData_outcome_AsthmaClass();
+                    readData_outcome_VpharmacyStock();
+                    readData_outcome_PharmacyDispensary();
+                    readData_outcome_GenInformation2();
+
 
 
 
@@ -3027,6 +3050,1176 @@ public class startPage extends AppCompatActivity {
         }
 
     }
+
+    //read  data  pharmacy Stock
+    public void readData_HypertensionGuidlines(){
+        String status_id="0";
+        sqLiteDatabase = myDB.getReadableDatabase();
+        cursor = Databasehelper.getData_guideHypertension(status_id,sqLiteDatabase);
+        if (cursor.moveToFirst()){
+            do{
+                final String YEAR, DISTRICT, HC, patientid, weightcheck, currentprotocol, bpcheck, eyecheck, procheck, crecheck;
+                YEAR = cursor.getString(0);
+                HC = cursor.getString(1);
+                DISTRICT = cursor.getString(2);
+                patientid = cursor.getString(3);
+                weightcheck = cursor.getString(4);
+                currentprotocol = cursor.getString(5);
+                bpcheck = cursor.getString(6);
+                eyecheck = cursor.getString(7);
+                procheck = cursor.getString(8);
+                crecheck = cursor.getString(9);
+
+
+
+                final StringRequest stringRequest = new StringRequest(Request.Method.POST,"http://report.healthbuilders.org/app/hypertension_guideline.php?YEAR="+YEAR+"&DISTRICT="+DISTRICT+"&HC="+HC+"&patientid="+patientid+"&weightcheck="+weightcheck+"&currentprotocol="+currentprotocol+"&bpcheck="+bpcheck+"&eyecheck="+eyecheck+"&procheck="+procheck+"&crecheck="+crecheck, new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+
+                        // Toast.makeText(getApplicationContext(), response.toString(), Toast.LENGTH_SHORT).show();
+                    }
+                }, new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Toast.makeText(getApplicationContext(), error.toString(), Toast.LENGTH_LONG).show();
+
+                    }
+                }){
+                    @Nullable
+                    @Override
+                    public Map<String, String> getParams() {
+                        Map<String,String> params = new HashMap<String,String>();
+                        return params;
+
+                    }
+                };
+                RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
+                VolleyLog.DEBUG = true;
+                requestQueue.add(stringRequest);
+
+            }while (cursor.moveToNext());
+            int count = Databasehelper.updateData_guideHypertension("0","1",sqLiteDatabase);
+            Toast.makeText(getApplicationContext(),count+" data updated",Toast.LENGTH_SHORT).show();
+            sqLiteDatabase.close();
+        }
+
+    }
+
+    public void readData_diabetesguidelines(){
+        String status_id="0";
+        sqLiteDatabase = myDB.getReadableDatabase();
+        cursor = Databasehelper.getData_guideDiabetes(status_id,sqLiteDatabase);
+        if (cursor.moveToFirst()){
+            do{
+                final String YEAR, DISTRICT, HC, patientid, weightcheck, currentprotocol, bpcheck, eyecheck, procheck, crecheck,footcheck;
+                YEAR = cursor.getString(0);
+                HC = cursor.getString(1);
+                DISTRICT = cursor.getString(2);
+                patientid = cursor.getString(3);
+                weightcheck = cursor.getString(4);
+                currentprotocol = cursor.getString(5);
+                bpcheck = cursor.getString(6);
+                eyecheck = cursor.getString(7);
+                procheck = cursor.getString(8);
+                crecheck = cursor.getString(9);
+                footcheck = cursor.getString(10);
+
+
+
+                final StringRequest stringRequest = new StringRequest(Request.Method.POST,"http://report.healthbuilders.org/app/diabetes_guidelines.php?YEAR="+YEAR+"&DISTRICT="+DISTRICT+"&HC="+HC+"&patientid="+patientid+"&weightcheck="+weightcheck+"&currentprotocol="+currentprotocol+"&bpcheck="+bpcheck+"&eyecheck="+eyecheck+"&procheck="+procheck+"&crecheck="+crecheck+"&footcheck="+footcheck, new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+
+                        // Toast.makeText(getApplicationContext(), response.toString(), Toast.LENGTH_SHORT).show();
+                    }
+                }, new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Toast.makeText(getApplicationContext(), error.toString(), Toast.LENGTH_LONG).show();
+
+                    }
+                }){
+                    @Nullable
+                    @Override
+                    public Map<String, String> getParams() {
+                        Map<String,String> params = new HashMap<String,String>();
+                        return params;
+
+                    }
+                };
+                RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
+                VolleyLog.DEBUG = true;
+                requestQueue.add(stringRequest);
+
+            }while (cursor.moveToNext());
+            int count = Databasehelper.updateData_guideDiabetes("0","1",sqLiteDatabase);
+            Toast.makeText(getApplicationContext(),count+" data updated",Toast.LENGTH_SHORT).show();
+            sqLiteDatabase.close();
+        }
+
+    }
+
+    public void readData_AsthmaGuidelines(){
+        String status_id="0";
+        sqLiteDatabase = myDB.getReadableDatabase();
+        cursor = Databasehelper.getData_guideAsthma(status_id,sqLiteDatabase);
+        if (cursor.moveToFirst()){
+            do{
+                final String YEAR, DISTRICT, HC, patientid, bpcheck, apptreatment, severeclass;
+                YEAR = cursor.getString(0);
+                HC = cursor.getString(1);
+                DISTRICT = cursor.getString(2);
+                patientid = cursor.getString(3);
+                bpcheck = cursor.getString(4);
+                apptreatment = cursor.getString(5);
+                severeclass = cursor.getString(6);
+
+
+
+                final StringRequest stringRequest = new StringRequest(Request.Method.POST,"http://report.healthbuilders.org/app/asthma_guidelines.php?YEAR="+YEAR+"&DISTRICT="+DISTRICT+"&HC="+HC+"&patientid="+patientid+"&bpcheck="+bpcheck+"&apptreatment="+apptreatment+"&severeclass="+severeclass, new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+
+                        // Toast.makeText(getApplicationContext(), response.toString(), Toast.LENGTH_SHORT).show();
+                    }
+                }, new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Toast.makeText(getApplicationContext(), error.toString(), Toast.LENGTH_LONG).show();
+
+                    }
+                }){
+                    @Nullable
+                    @Override
+                    public Map<String, String> getParams() {
+                        Map<String,String> params = new HashMap<String,String>();
+                        return params;
+
+                    }
+                };
+                RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
+                VolleyLog.DEBUG = true;
+                requestQueue.add(stringRequest);
+
+            }while (cursor.moveToNext());
+            int count = Databasehelper.updateData_guideAsthma("0","1",sqLiteDatabase);
+            Toast.makeText(getApplicationContext(),count+" data updated",Toast.LENGTH_SHORT).show();
+            sqLiteDatabase.close();
+        }
+
+    }
+
+    public void readData_Ancguidelines(){
+        String status_id="0";
+        sqLiteDatabase = myDB.getReadableDatabase();
+        cursor = Databasehelper.getData_guideAnc(status_id,sqLiteDatabase);
+        if (cursor.moveToFirst()){
+            do{
+                final String YEAR, DISTRICT, HC, patientid, nationalanc, patienthistory, bpcheck, urinecheck, hemoglobincheck, rprcheck, ultracheck;
+                YEAR = cursor.getString(0);
+                HC = cursor.getString(1);
+                DISTRICT = cursor.getString(2);
+                patientid = cursor.getString(3);
+                nationalanc = cursor.getString(4);
+                patienthistory = cursor.getString(5);
+                bpcheck = cursor.getString(6);
+                urinecheck = cursor.getString(7);
+                hemoglobincheck = cursor.getString(8);
+                rprcheck = cursor.getString(9);
+                ultracheck = cursor.getString(10);
+
+
+
+                final StringRequest stringRequest = new StringRequest(Request.Method.POST,"http://report.healthbuilders.org/app/anc_guideline.php?YEAR="+YEAR+"&DISTRICT="+DISTRICT+"&HC="+HC+"&patientid="+patientid+"&nationalanc="+nationalanc+"&patienthistory="+patienthistory+"&bpcheck="+bpcheck+"&urinecheck="+urinecheck+"&hemoglobincheck="+hemoglobincheck+"&rprcheck="+rprcheck+"&ultracheck="+ultracheck, new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+
+                        // Toast.makeText(getApplicationContext(), response.toString(), Toast.LENGTH_SHORT).show();
+                    }
+                }, new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Toast.makeText(getApplicationContext(), error.toString(), Toast.LENGTH_LONG).show();
+
+                    }
+                }){
+                    @Nullable
+                    @Override
+                    public Map<String, String> getParams() {
+                        Map<String,String> params = new HashMap<String,String>();
+                        return params;
+
+                    }
+                };
+                RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
+                VolleyLog.DEBUG = true;
+                requestQueue.add(stringRequest);
+
+            }while (cursor.moveToNext());
+            int count = Databasehelper.updateData_guideAnc("0","1",sqLiteDatabase);
+            Toast.makeText(getApplicationContext(),count+" data updated",Toast.LENGTH_SHORT).show();
+            sqLiteDatabase.close();
+        }
+
+    }
+
+    public void readData_Overallguidelines(){
+        String status_id="0";
+        sqLiteDatabase = myDB.getReadableDatabase();
+        cursor = Databasehelper.getData_guideOverall(status_id,sqLiteDatabase);
+        if (cursor.moveToFirst()){
+            do{
+                final String YEAR, DISTRICT, HC, hyavailable, hyuptodate, hyinformed, diaavailable, diauptodate, diainformed, resavailable, resuptodate, resinformed, malavailable, maluptodate, malinformed, stiavailable, stiuptodate, stiinformed;
+                YEAR = cursor.getString(0);
+                HC = cursor.getString(1);
+                DISTRICT = cursor.getString(2);
+                hyavailable = cursor.getString(3);
+                hyuptodate = cursor.getString(4);
+                hyinformed = cursor.getString(5);
+                diaavailable = cursor.getString(6);
+                diauptodate = cursor.getString(7);
+                diainformed = cursor.getString(8);
+                resavailable = cursor.getString(9);
+                resuptodate = cursor.getString(10);
+                resinformed = cursor.getString(11);
+                malavailable = cursor.getString(12);
+                maluptodate = cursor.getString(13);
+                malinformed = cursor.getString(14);
+                stiavailable = cursor.getString(15);
+                stiuptodate = cursor.getString(16);
+                stiinformed = cursor.getString(17);
+
+
+
+                final StringRequest stringRequest = new StringRequest(Request.Method.POST,"http://report.healthbuilders.org/app/overall_guidelines.php?YEAR="+YEAR+"&DISTRICT="+DISTRICT+"&HC="+HC+"&hyavailable="+hyavailable+"&hyuptodate="+hyuptodate+"&hyinformed="+hyinformed+"&diaavailable="+diaavailable+"&diauptodate="+diauptodate+"&diainformed="+diainformed+"&resavailable="+resavailable+"&resuptodate="+resuptodate+"&resinformed="+resinformed+"&malavailable="+malavailable+"&maluptodate="+maluptodate+"&malinformed="+malinformed+"&stiavailable="+stiavailable+"&stiuptodate="+stiuptodate+"&stiinformed="+stiinformed, new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+
+                        // Toast.makeText(getApplicationContext(), response.toString(), Toast.LENGTH_SHORT).show();
+                    }
+                }, new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Toast.makeText(getApplicationContext(), error.toString(), Toast.LENGTH_LONG).show();
+
+                    }
+                }){
+                    @Nullable
+                    @Override
+                    public Map<String, String> getParams() {
+                        Map<String,String> params = new HashMap<String,String>();
+                        return params;
+
+                    }
+                };
+                RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
+                VolleyLog.DEBUG = true;
+                requestQueue.add(stringRequest);
+
+            }while (cursor.moveToNext());
+            int count = Databasehelper.updateData_guideOverall("0","1",sqLiteDatabase);
+            Toast.makeText(getApplicationContext(),count+" data updated",Toast.LENGTH_SHORT).show();
+            sqLiteDatabase.close();
+        }
+
+    }
+
+    public void readData_MaternityGuidelines(){
+        String status_id="0";
+        sqLiteDatabase = myDB.getReadableDatabase();
+        cursor = Databasehelper.getData_guideMaternity(status_id,sqLiteDatabase);
+        if (cursor.moveToFirst()){
+            do{
+                final String YEAR, DISTRICT, HC, nationaprotocol, essentialsupplies, privacyprovided, ppesupply;
+                YEAR = cursor.getString(0);
+                HC = cursor.getString(1);
+                DISTRICT = cursor.getString(2);
+                nationaprotocol = cursor.getString(3);
+                essentialsupplies = cursor.getString(4);
+                privacyprovided = cursor.getString(5);
+                ppesupply = cursor.getString(6);
+
+
+
+                final StringRequest stringRequest = new StringRequest(Request.Method.POST,"http://report.healthbuilders.org/app/maternity_guidelines.php?YEAR="+YEAR+"&DISTRICT="+DISTRICT+"&HC="+HC+"&nationaprotocol="+nationaprotocol+"&essentialsupplies="+essentialsupplies+"&privacyprovided="+privacyprovided+"&ppesupply="+ppesupply, new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+
+                        // Toast.makeText(getApplicationContext(), response.toString(), Toast.LENGTH_SHORT).show();
+                    }
+                }, new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Toast.makeText(getApplicationContext(), error.toString(), Toast.LENGTH_LONG).show();
+
+                    }
+                }){
+                    @Nullable
+                    @Override
+                    public Map<String, String> getParams() {
+                        Map<String,String> params = new HashMap<String,String>();
+                        return params;
+
+                    }
+                };
+                RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
+                VolleyLog.DEBUG = true;
+                requestQueue.add(stringRequest);
+
+            }while (cursor.moveToNext());
+            int count = Databasehelper.updateData_guideMaternity("0","1",sqLiteDatabase);
+            Toast.makeText(getApplicationContext(),count+" data updated",Toast.LENGTH_SHORT).show();
+            sqLiteDatabase.close();
+        }
+
+    }
+
+    public void readData_referalProcess(){
+        String status_id="0";
+        sqLiteDatabase = myDB.getReadableDatabase();
+        cursor = Databasehelper.getData_guideReferal(status_id,sqLiteDatabase);
+        if (cursor.moveToFirst()){
+            do{
+                final String YEAR, DISTRICT, HC, reason, findings, procedures, immediatecondition, patienttransferedto, feedback, referalsheets, standardform, transport;
+                YEAR = cursor.getString(0);
+                HC = cursor.getString(1);
+                DISTRICT = cursor.getString(2);
+                reason = cursor.getString(3);
+                findings = cursor.getString(4);
+                procedures = cursor.getString(5);
+                immediatecondition = cursor.getString(6);
+                patienttransferedto = cursor.getString(7);
+                feedback = cursor.getString(8);
+                referalsheets = cursor.getString(9);
+                standardform = cursor.getString(10);
+                transport = cursor.getString(11);
+
+
+
+                final StringRequest stringRequest = new StringRequest(Request.Method.POST,"http://report.healthbuilders.org/app/referal_process.php?YEAR="+YEAR+"&DISTRICT="+DISTRICT+"&HC="+HC+"&reason="+reason+"&findings="+findings+"&procedures="+procedures+"&immediatecondition="+immediatecondition+"&patienttransferedto="+patienttransferedto+"&feedback="+feedback+"&referalsheets="+referalsheets+"&standardform="+standardform+"&transport="+transport, new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+
+                        // Toast.makeText(getApplicationContext(), response.toString(), Toast.LENGTH_SHORT).show();
+                    }
+                }, new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Toast.makeText(getApplicationContext(), error.toString(), Toast.LENGTH_LONG).show();
+
+                    }
+                }){
+                    @Nullable
+                    @Override
+                    public Map<String, String> getParams() {
+                        Map<String,String> params = new HashMap<String,String>();
+                        return params;
+
+                    }
+                };
+                RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
+                VolleyLog.DEBUG = true;
+                requestQueue.add(stringRequest);
+
+            }while (cursor.moveToNext());
+            int count = Databasehelper.updateData_guideReferall("0","1",sqLiteDatabase);
+            Toast.makeText(getApplicationContext(),count+" data updated",Toast.LENGTH_SHORT).show();
+            sqLiteDatabase.close();
+        }
+
+    }
+
+    public void readData_outpatientMalaria(){
+        String status_id="0";
+        sqLiteDatabase = myDB.getReadableDatabase();
+        cursor = Databasehelper.getData_outpatientMalaria(status_id,sqLiteDatabase);
+        if (cursor.moveToFirst()){
+            do{
+                final String YEAR, DISTRICT, HC, patientid, assesment, classification, correcttreatment, patienteducated, followup;
+                YEAR = cursor.getString(0);
+                HC = cursor.getString(1);
+                DISTRICT = cursor.getString(2);
+                patientid = cursor.getString(3);
+                assesment = cursor.getString(4);
+                classification = cursor.getString(5);
+                correcttreatment = cursor.getString(6);
+                patienteducated = cursor.getString(7);
+                followup = cursor.getString(8);
+
+
+
+                final StringRequest stringRequest = new StringRequest(Request.Method.POST,"http://report.healthbuilders.org/app/outpatient_malaria.php?YEAR="+YEAR+"&DISTRICT="+DISTRICT+"&HC="+HC+"&patientid="+patientid+"&assesment="+assesment+"&classification="+classification+"&correcttreatment="+correcttreatment+"&patienteducated="+patienteducated+"&followup="+followup, new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+
+                        // Toast.makeText(getApplicationContext(), response.toString(), Toast.LENGTH_SHORT).show();
+                    }
+                }, new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Toast.makeText(getApplicationContext(), error.toString(), Toast.LENGTH_LONG).show();
+
+                    }
+                }){
+                    @Nullable
+                    @Override
+                    public Map<String, String> getParams() {
+                        Map<String,String> params = new HashMap<String,String>();
+                        return params;
+
+                    }
+                };
+                RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
+                VolleyLog.DEBUG = true;
+                requestQueue.add(stringRequest);
+
+            }while (cursor.moveToNext());
+            int count = Databasehelper.updateData_outpatientMalaria("0","1",sqLiteDatabase);
+            Toast.makeText(getApplicationContext(),count+" data updated",Toast.LENGTH_SHORT).show();
+            sqLiteDatabase.close();
+        }
+
+    }
+
+    public void readData_outpatientFever(){
+        String status_id="0";
+        sqLiteDatabase = myDB.getReadableDatabase();
+        cursor = Databasehelper.getData_outpatientFever(status_id,sqLiteDatabase);
+        if (cursor.moveToFirst()){
+            do{
+                final String YEAR, DISTRICT, HC, patientid, assesment, classification, correcttreatment, patienteducated, followup,malaria;
+                YEAR = cursor.getString(0);
+                HC = cursor.getString(1);
+                DISTRICT = cursor.getString(2);
+                patientid = cursor.getString(3);
+                assesment = cursor.getString(4);
+                classification = cursor.getString(5);
+                correcttreatment = cursor.getString(6);
+                patienteducated = cursor.getString(7);
+                followup = cursor.getString(8);
+                malaria = cursor.getString(9);
+
+
+
+                final StringRequest stringRequest = new StringRequest(Request.Method.POST,"http://report.healthbuilders.org/app/outpatient_fever.php?YEAR="+YEAR+"&DISTRICT="+DISTRICT+"&HC="+HC+"&patientid="+patientid+"&assesment="+assesment+"&classification="+classification+"&correcttreatment="+correcttreatment+"&patienteducated="+patienteducated+"&followup="+followup+"&malaria="+malaria, new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+
+                        // Toast.makeText(getApplicationContext(), response.toString(), Toast.LENGTH_SHORT).show();
+                    }
+                }, new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Toast.makeText(getApplicationContext(), error.toString(), Toast.LENGTH_LONG).show();
+
+                    }
+                }){
+                    @Nullable
+                    @Override
+                    public Map<String, String> getParams() {
+                        Map<String,String> params = new HashMap<String,String>();
+                        return params;
+
+                    }
+                };
+                RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
+                VolleyLog.DEBUG = true;
+                requestQueue.add(stringRequest);
+
+            }while (cursor.moveToNext());
+            int count = Databasehelper.updateData_outpatientFever("0","1",sqLiteDatabase);
+            Toast.makeText(getApplicationContext(),count+" data updated",Toast.LENGTH_SHORT).show();
+            sqLiteDatabase.close();
+        }
+
+    }
+
+    public void readData_outpatientCough(){
+        String status_id="0";
+        sqLiteDatabase = myDB.getReadableDatabase();
+        cursor = Databasehelper.getData_outpatientCough(status_id,sqLiteDatabase);
+        if (cursor.moveToFirst()){
+            do{
+                final String YEAR, DISTRICT, HC, patientid, assesment, classification, correcttreatment, patienteducated;
+                YEAR = cursor.getString(0);
+                HC = cursor.getString(1);
+                DISTRICT = cursor.getString(2);
+                patientid = cursor.getString(3);
+                assesment = cursor.getString(4);
+                classification = cursor.getString(5);
+                correcttreatment = cursor.getString(6);
+                patienteducated = cursor.getString(7);
+
+
+
+                final StringRequest stringRequest = new StringRequest(Request.Method.POST,"http://report.healthbuilders.org/app/outpatient_cough.php?YEAR="+YEAR+"&DISTRICT="+DISTRICT+"&HC="+HC+"&patientid="+patientid+"&assesment="+assesment+"&classification="+classification+"&correcttreatment="+correcttreatment+"&patienteducated="+patienteducated, new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+
+                        // Toast.makeText(getApplicationContext(), response.toString(), Toast.LENGTH_SHORT).show();
+                    }
+                }, new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Toast.makeText(getApplicationContext(), error.toString(), Toast.LENGTH_LONG).show();
+
+                    }
+                }){
+                    @Nullable
+                    @Override
+                    public Map<String, String> getParams() {
+                        Map<String,String> params = new HashMap<String,String>();
+                        return params;
+
+                    }
+                };
+                RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
+                VolleyLog.DEBUG = true;
+                requestQueue.add(stringRequest);
+
+            }while (cursor.moveToNext());
+            int count = Databasehelper.updateData_outpatientCough("0","1",sqLiteDatabase);
+            Toast.makeText(getApplicationContext(),count+" data updated",Toast.LENGTH_SHORT).show();
+            sqLiteDatabase.close();
+        }
+
+    }
+
+    public void readData_outpatientPnemonia(){
+        String status_id="0";
+        sqLiteDatabase = myDB.getReadableDatabase();
+        cursor = Databasehelper.getData_outpatientMalaria(status_id,sqLiteDatabase);
+        if (cursor.moveToFirst()){
+            do{
+                final String YEAR, DISTRICT, HC, patientid, assesment, classification, correcttreatment, patienteducated, followup;
+                YEAR = cursor.getString(0);
+                HC = cursor.getString(1);
+                DISTRICT = cursor.getString(2);
+                patientid = cursor.getString(3);
+                assesment = cursor.getString(4);
+                classification = cursor.getString(5);
+                correcttreatment = cursor.getString(6);
+                patienteducated = cursor.getString(7);
+                followup = cursor.getString(8);
+
+
+
+                final StringRequest stringRequest = new StringRequest(Request.Method.POST,"http://report.healthbuilders.org/app/outpatient_pnemonia.php?YEAR="+YEAR+"&DISTRICT="+DISTRICT+"&HC="+HC+"&patientid="+patientid+"&assesment="+assesment+"&classification="+classification+"&correcttreatment="+correcttreatment+"&patienteducated="+patienteducated+"&followup="+followup, new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+
+                        // Toast.makeText(getApplicationContext(), response.toString(), Toast.LENGTH_SHORT).show();
+                    }
+                }, new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Toast.makeText(getApplicationContext(), error.toString(), Toast.LENGTH_LONG).show();
+
+                    }
+                }){
+                    @Nullable
+                    @Override
+                    public Map<String, String> getParams() {
+                        Map<String,String> params = new HashMap<String,String>();
+                        return params;
+
+                    }
+                };
+                RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
+                VolleyLog.DEBUG = true;
+                requestQueue.add(stringRequest);
+
+            }while (cursor.moveToNext());
+            int count = Databasehelper.updateData_outpatientMalaria("0","1",sqLiteDatabase);
+            Toast.makeText(getApplicationContext(),count+" data updated",Toast.LENGTH_SHORT).show();
+            sqLiteDatabase.close();
+        }
+
+    }
+
+    public void readData_outpatientDiar(){
+        String status_id="0";
+        sqLiteDatabase = myDB.getReadableDatabase();
+        cursor = Databasehelper.getData_outpatientDiar(status_id,sqLiteDatabase);
+        if (cursor.moveToFirst()){
+            do{
+                final String YEAR, DISTRICT, HC, patientid, assesment, classification, correcttreatment, patienteducated, followup,orsgiven;
+                YEAR = cursor.getString(0);
+                HC = cursor.getString(1);
+                DISTRICT = cursor.getString(2);
+                patientid = cursor.getString(3);
+                assesment = cursor.getString(4);
+                classification = cursor.getString(5);
+                correcttreatment = cursor.getString(6);
+                patienteducated = cursor.getString(7);
+                followup = cursor.getString(8);
+                orsgiven = cursor.getString(9);
+
+
+
+                final StringRequest stringRequest = new StringRequest(Request.Method.POST,"http://report.healthbuilders.org/app/outpatient_diar.php?YEAR="+YEAR+"&DISTRICT="+DISTRICT+"&HC="+HC+"&patientid="+patientid+"&assesment="+assesment+"&classification="+classification+"&correcttreatment="+correcttreatment+"&patienteducated="+patienteducated+"&followup="+followup+"&orsgiven="+orsgiven, new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+
+                        // Toast.makeText(getApplicationContext(), response.toString(), Toast.LENGTH_SHORT).show();
+                    }
+                }, new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Toast.makeText(getApplicationContext(), error.toString(), Toast.LENGTH_LONG).show();
+
+                    }
+                }){
+                    @Nullable
+                    @Override
+                    public Map<String, String> getParams() {
+                        Map<String,String> params = new HashMap<String,String>();
+                        return params;
+
+                    }
+                };
+                RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
+                VolleyLog.DEBUG = true;
+                requestQueue.add(stringRequest);
+
+            }while (cursor.moveToNext());
+            int count = Databasehelper.updateData_outpatientDiar("0","1",sqLiteDatabase);
+            Toast.makeText(getApplicationContext(),count+" data updated",Toast.LENGTH_SHORT).show();
+            sqLiteDatabase.close();
+        }
+
+    }
+
+    public void readData_guideAsrh(){
+        String status_id="0";
+        sqLiteDatabase = myDB.getReadableDatabase();
+        cursor = Databasehelper.getData_guideASRH(status_id,sqLiteDatabase);
+        if (cursor.moveToFirst()){
+            do{
+                final String YEAR,DISTRICT,HC, registers, spaces, rooms;
+                YEAR = cursor.getString(0);
+                DISTRICT = cursor.getString(1);
+                HC = cursor.getString(2);
+                registers = cursor.getString(3);
+                spaces = cursor.getString(4);
+                rooms = cursor.getString(5);
+
+
+                final StringRequest stringRequest = new StringRequest(Request.Method.POST,"http://report.healthbuilders.org/app/guidelineAsrh.php?YEAR="+YEAR+"&DISTRICT="+DISTRICT+"&HC="+HC+"&registers="+registers+"&spaces="+spaces+"&rooms="+rooms, new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+
+                        // Toast.makeText(getApplicationContext(), response.toString(), Toast.LENGTH_SHORT).show();
+                    }
+                }, new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Toast.makeText(getApplicationContext(), error.toString(), Toast.LENGTH_LONG).show();
+
+                    }
+                }){
+                    @Nullable
+                    @Override
+                    public Map<String, String> getParams() {
+                        Map<String,String> params = new HashMap<String,String>();
+                        return params;
+
+                    }
+                };
+                RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
+                VolleyLog.DEBUG = true;
+                requestQueue.add(stringRequest);
+
+            }while (cursor.moveToNext());
+            int count = Databasehelper.updateData_guideASRH("0","1",sqLiteDatabase);
+            Toast.makeText(getApplicationContext(),count+" data updated",Toast.LENGTH_SHORT).show();
+            sqLiteDatabase.close();
+        }
+
+    }
+
+    public void readData_inpatientCare(){
+        String status_id="0";
+        sqLiteDatabase = myDB.getReadableDatabase();
+        cursor = Databasehelper.getData_InpatientCare(status_id,sqLiteDatabase);
+        if (cursor.moveToFirst()){
+            do{
+                final String YEAR, DISTRICT, HC,  patientid, assessmentchecklist, biographicaldata, relevanthistory, chiefcomplaint, rapidsurvey,
+                        vitalsigns, examsytem, diagnosis, nursingplan, soapnote, treatmanetplan, complete;
+                YEAR = cursor.getString(0);
+                HC = cursor.getString(1);
+                DISTRICT = cursor.getString(2);
+                patientid = cursor.getString(3);
+                assessmentchecklist = cursor.getString(4);
+                biographicaldata = cursor.getString(5);
+                relevanthistory = cursor.getString(6);
+                chiefcomplaint = cursor.getString(7);
+                rapidsurvey = cursor.getString(8);
+                vitalsigns = cursor.getString(9);
+                examsytem = cursor.getString(10);
+                diagnosis = cursor.getString(11);
+                nursingplan = cursor.getString(12);
+                soapnote = cursor.getString(13);
+                treatmanetplan = cursor.getString(14);
+                complete = cursor.getString(15);
+
+
+
+                final StringRequest stringRequest = new StringRequest(Request.Method.POST,"http://report.healthbuilders.org/app/Inpatientcare.php?YEAR="+YEAR+"&DISTRICT="+DISTRICT+"&HC="+HC+"&patientid="+patientid+"&assessmentchecklist="+assessmentchecklist+"&biographicaldata="+biographicaldata+"&relevanthistory="+relevanthistory+"&chiefcomplaint="+chiefcomplaint+"&rapidsurvey="+rapidsurvey+"&vitalsigns="+vitalsigns+"&examsytem="+examsytem+"&diagnosis="+diagnosis+"&nursingplan="+nursingplan+"&soapnote="+soapnote+"&treatmanetplan="+treatmanetplan+"&complete="+complete, new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+
+                        // Toast.makeText(getApplicationContext(), response.toString(), Toast.LENGTH_SHORT).show();
+                    }
+                }, new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Toast.makeText(getApplicationContext(), error.toString(), Toast.LENGTH_LONG).show();
+
+                    }
+                }){
+                    @Nullable
+                    @Override
+                    public Map<String, String> getParams() {
+                        Map<String,String> params = new HashMap<String,String>();
+                        return params;
+
+                    }
+                };
+                RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
+                VolleyLog.DEBUG = true;
+                requestQueue.add(stringRequest);
+
+            }while (cursor.moveToNext());
+            int count = Databasehelper.updateData_InpatientCare("0","1",sqLiteDatabase);
+            Toast.makeText(getApplicationContext(),count+" data updated",Toast.LENGTH_SHORT).show();
+            sqLiteDatabase.close();
+        }
+
+    }
+
+    public void readData_KeyIndicators(){
+        String status_id="0";
+        sqLiteDatabase = myDB.getReadableDatabase();
+        cursor = Databasehelper.getData_KeyIndicators(status_id,sqLiteDatabase);
+        if (cursor.moveToFirst()){
+            do{
+                final String YEAR, DISTRICT, HC, yearid, diacases, diadeaths, pnecases, pnedeaths, malcases, maldeaths, malucases, maludeaths;
+                YEAR = cursor.getString(0);
+                HC = cursor.getString(1);
+                DISTRICT = cursor.getString(2);
+                yearid = cursor.getString(3);
+                diacases = cursor.getString(4);
+                diadeaths = cursor.getString(5);
+                pnecases = cursor.getString(6);
+                pnedeaths = cursor.getString(7);
+                malcases = cursor.getString(8);
+                maldeaths = cursor.getString(9);
+                malucases = cursor.getString(10);
+                maludeaths = cursor.getString(11);
+
+
+
+                final StringRequest stringRequest = new StringRequest(Request.Method.POST,"http://report.healthbuilders.org/app/keyindicators.php?YEAR="+YEAR+"&DISTRICT="+DISTRICT+"&HC="+HC+"&yearid="+yearid+"&diacases="+diacases+"&diadeaths="+diadeaths+"&pnecases="+pnecases+"&pnedeaths="+pnedeaths+"&malcases="+malcases+"&maldeaths="+maldeaths+"&malucases="+malucases+"&maludeaths="+maludeaths, new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+
+                        // Toast.makeText(getApplicationContext(), response.toString(), Toast.LENGTH_SHORT).show();
+                    }
+                }, new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Toast.makeText(getApplicationContext(), error.toString(), Toast.LENGTH_LONG).show();
+
+                    }
+                }){
+                    @Nullable
+                    @Override
+                    public Map<String, String> getParams() {
+                        Map<String,String> params = new HashMap<String,String>();
+                        return params;
+
+                    }
+                };
+                RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
+                VolleyLog.DEBUG = true;
+                requestQueue.add(stringRequest);
+
+            }while (cursor.moveToNext());
+            int count = Databasehelper.updateData_KeyIndicators("0","1",sqLiteDatabase);
+            Toast.makeText(getApplicationContext(),count+" data updated",Toast.LENGTH_SHORT).show();
+            sqLiteDatabase.close();
+        }
+
+    }
+
+    public void readData_AdmittedPatients(){
+        String status_id="0";
+        sqLiteDatabase = myDB.getReadableDatabase();
+        cursor = Databasehelper.getData_AdmittedPatients(status_id,sqLiteDatabase);
+        if (cursor.moveToFirst()){
+            do{
+                final String YEAR, DISTRICT, HC, patientid, admissiondate, dischargedate, duration, outcome;
+                YEAR = cursor.getString(0);
+                HC = cursor.getString(1);
+                DISTRICT = cursor.getString(2);
+                patientid = cursor.getString(3);
+                admissiondate = cursor.getString(4);
+                dischargedate = cursor.getString(5);
+                duration = cursor.getString(6);
+                outcome = cursor.getString(7);
+
+
+
+                final StringRequest stringRequest = new StringRequest(Request.Method.POST,"http://report.healthbuilders.org/app/admittedPatient_outcome.php?YEAR="+YEAR+"&DISTRICT="+DISTRICT+"&HC="+HC+"&patientid="+patientid+"&admissiondate="+admissiondate+"&dischargedate="+dischargedate+"&duration="+duration+"&outcome="+outcome, new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+
+                        // Toast.makeText(getApplicationContext(), response.toString(), Toast.LENGTH_SHORT).show();
+                    }
+                }, new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Toast.makeText(getApplicationContext(), error.toString(), Toast.LENGTH_LONG).show();
+
+                    }
+                }){
+                    @Nullable
+                    @Override
+                    public Map<String, String> getParams() {
+                        Map<String,String> params = new HashMap<String,String>();
+                        return params;
+
+                    }
+                };
+                RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
+                VolleyLog.DEBUG = true;
+                requestQueue.add(stringRequest);
+
+            }while (cursor.moveToNext());
+            int count = Databasehelper.updateData_AdmittedPatients("0","1",sqLiteDatabase);
+            Toast.makeText(getApplicationContext(),count+" data updated",Toast.LENGTH_SHORT).show();
+            sqLiteDatabase.close();
+        }
+
+    }
+
+    public void readData_outcome_hypertensionBP(){
+        String status_id="0";
+        sqLiteDatabase = myDB.getReadableDatabase();
+        cursor = Databasehelper.getData_AdmittedPatients_hp(status_id,sqLiteDatabase);
+        if (cursor.moveToFirst()){
+            do{
+                final String YEAR, DISTRICT, HC, patientid, month1, month2, month3, month4, month5, month6;
+                YEAR = cursor.getString(0);
+                HC = cursor.getString(1);
+                DISTRICT = cursor.getString(2);
+                patientid = cursor.getString(3);
+                month1 = cursor.getString(4);
+                month2 = cursor.getString(5);
+                month3 = cursor.getString(6);
+                month4 = cursor.getString(7);
+                month5 = cursor.getString(8);
+                month6 = cursor.getString(9);
+
+
+
+                final StringRequest stringRequest = new StringRequest(Request.Method.POST,"http://report.healthbuilders.org/app/outcome_hypertensionBP.php?YEAR="+YEAR+"&DISTRICT="+DISTRICT+"&HC="+HC+"&patientid="+patientid+"&month1="+month1+"&month2="+month2+"&month3="+month3+"&month4="+month4+"&month5="+month5+"&month6="+month6, new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+
+                        // Toast.makeText(getApplicationContext(), response.toString(), Toast.LENGTH_SHORT).show();
+                    }
+                }, new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Toast.makeText(getApplicationContext(), error.toString(), Toast.LENGTH_LONG).show();
+
+                    }
+                }){
+                    @Nullable
+                    @Override
+                    public Map<String, String> getParams() {
+                        Map<String,String> params = new HashMap<String,String>();
+                        return params;
+
+                    }
+                };
+                RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
+                VolleyLog.DEBUG = true;
+                requestQueue.add(stringRequest);
+
+            }while (cursor.moveToNext());
+            int count = Databasehelper.updateData_AdmittedPatients_hp("0","1",sqLiteDatabase);
+            Toast.makeText(getApplicationContext(),count+" data updated",Toast.LENGTH_SHORT).show();
+            sqLiteDatabase.close();
+        }
+
+    }
+
+    public void readData_outcome_DiabetesBS(){
+        String status_id="0";
+        sqLiteDatabase = myDB.getReadableDatabase();
+        cursor = Databasehelper.getData_DiabetetesBS(status_id,sqLiteDatabase);
+        if (cursor.moveToFirst()){
+            do{
+                final String YEAR, DISTRICT, HC, patientid, month1, month2, month3, month4, month5, month6;
+                YEAR = cursor.getString(0);
+                HC = cursor.getString(1);
+                DISTRICT = cursor.getString(2);
+                patientid = cursor.getString(3);
+                month1 = cursor.getString(4);
+                month2 = cursor.getString(5);
+                month3 = cursor.getString(6);
+                month4 = cursor.getString(7);
+                month5 = cursor.getString(8);
+                month6 = cursor.getString(9);
+
+
+
+                final StringRequest stringRequest = new StringRequest(Request.Method.POST,"http://report.healthbuilders.org/app/outcome_diabetesBS.php?YEAR="+YEAR+"&DISTRICT="+DISTRICT+"&HC="+HC+"&patientid="+patientid+"&month1="+month1+"&month2="+month2+"&month3="+month3+"&month4="+month4+"&month5="+month5+"&month6="+month6, new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+
+                        // Toast.makeText(getApplicationContext(), response.toString(), Toast.LENGTH_SHORT).show();
+                    }
+                }, new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Toast.makeText(getApplicationContext(), error.toString(), Toast.LENGTH_LONG).show();
+
+                    }
+                }){
+                    @Nullable
+                    @Override
+                    public Map<String, String> getParams() {
+                        Map<String,String> params = new HashMap<String,String>();
+                        return params;
+
+                    }
+                };
+                RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
+                VolleyLog.DEBUG = true;
+                requestQueue.add(stringRequest);
+
+            }while (cursor.moveToNext());
+            int count = Databasehelper.updateData_DiabetetesBS("0","1",sqLiteDatabase);
+            Toast.makeText(getApplicationContext(),count+" data updated",Toast.LENGTH_SHORT).show();
+            sqLiteDatabase.close();
+        }
+
+    }
+
+    public void readData_outcome_AsthmaClass(){
+        String status_id="0";
+        sqLiteDatabase = myDB.getReadableDatabase();
+        cursor = Databasehelper.getData_AsthmaClass(status_id,sqLiteDatabase);
+        if (cursor.moveToFirst()){
+            do{
+                final String YEAR, DISTRICT, HC, patientid, month1, month2, month3, month4, month5, month6;
+                YEAR = cursor.getString(0);
+                HC = cursor.getString(1);
+                DISTRICT = cursor.getString(2);
+                patientid = cursor.getString(3);
+                month1 = cursor.getString(4);
+                month2 = cursor.getString(5);
+                month3 = cursor.getString(6);
+                month4 = cursor.getString(7);
+                month5 = cursor.getString(8);
+                month6 = cursor.getString(9);
+
+
+
+                final StringRequest stringRequest = new StringRequest(Request.Method.POST,"http://report.healthbuilders.org/app/outcome_AsthmaClass.php?YEAR="+YEAR+"&DISTRICT="+DISTRICT+"&HC="+HC+"&patientid="+patientid+"&month1="+month1+"&month2="+month2+"&month3="+month3+"&month4="+month4+"&month5="+month5+"&month6="+month6, new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+
+                        // Toast.makeText(getApplicationContext(), response.toString(), Toast.LENGTH_SHORT).show();
+                    }
+                }, new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Toast.makeText(getApplicationContext(), error.toString(), Toast.LENGTH_LONG).show();
+
+                    }
+                }){
+                    @Nullable
+                    @Override
+                    public Map<String, String> getParams() {
+                        Map<String,String> params = new HashMap<String,String>();
+                        return params;
+
+                    }
+                };
+                RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
+                VolleyLog.DEBUG = true;
+                requestQueue.add(stringRequest);
+
+            }while (cursor.moveToNext());
+            int count = Databasehelper.updateData_AsthmaClass("0","1",sqLiteDatabase);
+            Toast.makeText(getApplicationContext(),count+" data updated",Toast.LENGTH_SHORT).show();
+            sqLiteDatabase.close();
+        }
+
+    }
+
+    public void readData_outcome_VpharmacyStock(){
+        String status_id="0";
+        sqLiteDatabase = myDB.getReadableDatabase();
+        cursor = Databasehelper.getData_PharmacyStockValue(status_id,sqLiteDatabase);
+        if (cursor.moveToFirst()){
+            do{
+                final String YEAR, DISTRICT, HC, fyear, medcost, medexpcost, valuestock;
+                YEAR = cursor.getString(0);
+                HC = cursor.getString(1);
+                DISTRICT = cursor.getString(2);
+                fyear = cursor.getString(3);
+                medcost = cursor.getString(4);
+                medexpcost = cursor.getString(5);
+                valuestock = cursor.getString(6);
+
+
+
+                final StringRequest stringRequest = new StringRequest(Request.Method.POST,"http://report.healthbuilders.org/app/valuePharmacyStock.php?YEAR="+YEAR+"&DISTRICT="+DISTRICT+"&HC="+HC+"&fyear="+fyear+"&medcost="+medcost+"&medexpcost="+medexpcost+"&valuestock="+valuestock, new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+
+                        // Toast.makeText(getApplicationContext(), response.toString(), Toast.LENGTH_SHORT).show();
+                    }
+                }, new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Toast.makeText(getApplicationContext(), error.toString(), Toast.LENGTH_LONG).show();
+
+                    }
+                }){
+                    @Nullable
+                    @Override
+                    public Map<String, String> getParams() {
+                        Map<String,String> params = new HashMap<String,String>();
+                        return params;
+
+                    }
+                };
+                RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
+                VolleyLog.DEBUG = true;
+                requestQueue.add(stringRequest);
+
+            }while (cursor.moveToNext());
+            int count = Databasehelper.updateData_PharmacyStockValue("0","1",sqLiteDatabase);
+            Toast.makeText(getApplicationContext(),count+" data updated",Toast.LENGTH_SHORT).show();
+            sqLiteDatabase.close();
+        }
+
+    }
+
+    public void readData_outcome_PharmacyDispensary(){
+        String status_id="0";
+        sqLiteDatabase = myDB.getReadableDatabase();
+        cursor = Databasehelper.getData_PharmacyDispensary(status_id,sqLiteDatabase);
+        if (cursor.moveToFirst()){
+            do{
+                final String YEAR, DISTRICT, HC, drugname, drugexpired, pharmacyregister, pharmacytallies, pharmacybook, pharmacysigned, consumptiontotal;
+                YEAR = cursor.getString(0);
+                HC = cursor.getString(1);
+                DISTRICT = cursor.getString(2);
+                drugname = cursor.getString(3);
+                drugexpired = cursor.getString(4);
+                pharmacyregister = cursor.getString(5);
+                pharmacytallies = cursor.getString(6);
+                pharmacybook = cursor.getString(7);
+                pharmacysigned = cursor.getString(8);
+                consumptiontotal = cursor.getString(9);
+
+
+
+                final StringRequest stringRequest = new StringRequest(Request.Method.POST,"http://report.healthbuilders.org/app/pharmacyDispensary.php?YEAR="+YEAR+"&DISTRICT="+DISTRICT+"&HC="+HC+"&drugname="+drugname+"&drugexpired="+drugexpired+"&pharmacyregister="+pharmacyregister+"&pharmacytallies="+pharmacytallies+"&pharmacybook="+pharmacybook+"&pharmacysigned="+pharmacysigned+"&consumptiontotal="+consumptiontotal, new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+
+                        // Toast.makeText(getApplicationContext(), response.toString(), Toast.LENGTH_SHORT).show();
+                    }
+                }, new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Toast.makeText(getApplicationContext(), error.toString(), Toast.LENGTH_LONG).show();
+
+                    }
+                }){
+                    @Nullable
+                    @Override
+                    public Map<String, String> getParams() {
+                        Map<String,String> params = new HashMap<String,String>();
+                        return params;
+
+                    }
+                };
+                RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
+                VolleyLog.DEBUG = true;
+                requestQueue.add(stringRequest);
+
+            }while (cursor.moveToNext());
+            int count = Databasehelper.updateData_PharmacyDispensary("0","1",sqLiteDatabase);
+            Toast.makeText(getApplicationContext(),count+" data updated",Toast.LENGTH_SHORT).show();
+            sqLiteDatabase.close();
+        }
+
+    }
+
+    public void readData_outcome_GenInformation2(){
+        String status_id="0";
+        sqLiteDatabase = myDB.getReadableDatabase();
+        cursor = Databasehelper.getData_GenInfo2(status_id,sqLiteDatabase);
+        if (cursor.moveToFirst()){
+            do{
+                final String YEAR, DISTRICT, HC, meetmonth, qifocalperson, qifocalpersonletter, ipcfocalperson, ipcfocalpersonletter, custofocalperson, custofocalpersonletter;
+                YEAR = cursor.getString(0);
+                HC = cursor.getString(1);
+                DISTRICT = cursor.getString(2);
+                meetmonth = cursor.getString(3);
+                qifocalperson = cursor.getString(4);
+                qifocalpersonletter = cursor.getString(5);
+                ipcfocalperson = cursor.getString(6);
+                ipcfocalpersonletter = cursor.getString(7);
+                custofocalperson = cursor.getString(8);
+                custofocalpersonletter = cursor.getString(9);
+
+
+
+                final StringRequest stringRequest = new StringRequest(Request.Method.POST,"http://report.healthbuilders.org/app/generalinformation2.php?YEAR="+YEAR+"&DISTRICT="+DISTRICT+"&HC="+HC+"&meetmonth="+meetmonth+"&qifocalperson="+qifocalperson+"&qifocalpersonletter="+qifocalpersonletter+"&ipcfocalperson="+ipcfocalperson+"&ipcfocalpersonletter="+ipcfocalpersonletter+"&custofocalperson="+custofocalperson+"&custofocalpersonletter="+custofocalpersonletter, new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+
+                        // Toast.makeText(getApplicationContext(), response.toString(), Toast.LENGTH_SHORT).show();
+                    }
+                }, new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Toast.makeText(getApplicationContext(), error.toString(), Toast.LENGTH_LONG).show();
+
+                    }
+                }){
+                    @Nullable
+                    @Override
+                    public Map<String, String> getParams() {
+                        Map<String,String> params = new HashMap<String,String>();
+                        return params;
+
+                    }
+                };
+                RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
+                VolleyLog.DEBUG = true;
+                requestQueue.add(stringRequest);
+
+            }while (cursor.moveToNext());
+            int count = Databasehelper.updateData_GenInfo2("0","1",sqLiteDatabase);
+            Toast.makeText(getApplicationContext(),count+" data updated",Toast.LENGTH_SHORT).show();
+            sqLiteDatabase.close();
+        }
+
+    }
+
+
 
 
 
