@@ -1918,7 +1918,7 @@ public class Databasehelper extends SQLiteOpenHelper {
         values.put(iv17  ,aftercbhi);
         values.put(iv18  ,afterrssb);
         values.put(iv19 ,aftermmi);
-        values.put(iv20 ,aftermmi);
+        values.put(iv20 ,verifyCBHI);
         long result = db.insert(TABLE_NAME44, null, values);
         if (result == -1){
             return false;
@@ -3568,7 +3568,7 @@ public class Databasehelper extends SQLiteOpenHelper {
 
     public static Cursor getData_HealthEducation(String status, SQLiteDatabase db){
         Cursor cursor;
-        String[] projections =  {sm1,sm2,sm3,sm4,sm5,sm6,sm7,sm8,sm9,sm10,sm11,sm12,sm13,sm14,sm15,sm16,sm17,sm18,sm19,sm20};
+        String[] projections =  {he1,he2,he3,he4,he5,he6,he7,he8,he9,he10,he11,he12};
         String selection = COL2_19+" LIKE ?";
         String[] selection_args = {status};
         cursor= db.query(TABLE_NAME49,projections,selection,selection_args  ,null,null,null);

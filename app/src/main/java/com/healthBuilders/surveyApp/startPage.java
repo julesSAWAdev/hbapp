@@ -2379,7 +2379,7 @@ public class startPage extends AppCompatActivity {
                 HMIS_SOFTCOPY = cursor.getString(6);
                 ACCURATE = cursor.getString(7);
                 LABREGISTER = cursor.getString(8);
-                PHARMACY = cursor.getString(10);
+                PHARMACY = cursor.getString(9);
 
 
                 final StringRequest stringRequest = new StringRequest(Request.Method.POST,"http://report.healthbuilders.org/app/data_malariacases.php?YEAR="+YEAR+"&DISTRICT="+DISTRICT+"&HC="+HC+"&PATIENTFILE="+PATIENTFILE+"&REGISTER="+REGISTER+"&HMIS_HARDCOPY="+HMIS_HARDCOPY+"&HMIS_SOFTCOPY="+HMIS_SOFTCOPY+"&ACCURATE="+ACCURATE+"&LABREGISTER="+LABREGISTER+"&PHARMACY="+PHARMACY, new Response.Listener<String>() {
