@@ -675,7 +675,7 @@ public class Databasehelper extends SQLiteOpenHelper {
         db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME41   + "(YEAR TEXT,DISTRICT TEXT,HC TEXT,LINES TEXT,FIELDS TEXT,BLANKS TEXT,STATUS DEFAULT 0)");
         db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME42   + "(YEAR TEXT,DISTRICT TEXT,HC TEXT,maternalyear TEXT,obsetricalANC TEXT,registrations TEXT,referalsANC TEXT,obsetricalMaternity TEXT,deliveries TEXT,livebirths TEXT,maternaldeaths TEXT,neonataldeaths TEXT,stillbirths TEXT,postpartun TEXT,anc4 TEXT,anc1 TEXT,underfivedeaths TEXT,childrenconsulted TEXT,contraceptiveusers TEXT,mr2vaccines TEXT,ultrasoundscans TEXT,deadunderfive TEXT,STATUS DEFAULT 0)");
         db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME43   + "(year TEXT,district TEXT,hc TEXT,fyear TEXT, cbank TEXT, cpetty TEXT, creceivable TEXT, cpayable TEXT, cpharmacy TEXT, crevenue TEXT, chcincome TEXT, cmedecines TEXT, cexpenses TEXT, chrexpenses TEXT, cexpenditure TEXT, cpmedecines TEXT, cequipments TEXT, ctravel TEXT, cabudget TEXT, cpbudget TEXT,STATUS DEFAULT 0)");
-        db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME44   + "(YEAR TEXT,HC TEXT,DISTRICT TEXT,fyear TEXT,ivperiod TEXT,subcbhi TEXT,subrssb TEXT,submmi TEXT,returncbhi TEXT,returnrssb TEXT,returnmmi TEXT,verifyrssb TEXT,verifymmi TEXT,amountcbhi TEXT,amountrssb TEXT,amountmmi TEXT,aftercbhi TEXT,afterrssb TEXT,aftermmi TEXT,verifyCBHI TEXT,STATUS DEFAULT 0)");
+        db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME44   + "(YEAR TEXT,HC TEXT,DISTRICT TEXT,fyear TEXT,ivperiod TEXT,subcbhi TEXT,subrssb TEXT,submmi TEXT,returncbhi TEXT,returnrssb TEXT,returnmmi TEXT,verifyrssb TEXT,verifymmi TEXT,amountcbhi TEXT,amountrssb TEXT,amountmmi TEXT,aftercbhi TEXT,afterrssb TEXT,aftermmi TEXT,verifycbhi TEXT,STATUS DEFAULT 0)");
         db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME45   + "(YEAR TEXT,DISTRICT TEXT,HC TEXT,INCOMEDATE TEXT,JOURNALINCOME TEXT,RECEIPTINCOME TEXT,INCOMEMATCH TEXT,STATUS DEFAULT 0)");
         db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME46   + "(YEAR TEXT,DISTRICT TEXT,HC TEXT,ACCRECO TEXT,ACCBOOK TEXT,STATUS DEFAULT 0)");
         db.execSQL("CREATE TABLE IF NOT EXISTS "+TABLE_NAME47   + "(YEAR TEXT,DISTRICT TEXT,HC TEXT,EXPENSEREFERENCE TEXT,EXPENSESIGNED TEXT,EXPENSEINVOICE TEXT,EXPENSENUMBERED TEXT,EXPENSEORDERED TEXT,EXPENSERECORDED TEXT,STATUS DEFAULT 0)");
@@ -1895,7 +1895,7 @@ public class Databasehelper extends SQLiteOpenHelper {
     }
 
 
-    public boolean RegisterAssuranceReview(String year  ,String hc  ,String district  ,String fyear  ,String ivperiod  ,String subcbhi  ,String subrssb  ,String submmi  ,String returncbhi  ,String returnrssb  ,String returnmmi  ,String verifyrssb  ,String verifymmi  ,String amountcbhi  ,String amountrssb  ,String amountmmi  ,String aftercbhi  ,String afterrssb  ,String aftermmi,String verifyCBHI){
+    public boolean RegisterAssuranceReview(String year  ,String hc  ,String district  ,String fyear  ,String ivperiod  ,String subcbhi  ,String subrssb  ,String submmi  ,String returncbhi  ,String returnrssb  ,String returnmmi  ,String verifyrssb  ,String verifymmi  ,String amountcbhi  ,String amountrssb  ,String amountmmi  ,String aftercbhi  ,String afterrssb  ,String aftermmi,String verifycbhi){
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
 
@@ -1918,7 +1918,7 @@ public class Databasehelper extends SQLiteOpenHelper {
         values.put(iv17  ,aftercbhi);
         values.put(iv18  ,afterrssb);
         values.put(iv19 ,aftermmi);
-        values.put(iv20 ,verifyCBHI);
+        values.put(iv20 ,verifycbhi);
         long result = db.insert(TABLE_NAME44, null, values);
         if (result == -1){
             return false;
