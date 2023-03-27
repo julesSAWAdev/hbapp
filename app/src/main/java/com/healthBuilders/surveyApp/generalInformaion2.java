@@ -35,6 +35,7 @@ public class generalInformaion2 extends AppCompatActivity {
         final String year = getIntent().getStringExtra("year_id");
         final String district = getIntent().getStringExtra("district");
         final String hc = getIntent().getStringExtra("hc");
+        final String step = getIntent().getStringExtra("section");
 
         meetmonth = findViewById(R.id.meetMonth);
         qifocalperson = findViewById(R.id.qiFocalPerson);
@@ -77,10 +78,11 @@ public class generalInformaion2 extends AppCompatActivity {
                 boolean var = myDb.registerGeneralinformation2(xyear, xdistrict, xhc, xmeetmonth,xqifocalperson,xqifocalpersonletter,xipcfocalperson,xipcfocalpersonletter,xcustofocalperson,xcustofocalpersonletter);
                 if (var) {
                     Toast.makeText(generalInformaion2.this, "Item recorded", Toast.LENGTH_LONG).show();
-                    Intent intent = new Intent(getBaseContext(), SurveySection.class);
+                    Intent intent = new Intent(getBaseContext(), commentSection1.class);
                     intent.putExtra("year_id", year);
                     intent.putExtra("district", district);
                     intent.putExtra("hc", hc);
+                    intent.putExtra("section", step);
 
                     startActivity(intent);
                     finish();

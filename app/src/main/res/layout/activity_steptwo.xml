@@ -1093,7 +1093,7 @@
                 <AutoCompleteTextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="COGE meeting happen once a quater?"
+                    android:hint="COGE meeting happen once a Month?"
                     android:id="@+id/cogetxt">
 
                 </AutoCompleteTextView>

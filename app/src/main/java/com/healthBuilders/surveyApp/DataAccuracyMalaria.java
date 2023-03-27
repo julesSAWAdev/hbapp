@@ -34,6 +34,8 @@ public class DataAccuracyMalaria extends AppCompatActivity {
         final String year = getIntent().getStringExtra("year_id");
         final String district = getIntent().getStringExtra("district");
         final String hc = getIntent().getStringExtra("hc");
+        final String section = getIntent().getStringExtra("section");
+
 
         patientfile=findViewById(R.id.deliverypatient);
         register=findViewById(R.id.deliveryregister);
@@ -74,6 +76,8 @@ public class DataAccuracyMalaria extends AppCompatActivity {
                     intent.putExtra("year_id", year);
                     intent.putExtra("district", district);
                     intent.putExtra("hc", hc);
+                    intent.putExtra("section", section);
+
 
 
                     startActivity(intent);

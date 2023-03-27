@@ -13,7 +13,7 @@ import android.widget.Button;
 import android.widget.Toast;
 
 public class PharmacyDispensary extends AppCompatActivity {
-    AutoCompleteTextView drugname,drugexpired,pharmacyregister,pharmacytallies,pharmacybook,pharmacysigned,consumptiontotal;
+    AutoCompleteTextView drugname,drugexpired,pharmacyregister,pharmacytallies,pharmacybook,pharmacysigned,consumptiontotal,tallyconsmatch;
     String[] response = new String[]{ "Yes","No","N/A"};
     String[] drugs = new String[]{ "1.Amitriptyline capsule/tablet","2.Amoxicillin capsule/tablet","3.Atenolol capsule/tablet","4.Captopril capsule/tablet","5.Ciprofloxacin capsule/tablet","6.Co-trimoxazole suspension","7.Diazepam capsule/tablet","8.Diclofenac capsule/tablet","9.Glibenclamide capsule/tablet","10.Vitamin K inj","11.Dexamethazone inj","12.Paracetamol oral suspension","13.Salbutamol inhaler","14.Oxyctocin Inj Ampules"};
     private ProgressDialog progressDialog;
@@ -29,6 +29,8 @@ public class PharmacyDispensary extends AppCompatActivity {
         final String year = getIntent().getStringExtra("year_id");
         final String district = getIntent().getStringExtra("district");
         final String hc = getIntent().getStringExtra("hc");
+        final String section = getIntent().getStringExtra("section");
+
 
         drugname=findViewById(R.id.drugName);
         drugexpired=findViewById(R.id.drugExpired);
@@ -37,6 +39,7 @@ public class PharmacyDispensary extends AppCompatActivity {
         pharmacybook=findViewById(R.id.pharmacyBook);
         pharmacysigned=findViewById(R.id.pharmacySigned);
         consumptiontotal=findViewById(R.id.consumptionTotal);
+        tallyconsmatch=findViewById(R.id.tallyconsmatch);
 
         saveItem=findViewById(R.id.Save);
         closePage=findViewById(R.id.Close);
@@ -55,16 +58,19 @@ public class PharmacyDispensary extends AppCompatActivity {
         pharmacybook.setAdapter(adapterDist);
         pharmacysigned.setAdapter(adapterDist);
         consumptiontotal.setAdapter(adapterDist);
+        tallyconsmatch.setAdapter(adapterDist);
 
         closePage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
 
-                Intent intent = new Intent(getBaseContext(),SurveySection.class);
+                Intent intent = new Intent(getBaseContext(),commentSection1.class);
                 intent.putExtra("year_id", year);
                 intent.putExtra("district", district);
                 intent.putExtra("hc", hc);
+                intent.putExtra("section", section);
+
 
                 startActivity(intent);
             }
@@ -84,8 +90,9 @@ public class PharmacyDispensary extends AppCompatActivity {
                 final String xpharmacybook= pharmacybook.getText().toString().trim();
                 final String xpharmacysigned= pharmacysigned.getText().toString().trim();
                 final String xconsumptiontotal= consumptiontotal.getText().toString().trim();
+                final String xtallyconsmatch= tallyconsmatch.getText().toString().trim();
 
-                boolean var = myDb.registerValuePharmacyDispensary(xyear,xdistrict,xhc,xdrugname,xdrugexpired,xpharmacyregister,xpharmacytallies,xpharmacybook,xpharmacysigned,xconsumptiontotal);
+                boolean var = myDb.registerValuePharmacyDispensary(xyear,xdistrict,xhc,xdrugname,xdrugexpired,xpharmacyregister,xpharmacytallies,xpharmacybook,xpharmacysigned,xconsumptiontotal,xtallyconsmatch);
                 if (var) {
                     Toast.makeText(PharmacyDispensary.this, "Item recorded", Toast.LENGTH_LONG).show();
                     drugname.setText("");
@@ -95,6 +102,7 @@ public class PharmacyDispensary extends AppCompatActivity {
                     pharmacybook.setText("");
                     pharmacysigned.setText("");
                     consumptiontotal.setText("");
+                    tallyconsmatch.setText("");
                 }else{
                     Toast.makeText(PharmacyDispensary.this, "An error occured", Toast.LENGTH_LONG).show();
 

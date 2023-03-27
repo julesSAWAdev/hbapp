@@ -32,10 +32,8 @@ public class ServiceDescriptionNoticeboard extends AppCompatActivity {
         final String year = getIntent().getStringExtra("year_id");
         final String district = getIntent().getStringExtra("district");
         final String hc = getIntent().getStringExtra("hc");
+        final String section = getIntent().getStringExtra("section");
 
-        Log.d("year", year);
-        Log.d("district", district);
-        Log.d("Hc", hc);
 
         ArrayAdapter<String> adapterDist = new ArrayAdapter<>(this, R.layout.dropdown_item2, response);
 
@@ -56,7 +54,10 @@ public class ServiceDescriptionNoticeboard extends AppCompatActivity {
                 boolean var = myDb.registerTNoticeBoardCurrentDataServiceDescription(xyear,xdistrict,xhc,xcurrentdata);
                 if (var) {
                     Intent intent = new Intent(getBaseContext(), Services.class);
-
+                    intent.putExtra("year_id", year);
+                    intent.putExtra("district", district);
+                    intent.putExtra("hc", hc);
+                    intent.putExtra("section", section);
 
                     startActivity(intent);
                     finish();

@@ -33,6 +33,8 @@ public class healthEducation extends AppCompatActivity {
         final String year = getIntent().getStringExtra("year_id");
         final String district = getIntent().getStringExtra("district");
         final String hc = getIntent().getStringExtra("hc");
+        final String section = getIntent().getStringExtra("section");
+
 
         rmsessions=findViewById(R.id.rmncEdSessions);
         rmbeneficiones=findViewById(R.id.rmncEdBeneficiones);
@@ -71,10 +73,12 @@ public class healthEducation extends AppCompatActivity {
 
                     Toast.makeText(healthEducation.this, "Data recorded", Toast.LENGTH_LONG).show();
 
-                    Intent intent = new Intent(getBaseContext(), SurveySection.class);
+                    Intent intent = new Intent(getBaseContext(), commentSection1.class);
                     intent.putExtra("year_id", year);
                     intent.putExtra("district", district);
                     intent.putExtra("hc", hc);
+                    intent.putExtra("section", section);
+
 
                     startActivity(intent);
                 }else{

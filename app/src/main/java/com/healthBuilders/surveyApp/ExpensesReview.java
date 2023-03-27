@@ -30,6 +30,8 @@ public class ExpensesReview extends AppCompatActivity {
         final String year = getIntent().getStringExtra("year_id");
         final String district = getIntent().getStringExtra("district");
         final String hc = getIntent().getStringExtra("hc");
+        final String section = getIntent().getStringExtra("section");
+
 
         expenseReference=findViewById(R.id.expenseRefnumber);
         expenseSigned=findViewById(R.id.expenseSigned);
@@ -88,13 +90,15 @@ public class ExpensesReview extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                    Intent intent = new Intent(getBaseContext(), SurveySection.class);
+                    Intent intent = new Intent(getBaseContext(), commentSection1.class);
                     intent.putExtra("year_id", year);
                     intent.putExtra("district", district);
                     intent.putExtra("hc", hc);
+                    intent.putExtra("section", section);
 
 
-                    startActivity(intent);
+
+                startActivity(intent);
 
             }
 

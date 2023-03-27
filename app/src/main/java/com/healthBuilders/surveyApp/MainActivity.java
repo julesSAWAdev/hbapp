@@ -43,6 +43,7 @@ public class MainActivity extends AppCompatActivity {
         final String year = getIntent().getStringExtra("year_id");
         final String district = getIntent().getStringExtra("district");
         final String hc = getIntent().getStringExtra("hc");
+        final String section = getIntent().getStringExtra("section");
 
         //Log.d("year", year);
         //Log.d("district", district);
@@ -99,6 +100,7 @@ public class MainActivity extends AppCompatActivity {
                    final String fyear= year;
                    final String fdistrict = district;
                    final String fhc = hc;
+                   final String fsection = section;
                     /*
                    Log.d("year", fyear);
                    Log.d("district", fdistrict);
@@ -128,6 +130,7 @@ public class MainActivity extends AppCompatActivity {
                        intent.putExtra("year_id", fyear);
                        intent.putExtra("district", fdistrict);
                        intent.putExtra("hc", fhc);
+                       intent.putExtra("section", section);
 
                        startActivity(intent);
                        finish();

@@ -24,6 +24,8 @@ public class Services extends AppCompatActivity {
         final String year = getIntent().getStringExtra("year_id");
         final String district = getIntent().getStringExtra("district");
         final String hc = getIntent().getStringExtra("hc");
+        final String section = getIntent().getStringExtra("section");
+
 
         anc=findViewById(R.id.ANC);
         vaccination=findViewById(R.id.vaccination);
@@ -59,6 +61,7 @@ public class Services extends AppCompatActivity {
                 intent.putExtra("year_id", xyear);
                 intent.putExtra("district", xdistrict);
                 intent.putExtra("hc", xhc);
+                intent.putExtra("section", section);
                 startActivity(intent);
             }
         });
@@ -74,6 +77,8 @@ public class Services extends AppCompatActivity {
                 intent.putExtra("year_id", xyear);
                 intent.putExtra("district", xdistrict);
                 intent.putExtra("hc", xhc);
+                intent.putExtra("section", section);
+
                 startActivity(intent);
             }
         });
@@ -89,6 +94,7 @@ public class Services extends AppCompatActivity {
                 intent.putExtra("year_id", xyear);
                 intent.putExtra("district", xdistrict);
                 intent.putExtra("hc", xhc);
+                intent.putExtra("section", section);
                 startActivity(intent);
             }
         });
@@ -104,6 +110,7 @@ public class Services extends AppCompatActivity {
                 intent.putExtra("year_id", xyear);
                 intent.putExtra("district", xdistrict);
                 intent.putExtra("hc", xhc);
+                intent.putExtra("section", section);
                 startActivity(intent);
             }
         });
@@ -119,6 +126,7 @@ public class Services extends AppCompatActivity {
                 intent.putExtra("year_id", xyear);
                 intent.putExtra("district", xdistrict);
                 intent.putExtra("hc", xhc);
+                intent.putExtra("section", section);
                 startActivity(intent);
             }
         });
@@ -134,6 +142,7 @@ public class Services extends AppCompatActivity {
                 intent.putExtra("year_id", xyear);
                 intent.putExtra("district", xdistrict);
                 intent.putExtra("hc", xhc);
+                intent.putExtra("section", section);
                 startActivity(intent);
             }
         });
@@ -149,6 +158,7 @@ public class Services extends AppCompatActivity {
                 intent.putExtra("year_id", xyear);
                 intent.putExtra("district", xdistrict);
                 intent.putExtra("hc", xhc);
+                intent.putExtra("section", section);
                 startActivity(intent);
             }
         });
@@ -179,6 +189,8 @@ public class Services extends AppCompatActivity {
                 intent.putExtra("year_id", xyear);
                 intent.putExtra("district", xdistrict);
                 intent.putExtra("hc", xhc);
+                intent.putExtra("section", section);
+
                 startActivity(intent);
             }
         });
@@ -194,6 +206,7 @@ public class Services extends AppCompatActivity {
                 intent.putExtra("year_id", xyear);
                 intent.putExtra("district", xdistrict);
                 intent.putExtra("hc", xhc);
+                intent.putExtra("section", section);
                 startActivity(intent);
             }
         });
@@ -224,6 +237,7 @@ public class Services extends AppCompatActivity {
                 intent.putExtra("year_id", xyear);
                 intent.putExtra("district", xdistrict);
                 intent.putExtra("hc", xhc);
+                intent.putExtra("section", section);
                 startActivity(intent);
             }
         });
@@ -239,6 +253,7 @@ public class Services extends AppCompatActivity {
                 intent.putExtra("year_id", xyear);
                 intent.putExtra("district", xdistrict);
                 intent.putExtra("hc", xhc);
+                intent.putExtra("section", section);
                 startActivity(intent);
             }
         });
@@ -254,6 +269,7 @@ public class Services extends AppCompatActivity {
                 intent.putExtra("year_id", xyear);
                 intent.putExtra("district", xdistrict);
                 intent.putExtra("hc", xhc);
+                intent.putExtra("section", section);
                 startActivity(intent);
             }
         });
@@ -269,6 +285,7 @@ public class Services extends AppCompatActivity {
                 intent.putExtra("year_id", xyear);
                 intent.putExtra("district", xdistrict);
                 intent.putExtra("hc", xhc);
+                intent.putExtra("section", section);
                 startActivity(intent);
             }
         });
@@ -284,6 +301,7 @@ public class Services extends AppCompatActivity {
                 intent.putExtra("year_id", xyear);
                 intent.putExtra("district", xdistrict);
                 intent.putExtra("hc", xhc);
+                intent.putExtra("section", section);
                 startActivity(intent);
             }
         });
@@ -299,6 +317,7 @@ public class Services extends AppCompatActivity {
                 intent.putExtra("year_id", xyear);
                 intent.putExtra("district", xdistrict);
                 intent.putExtra("hc", xhc);
+                intent.putExtra("section", section);
                 startActivity(intent);
             }
         });
@@ -314,6 +333,7 @@ public class Services extends AppCompatActivity {
                 intent.putExtra("year_id", xyear);
                 intent.putExtra("district", xdistrict);
                 intent.putExtra("hc", xhc);
+                intent.putExtra("section", section);
                 startActivity(intent);
             }
         });
@@ -329,6 +349,7 @@ public class Services extends AppCompatActivity {
                 intent.putExtra("year_id", xyear);
                 intent.putExtra("district", xdistrict);
                 intent.putExtra("hc", xhc);
+                intent.putExtra("section", section);
                 startActivity(intent);
             }
         });
@@ -341,10 +362,11 @@ public class Services extends AppCompatActivity {
                 final String xyear = year.toString().trim();
                 final String xhc = hc.toString().trim();
 
-                Intent intent = new Intent(getBaseContext(), SurveySection.class);
+                Intent intent = new Intent(getBaseContext(), commentSection1.class);
                 intent.putExtra("year_id", xyear);
                 intent.putExtra("district", xdistrict);
                 intent.putExtra("hc", xhc);
+                intent.putExtra("section", section);
                 startActivity(intent);
                 finish();
             }

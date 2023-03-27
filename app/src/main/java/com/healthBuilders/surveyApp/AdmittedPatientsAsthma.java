@@ -33,6 +33,8 @@ public class AdmittedPatientsAsthma extends AppCompatActivity {
         final String year = getIntent().getStringExtra("year_id");
         final String district = getIntent().getStringExtra("district");
         final String hc = getIntent().getStringExtra("hc");
+        final String section = getIntent().getStringExtra("section");
+
 
         patientid = findViewById(R.id.patientid);
         month1 = findViewById(R.id.Month1);
@@ -83,10 +85,12 @@ public class AdmittedPatientsAsthma extends AppCompatActivity {
         close.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getBaseContext(), SurveySection.class);
+                Intent intent = new Intent(getBaseContext(), commentSection1.class);
                 intent.putExtra("year_id", year);
                 intent.putExtra("district", district);
                 intent.putExtra("hc", hc);
+                intent.putExtra("section", section);
+
 
                 startActivity(intent);
             }

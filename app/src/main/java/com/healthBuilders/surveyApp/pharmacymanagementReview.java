@@ -38,6 +38,8 @@ public class pharmacymanagementReview extends AppCompatActivity {
         final String year = getIntent().getStringExtra("year_id");
         final String district = getIntent().getStringExtra("district");
         final String hc = getIntent().getStringExtra("hc");
+        final String section = getIntent().getStringExtra("section");
+
 
 
         save=findViewById(R.id.save1);
@@ -129,11 +131,13 @@ public class pharmacymanagementReview extends AppCompatActivity {
                     Toast.makeText(pharmacymanagementReview.this, "Data recorded", Toast.LENGTH_LONG).show();
 
                     Intent intent = new Intent(getBaseContext(), pharmacyStock.class);
-                intent.putExtra("year_id", year);
-                intent.putExtra("district", district);
-                intent.putExtra("hc", hc);
+                    intent.putExtra("year_id", year);
+                    intent.putExtra("district", district);
+                    intent.putExtra("hc", hc);
+                    intent.putExtra("section", section);
 
-                startActivity(intent);
+
+                    startActivity(intent);
             }else{
                     Toast.makeText(pharmacymanagementReview.this, "An error occured", Toast.LENGTH_LONG).show();
 

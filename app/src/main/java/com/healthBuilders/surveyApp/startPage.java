@@ -37,7 +37,7 @@ public class startPage extends AppCompatActivity {
     AutoCompleteTextView xdistricttxt, xhealthcentertxt;
     Integer Districtid;
     Button savecont,Sync;
-    String[] Rulindo = new String[]{"MURAMBI Rulindo","KININI","MAREMBO","BUBANGU","BUREGA","TUMBA","KISARO","MUSHONGI","MUYANZA","KAJEVUBA","REMERA MBOGO","TARE","RULINDO","RUKOZO","BUYOGA","SHYORONGI","RUTONDE","MUYANZA","RWAHI","MASORO","KINIHIRA"};
+    String[] Rulindo = new String[]{"MURAMBI Rulindo","KININI","MAREMBO","BUBANGU","BUREGA","TUMBA","KISARO","MUSHONGI","KIYANZA","KAJEVUBA","REMERA MBOGO","TARE","RULINDO","RUKOZO","BUYOGA","SHYORONGI","RUTONDE","MUYANZA","RWAHI","MASORO","KINIHIRA"};
     String[] Nyabihu = new String[]{"MWIYANIKE","BIGOGWE","KAREBA","ARUSHA","RWANKERI","SHYIRA","KINTOBO","NYAKIGEZI","KABATWA","RUREMBO","KORA","JOMBA","BIREMBO","GAKAMBA","RAMBURA","NYAKIRIBA"};
     String[] Rwamagana = new String[]{"AVEGA","NYAGASAMBU","RUBONA","MURAMBI","NYAKARIRO","GISHARI","KARENGE","MUSHA","RWAMAGANA","MUNYAGA","MWULIRE","NZIGE","MUYUMBU","GAHENGERI","RUHUNDA"};
 
@@ -213,7 +213,7 @@ public class startPage extends AppCompatActivity {
         final String year = this.xsurveyyear.getText().toString().trim();
         final String district = this.xdistricttxt.getText().toString().trim();
         final String hc = this.xhealthcentertxt.getText().toString().trim();
-        Intent intent = new Intent(getBaseContext(), SurveySection.class);
+         Intent intent = new Intent(getBaseContext(), SurveySection.class);
         intent.putExtra("year_id", year);
         intent.putExtra("district", district);
         intent.putExtra("hc", hc);
@@ -414,14 +414,14 @@ public class startPage extends AppCompatActivity {
                 STAFFMETTING= cursor.getString(59);
                 COSAMETTING= cursor.getString(60);
                 COGEMETTING= cursor.getString(61);
-                CHWMETTING= cursor.getString(62);
+                //CHWMETTING= cursor.getString(62);
 
                 final StringRequest stringRequest = new StringRequest(Request.Method.POST,"http://report.healthbuilders.org/app/basicinfo2.php?YEAR="+YEAR+"&DISTRICT="+DISTRICT+"&HC="+HC+"&ORGANI="+ORGANI+"&UPTODATE="+UPTODATE+"&ACCESSIBE="+ACCESSIBE+"&POSITION1="+POSITION1+"&LABTECAV="+LABTECAV+"&LABSIGN="+LABSIGN+"&LABEMP="+LABEMP
                         +"&POSITION2="+POSITION2+"&NURSEARV="+NURSEARV+"&NURSEARSIGN="+NURSEARSIGN+"&NURSEAREMPSIGN="+NURSEAREMPSIGN+"&POSITION3="+POSITION3+"&NURSEVACAV="+NURSEVACAV+"&NURSEVACSIGN="+NURSEVACSIGN+"&NURSEVACEMPSIGN="+NURSEVACEMPSIGN+"&POSITION4="+POSITION4+"&CUSTOCAREAV="+CUSTOCAREAV+"&CUSTCARESIGN="+CUSTCARESIGN+"&CUSTCAREEMPPSIGN="+CUSTCAREEMPPSIGN+"&POSITION5="+POSITION5+"&NURSETBAV="+NURSETBAV+"&NURSETBSIGN="+NURSETBSIGN+"&NURSETBEMPSIGN="+NURSETBEMPSIGN+"&POSITION6="+POSITION6
                         +"&NURSECHI="+NURSECHI+"&NURSECHISIGN="+NURSECHISIGN+"&NURSECHIEMPSIGN="+NURSECHIEMPSIGN+"&POSITION7="+POSITION7+"&SOCIALAV="+SOCIALAV+"&SOCIALSIGN="+SOCIALSIGN+"&SOCIALEMPSIGN="+POSITION8+"&POSITION8="+NURSECPNAV+"&NURSECPNAV="+NURSECPNAV+"&NURSECPNSIGN="+NURSECPNSIGN
                         +"&POSITION9="+POSITION9+"&MIDWIFEAV="+MIDWIFEAV+"&MIDWIFESIGN="+MIDWIFESIGN+"&MIDWIFEEMPSIGN="+MIDWIFEEMPSIGN+"&SOPPHARMACY="+SOPPHARMACY+"&EVIDENCE="+EVIDENCE+"&QICOMITEE="+QICOMITEE+"&TOTSTAFF="+TOTSTAFF+"&TOTNURSE="+TOTNURSE+"&PAIDSTAFF="+PAIDSTAFF
                         +"&CLINICALSTAFF="+CLINICALSTAFF+"&TBSTAFF="+TBSTAFF+"&STAFFINFECTION="+STAFFINFECTION+"&STAFFCOVID="+STAFFCOVID+"&STAFFEVALUATED="+STAFFEVALUATED+"&STAFFILLNESS="+STAFFILLNESS+"&STAFFINJURIES="+STAFFINJURIES+"&STAFFHEPATITE="+STAFFHEPATITE+"&STAFFRATE="+STAFFRATE+"&PATIENTRATE="+PATIENTRATE
-                        +"&STAFFMETTING="+STAFFMETTING+"&COSAMETTING="+COSAMETTING+"&COGEMETTING="+COGEMETTING+"&CHWMETTING="+CHWMETTING+"&SOCIALEMPSIGN="+SOCIALEMPSIGN+"&NURSECPNEMPSIGN="+NURSECPNEMPSIGN, new Response.Listener<String>() {
+                        +"&STAFFMETTING="+STAFFMETTING+"&COSAMETTING="+COSAMETTING+"&COGEMETTING="+COGEMETTING+"&CHWMETTING="+"Yes"+"&SOCIALEMPSIGN="+SOCIALEMPSIGN+"&NURSECPNEMPSIGN="+NURSECPNEMPSIGN, new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
 
@@ -4119,7 +4119,7 @@ public class startPage extends AppCompatActivity {
         cursor = Databasehelper.getData_PharmacyDispensary(status_id,sqLiteDatabase);
         if (cursor.moveToFirst()){
             do{
-                final String YEAR, DISTRICT, HC, drugname, drugexpired, pharmacyregister, pharmacytallies, pharmacybook, pharmacysigned, consumptiontotal;
+                final String YEAR, DISTRICT, HC, drugname, drugexpired, pharmacyregister, pharmacytallies, pharmacybook, pharmacysigned, consumptiontotal,tallyconsmatch;
                 YEAR = cursor.getString(0);
                 HC = cursor.getString(1);
                 DISTRICT = cursor.getString(2);
@@ -4130,10 +4130,11 @@ public class startPage extends AppCompatActivity {
                 pharmacybook = cursor.getString(7);
                 pharmacysigned = cursor.getString(8);
                 consumptiontotal = cursor.getString(9);
+                tallyconsmatch = cursor.getString(10);
 
 
 
-                final StringRequest stringRequest = new StringRequest(Request.Method.POST,"http://report.healthbuilders.org/app/pharmacyDispensary.php?YEAR="+YEAR+"&DISTRICT="+DISTRICT+"&HC="+HC+"&drugname="+drugname+"&drugexpired="+drugexpired+"&pharmacyregister="+pharmacyregister+"&pharmacytallies="+pharmacytallies+"&pharmacybook="+pharmacybook+"&pharmacysigned="+pharmacysigned+"&consumptiontotal="+consumptiontotal, new Response.Listener<String>() {
+                final StringRequest stringRequest = new StringRequest(Request.Method.POST,"http://report.healthbuilders.org/app/pharmacyDispensary.php?YEAR="+YEAR+"&DISTRICT="+DISTRICT+"&HC="+HC+"&drugname="+drugname+"&drugexpired="+drugexpired+"&pharmacyregister="+pharmacyregister+"&pharmacytallies="+pharmacytallies+"&pharmacybook="+pharmacybook+"&pharmacysigned="+pharmacysigned+"&consumptiontotal="+consumptiontotal+"&tallyconsmatch="+tallyconsmatch, new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
 

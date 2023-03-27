@@ -30,6 +30,8 @@ public class DocumentationCustomer extends AppCompatActivity {
         final String year = getIntent().getStringExtra("year_id");
         final String district = getIntent().getStringExtra("district");
         final String hc = getIntent().getStringExtra("hc");
+        final String section = getIntent().getStringExtra("section");
+
 
         available=findViewById(R.id.customeravailable);
         tracked=findViewById(R.id.customertrack);
@@ -63,9 +65,11 @@ public class DocumentationCustomer extends AppCompatActivity {
                 intent.putExtra("year_id", year);
                 intent.putExtra("district", district);
                 intent.putExtra("hc", hc);
+                intent.putExtra("section", section);
 
 
-                startActivity(intent);
+
+                    startActivity(intent);
                 finish();
                 }else{
                  Toast.makeText(DocumentationCustomer.this, "An error occured", Toast.LENGTH_SHORT).show();

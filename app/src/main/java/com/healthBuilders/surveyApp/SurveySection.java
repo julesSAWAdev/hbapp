@@ -52,6 +52,7 @@ public class SurveySection extends AppCompatActivity {
             final String xdistrict = district.toString().trim();
             final String xyear = year.toString().trim();
             final String xhc = hc.toString().trim();
+            final String xstep = Step.toString().trim();
                // Log.d("year", xyear);
                 //Log.d("district", xdistrict);
                 //Log.d("Hc", xhc);
@@ -60,6 +61,7 @@ public class SurveySection extends AppCompatActivity {
                     intent.putExtra("year_id", xyear);
                     intent.putExtra("district", xdistrict);
                     intent.putExtra("hc", xhc);
+                    intent.putExtra("section",xstep);
                     startActivity(intent);
 
                 }else if (Step.equals("Services/Area Description")){
@@ -68,6 +70,7 @@ public class SurveySection extends AppCompatActivity {
                     intent.putExtra("year_id", xyear);
                     intent.putExtra("district", xdistrict);
                     intent.putExtra("hc", xhc);
+                    intent.putExtra("section",xstep);
                     startActivity(intent);
 
 
@@ -76,6 +79,7 @@ public class SurveySection extends AppCompatActivity {
                     intent.putExtra("year_id", xyear);
                     intent.putExtra("district", xdistrict);
                     intent.putExtra("hc", xhc);
+                    intent.putExtra("section",xstep);
                     startActivity(intent);
 
                 }else if(Step.equals("Data Management")){
@@ -83,12 +87,14 @@ public class SurveySection extends AppCompatActivity {
                     intent.putExtra("year_id", xyear);
                     intent.putExtra("district", xdistrict);
                     intent.putExtra("hc", xhc);
+                    intent.putExtra("section",xstep);
                     startActivity(intent);
                 }else if (Step.equals("Finance Management")){
                     Intent intent = new Intent(getBaseContext(), FinanceManagementSop.class);
                     intent.putExtra("year_id", xyear);
                     intent.putExtra("district", xdistrict);
                     intent.putExtra("hc", xhc);
+                    intent.putExtra("section",xstep);
                     startActivity(intent);
 
                 }else if (Step.equals("Pharmacy Management")){
@@ -96,6 +102,7 @@ public class SurveySection extends AppCompatActivity {
                     intent.putExtra("year_id", xyear);
                     intent.putExtra("district", xdistrict);
                     intent.putExtra("hc", xhc);
+                    intent.putExtra("section",xstep);
                     startActivity(intent);
 
                 }else if (Step.equals("Safety Management & Health Education")){
@@ -103,6 +110,7 @@ public class SurveySection extends AppCompatActivity {
                     intent.putExtra("year_id", xyear);
                     intent.putExtra("district", xdistrict);
                     intent.putExtra("hc", xhc);
+                    intent.putExtra("section",xstep);
                     startActivity(intent);
 
                 }else {
@@ -110,6 +118,7 @@ public class SurveySection extends AppCompatActivity {
                     intent.putExtra("year_id", xyear);
                     intent.putExtra("district", xdistrict);
                     intent.putExtra("hc", xhc);
+                    intent.putExtra("section",xstep);
                     startActivity(intent);
 
                 }

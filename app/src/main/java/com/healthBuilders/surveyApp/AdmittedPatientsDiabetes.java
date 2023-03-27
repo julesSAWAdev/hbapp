@@ -33,6 +33,8 @@ public class AdmittedPatientsDiabetes extends AppCompatActivity {
         final String year = getIntent().getStringExtra("year_id");
         final String district = getIntent().getStringExtra("district");
         final String hc = getIntent().getStringExtra("hc");
+        final String section = getIntent().getStringExtra("section");
+
 
         patientid = findViewById(R.id.patientid);
         month1 = findViewById(R.id.Month1);
@@ -87,6 +89,8 @@ public class AdmittedPatientsDiabetes extends AppCompatActivity {
                 intent.putExtra("year_id", year);
                 intent.putExtra("district", district);
                 intent.putExtra("hc", hc);
+                intent.putExtra("section", section);
+
 
                 startActivity(intent);
             }

@@ -41,6 +41,8 @@ public class InsuranceReview extends AppCompatActivity {
         final String year = getIntent().getStringExtra("year_id");
         final String district = getIntent().getStringExtra("district");
         final String hc = getIntent().getStringExtra("hc");
+        final String section = getIntent().getStringExtra("section");
+
 
         fyear=findViewById(R.id.financeYear);
         ivperiod=findViewById(R.id.period);
