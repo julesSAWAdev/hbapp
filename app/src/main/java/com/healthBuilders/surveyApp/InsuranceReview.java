@@ -448,6 +448,14 @@ public class InsuranceReview extends AppCompatActivity {
 
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.N)
+    private void updateLabe8() {
+        String myFormat ="MM/dd/yy";
+        SimpleDateFormat dateFormat=new SimpleDateFormat(myFormat, Locale.US);
+        verifyCBHI.setText(dateFormat.format(myCalendar.getTime()));
+
+    }
+
 
 
 
